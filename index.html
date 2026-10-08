@@ -261,6 +261,7 @@
   .mn-title small{display:block;color:#a89378;letter-spacing:.3em;font-size:11px}
   .mn-title h1{margin:6px 0 4px;font-size:clamp(30px,6vw,48px);letter-spacing:.14em;color:#e6c35c;text-shadow:0 2px 0 #3a2410}
   .mn-title p{margin:0;color:#a89378;font-size:13px}
+  .mn-title .mn-ver{margin-top:6px;font-size:11px;color:#6fd38a}
   .mn-btns{display:flex;flex-direction:column;gap:10px}
   .mn-btn{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:14px 18px;border-radius:12px;text-align:left;
     background:#1d140d;border:1.5px solid #4a3120;color:#f0e1c9;font:500 12px system-ui,sans-serif;cursor:pointer}
@@ -413,11 +414,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v93 · 멀티 2단계 (실시간 연결)</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>1단계</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v93</em></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
   </div>
@@ -9181,7 +9182,7 @@ function drawMinimap(g) {
   const hw = vw / zoom / 2, hh = vh / zoom / 2;
   g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 1;
   g.strokeRect((cam.x - hw) * s, (cam.y - hh) * s, hw * 2 * s, hh * 2 * s);
-  for (const c of [...bots, player]) if (c.alive && !(c.hidden && c.team !== player.team) && seenBy(player.team, c)) {         // 미니맵: 캐릭터 색 + 아군 파랑 / 적 빨강 테두리, 나는 흰 고리 추가
+  for (const c of [...heroes.filter(h => h !== player), player]) if (c.alive && !(c.hidden && c.team !== player.team) && seenBy(player.team, c)) {         // 미니맵: 캐릭터 색 + 아군 파랑 / 적 빨강 테두리, 나는 흰 고리 추가
     const MAPCOL = {gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a'};
     if (c === player) { g.strokeStyle = '#fff'; g.lineWidth = 1.5; g.beginPath(); g.arc(c.x * s, c.y * s, 7.5, 0, 7); g.stroke(); }
     g.fillStyle = MAPCOL[c.key] || '#777'; g.strokeStyle = sideCol(c); g.lineWidth = 2.2;
@@ -9414,7 +9415,7 @@ function render() {
   drawMirrors(ctx);
   drawLinks(ctx);
   drawDonPools(ctx);
-  const order = [...bots, player].filter(seeU);
+  const order = [...heroes.filter(h => h !== player), player].filter(seeU);   // (멀티: 다른 사람 챔피언은 bots에 없음)
   for (const c of order) drawCasting(ctx, c);
   for (const c of order) if (c.alive) drawBuffAura(ctx, c);
   for (const c of order) drawChamp(ctx, c);
