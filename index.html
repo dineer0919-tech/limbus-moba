@@ -1161,6 +1161,7 @@ const LANES = {
 let heroes = [], bots = [], chosenRole = 'top';
 let units, projectiles, fx, player, bot, time, nextWave, waveNo, spawnQueue, gameOver, cs, kills, deaths;
 let spectating = false, specSpeed = 1;
+let mpRole = null;                                                      // 멀티: null | 'host'(계산) | 'guest'(받아서 그림)
 let mpLineup = null;                                                    // 멀티: 픽창에서 정한 구성 (resetGame이 읽음)
 const colTeam = () => spectating ? 'blue' : player.team;              // 관전: 블루=파랑 / 레드=빨강 고정
 let sprite = null, chosenChamp = 'gregor', started = false, shots = [], mirrors = [], feathers = [], harpoons = [];
@@ -1673,7 +1674,7 @@ function selStep(step) {
   $('selRoles').hidden = step !== 'role'; $('selCards').hidden = step !== 'champ'; $('selSpells').hidden = step !== 'champ'; if (step === 'champ') renderSpellPick(); $('selBack').hidden = step !== 'champ';
   $('selTitle').textContent = step === 'role' ? '라인 선택' : `챔피언 선택 · ${ROLE_NAME[chosenRole]}`;
 }
-$('again').addEventListener('click', () => { specEnd(); if (mpLineup) { mpLineup = null; if (MP.code) mpLeave(''); $('mp').hidden = true; } $('over').hidden = true; started = false; $('select').hidden = true; $('menu').hidden = false; selStep('role'); });
+$('again').addEventListener('click', () => { specEnd(); if (mpLineup) { mpLineup = null; mpEndSync(); if (MP.code) mpLeave(''); $('mp').hidden = true; } $('over').hidden = true; started = false; $('select').hidden = true; $('menu').hidden = false; selStep('role'); });
 $('select').addEventListener('click', e => {
   if (e.target.closest('#selBack')) { selStep('role'); return; }
   const sp = e.target.closest('[data-spell]');
@@ -4948,6 +4949,8 @@ function meurTick(c, dt) {
         if (skAim.key === 'E' && skAim.id !== null && skAim.aiming) want = Math.atan2(skAim.dy, skAim.dx);   // E 버튼 끌기
         else if (stick.id !== null && Math.hypot(stick.dx, stick.dy) > .25) want = Math.atan2(stick.dy, stick.dx);   // 조이스틱
         else if (mouse.on) { const w = mouseWorld(); want = Math.atan2(w.y - c.y, w.x - c.x); }               // PC: 커서
+      } else if (c.mpUid && !c.mpAi && mpRole === 'host') {          // 멀티: 다른 사람이 조준한 방향
+        if (c.mpAim != null) want = c.mpAim;
       } else if (time - G.t0 > .35) {                                // AI: 가까운 벽 쪽(추가 피해·기절), 없으면 아군 포탑 쪽으로
         let best = null, bd = Infinity;
         for (let k = 0; k < 16; k++) { const a = k / 16 * Math.PI * 2;
@@ -6655,6 +6658,7 @@ function update(dt) {
   if (shopOpen && shopRefreshT <= 0) { shopRefreshT = .25; refreshShopLight(); }
   if (spectating) updateBot(player, dt); else {
   updatePlayer(dt, ix, iy); }
+  if (mpRole === 'host') mpHostRemotes(dt);                              // 멀티: 다른 사람 챔피언
   for (const b of bots) updateBot(b, dt);
   updateShots(dt);
   updateMirrors(dt);
@@ -6713,6 +6717,10 @@ function update(dt) {
 
   units = units.filter(u => u.alive || u.structure || isChamp(u));
   fx = fx.filter(f => (f.t += dt) < f.life);
+  if (mpRole === 'host') mpHostTick(dt);
+  updateView(dt);
+}
+function updateView(dt) {                                               // 카메라 · 화면 위 정보 (멀티 손님도 씀)
 
   if (player.alive) player.inBush = bushes.some(b => inRect(player.x, player.y, b));
   atk.candidate = atk.aiming && player.alive ? aimInfo().best : null;
@@ -6773,7 +6781,7 @@ function update(dt) {
   if (spectating && (specT -= dt) <= 0) { specT = .2; specUpdate(); }
   $('lv').textContent = player.level;
   $('xpbar').style.width = (player.level >= MAX_LEVEL ? 100 : player.xp / xpToNext(player.level) * 100) + '%';
-  $('wave').textContent = (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초';
+  $('wave').textContent = (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초' + (mpRole === 'guest' ? ` · 핑 ${MPS.ping}ms` : mpRole === 'host' ? ` · 방장 (${Object.values(MPS.links).filter(L => L.mode !== 'wait').length}명 연결)` : '');
   $('zone').textContent = player.alive ? zoneName(player.x, player.y) + (player.inBush ? ' · 수풀' : '') : '부활 대기';
 }
 
@@ -7381,7 +7389,7 @@ let hitStop = 0;                                  // 타격 순간 아주 짧게
 const shake = {mag:0};
 const juice = {punch:0, hurt:0, dir:0};                            // 타격감: 화면 줌 펀치 · 피격 붉은 테두리 · 흔들림 방향
 const camPunch = v => { juice.punch = Math.max(juice.punch, v); };
-function impactFeel(stop, mag) { hitStop = Math.max(hitStop, stop); shake.mag = Math.max(shake.mag, mag); }
+function impactFeel(stop, mag) { if (!mpRole) hitStop = Math.max(hitStop, stop); shake.mag = Math.max(shake.mag, mag); }
 const easeOut = t => 1 - Math.pow(1 - t, 3);
 
 // 갑각판 하나: 앞쪽이 뾰족한 쐐기 (x0→x1, 두께 w0→w1). 3단 명암 + 윗면 하이라이트
@@ -9828,11 +9836,16 @@ addEventListener('keydown', e => {
 
 resetGame();
 let last = performance.now();
+try {                                                                   // 멀티 방장: 탭이 뒤로 가도 게임이 멈추지 않게 (워커 타이머는 덜 느려짐)
+  const wk = new Worker(URL.createObjectURL(new Blob(['setInterval(() => postMessage(0), 33)'], {type:'text/javascript'})));
+  let hl = performance.now();
+  wk.onmessage = () => { const now = performance.now(), dt = Math.min(.05, (now - hl) / 1000); hl = now; if (document.hidden && started && mpRole === 'host') { update(dt); last = now; } };
+} catch {}
 function loop(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
   shake.mag *= Math.exp(-dt * 14); if (shake.mag < .2) shake.mag = 0;
   juice.punch *= Math.exp(-dt * 11); juice.hurt *= Math.exp(-dt * 3.5);
-  if (!started) {} else if (hitStop > 0) hitStop -= dt; else if (spectating && specSpeed > 1) { for (let q = 0; q < specSpeed && !gameOver; q++) update(dt); } else update(dt);
+  if (!started) {} else if (hitStop > 0) hitStop -= dt; else if (mpRole === 'guest') mpGuestFrame(dt); else if (spectating && specSpeed > 1) { for (let q = 0; q < specSpeed && !gameOver; q++) update(dt); } else update(dt);
   render();
   requestAnimationFrame(loop);
 }
@@ -9873,12 +9886,14 @@ function netFirebase() {
     async txn(p, fn) { const r = await db.ref(p).transaction(fn); return {committed:r.committed, value:r.snapshot.val()}; },
     onDisc(p, v) { const d = db.ref(p).onDisconnect(); return v === null ? d.remove() : d.set(v); },
     cancelDisc: p => db.ref(p).onDisconnect().cancel(),
+    push: (p, v) => db.ref(p).push(v),
+    onChild(p, cb) { const r = db.ref(p), h = r.on('child_added', s => { const v = s.val(); s.ref.remove(); cb(v); }); return () => r.off('child_added', h); },
     async openRooms() { return (await db.ref('rooms').orderByChild('openPub').equalTo(true).limitToFirst(20).once('value')).val() || {}; },
   };
   return N;
 }
 function netLocal() {                                                   // 시험용: localStorage + BroadcastChannel (같은 브라우저의 여러 탭)
-  const KEY = 'mpLocalDb', bc = new BroadcastChannel('mpLocal'), subs = new Set(), disc = new Map();
+  const KEY = 'mpLocalDb', bc = new BroadcastChannel('mpLocal'), subs = new Set(), disc = new Map(); let pushN = 0;
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } };
   const parts = p => p.split('/').filter(Boolean);
   const read = (t, p) => parts(p).reduce((o, k) => o == null ? null : o[k] ?? null, t);
@@ -9902,6 +9917,11 @@ function netLocal() {                                                   // 시�
     on(p, cb) { const s = {p, cb, last:undefined}; subs.add(s); setTimeout(fire, 0); return () => subs.delete(s); },
     txn: (p, fn) => lock(() => { const cur = read(load(), p), nv = fn(cur === null ? null : JSON.parse(JSON.stringify(cur))); if (nv === undefined) return {committed:false, value:cur}; write(p, nv); return {committed:true, value:nv}; }),
     async onDisc(p, v) { disc.set(p, v); },
+    push: (p, v) => lock(() => write(p + '/' + (Date.now().toString(36) + (++pushN).toString(36).padStart(4, '0') + Math.random().toString(36).slice(2, 5)), v)),
+    onChild(p, cb) {                                                    // 새로 생긴 자식만 차례대로 받고 지움
+      const s = {p, cb:v => { if (!v) return; const ks = Object.keys(v).sort(); if (!ks.length) return; for (const k of ks) cb(v[k]); lock(() => { for (const k of ks) write(p + '/' + k, null); }); }, last:undefined};
+      subs.add(s); setTimeout(fire, 0); return () => subs.delete(s);
+    },
     async cancelDisc(p) { disc.delete(p); },
     async openRooms() { const r = read(load(), 'rooms') || {}; const o = {}; for (const k in r) if (r[k] && r[k].openPub) o[k] = r[k]; return o; },
     disconnect() { for (const [p, v] of disc) write(p, v); disc.clear(); },   // (닫히는 중이라 잠금 없이)
@@ -9973,7 +9993,7 @@ async function mpQuick() {
   await mpCreate(true);
 }
 function mpEnter(code, host) {
-  MP.code = code; MP.host = host; MP.lineup = null; MP.starting = false;
+  MP.code = code; MP.host = host; MP.lineup = null; MP.starting = false; MP.linking = false;
   if (MP.unsub) MP.unsub();
   MP.unsub = MP.net.on('rooms/' + code, room => mpOnRoom(room));
   clearInterval(MP.tick); MP.tick = setInterval(mpTick, 250);
@@ -9981,6 +10001,7 @@ function mpEnter(code, host) {
 }
 async function mpLeave(msg) {
   const N = MP.net, code = MP.code;
+  mpCloseLinks(); MP.linking = false;
   clearInterval(MP.tick); if (MP.unsub) MP.unsub(); MP.unsub = null;
   if (N && code) {
     if (MP.host) { await N.cancelDisc('rooms/' + code); await N.remove('rooms/' + code); }
@@ -9997,9 +10018,11 @@ function mpOnRoom(room) {
     clearInterval(MP.tick); if (MP.unsub) MP.unsub(); MP.unsub = null;
     const inGame = mpInGame();
     MP.code = null; MP.room = null; MP.host = false;
+    if (inGame && mpRole === 'guest') { mpEndSync(); $('overText').textContent = '방장이 나갔습니다'; $('overText').style.color = '#e6c35c'; $('again').textContent = '메인으로'; $('over').hidden = false; return; }
     if (inGame) { mpGameNotice('방장이 나가서 방이 닫혔습니다 (이 판은 혼자 계속됩니다)'); return; }
     $('mp').hidden = false; MP.err = '방장이 나가서 방이 닫혔습니다.'; mpView('home'); return;
   }
+  if (mpInGame() && mpRole) { MP.room = room; mpHostCheckLeavers(room); return; }
   if (!room.players || !room.players[MP.net.uid]) {                     // 내가 빠짐
     if (!mpInGame()) { mpLeave('방에서 나왔습니다.'); }
     return;
@@ -10018,6 +10041,7 @@ function mpHostDuty(room) {                                             // 방�
   if (!!room.openPub !== open) N.update(path, {openPub:open});
   if (room.state === 'pick' && ps.length && ps.every(p => p.locked) && !MP.starting) { MP.starting = true; setTimeout(() => { MP.starting = false; mpHostToLoading(); }, 900); }
   if (room.state === 'loading' && ps.every(p => (p.loaded || 0) >= 100) && !room.startAt) N.update(path, {state:'game', startAt:N.now() + 1200});
+  if (room.state === 'loading') mpLoadingStep(room);
 }
 function mpTick() {                                                     // 타이머 · 시간 초과 자동 확정
   const r = MP.room; if (!r) return;
@@ -10026,9 +10050,20 @@ function mpTick() {                                                     // 타�
     const el = $('mpTimer'); if (el) { el.textContent = left; el.classList.toggle('hurry', left <= 10); }
     if (MP.host && left <= 0 && !MP.starting) { MP.starting = true; mpHostAutoLock().finally(() => { MP.starting = false; }); }
   }
-  if (r.state === 'loading' && MP.me && (MP.me.loaded || 0) < 100) {   // 로딩: 아이콘·이펙트 미리 그려 두기 (짧게)
-    const nx = Math.min(100, (MP.me.loaded || 0) + 20 + Math.floor(Math.random() * 15));
-    MP.me.loaded = nx; MP.net.set(`rooms/${MP.code}/players/${MP.net.uid}/loaded`, nx);
+  if (r.state === 'loading') mpLoadingStep(r);
+  if (MP.host && r.state === 'loading' && !r.startAt && r.loadEnd && MP.net.now() > r.loadEnd) MP.net.update('rooms/' + MP.code, {state:'game', startAt:MP.net.now() + 800});   // 너무 오래 걸리면 그냥 시작
+}
+function mpLoadingStep(r) {                                             // 로딩: 방장 ↔ 손님 연결 맺기
+  if (MP.linking) return;
+  MP.linking = true;
+  const N = MP.net, me = `rooms/${MP.code}/players/${N.uid}`;
+  if (MP.host) {
+    for (const p of mpPlayers(r)) if (p.uid !== N.uid) MPS.links[p.uid] = mpOpenLink(p.uid, true, m => mpHostOnMsg(p.uid, m));
+    N.update(me, {loaded:100, link:'host'});
+  } else {
+    const L = MPS.links.host = mpOpenLink(r.host, false, mpGuestOnMsg);
+    N.update(me, {loaded:40});
+    L.ready.then(mode => N.update(me, {loaded:100, link:mode}));
   }
 }
 
@@ -10088,7 +10123,7 @@ async function mpHostToLoading() {
     const key = fill.shift(); return {role, key, spells:defaultSpells(role, key), name:'', uid:''};
   });
   const redKeys = pickKeys([], 4), red = ROLES.map((role, i) => ({role, key:redKeys[i], spells:defaultSpells(role, redKeys[i])}));
-  const upd = {state:'loading', lineup:{blue, red}};
+  const upd = {state:'loading', lineup:{blue, red}, loadEnd:MP.net.now() + 20000};
   for (const p of ps) upd[`players/${p.uid}/loaded`] = 0;
   await MP.net.update('rooms/' + MP.code, upd);
 }
@@ -10106,7 +10141,8 @@ function mpStartGame(room) {
     chosenChamp = mine.key; chosenRole = mine.role; chosenSpells = mine.spells.slice();
     resetGame(); started = true;
     $('mp').hidden = true; openMenu(false); $('select').hidden = true;
-    mpGameNotice('멀티 1단계 시험판 · 화면 연결은 2단계에서');
+    mpSyncStart(room);
+    if (mpRole === 'guest') { MP.waitT = performance.now(); }
   }, wait);
 }
 function mpGameNotice(t) { if (started && player) text(player.x, player.y - E(110), t, '#e6c35c', true, 6); }
@@ -10207,6 +10243,309 @@ document.addEventListener('click', e => {
 document.addEventListener('input', e => { if (e.target.id === 'mpName') { const n = e.target.value.trim().slice(0, 10); mpNameMem = n; try { localStorage.setItem('mpName', n); } catch {} } });
 document.addEventListener('keydown', e => { if (e.target.id === 'mpCodeIn' && e.key === 'Enter') $('mp').querySelector('[data-mp="join"]').click(); });
 $('mMulti').addEventListener('click', () => { openMenu(false); mpOpen(true); });
+
+// ═════════════ 멀티플레이 2단계: 실제 동기화 (방장 브라우저가 게임을 계산, 나머지는 받아서 그림) ═════════════
+// 연결: WebRTC P2P (Firebase로 연결 정보만 교환) → 7초 안에 안 붙으면 Firebase 중계로 대체
+const MPS = {links:{}, remote:{}, N:new Map(), nid:0, last:new Map(), lastColl:{}, lastG:{}, sendT:0, inT:0, lastIn:'', gotFull:false, chunks:{}, myNid:0, visT:0, ping:0, pingT:0, rxT:0, closing:false, unsub:[]};
+const MP_HZ = 12, MP_CHUNK = 15000;
+const ICE = {iceServers:[{urls:['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun.cloudflare.com:3478']}]};
+
+// ── 연결 (방장 1 ↔ 손님 여럿) ──
+function mpLinkSend(L, obj) {                                           // 큰 메시지는 잘라서 보냄
+  const s = JSON.stringify(obj);
+  const parts = s.length <= MP_CHUNK ? [s] : Array.from({length:Math.ceil(s.length / MP_CHUNK)}, (_, i) => s.slice(i * MP_CHUNK, (i + 1) * MP_CHUNK));
+  const id = parts.length > 1 ? Math.random().toString(36).slice(2, 8) : '';
+  parts.forEach((p, i) => {
+    const pkt = parts.length > 1 ? JSON.stringify({k:id, i, n:parts.length, d:p}) : p;
+    if (L.ch && L.ch.readyState === 'open') { try { L.ch.send(pkt); } catch (e) { console.warn(e); } }
+    else if (L.mode === 'relay') MP.net.push(L.outPath, pkt);
+  });
+}
+function mpLinkRecv(L, raw, cb) {
+  let m; try { m = JSON.parse(raw); } catch { return; }
+  if (m && m.k && m.n) {                                                // 조각 모으기
+    const b = MPS.chunks[m.k] || (MPS.chunks[m.k] = {n:m.n, got:0, parts:[]});
+    if (b.parts[m.i] === undefined) { b.parts[m.i] = m.d; b.got++; }
+    if (b.got < b.n) return;
+    delete MPS.chunks[m.k];
+    try { m = JSON.parse(b.parts.join('')); } catch { return; }
+  }
+  cb(m);
+}
+function mpOpenLink(peerUid, asHost, onMsg) {                           // 한 상대와 연결 (P2P 시도 → 실패 시 중계)
+  const N = MP.net, code = MP.code, base = `rooms/${code}/sig/${asHost ? peerUid : N.uid}`;
+  const L = {peer:peerUid, mode:'wait', ch:null, pc:null, outPath:`rooms/${code}/relay/${asHost ? peerUid : N.uid}/${asHost ? 'down' : 'up'}`, opened:null};
+  L.ready = new Promise(res => { L.opened = res; });
+  const done = mode => { if (L.mode !== 'wait') return; L.mode = mode; L.opened(mode); };
+  // 중계 받기는 항상 켜 둠 (상대가 중계로 보낼 수도 있으니)
+  MPS.unsub.push(N.onChild(`rooms/${code}/relay/${asHost ? peerUid : N.uid}/${asHost ? 'up' : 'down'}`, raw => mpLinkRecv(L, raw, onMsg)));
+  if (typeof RTCPeerConnection === 'undefined') { done('relay'); return L; }
+  const pc = L.pc = new RTCPeerConnection(ICE), queue = [];
+  let remoteSet = false;
+  const addCand = c => { if (remoteSet) pc.addIceCandidate(c).catch(() => {}); else queue.push(c); };
+  const flush = () => { remoteSet = true; for (const c of queue.splice(0)) pc.addIceCandidate(c).catch(() => {}); };
+  const setup = ch => { L.ch = ch; ch.onopen = () => done('p2p'); ch.onmessage = e => mpLinkRecv(L, e.data, onMsg); ch.onclose = () => { if (L.mode === 'p2p') { L.mode = 'relay'; } }; };
+  pc.onicecandidate = e => { if (e.candidate) N.push(`${base}/${asHost ? 'hc' : 'gc'}`, JSON.stringify(e.candidate.toJSON ? e.candidate.toJSON() : e.candidate)); };
+  MPS.unsub.push(N.onChild(`${base}/${asHost ? 'gc' : 'hc'}`, raw => { try { addCand(JSON.parse(raw)); } catch {} }));
+  if (asHost) {
+    setup(pc.createDataChannel('game', {ordered:true}));
+    (async () => {
+      const off = await pc.createOffer(); await pc.setLocalDescription(off);
+      await N.set(`${base}/offer`, JSON.stringify({type:off.type, sdp:off.sdp}));
+      const un = N.on(`${base}/answer`, async a => { if (!a || remoteSet) return; try { await pc.setRemoteDescription(JSON.parse(a)); flush(); } catch (e) { console.warn(e); } });
+      MPS.unsub.push(un);
+    })().catch(e => { console.warn(e); done('relay'); });
+  } else {
+    pc.ondatachannel = e => setup(e.channel);
+    const un = N.on(`${base}/offer`, async o => {
+      if (!o || remoteSet) return;
+      try { await pc.setRemoteDescription(JSON.parse(o)); flush(); const ans = await pc.createAnswer(); await pc.setLocalDescription(ans); await N.set(`${base}/answer`, JSON.stringify({type:ans.type, sdp:ans.sdp})); }
+      catch (e) { console.warn(e); done('relay'); }
+    });
+    MPS.unsub.push(un);
+  }
+  setTimeout(() => done('relay'), 8000);                                // 8초 안에 P2P가 안 열리면 중계
+  return L;
+}
+function mpCloseLinks() {
+  for (const u of MPS.unsub.splice(0)) { try { u(); } catch {} }
+  for (const L of Object.values(MPS.links)) { try { L.ch && L.ch.close(); L.pc && L.pc.close(); } catch {} }
+  MPS.links = {};
+}
+
+// ── 상태 직렬화: 물체마다 번호(_n)를 붙이고, 바뀐 칸만 보냄 ──
+const NET_COLLS = {
+  units:[() => units, v => { units = v; }], projectiles:[() => projectiles, v => { projectiles = v; }], fx:[() => fx, v => { fx = v; }],
+  wards:[() => wards, v => { wards = v; }], shots:[() => shots, v => { shots = v; }], mirrors:[() => mirrors, v => { mirrors = v; }],
+  feathers:[() => feathers, v => { feathers = v; }], harpoons:[() => harpoons, v => { harpoons = v; }], fMissiles:[() => fMissiles, v => { fMissiles = v; }],
+  grenades:[() => grenades, v => { grenades = v; }], scThrows:[() => scThrows, v => { scThrows = v; }], mrChains:[() => mrChains, v => { mrChains = v; }],
+  hlOrbs:[() => hlOrbs, v => { hlOrbs = v; }], hlPetals:[() => hlPetals, v => { hlPetals = v; }], hlDrops:[() => hlDrops, v => { hlDrops = v; }],
+  donPools:[() => donPools, v => { donPools = v; }], corpses:[() => corpses, v => { corpses = v; }], camps:[() => camps, v => { camps = v; }],
+  killFeed:[() => killFeed, v => { killFeed = v; }],
+};
+const NET_G = {
+  time:[() => time, v => { time = v; }], nextWave:[() => nextWave, v => { nextWave = v; }], waveNo:[() => waveNo, v => { waveNo = v; }],
+  gameOver:[() => gameOver, v => { gameOver = v; }], banner:[() => banner, v => { banner = v; }], teamStacks:[() => teamStacks, v => { teamStacks = v; }],
+  teamBadges:[() => teamBadges, v => { teamBadges = v; }], structStats:[() => STRUCT_STATS, v => { if (v) Object.assign(STRUCT_STATS, v); }],
+};
+const NET_SKIP = new Set(['path', 'wp', 'laneOverride', 'strafeDir', 'strafeT', 'thinkT', 'spThinkT', 'stanceT', 'backoff', 'tradeGo', 'commitUntil', 'chaseT', 'noChase', 'noChaseT',
+  'noDiveT', 'siegeT', 'holdT', 'dv', 'rescueT', 'desperateT', 'defendRecall', 'shopT', 'hitBy', 'focus', 'mpAim']);
+const qn = v => Math.abs(v) < 50 ? Math.round(v * 100) / 100 : Math.round(v * 10) / 10;
+function encV(v, d) {
+  if (v === null || v === undefined) return null;
+  const t = typeof v;
+  if (t === 'number') return Number.isFinite(v) ? qn(v) : (v > 0 ? 1e9 : v < 0 ? -1e9 : 0);
+  if (t === 'string' || t === 'boolean') return v;
+  if (t !== 'object') return undefined;
+  if (v._n !== undefined) return {$r:v._n};
+  if (d > 6 || v instanceof Map || ArrayBuffer.isView(v) || (typeof Node !== 'undefined' && v instanceof Node) || (typeof ImageBitmap !== 'undefined' && v instanceof ImageBitmap)) return undefined;
+  if (v instanceof Set) return {$s:[...v].map(x => encV(x, d + 1) ?? null)};
+  if (Array.isArray(v)) return v.map(x => { const e = encV(x, d + 1); return e === undefined ? null : e; });
+  const o = {};
+  for (const k in v) { if (k[0] === '_') continue; const e = encV(v[k], d + 1); if (e !== undefined) o[k] = e; }
+  return o;
+}
+function mpTagAll() {                                                   // 새로 생긴 물체에 번호 붙이기
+  for (const name in NET_COLLS) for (const o of NET_COLLS[name][0]() || []) if (o && typeof o === 'object' && o._n === undefined) { o._n = ++MPS.nid; MPS.N.set(o._n, o); }
+}
+function mpEncode(full) {                                               // full: 처음 들어온 손님용 전체 상태
+  mpTagAll();
+  const msg = {t:full ? 'F' : 'D', e:{}, c:{}, g:{}}, seen = new Set();
+  for (const name in NET_COLLS) {
+    const arr = NET_COLLS[name][0]() || [], ids = arr.map(o => o._n), key = ids.join(',');
+    if (full || MPS.lastColl[name] !== key) { msg.c[name] = ids; if (!full) MPS.lastColl[name] = key; }
+    for (const o of arr) {
+      if (seen.has(o._n)) continue; seen.add(o._n);
+      const prev = full ? null : MPS.last.get(o._n), cur = {}, ch = {};
+      let any = false;
+      for (const k in o) {
+        if (k[0] === '_' || NET_SKIP.has(k)) continue;
+        if (name === 'fx' && k === 't' && prev) continue;               // 이펙트 시간은 손님이 알아서 흘려보냄
+        const e = encV(o[k], 1); if (e === undefined) continue;
+        const s = e !== null && typeof e === 'object' ? JSON.stringify(e) : e;
+        cur[k] = s;
+        if (!prev || prev[k] !== s) { ch[k] = e; any = true; }
+      }
+      if (prev) for (const k in prev) if (!(k in cur)) { ch[k] = '$u'; any = true; }
+      if (!full) MPS.last.set(o._n, cur);
+      if (any) msg.e[o._n] = ch;
+    }
+  }
+  for (const k in NET_G) {
+    const e = encV(NET_G[k][0](), 1), s = JSON.stringify(e ?? null);
+    if (full || MPS.lastG[k] !== s) { msg.g[k] = e ?? null; if (!full) MPS.lastG[k] = s; }
+  }
+  return msg;
+}
+function decV(v) {
+  if (v === null || typeof v !== 'object') return v === '$u' ? undefined : v;
+  if (Array.isArray(v)) return v.map(decV);
+  if ('$r' in v) return MPS.N.get(v.$r) || null;
+  if ('$s' in v) return new Set(v.$s.map(decV));
+  const o = {}; for (const k in v) o[k] = decV(v[k]); return o;
+}
+const MY_LOCAL = new Set(['target', 'scHoldStart']);                   // 내 챔피언에서 내가 직접 정하는 칸 (방장 값으로 덮어쓰지 않음)
+function mpApply(m) {                                                   // 손님: 받은 상태 반영
+  if (m.t === 'F') { MPS.N.clear(); MPS.gotFull = true; }
+  if (!MPS.gotFull) return;
+  const ensure = n => { let o = MPS.N.get(n); if (!o) { o = {_n:n}; MPS.N.set(n, o); } return o; };
+  for (const n in m.e) ensure(+n);
+  for (const name in m.c) for (const n of m.c[name]) ensure(n);
+  const me = MPS.myNid;
+  for (const n in m.e) {
+    const o = MPS.N.get(+n), ch = m.e[n], fresh = o.x === undefined;
+    for (const k in ch) {
+      if (+n === me && MY_LOCAL.has(k) && !fresh) continue;
+      const v = decV(ch[k]);
+      if ((k === 'x' || k === 'y') && !fresh && typeof v === 'number') { o['_t' + k] = v; continue; }   // 위치는 부드럽게 따라감
+      if (v === undefined) delete o[k]; else o[k] = v;
+    }
+    if (fresh) { o._tx = o.x; o._ty = o.y; }
+  }
+  for (const name in m.c) NET_COLLS[name][1](m.c[name].map(n => MPS.N.get(n)));
+  for (const k in m.g) NET_G[k][1](decV(m.g[k]));
+  heroes = units.filter(isChamp);
+  if (!MPS.myNid) { const mine = heroes.find(h => h.mpUid === MP.net.uid); if (mine) MPS.myNid = mine._n; }
+  const mine = MPS.N.get(MPS.myNid); if (mine) player = mine;
+  bots = heroes.filter(h => h !== player);
+  MPS.rxT = performance.now();
+}
+
+// ── 방장: 다른 사람 조작을 받아서 그 챔피언을 움직임 ──
+function mpHostOnMsg(uid, m) {
+  if (m.t === 'i') { MPS.remote[uid] = m; return; }
+  if (m.t === 'p') { const L = MPS.links[uid]; if (L) mpLinkSend(L, {t:'q', s:m.s}); return; }
+  if (m.t === 'c') mpHostCmd(uid, m);
+}
+function mpHostCmd(uid, m) {
+  const c = heroes.find(h => h.mpUid === uid); if (!c || c.mpAi) return;
+  const sp = player; player = c;
+  try {
+    if (m.c === 'cast') { if (m.hs != null) c.scHoldStart = time - m.hs; MP_ORIG.castSkill(c, m.k, m.a ?? null, m.f ?? null); }
+    else if (m.c === 'learn') MP_ORIG.learn(c, m.k);
+    else if (m.c === 'buy') MP_ORIG.buyItem(c, m.id);
+    else if (m.c === 'sell') MP_ORIG.sellItem(c, m.i);
+    else if (m.c === 'ward') MP_ORIG.buyWard(c);
+    else if (m.c === 'recall') MP_ORIG.startRecall(c);
+    else if (m.c === 'unrecall') MP_ORIG.cancelRecall(c);
+    else if (m.c === 'dq') MP_ORIG.donChargeStart(c);
+    else if (m.c === 'snipe') { if (c.snipe) { c.snipe.ang = m.a; if (!MP_ORIG.outisSnipeFire(c)) c.snipe.queued = true; } }
+  } catch (e) { console.warn(e); }
+  player = sp;
+}
+function mpHostRemotes(dt) {
+  for (const c of heroes) {
+    if (!c.mpUid || c.mpUid === MP.net.uid || c.mpAi) continue;
+    const R = MPS.remote[c.mpUid] || {}, sp = player, sid = atk.id, sa = atk.aiming;
+    c.mpAim = R.am ?? null;
+    player = c; atk.id = R.h ? 'net' : null; atk.aiming = false;
+    c.target = R.tg ? (MPS.N.get(R.tg) || null) : null;
+    let ix = R.ix || 0, iy = R.iy || 0;
+    if (!ix && !iy && R.go && c.alive) {                                // 우클릭 이동: 방장 쪽에서 길 찾기
+      if (Math.hypot(R.go[0] - c.x, R.go[1] - c.y) > 6) { const st = navStep(c, R.go[0], R.go[1]), dx = st.x - c.x, dy = st.y - c.y, d = Math.hypot(dx, dy) || 1; ix = dx / d; iy = dy / d; }
+    }
+    try { updatePlayer(dt, ix, iy); } catch (e) { console.warn(e); }
+    player = sp; atk.id = sid; atk.aiming = sa;
+  }
+}
+function mpHostTick(dt) {
+  if ((MPS.sendT -= dt) > 0) return;
+  MPS.sendT = 1 / MP_HZ;
+  const guests = Object.values(MPS.links).filter(L => L.mode !== 'wait');
+  if (!guests.length) return;
+  const delta = mpEncode(false);
+  let full = null;
+  for (const L of guests) {
+    if (!L.synced) { full = full || mpEncode(true); mpLinkSend(L, full); L.synced = true; }
+    else if (Object.keys(delta.e).length || Object.keys(delta.c).length || Object.keys(delta.g).length) mpLinkSend(L, delta);
+  }
+}
+
+// ── 손님: 내 조작을 방장에게 ──
+function mpGuestSend(obj) { const L = MPS.links.host; if (L) mpLinkSend(L, obj); }
+function mpGuestFrame(dt) {
+  if (!MPS.gotFull) { if (started && player) updateView(dt); return; }
+  time += dt;
+  for (const f of fx) if (f && f.t !== undefined && f.life) f.t = Math.min(f.life * .999, f.t + dt);
+  const k = 1 - Math.exp(-dt * 18);
+  for (const name of ['units', 'projectiles', 'wards', 'shots', 'mirrors', 'harpoons', 'fMissiles', 'grenades', 'scThrows', 'hlOrbs', 'hlPetals', 'mrChains'])
+    for (const o of NET_COLLS[name][0]() || []) if (o && o._tx !== undefined) {
+      const dx = o._tx - o.x, dy = o._ty - o.y;
+      if (dx * dx + dy * dy > E(260) * E(260)) { o.x = o._tx; o.y = o._ty; } else { o.x += dx * k; o.y += dy * k; }
+    }
+  if (player && (!targetable(player.target) || (player.target && edge(player, player.target) > E(player.st.acquire) * 1.8))) player.target = null;
+  // 입력 읽기 (조이스틱 · 방향키 · 우클릭 목적지)
+  let ix = stick.dx, iy = stick.dy;
+  pcTick();
+  if (keys.has('arrowleft')) ix -= 1; if (keys.has('arrowright')) ix += 1; if (keys.has('arrowup')) iy -= 1; if (keys.has('arrowdown')) iy += 1;
+  if (ix || iy) pcMove = null;
+  const mag = Math.hypot(ix, iy); if (mag > 1) { ix /= mag; iy /= mag; } if (mag < .15) ix = iy = 0;
+  if ((ix || iy) && atk.id === null && player) player.target = null;
+  const holding = atk.id !== null && !atk.aiming;
+  if (holding && player && !player.target) player.target = pickBasicTarget(player);
+  let am = null;
+  if (stick.id !== null && Math.hypot(stick.dx, stick.dy) > .25) am = Math.atan2(stick.dy, stick.dx);
+  else if (skAim.id !== null && skAim.aiming) am = Math.atan2(skAim.dy, skAim.dx);
+  else if (mouse.on && player) { const w = mouseWorld(); am = Math.atan2(w.y - player.y, w.x - player.x); }
+  const inp = {t:'i', ix:qn(ix), iy:qn(iy), h:holding ? 1 : 0, tg:player && player.target && player.target._n || 0, go:pcMove ? [Math.round(pcMove.x), Math.round(pcMove.y)] : null, am:am === null ? null : Math.round(am * 100) / 100};
+  const s = JSON.stringify(inp);
+  MPS.inT -= dt;
+  if (s !== MPS.lastIn || MPS.inT <= 0) { MPS.lastIn = s; MPS.inT = .25; mpGuestSend(inp); }
+  if ((MPS.pingT -= dt) <= 0) { MPS.pingT = 2; mpGuestSend({t:'p', s:performance.now()}); }
+  if ((MPS.visT -= dt) <= 0) { MPS.visT = .1; visionUpdate(player.team); }
+  if (player) player.inBush = bushes.some(b => inRect(player.x, player.y, b));
+  updateView(dt);
+  if (gameOver && $('over').hidden) {
+    $('overText').textContent = gameOver === 'win' ? '승리' : '패배'; $('overText').style.color = gameOver === 'win' ? '#4aa3ff' : '#ff5a5f';
+    $('again').textContent = '메인으로'; $('over').hidden = false;
+  }
+}
+function mpGuestOnMsg(m) {
+  if (m.t === 'q') { MPS.ping = Math.round(performance.now() - m.s); return; }
+  if (m.t === 'F' || m.t === 'D') mpApply(m);
+}
+
+// ── 손님 쪽에서는 '직접 실행' 대신 방장에게 부탁 ──
+const MP_ORIG = {castSkill, learn, buyItem, sellItem, buyWard, startRecall, cancelRecall, donChargeStart, outisSnipeFire};
+const mpMine = c => mpRole === 'guest' && c === player;
+castSkill = function (c, key, ang, frac = null) {
+  if (mpMine(c)) { mpGuestSend({t:'c', c:'cast', k:key, a:ang ?? null, f:frac ?? null, hs:c.scHoldStart != null ? Math.max(0, time - c.scHoldStart) : null}); c.scHoldStart = null; return true; }
+  return MP_ORIG.castSkill(c, key, ang, frac);
+};
+learn = function (c, k) { if (mpMine(c)) { if (canLearn(c, k)) { c.points--; c.rank[k]++; mpGuestSend({t:'c', c:'learn', k}); } return; } return MP_ORIG.learn(c, k); };
+buyItem = function (c, id) { if (mpMine(c)) { mpGuestSend({t:'c', c:'buy', id}); return true; } return MP_ORIG.buyItem(c, id); };
+sellItem = function (c, i) { if (mpMine(c)) { mpGuestSend({t:'c', c:'sell', i}); return true; } return MP_ORIG.sellItem(c, i); };
+buyWard = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'ward'}); return true; } return MP_ORIG.buyWard(c); };
+startRecall = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'recall'}); return; } return MP_ORIG.startRecall(c); };
+cancelRecall = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'unrecall'}); return; } return MP_ORIG.cancelRecall(c); };
+donChargeStart = function (c, ...a) { if (mpMine(c)) { mpGuestSend({t:'c', c:'dq'}); return; } return MP_ORIG.donChargeStart(c, ...a); };
+outisSnipeFire = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'snipe', a:c.snipe ? c.snipe.ang : 0}); return true; } return MP_ORIG.outisSnipeFire(c); };
+
+// ── 시작 · 종료 ──
+function mpSyncStart(room) {
+  const others = mpPlayers(room).filter(p => p.uid !== MP.net.uid);
+  MPS.remote = {}; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
+  if (MP.host) {
+    mpRole = 'host';
+    for (const c of heroes) { const b = room.lineup.blue.find(x => x.role === c.role && c.team === 'blue'); if (b && b.uid) c.mpUid = b.uid; }
+    bots = heroes.filter(c => c !== player && !(c.mpUid && c.mpUid !== MP.net.uid && others.some(p => p.uid === c.mpUid)));
+    for (const c of heroes) if (c.mpUid && c.mpUid !== MP.net.uid && !others.some(p => p.uid === c.mpUid)) c.mpAi = true;   // 이미 나간 사람은 AI
+  } else {
+    mpRole = 'guest';
+    player.mpUid = MP.net.uid;
+  }
+}
+function mpEndSync() {
+  mpRole = null; mpCloseLinks(); MPS.N.clear(); MPS.last.clear(); MPS.gotFull = false;
+}
+function mpHostCheckLeavers(room) {                                     // 게임 중 나간 사람 → 그 챔피언은 AI가 이어받음
+  if (mpRole !== 'host') return;
+  const here = new Set(Object.keys(room.players || {}));
+  for (const c of heroes) if (c.mpUid && c.mpUid !== MP.net.uid && !c.mpAi && !here.has(c.mpUid)) {
+    c.mpAi = true; c.target = null; c.path = null; if (!bots.includes(c)) bots.push(c);
+    announce(`${c.name} 님이 나갔습니다 · AI가 이어받습니다`, '#e6c35c');
+  }
+}
 
 // CODEX_BEGIN
 // ═════════════ 메인 메뉴 · 도감 · 스킬 시연 ═════════════
