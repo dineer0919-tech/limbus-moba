@@ -414,11 +414,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v93 · 멀티 2단계 (실시간 연결)</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v94 · 멀티 2단계 (부드러운 화면)</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v93</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v94</em></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
   </div>
@@ -10247,8 +10247,8 @@ $('mMulti').addEventListener('click', () => { openMenu(false); mpOpen(true); });
 
 // ═════════════ 멀티플레이 2단계: 실제 동기화 (방장 브라우저가 게임을 계산, 나머지는 받아서 그림) ═════════════
 // 연결: WebRTC P2P (Firebase로 연결 정보만 교환) → 7초 안에 안 붙으면 Firebase 중계로 대체
-const MPS = {links:{}, remote:{}, N:new Map(), nid:0, last:new Map(), lastColl:{}, lastG:{}, sendT:0, inT:0, lastIn:'', gotFull:false, chunks:{}, myNid:0, visT:0, ping:0, pingT:0, rxT:0, closing:false, unsub:[]};
-const MP_HZ = 12, MP_CHUNK = 15000;
+const MPS = {hostT:0, hostAt:0, mvx:0, mvy:0, links:{}, remote:{}, N:new Map(), nid:0, last:new Map(), lastColl:{}, lastG:{}, sendT:0, inT:0, lastIn:'', gotFull:false, chunks:{}, myNid:0, visT:0, ping:0, pingT:0, rxT:0, closing:false, unsub:[]};
+const MP_HZ = 15, MP_CHUNK = 15000, MP_INTERP = .11;                 // 손님 화면은 0.11초 전 모습을 두 상태 사이로 부드럽게 이어서 그림
 const ICE = {iceServers:[{urls:['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun.cloudflare.com:3478']}]};
 
 // ── 연결 (방장 1 ↔ 손님 여럿) ──
@@ -10392,16 +10392,24 @@ function mpApply(m) {                                                   // 손�
   const ensure = n => { let o = MPS.N.get(n); if (!o) { o = {_n:n}; MPS.N.set(n, o); } return o; };
   for (const n in m.e) ensure(+n);
   for (const name in m.c) for (const n of m.c[name]) ensure(n);
-  const me = MPS.myNid;
+  const me = MPS.myNid, ht = m.g && typeof m.g.time === 'number' ? m.g.time : MPS.hostT;
+  if (m.g && typeof m.g.time === 'number') { MPS.hostT = m.g.time; MPS.hostAt = performance.now(); if (m.t === 'F') time = m.g.time; delete m.g.time; }
   for (const n in m.e) {
     const o = MPS.N.get(+n), ch = m.e[n], fresh = o.x === undefined;
+    let nx = null, ny = null;
     for (const k in ch) {
       if (+n === me && MY_LOCAL.has(k) && !fresh) continue;
       const v = decV(ch[k]);
-      if ((k === 'x' || k === 'y') && !fresh && typeof v === 'number') { o['_t' + k] = v; continue; }   // 위치는 부드럽게 따라감
+      if ((k === 'x' || k === 'y') && !fresh && typeof v === 'number') { if (k === 'x') nx = v; else ny = v; continue; }   // 위치는 기록해 두고 사이를 이어 그림
       if (v === undefined) delete o[k]; else o[k] = v;
     }
-    if (fresh) { o._tx = o.x; o._ty = o.y; }
+    if (fresh) { o._h = [{t:ht, x:o.x, y:o.y}]; continue; }
+    if (nx !== null || ny !== null) {
+      const h = o._h || (o._h = [{t:ht - 1 / MP_HZ, x:o.x, y:o.y}]), L = h[h.length - 1];
+      if (L.t < ht - 1.6 / MP_HZ) h.push({t:ht - 1 / MP_HZ, x:L.x, y:L.y});   // 가만히 있다가 움직이기 시작한 경우
+      h.push({t:ht, x:nx ?? L.x, y:ny ?? L.y});
+      if (h.length > 8) h.splice(0, h.length - 8);
+    }
   }
   for (const name in m.c) NET_COLLS[name][1](m.c[name].map(n => MPS.N.get(n)));
   for (const k in m.g) NET_G[k][1](decV(m.g[k]));
@@ -10466,14 +10474,28 @@ function mpHostTick(dt) {
 function mpGuestSend(obj) { const L = MPS.links.host; if (L) mpLinkSend(L, obj); }
 function mpGuestFrame(dt) {
   if (!MPS.gotFull) { if (started && player) updateView(dt); return; }
-  time += dt;
+  time += dt;                                                           // 방장 시계에 부드럽게 맞춤 (뚝 끊기지 않게)
+  if (MPS.hostAt) { const est = MPS.hostT + (performance.now() - MPS.hostAt) / 1000, e = est - time; if (Math.abs(e) > .5) time = est; else time += e * Math.min(1, dt * 2); }
   for (const f of fx) if (f && f.t !== undefined && f.life) f.t = Math.min(f.life * .999, f.t + dt);
-  const k = 1 - Math.exp(-dt * 18);
+  const rt = time - MP_INTERP;
   for (const name of ['units', 'projectiles', 'wards', 'shots', 'mirrors', 'harpoons', 'fMissiles', 'grenades', 'scThrows', 'hlOrbs', 'hlPetals', 'mrChains'])
-    for (const o of NET_COLLS[name][0]() || []) if (o && o._tx !== undefined) {
-      const dx = o._tx - o.x, dy = o._ty - o.y;
-      if (dx * dx + dy * dy > E(260) * E(260)) { o.x = o._tx; o.y = o._ty; } else { o.x += dx * k; o.y += dy * k; }
+    for (const o of NET_COLLS[name][0]() || []) {
+      const h = o && o._h; if (!h || !h.length || o === player) continue;
+      let i = h.length - 1; while (i > 0 && h[i].t > rt) i--;
+      const a = h[i], b = h[i + 1];
+      if (b && rt >= a.t) { const f = Math.min(1, (rt - a.t) / ((b.t - a.t) || 1)); o.x = a.x + (b.x - a.x) * f; o.y = a.y + (b.y - a.y) * f; }
+      else if (rt < a.t) { o.x = a.x; o.y = a.y; }
+      else { o.x = a.x; o.y = a.y; }
     }
+  if (player && player._h && player._h.length) {                       // 내 챔피언: 최신 위치 + 지금 누르는 방향으로 조금 앞서 그림 (바로 반응하는 느낌)
+    const L = player._h[player._h.length - 1];
+    let px = L.x, py = L.y;
+    const lead = Math.min(.18, Math.max(0, time - L.t) + MPS.ping / 2000);
+    if ((MPS.mvx || MPS.mvy) && player.alive && !player.cast && !(player.stunT > 0) && !player.recalling) { const sp = E(player.speed) * (speedMul(player) || 0); px += MPS.mvx * sp * lead; py += MPS.mvy * sp * lead; }
+    const dx = px - player.x, dy = py - player.y;
+    if (dx * dx + dy * dy > E(260) * E(260)) { player.x = px; player.y = py; }
+    else { const kk = 1 - Math.exp(-dt * 16); player.x += dx * kk; player.y += dy * kk; }
+  }
   if (player && (!targetable(player.target) || (player.target && edge(player, player.target) > E(player.st.acquire) * 1.8))) player.target = null;
   // 입력 읽기 (조이스틱 · 방향키 · 우클릭 목적지)
   let ix = stick.dx, iy = stick.dy;
@@ -10488,10 +10510,14 @@ function mpGuestFrame(dt) {
   if (stick.id !== null && Math.hypot(stick.dx, stick.dy) > .25) am = Math.atan2(stick.dy, stick.dx);
   else if (skAim.id !== null && skAim.aiming) am = Math.atan2(skAim.dy, skAim.dx);
   else if (mouse.on && player) { const w = mouseWorld(); am = Math.atan2(w.y - player.y, w.x - player.x); }
+  { let mx = ix, my = iy;                                              // 내 챔피언 미리 그리기용 이동 방향
+    if (!mx && !my && pcMove && player) { const dx = pcMove.x - player.x, dy = pcMove.y - player.y, d = Math.hypot(dx, dy); if (d > 12) { mx = dx / d; my = dy / d; } }
+    if (!mx && !my && player && player.target && player.target.alive && edge(player, player.target) > E(player.st.range)) { const a = Math.atan2(player.target.y - player.y, player.target.x - player.x); mx = Math.cos(a); my = Math.sin(a); }
+    MPS.mvx = mx; MPS.mvy = my; }
   const inp = {t:'i', ix:qn(ix), iy:qn(iy), h:holding ? 1 : 0, tg:player && player.target && player.target._n || 0, go:pcMove ? [Math.round(pcMove.x), Math.round(pcMove.y)] : null, am:am === null ? null : Math.round(am * 100) / 100};
   const s = JSON.stringify(inp);
   MPS.inT -= dt;
-  if (s !== MPS.lastIn || MPS.inT <= 0) { MPS.lastIn = s; MPS.inT = .25; mpGuestSend(inp); }
+  if (s !== MPS.lastIn || MPS.inT <= 0) { MPS.lastIn = s; MPS.inT = .2; mpGuestSend(inp); }
   if ((MPS.pingT -= dt) <= 0) { MPS.pingT = 2; mpGuestSend({t:'p', s:performance.now()}); }
   if ((MPS.visT -= dt) <= 0) { MPS.visT = .1; visionUpdate(player.team); }
   if (player) player.inBush = bushes.some(b => inRect(player.x, player.y, b));
@@ -10525,7 +10551,7 @@ outisSnipeFire = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'snipe', 
 // ── 시작 · 종료 ──
 function mpSyncStart(room) {
   const others = mpPlayers(room).filter(p => p.uid !== MP.net.uid);
-  MPS.remote = {}; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
+  MPS.remote = {}; MPS.hostAt = 0; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
   if (MP.host) {
     mpRole = 'host';
     for (const c of heroes) { const b = room.lineup.blue.find(x => x.role === c.role && c.team === 'blue'); if (b && b.uid) c.mpUid = b.uid; }
