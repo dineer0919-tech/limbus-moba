@@ -85,6 +85,10 @@
   .mp-join button{padding:0 18px;border-radius:9px;border:0;background:#e6c35c;color:#1a1405;font:800 14px system-ui,sans-serif}
   .mp-err{margin:0;padding:8px 10px;border-radius:8px;background:#3a1512;border:1px solid #7a2e26;color:#ffb4a8;font-size:12.5px}
   .mp-note{margin:0;color:#8f7c64;font-size:11.5px;text-align:center}
+  .mp-adv{margin-top:6px;font-size:12px;color:#b9a68a}.mp-adv summary{cursor:pointer;color:#d8c39f;font-weight:700}
+  .mp-adv p{margin:6px 0;line-height:1.55}.mp-adv input{width:100%;box-sizing:border-box;margin:4px 0;padding:6px 8px;border-radius:6px;border:1px solid #5a4a36;background:#140f0a;color:#eadbc0;font-size:11px}
+  .mp-adv button{padding:4px 12px;margin-right:8px}.mp-adv small{color:#8f7c64}
+  .mp-card .mp-via{font-size:10px;color:#9fb6c8}.mp-card .mp-via.slow{color:#ff9a7a}
   .mp-lobby{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:12px;align-items:stretch}
   .mp-code{display:flex;align-items:center;gap:12px;justify-content:center;padding:10px;border-radius:12px;background:#1d140d;border:1px solid #4a3120}
   .mp-code small{color:#a89378;font-size:11px} .mp-code b{font-size:30px;letter-spacing:.3em;color:#ffe29a;font-variant-numeric:tabular-nums}
@@ -430,11 +434,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v120 · 사망 중 궁·사용템 쿨 감소</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v121 · 멀티 핑 안정화 · TURN 설정</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v120</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v121</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
@@ -8005,7 +8009,7 @@ function updateView(dt) {                                               // 카�
   if (spectating && (specT -= dt) <= 0) { specT = .2; specUpdate(); }
   $('lv').textContent = player.level;
   $('xpbar').style.width = (player.level >= MAX_LEVEL ? 100 : player.xp / xpToNext(player.level) * 100) + '%';
-  $('wave').textContent = (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초' + (mpRole === 'guest' ? ` · 핑 ${MPS.ping}ms` : mpRole === 'host' ? ` · 방장 (${Object.values(MPS.links).filter(L => L.mode !== 'wait').length}명 연결)` : '');
+  $('wave').textContent = (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초' + (mpRole === 'guest' ? ` · 핑 ${MPS.ping}ms · ${(() => { const L = MPS.links.host; return !L ? '' : MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''; })()}` : mpRole === 'host' ? ` · 방장 · 손님 ${Object.values(MPS.links).filter(L => L.mode !== 'wait').map(L => `${L.ping || '-'}ms ${MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''}`).join(' / ') || '없음'}` : '');
   $('zone').textContent = player.alive ? zoneName(player.x, player.y) + (player.inBush ? ' · 수풀' : '') : '부활 대기';
 }
 
@@ -12580,7 +12584,7 @@ async function mpCreate(pub) {
   const N = await mpEnsureNet(), name = mpName();
   for (let tries = 0; tries < 6; tries++) {
     const code = mpCode();
-    const r = await N.txn('rooms/' + code, cur => cur ? undefined : {host:N.uid, state:'lobby', pub:!!pub, openPub:!!pub, created:N.now(), players:{[N.uid]:mpNewPlayer(0, name)}});
+    const r = await N.txn('rooms/' + code, cur => cur ? undefined : {host:N.uid, state:'lobby', pub:!!pub, openPub:!!pub, created:N.now(), turn:mpTurnUrl() || null, players:{[N.uid]:mpNewPlayer(0, name)}});
     if (r.committed) { await N.onDisc('rooms/' + code, null); return mpEnter(code, true); }
   }
   mpSetErr('방을 만들지 못했습니다. 다시 시도해 주세요.');
@@ -12695,6 +12699,9 @@ function mpTick() {                                                     // 타�
 function mpLoadingStep(r) {                                             // 로딩: 방장 ↔ 손님 연결 맺기
   if (MP.linking) return;
   MP.linking = true;
+  mpIceFor(r).then(ice => { MPS.ice = ice; mpLoadingLinks(r); });
+}
+function mpLoadingLinks(r) {
   const N = MP.net, me = `rooms/${MP.code}/players/${N.uid}`;
   if (MP.host) {
     for (const p of mpPlayers(r)) if (p.uid !== N.uid) MPS.links[p.uid] = mpOpenLink(p.uid, true, m => mpHostOnMsg(p.uid, m));
@@ -12702,7 +12709,7 @@ function mpLoadingStep(r) {                                             // 로�
   } else {
     const L = MPS.links.host = mpOpenLink(r.host, false, mpGuestOnMsg);
     N.update(me, {loaded:40});
-    L.ready.then(mode => N.update(me, {loaded:100, link:mode}));
+    L.ready.then(mode => setTimeout(() => N.update(me, {loaded:100, link:L.via || mode}), 300));
   }
 }
 
@@ -12805,6 +12812,11 @@ function mpRender() {
         <button type="button" class="mn-btn" data-mp="create"><b>방 만들기</b><span>친구에게 방 코드를 알려 주세요 (비공개)</span></button>
         <div class="mp-join"><input id="mpCodeIn" maxlength="4" placeholder="코드 4자리" autocomplete="off" autocapitalize="characters"><button type="button" data-mp="join">입장</button></div>
       </div>
+      <details class="mp-adv"><summary>핑이 튀거나 자꾸 끊길 때 · 연결 설정</summary>
+        <p>· <b>인터넷이 가장 좋은 사람(유선 PC 추천)</b>이 방을 만드세요. 방장이 모든 손님에게 화면을 보내서, 방장 회선이 제일 중요해요.<br>· 게임 중 위쪽에 각자 연결 방식이 보여요. <b>중계(느림)</b>가 뜨면 아래 무료 TURN 주소를 넣어 보세요. 방장만 넣으면 그 방 손님들도 같이 씁니다.</p>
+        <input id="mpTurn" placeholder="https://앱이름.metered.live/api/v1/turn/credentials?apiKey=..." value="${esc(mpTurnUrl())}" autocomplete="off" spellcheck="false">
+        <button type="button" data-mp="turnsave">저장</button><small>${mpTurnUrl() ? 'TURN 사용 중' : 'TURN 없음 (STUN 직통 → 안 되면 Firebase 중계)'}</small>
+      </details>
       ${MP.net && MP.net.kind === 'local' ? '<p class="mp-note">시험 모드: 같은 브라우저의 다른 탭끼리만 연결됩니다</p>' : ''}
     </div>`;
     return;
@@ -12852,7 +12864,7 @@ function mpRender() {
   if (v === 'loading' || v === 'game') {
     const L = r.lineup; if (!L) { el.innerHTML = '<p class="mp-lead">구성 정리 중…</p>'; return; }
     const card = (c, team) => { const p = c.uid ? ps.find(q => q.uid === c.uid) : null, pct = p ? (p.loaded || 0) : 100;
-      return `<div class="mp-card ${team}${c.uid === meU ? ' me' : ''}">${mpTok(c.key, 'lg')}<b>${esc(STATS[c.key].name)}</b><small>${c.name ? esc(c.name) : 'AI'} · ${ROLE_NAME[c.role]}</small><span class="mp-sp">${c.spells.map(id => `<img src="${spellIconUrl(id)}" alt="">`).join('')}</span><span class="mp-bar"><i style="width:${pct}%"></i></span></div>`; };
+      return `<div class="mp-card ${team}${c.uid === meU ? ' me' : ''}">${mpTok(c.key, 'lg')}<b>${esc(STATS[c.key].name)}</b><small>${c.name ? esc(c.name) : 'AI'} · ${ROLE_NAME[c.role]}</small><span class="mp-sp">${c.spells.map(id => `<img src="${spellIconUrl(id)}" alt="">`).join('')}</span><span class="mp-bar"><i style="width:${pct}%"></i></span>${p && p.link ? `<span class="mp-via ${p.link === 'relay' ? 'slow' : ''}">${MP_VIA[p.link] || p.link}</span>` : ''}</div>`; };
     el.innerHTML = `<div class="mp-load">
       <div class="mp-lrow">${L.blue.map(c => card(c, 'blue')).join('')}</div>
       <p class="mp-vs">${v === 'game' ? '곧 시작합니다' : 'VS'}</p>
@@ -12870,6 +12882,7 @@ document.addEventListener('click', e => {
   if (act === 'quick') return run(mpQuick);
   if (act === 'create') return run(() => mpCreate(false));
   if (act === 'join') return run(() => mpJoin($('mpCodeIn').value));
+  if (act === 'turnsave') { const v = ($('mpTurn').value || '').trim(); if (v && !/^https:\/\//.test(v)) { mpToast('https:// 로 시작하는 주소를 넣어 주세요'); return; } try { localStorage.setItem('mpTurn', v); } catch {} delete mpIceCache[v]; mpToast(v ? 'TURN 주소를 저장했습니다' : 'TURN을 껐습니다'); mpRender(); return; }
   if (act === 'copy') { try { navigator.clipboard.writeText(MP.code); mpToast('복사했습니다'); } catch { mpToast(MP.code); } return; }
   if (act === 'start' && MP.host) return run(mpHostStartPick);
   if (act === 'lock') return run(mpLock);
@@ -12885,9 +12898,24 @@ $('mMulti').addEventListener('click', () => { openMenu(false); mpOpen(true); });
 
 // ═════════════ 멀티플레이 2단계: 실제 동기화 (방장 브라우저가 게임을 계산, 나머지는 받아서 그림) ═════════════
 // 연결: WebRTC P2P (Firebase로 연결 정보만 교환) → 7초 안에 안 붙으면 Firebase 중계로 대체
-const MPS = {hostT:0, hostAt:0, mvx:0, mvy:0, links:{}, remote:{}, N:new Map(), nid:0, last:new Map(), lastColl:{}, lastG:{}, sendT:0, inT:0, lastIn:'', gotFull:false, chunks:{}, myNid:0, visT:0, ping:0, pingT:0, rxT:0, closing:false, unsub:[], lags:[], interp:.11, cdn:new Map(), dnObjs:new Set()};
-const MP_HZ = 15, MP_CHUNK = 15000, MP_INTERP = .11;                 // 손님 화면은 0.11초 전 모습을 두 상태 사이로 부드럽게 이어서 그림
+const MPS = {hostT:0, hostAt:0, mvx:0, mvy:0, links:{}, remote:{}, N:new Map(), nid:0, last:new Map(), lastColl:{}, lastG:{}, sendT:0, inT:0, lastIn:'', gotFull:false, chunks:{}, myNid:0, visT:0, ping:0, pingT:0, rxT:0, closing:false, unsub:[], lags:[], interp:.15, cdn:new Map(), dnObjs:new Set()};
+const MP_HZ = 15, MP_CHUNK = 15000, MP_INTERP = .15;                 // 손님 화면은 0.11초 전 모습을 두 상태 사이로 부드럽게 이어서 그림
 const ICE = {iceServers:[{urls:['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun.cloudflare.com:3478']}]};
+const mpTurnUrl = () => { try { return localStorage.getItem('mpTurn') || ''; } catch { return ''; } };
+const MP_VIA = {p2p:'직통', turn:'TURN', relay:'중계(느림)', wait:'연결 중', host:'방장'};
+const mpIceCache = {};
+async function mpIceFor(r) {                                            // TURN 주소가 있으면 자격 증명을 받아 와서 STUN 뒤에 붙임
+  const url = (r && r.turn) || mpTurnUrl();
+  if (!/^https:\/\//.test(url)) return ICE;
+  if (mpIceCache[url]) return mpIceCache[url];
+  try {
+    const ac = typeof AbortController !== 'undefined' ? new AbortController() : null, to = setTimeout(() => ac && ac.abort(), 4000);
+    const res = await fetch(url, ac ? {signal:ac.signal} : {}); clearTimeout(to);
+    const arr = await res.json(), list = Array.isArray(arr) ? arr : arr && arr.iceServers;
+    if (Array.isArray(list) && list.length) return mpIceCache[url] = {iceServers:[...ICE.iceServers, ...list]};
+  } catch (e) { console.warn('TURN', e); }
+  return ICE;
+}
 
 // ── 연결 (방장 1 ↔ 손님 여럿) ──
 function mpLinkSend(L, obj) {                                           // 큰 메시지는 잘라서 보냄
@@ -12919,11 +12947,17 @@ function mpOpenLink(peerUid, asHost, onMsg) {                           // 한 �
   // 중계 받기는 항상 켜 둠 (상대가 중계로 보낼 수도 있으니)
   MPS.unsub.push(N.onChild(`rooms/${code}/relay/${asHost ? peerUid : N.uid}/${asHost ? 'up' : 'down'}`, raw => mpLinkRecv(L, raw, onMsg)));
   if (typeof RTCPeerConnection === 'undefined') { done('relay'); return L; }
-  const pc = L.pc = new RTCPeerConnection(ICE), queue = [];
+  const pc = L.pc = new RTCPeerConnection(MPS.ice || ICE), queue = [];
   let remoteSet = false;
   const addCand = c => { if (remoteSet) pc.addIceCandidate(c).catch(() => {}); else queue.push(c); };
   const flush = () => { remoteSet = true; for (const c of queue.splice(0)) pc.addIceCandidate(c).catch(() => {}); };
-  const setup = ch => { L.ch = ch; ch.onopen = () => done('p2p'); ch.onmessage = e => mpLinkRecv(L, e.data, onMsg); ch.onclose = () => { if (L.mode === 'p2p') { L.mode = 'relay'; } }; };
+  const viaOf = async () => {                                         // 직통인지 TURN 경유인지 알아보기
+    try { const st = await pc.getStats(); let pair = null; const all = new Map(); st.forEach(s => all.set(s.id, s));
+      for (const s of all.values()) if (s.type === 'transport' && s.selectedCandidatePairId) pair = all.get(s.selectedCandidatePairId);
+      if (!pair) for (const s of all.values()) if (s.type === 'candidate-pair' && s.state === 'succeeded' && (s.selected || s.nominated)) pair = s;
+      const lc = pair && all.get(pair.localCandidateId), rc = pair && all.get(pair.remoteCandidateId);
+      return (lc && lc.candidateType === 'relay') || (rc && rc.candidateType === 'relay') ? 'turn' : 'p2p'; } catch { return 'p2p'; } };
+  const setup = ch => { L.ch = ch; ch.onopen = () => { viaOf().then(v => { L.via = v; }); done('p2p'); }; ch.onmessage = e => mpLinkRecv(L, e.data, onMsg); ch.onclose = () => { if (L.mode === 'p2p') { L.mode = 'relay'; } }; };
   pc.onicecandidate = e => { if (e.candidate) N.push(`${base}/${asHost ? 'hc' : 'gc'}`, JSON.stringify(e.candidate.toJSON ? e.candidate.toJSON() : e.candidate)); };
   MPS.unsub.push(N.onChild(`${base}/${asHost ? 'gc' : 'hc'}`, raw => { try { addCand(JSON.parse(raw)); } catch {} }));
   if (asHost) {
@@ -12943,7 +12977,7 @@ function mpOpenLink(peerUid, asHost, onMsg) {                           // 한 �
     });
     MPS.unsub.push(un);
   }
-  setTimeout(() => done('relay'), 8000);                                // 8초 안에 P2P가 안 열리면 중계
+  setTimeout(() => done('relay'), (MPS.ice && MPS.ice !== ICE) ? 12000 : 8000);   // 그 안에 P2P(또는 TURN)가 안 열리면 Firebase 중계
   return L;
 }
 function mpCloseLinks() {
@@ -12968,7 +13002,8 @@ const NET_G = {
   teamBadges:[() => teamBadges, v => { teamBadges = v; }], structStats:[() => STRUCT_STATS, v => { if (v) Object.assign(STRUCT_STATS, v); }],
 };
 const NET_SKIP = new Set(['path', 'wp', 'laneOverride', 'strafeDir', 'strafeT', 'thinkT', 'spThinkT', 'stanceT', 'backoff', 'tradeGo', 'commitUntil', 'chaseT', 'noChase', 'noChaseT',
-  'noDiveT', 'siegeT', 'holdT', 'dv', 'rescueT', 'desperateT', 'defendRecall', 'shopT', 'hitBy', 'focus', 'mpAim']);
+  'noDiveT', 'siegeT', 'holdT', 'dv', 'rescueT', 'desperateT', 'defendRecall', 'shopT', 'hitBy', 'focus', 'mpAim', 'seen', 'lastDmgT', 'forceT', 'retargetT', 'nav']);   // (AI만 쓰는 칸은 안 보냄)
+const NET_ROUND = new Set(['x', 'y', 'vx', 'vy', 'gold', 'tx', 'ty']);   // 큰 좌표 · 골드는 정수로만 보내도 충분
 const qn = v => Math.abs(v) < 50 ? Math.round(v * 100) / 100 : Math.round(v * 10) / 10;
 function encV(v, d) {
   if (v === null || v === undefined) return null;
@@ -12989,13 +13024,14 @@ function mpTagAll() {                                                   // 새�
 }
 function mpEncode(full) {                                               // full: 처음 들어온 손님용 전체 상태
   mpTagAll();
+  if (!full) MPS.encN = (MPS.encN || 0) + 1;
   const msg = {t:full ? 'F' : 'D', e:{}, c:{}, g:{}}, seen = new Set();
   for (const name in NET_COLLS) {
     const arr = NET_COLLS[name][0]() || [], ids = arr.map(o => o._n), key = ids.join(',');
     if (full || MPS.lastColl[name] !== key) { msg.c[name] = ids; if (!full) MPS.lastColl[name] = key; }
     for (const o of arr) {
       if (seen.has(o._n)) continue; seen.add(o._n);
-      const prev = full ? null : MPS.last.get(o._n), cur = {}, ch = {};
+      const prev = full ? null : MPS.last.get(o._n), cur = {}, ch = {}, half = !full && (MPS.encN & 1) && (isMinion(o) || isMonster(o));   // 미니언 · 정글몹 위치는 초당 7.5번이면 충분
       let any = false;
       for (const k in o) {
         if (k[0] === '_' || NET_SKIP.has(k)) continue;
@@ -13012,7 +13048,8 @@ function mpEncode(full) {                                               // full:
           if (!prev || prev[k] !== cur[k]) { ch[k] = isDn ? {$d:e} : e; any = true; }
           continue;
         }
-        const e = encV(v0, 1); if (e === undefined) continue;
+        if (half && prev && (k === 'x' || k === 'y' || k === 'vx' || k === 'vy') && k in prev) { cur[k] = prev[k]; continue; }
+        const e = typeof v0 === 'number' && NET_ROUND.has(k) && Math.abs(v0) >= 50 ? Math.round(v0) : encV(v0, 1); if (e === undefined) continue;
         const s = e !== null && typeof e === 'object' ? JSON.stringify(e) : e;
         cur[k] = s;
         if (!prev || prev[k] !== s) { ch[k] = e; any = true; }
@@ -13062,7 +13099,7 @@ function mpApply(m) {                                                   // 손�
     if (fresh) { o._h = [{t:ht, x:o.x, y:o.y}]; continue; }
     if (nx !== null || ny !== null) {
       const h = o._h || (o._h = [{t:ht - 1 / MP_HZ, x:o.x, y:o.y}]), L = h[h.length - 1];
-      if (L.t < ht - 1.6 / MP_HZ) h.push({t:ht - 1 / MP_HZ, x:L.x, y:L.y});   // 가만히 있다가 움직이기 시작한 경우
+      if (L.t < ht - 2.6 / MP_HZ) h.push({t:ht - 1 / MP_HZ, x:L.x, y:L.y});   // 가만히 있다가 움직이기 시작한 경우
       h.push({t:ht, x:nx ?? L.x, y:ny ?? L.y});
       if (h.length > 8) h.splice(0, h.length - 8);
     }
@@ -13085,7 +13122,7 @@ function mpHostOnMsg(uid, m) {
     return;
   }
   if (m.t === 'r') { const L = MPS.links[uid]; if (L) L.synced = false; return; }   // 손님이 놓친 게 있어 전체 상태를 다시 달라고 함
-  if (m.t === 'p') { const L = MPS.links[uid]; if (L) mpLinkSend(L, {t:'q', s:m.s}); return; }
+  if (m.t === 'p') { const L = MPS.links[uid]; if (L) { L.ping = m.l; L.via2 = m.v; mpLinkSend(L, {t:'q', s:m.s}); } return; }
   if (m.t === 'c') mpHostCmd(uid, m);
 }
 function mpHostCmd(uid, m) {
@@ -13123,20 +13160,35 @@ function mpHostRemotes(dt) {
     player = sp; atk.id = sid; atk.aiming = sa;
   }
 }
-const MP_BUF_MAX = 768 * 1024;
+const MP_BUF_MAX = 40 * 1024, MP_RELAY_GAP = 200;                         // 보내는 줄이 40KB 넘게 밀리면 잠깐 멈춤 · Firebase 중계는 0.2초마다
+function mpMerge(a, b) {                                                 // 못 보낸 변화들을 하나로 합침 (나중 값이 이김)
+  a = a || {t:'D', e:{}, c:{}, g:{}};
+  for (const n in b.e) a.e[n] = Object.assign(a.e[n] || {}, b.e[n]);
+  Object.assign(a.c, b.c); Object.assign(a.g, b.g);
+  return a;
+}
 function mpHostTick(dt) {
   if ((MPS.sendT -= dt) > 0) return;
   MPS.sendT = 1 / MP_HZ;
   const guests = Object.values(MPS.links).filter(L => L.mode !== 'wait');
   if (!guests.length) return;
-  const delta = mpEncode(false);
+  const delta = mpEncode(false), now = performance.now();
   let full = null;
   const hasDelta = Object.keys(delta.e).length || Object.keys(delta.c).length || Object.keys(delta.g).length;
   for (const L of guests) {
-    const busy = L.ch && L.ch.readyState === 'open' && L.ch.bufferedAmount > MP_BUF_MAX;   // 상대 회선이 밀려 있으면 쌓지 않고 기다렸다가 전체 상태로 다시 맞춤
-    if (busy) { L.synced = false; continue; }
-    if (!L.synced) { full = full || mpEncode(true); L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...full, q:L.seq}); L.synced = true; }
-    else if (hasDelta) { L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...delta, q:L.seq}); }
+    const open = L.ch && L.ch.readyState === 'open', busy = open && L.ch.bufferedAmount > MP_BUF_MAX, slow = !open && L.mode === 'relay';
+    if (!L.synced) {
+      if (busy) continue;
+      full = full || mpEncode(true); L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...full, q:L.seq}); L.synced = true; L.pend = null; L.txAt = now; continue;
+    }
+    if (hasDelta) L.pend = mpMerge(L.pend, delta);
+    if (!L.pend) continue;
+    if (busy || (slow && now - (L.txAt || 0) < MP_RELAY_GAP)) {          // 회선이 밀려 있음: 버리지 않고 합쳐 두었다가 한 번에
+      if (Object.keys(L.pend.e).length > 4000) { L.pend = null; L.synced = false; }
+      continue;
+    }
+    L.pend.g.time = time;
+    L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...L.pend, q:L.seq}); L.pend = null; L.txAt = now;
   }
 }
 
@@ -13211,7 +13263,7 @@ function mpGuestFrame(dt) {
   const s = JSON.stringify(inp);
   MPS.inT -= dt;
   if (s !== MPS.lastIn || MPS.inT <= 0) { MPS.lastIn = s; MPS.inT = .2; mpGuestSend(inp); }
-  if ((MPS.pingT -= dt) <= 0) { MPS.pingT = 2; mpGuestSend({t:'p', s:performance.now()}); }
+  if ((MPS.pingT -= dt) <= 0) { MPS.pingT = 2; const HL = MPS.links.host; mpGuestSend({t:'p', s:performance.now(), l:MPS.ping, v:HL ? (HL.ch && HL.ch.readyState === 'open' ? HL.via || 'p2p' : HL.mode) : ''}); }
   if ((MPS.visT -= dt) <= 0) { MPS.visT = .1; visionUpdate(player.team); }
   if (player) player.inBush = bushes.some(b => inRect(player.x, player.y, b));
   updateView(dt);
@@ -13255,7 +13307,7 @@ outisSnipeFire = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'snipe', 
 // ── 시작 · 종료 ──
 function mpSyncStart(room) {
   const others = mpPlayers(room).filter(p => p.uid !== MP.net.uid);
-  MPS.remote = {}; MPS.hostAt = 0; MPS.lags = []; MPS.interp = MP_INTERP; MPS.cdn.clear(); MPS.dnObjs.clear(); MPS.seq = 0; MPS.lostT = 0; MPS.resyncAt = 0; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
+  MPS.remote = {}; MPS.hostAt = 0; MPS.lags = []; MPS.interp = MP_INTERP; MPS.encN = 0; MPS.ice = null; MPS.cdn.clear(); MPS.dnObjs.clear(); MPS.seq = 0; MPS.lostT = 0; MPS.resyncAt = 0; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
   if (MP.host) {
     mpRole = 'host';
     for (const c of heroes) { const b = room.lineup.blue.find(x => x.role === c.role && c.team === 'blue'); if (b && b.uid) c.mpUid = b.uid; }
