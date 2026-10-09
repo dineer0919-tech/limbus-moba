@@ -430,11 +430,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v117 · 부활 시간 조정</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v120 · 사망 중 궁·사용템 쿨 감소</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v117</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v120</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
@@ -1262,7 +1262,67 @@ function itemTick(c, dt) {                                                      
 }
 const itemMs = u => !u.items ? 1 : (u.itMsT > time ? 1.5 : 1) * (hasItem(u, 'b_mobi') && time - (u.lastCombatT ?? -99) > 5 ? 1.25 : 1);
 // AI: 사용 아이템 판단
+// ═════════════ 현상금 · AI 백도어 · AI 물약/시작템 관리 ═════════════
+const champBounty = u => (u.streak || 0) >= 3 ? Math.min(700, 150 * (u.streak - 2)) : 0;   // 죽지 않고 3킬부터 현상금 (최대 700)
+function drawBounties(g) {
+  for (const c of heroes) {
+    const b = champBounty(c); if (!b || !c.alive || c.hidden || !seenBy(player.team, c)) continue;
+    const x = c.x, y = c.y - c.r - E(92), p = .5 + .5 * Math.sin(time * 5);
+    g.save(); g.globalAlpha = .9;
+    g.fillStyle = 'rgba(12,10,6,.8)'; g.beginPath(); g.roundRect(x - E(34), y - E(11), E(68), E(22), E(11)); g.fill();
+    g.strokeStyle = `rgba(255,210,90,${.6 + p * .4})`; g.lineWidth = E(2); g.stroke();
+    g.fillStyle = '#ffd25a'; g.beginPath(); g.arc(x - E(21), y, E(7), 0, 7); g.fill(); g.fillStyle = '#8a6a10'; g.font = `900 ${E(10)}px system-ui,sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('$', x - E(21), y + E(.5));
+    g.fillStyle = '#ffe9a0'; g.font = `800 ${E(12)}px system-ui,sans-serif`; g.fillText(b + 'G', x + E(7), y + E(.5));
+    g.restore();
+  }
+}
+const enemyNexus = team => units.find(u => u.kind === 'nexus' && u.team !== team);
+function aiBackdoor(b, dt) {                                                                // 불리한 팀: 적 넥서스만 남았고 지키는 적이 안 보이면 목숨 걸고 철거 시도
+  const nx = enemyNexus(b.team);
+  if (b.bdoor) {
+    if (!nx || !nx.alive || gameOver) { b.bdoor = false; return false; }
+    b.mode = 'lane'; cancelRecall(b); b.target = nx;
+    if (edge(b, nx) > E(b.st.range)) { const q = navStep(b, nx.x, nx.y), d = Math.hypot(q.x - b.x, q.y - b.y) || 1; moveChamp(b, (q.x - b.x) / d, (q.y - b.y) / d, dt); }
+    else { if (b.atkT <= 0) basicAttack(b, nx); moveChamp(b, 0, 0, dt); }
+    return true;
+  }
+  if ((b.bdT = (b.bdT || 0) - dt) > 0) return false;
+  b.bdT = 6 + Math.random() * 4;
+  if (!nx || !nx.alive || time < 10 * 60 || b.hp / b.maxHp < .45 || heroes.some(h => h.team === b.team && h.bdoor)) return false;
+  if (units.some(u => u.structure && u.alive && u.team === nx.team && u.kind !== 'nexus')) return false;   // 적 포탑이 하나라도 남아 있으면 안 함
+  const mine = heroes.filter(h => h.team === b.team), theirs = heroes.filter(h => h.team !== b.team);
+  const kd = mine.reduce((s, h) => s + h.k, 0) - theirs.reduce((s, h) => s + h.k, 0), gd = mine.reduce((s, h) => s + h.gold + h.items.reduce((a, i) => a + ITEMS[i].total, 0), 0) - theirs.reduce((s, h) => s + h.gold + h.items.reduce((a, i) => a + ITEMS[i].total, 0), 0);
+  const ourStruct = units.filter(u => u.structure && u.alive && u.team === b.team).length;
+  if (!(kd < -2 || gd < -1500 || ourStruct <= 4)) return false;                             // 밀리고 있을 때만
+  const guard = theirs.some(e => e.alive && seenBy(b.team, e) && dist(e, nx) < E(1600));     // 넥서스 근처에 보이는 적
+  const away = theirs.filter(e => !e.alive || (seenBy(b.team, e) && dist(e, nx) > E(2200))).length;   // 죽었거나 멀리서 보이는 적
+  if (guard || away < 2 || dist(b, nx) > E(2600) || Math.random() > .4) return false;
+  b.bdoor = true;
+  if (b.team === player.team) announce(`${b.name} · 백도어! 적 넥서스로 돌진합니다`, '#e6c35c');
+  return true;
+}
+function aiPotionsShop(b) {                                                                 // 초반: 물약 챙기기 · 중반: 시작템/충전형 물약 정리
+  const early = time < 9 * 60;
+  if (b.potPref === undefined) b.potPref = Math.random() < .4 ? 'refill' : 'hp';
+  if (early) {
+    if (b.potPref === 'refill' && !b.refill && !b.soldRefill && b.gold >= POTS.refill.cost) buyPot(b, 'refill');
+    while (b.potPref === 'hp' && (b.pots || 0) < 2 && b.gold >= POTS.hp.cost) if (!buyPot(b, 'hp')) break;
+  }
+  if (b.refill && time > 13 * 60) { b.refill = 0; b.refillN = 0; b.soldRefill = true; b.gold += 60; }   // 충전형 물약 판매
+  const legends = b.items.filter(i => LEGEND_CATS.includes(ITEMS[i].cat)).length;
+  if (!b.soldStart && (time > 15 * 60 || legends >= 3)) {                                    // 시작템 판매 → 칸 확보
+    const i = b.items.findIndex(x => ITEMS[x].cat === 'start'); if (i >= 0) { sellItem(b, i); b.soldStart = true; }
+  }
+  if (b.level >= 13 && !(b.elixT > time) && b.gold >= POTS.elixir.cost + 300 && b.items.length >= MAX_SLOTS) buyPot(b, 'elixir');   // 후반 남는 돈: 영약
+}
+function aiNextItem(b) {
+  const build = aiBuild(b).filter(id => !(b.soldStart && ITEMS[id].cat === 'start'));
+  let next = build.find(id => !hasItem(b, id));
+  if (!next && b.soldStart) next = ['regret', 'harvest', 'mimicry', 'homing', 'penitence'].find(id => !hasItem(b, id) && !build.includes(id));   // 빈 칸: 방어템 하나 더
+  return next;
+}
 function aiActive(b, p, hpB) {
+  if (b.alive && hpB < .55 && !(b.potHeal && b.potHeal.left > 0) && ((b.pots || 0) > 0 || (b.refill && b.refillN > 0)) && !canShop(b) && (b.lastDmgT ?? 99) < 6) drinkPotion(b);   // 물약
   const id = activeId(b); if (!id || (b.itemCdT || 0) > 0 || b.stasisT > time) return;
   const foeNear = r => champs().some(e => e.alive && e.team !== b.team && targetable(e) && dist(e, b) < E(r));
   if (id === 'cleanse') { if ((b.stunT > .6 && !(b.airT > 0)) || b.rootT > time + .6 || b.tauntT > time + .5) useActive(b, null, null); return; }
@@ -2854,7 +2914,7 @@ function kill(u, src) {
     const xpTo = champs().filter(c => c.team !== u.team && c.alive &&            // 처치 경험치: 근처에 있거나 관여한 적끼리 나눔
       (dist(c, u) < XP_RANGE || (u.hitBy.get(c) !== undefined && time - u.hitBy.get(c) < 10)));
     for (const c of xpTo) gainXp(c, champKillXp(u) * xpShare(xpTo.length));
-    u.respawnT = respawnTime(u.level); u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.itDash = null; u.stasisT = 0; u.potHeal = null; u.itMsT = 0; u.chQ = null; u.chW = null; u.chE = null; u.chRide = null; u.chGoBus = false; u.vgDash = null; u.vgW = null; u.vgQ = null; u.vgR = null; u.vgFin = null; u.vgUT = false; u.vgBrand = 0; u.vgGaze = 0; u.vgOverT = 0; u.vgHeat = 0; u.vgMark = 0; u.vgParryT = 0; u.krDash = null; u.krR = null; u.krUT = false; u.krW = 0; u.krNails = null; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
+    u.respawnT = respawnTime(u.level); u.bdoor = false; u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.itDash = null; u.stasisT = 0; u.potHeal = null; u.itMsT = 0; u.chQ = null; u.chW = null; u.chE = null; u.chRide = null; u.chGoBus = false; u.vgDash = null; u.vgW = null; u.vgQ = null; u.vgR = null; u.vgFin = null; u.vgUT = false; u.vgBrand = 0; u.vgGaze = 0; u.vgOverT = 0; u.vgHeat = 0; u.vgMark = 0; u.vgParryT = 0; u.krDash = null; u.krR = null; u.krUT = false; u.krW = 0; u.krNails = null; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
     if (u.donBlood && u.donBlood.until > time) donPoolBurst(u);           // 라 샹그라 데 산쵸: 피의 샘
     u.donBlood = null; u.tauntT = 0; u.qCharge = null; u.donMarkT = 0;
     if (u.rT > 0) endRForm(u);
@@ -2874,12 +2934,16 @@ function kill(u, src) {
       feed(killer || src, u, msg);
       if (u === player || killer === player) announce(msg, u === player ? '#ff5a5f' : '#4aa3ff');
     }
+    const bounty = champBounty(u); u.streak = 0;
+    if (bounty) { announce(`현상금 획득! ${(killer || helpers[0] || {name:'?'}).name} → ${u.name} (${bounty}G)`, '#ffd25a'); fx.push({type:'pop', x:u.x, y:u.y, r:u.r * 2.5, color:'#ffd25a', t:0, life:.6}); }
     if (killer) {
-      killer.k++; killer.gold += CHAMP_GOLD;
-      if (killer === player) text(u.x, u.y - u.r - E(30), '+' + CHAMP_GOLD, '#e6c35c', true, 1.2);
+      killer.k++; killer.gold += CHAMP_GOLD + bounty;
+      if (killer === player) text(u.x, u.y - u.r - E(30), '+' + (CHAMP_GOLD + bounty) + (bounty ? ' 현상금!' : ''), '#e6c35c', true, 1.2);
+      killer.streak = (killer.streak || 0) + 1;
+      if ([3, 5, 7, 9].includes(killer.streak)) announce(`${killer.name}에게 현상금이 걸렸습니다! · ${killer.streak}연속 처치 · ${champBounty(killer)}G`, killer.team === player.team ? '#7ac0ff' : '#ff8a8e');
     }
     for (const c of helpers) {                         // 도움: 처치 골드의 절반을 나눠 가짐
-      const g = Math.round(CHAMP_GOLD * .5 / helpers.length);
+      const g = Math.round((CHAMP_GOLD + bounty) * .5 / helpers.length);
       c.a++; c.gold += g;
       if (c === player) text(u.x, u.y - u.r - E(30), '+' + g + ' 도움', '#e6c35c', true, 1.2);
     }
@@ -6790,6 +6854,8 @@ function champTimers(c, dt) {
 }
 function respawnTick(c, dt) {
   c.respawnT -= dt;
+  if (c.cd && c.cd.R > 0) c.cd.R = Math.max(0, c.cd.R - dt);           // 죽어 있는 동안에도 궁극기 재사용 대기시간은 흐름
+  if (c.itemCdT > 0) c.itemCdT = Math.max(0, c.itemCdT - dt);           // 사용 아이템도
   if (c.respawnT <= 0) {
     const f = FOUNTAIN[c.team];
     Object.assign(c, {alive:true, hp:c.maxHp, x:f.x + (c.team === 'blue' ? 40 : -40), y:MID - 105 + ROLES.indexOf(c.role) * 70, vx:0, vy:0,
@@ -7496,11 +7562,12 @@ function updateBot(b, dt) {
   const pd = p.alive ? edge(b, p) : Infinity;
   const ev = p.alive ? aiEvaluate(b, p) : {canKill:false, inDanger:false, score:1};
   if ((b.spThinkT = (b.spThinkT || 0) - dt) <= 0) { b.spThinkT = .25; aiSpells(b, p, hpB, ev); aiActive(b, p, hpB); }   // 소환사 주문
+  if (aiBackdoor(b, dt)) return;                                      // 백도어 (불리할 때 가끔)
 
   // ── 귀환
   const mobOnMe = units.find(m => isMonster(m) && m.alive && m.target === b);
   if (b.mode === 'lane' && !(mobOnMe && hpB > .2 && mobOnMe.hp < b.hp * 2.5)) {
-    const next = aiBuild(b).find(id => !hasItem(b, id));
+    const next = aiNextItem(b);
     const rich = next && b.gold >= buyPlan(b, next).cost + 200;
     const pDead = !p.alive, pBack = pDead && p.respawnT < 3;
     const sieg = TEAM_PLAN[b.team] && TEAM_PLAN[b.team].plan && TEAM_PLAN[b.team].plan.strat === 'siege';
@@ -7803,7 +7870,8 @@ function update(dt) {
   for (const b of spectating ? heroes : bots) if (canShop(b) && (b.shopT = (b.shopT || 0) - dt) <= 0) {   // AI 자동 구매 (정글러는 사냥꾼의 칼부터)
     b.shopT = 1;
     for (let i = b.items.length - 1; i >= 0; i--) if (b.items[i] === 'badge') sellBadge(b, i);   // 뱃지는 바로 판매
-    const next = aiBuild(b).find(id => !hasItem(b, id));
+    aiPotionsShop(b);
+    const next = aiNextItem(b);
     if (next) buyTowards(b, next);
     while ((b.wards || 0) < 2 && b.gold >= WARD.cost + (next ? 150 : 0) && buyWard(b)) {}   // 와드는 2개까지 챙김
   }
@@ -11284,6 +11352,7 @@ function render() {
   for (const c of order) if (c.alive) drawBuffAura(ctx, c);
   for (const c of order) drawChamp(ctx, c);
   for (const c of order) worldCastBar(ctx, c);
+  drawBounties(ctx);
   drawHeathBleeds(ctx);
   drawMeurChains(ctx);
   drawYuriWorld(ctx);
