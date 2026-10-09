@@ -414,11 +414,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v101 · 베르길리우스 붉은 보호막</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v103 · 한국어 명칭 교정</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v101</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v103</em></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
   </div>
@@ -617,7 +617,7 @@
           <li><span>Q</span>글라디우스 — 최대 세 번까지 이어 베고, 세 번째에는 뛰어올라 내려찍습니다. 몸 주위 고리가 하얗게 빛날 때 이어 쓰면 완벽한 베기가 됩니다.</li>
           <li><span>W</span>홍련 베기 — 한 번 눌러 힘을 모으고, 다시 눌러 거대한 초승달 파동을 날립니다. 막대가 금색 구간일 때 놓으면 피해 2배에 기절까지 겁니다.</li>
           <li><span>E</span>간파 — 짧게 몸을 옮기고, 직후에 공격을 받으면 그 피해를 무시한 채 반격하며 재사용 대기시간이 초기화됩니다.</li>
-          <li><span>R</span>색 — E.G.O를 개화해 글라디우스가 피를 머금은 창으로 바뀌고, 발밑에 피의 욕장을 펼쳐 기본 스킬을 강화하며 욕장 안의 적에게 핏빛 낙인을 새깁니다. 다시 사용하면 하늘로 뛰어올라 거대한 피의 창을 내리꽂아 욕장 전체를 십자로 가르는 '죽은 피귀를 위한 장례'를 거행합니다. 욕장이 하얗게 고동칠 때 거행하면 모두 기절합니다.</li>
+          <li><span>R</span>색 — E.G.O를 개화해 글라디우스가 피를 머금은 창으로 바뀌고, 발밑에 피의 욕장을 펼쳐 기본 스킬을 강화하며 욕장 안의 적에게 핏빛 낙인을 새깁니다. 다시 사용하면 하늘로 뛰어올라 거대한 피의 창을 내리꽂아 욕장 전체를 십자로 가르는 '죽은 혈귀를 위한 장례'를 거행합니다. 욕장이 하얗게 고동칠 때 거행하면 모두 기절합니다.</li>
         </ul>
         <span class="go">베르길리우스로 시작</span>
       </button>
@@ -1008,28 +1008,28 @@ const ITEMS = {
              passive:'청소 개시', desc:'스킬을 쓰고 난 다음 기본 공격이 대상 주변의 적 모두에게 공격력의 100% 물리 피해를 줍니다. (1.5초마다)'},
   bullet:   {name:'마탄', ego:'Magic Bullet', cat:'assassin', total:2900, from:['shiv', 'saw'], stats:{ad:45, leth:14},
              passive:'일곱 번째 탄환', desc:'챔피언에게 7번째로 피해를 줄 때마다 60 + 추가 공격력 40%의 고정 피해를 줍니다.'},
-  scar:     {name:'진홍의 상처', ego:'Crimson Scar', cat:'assassin', total:3100, from:['shiv', 'hammer', 'twin'], stats:{ad:40, leth:12, haste:10, as:0.2, ms:0.05},
+  scar:     {name:'붉은 흉터', ego:'Crimson Scar', cat:'assassin', total:3100, from:['shiv', 'hammer', 'twin'], stats:{ad:40, leth:12, haste:10, as:0.2, ms:0.05},
              passive:'사냥', desc:'체력이 50% 이하인 챔피언에게 주는 피해가 12% 늘어납니다.'},
-  dacapo:   {name:'다 카포', ego:'Da Capo', cat:'mage', total:3100, from:['tome', 'lens', 'lens'], stats:{ap:90, haste:20},
+  dacapo:   {name:'다카포', ego:'Da Capo', cat:'mage', total:3100, from:['tome', 'lens', 'lens'], stats:{ap:90, haste:20},
              passive:'악장', desc:'스킬이 적중하면 40 + 주문력 15%의 추가 마법 피해를 줍니다. (대상마다 5초에 한 번)'},
   star:     {name:'별의 소리', ego:'Sound of a Star', cat:'mage', total:3300, from:['tome', 'tome', 'lens'], stats:{ap:105, haste:10, mpen:0.15},
              passive:'푸른 공명', desc:'주문력이 15% 늘어납니다.'},
-  lament:   {name:'장엄한 애도', ego:'Solemn Lament', cat:'adc', total:2800, from:['twin', 'zeal'], stats:{ad:25, as:0.3, crit:0.2},
+  lament:   {name:'엄숙한 애도', ego:'Solemn Lament', cat:'adc', total:2800, from:['twin', 'zeal'], stats:{ad:25, as:0.3, crit:0.2},
              passive:'나비의 장례', desc:'기본 공격마다 공격 속도가 6% 오릅니다. 5초 유지, 최대 5번(30%).'},
-  justitia: {name:'저스티티아', ego:'Justitia', cat:'adc', total:3500, from:['saw', 'saw', 'zeal'], stats:{ad:55, crit:0.2},
+  justitia: {name:'유스티티아', ego:'Justitia', cat:'adc', total:3500, from:['saw', 'saw', 'zeal'], stats:{ad:55, crit:0.2},
              passive:'심판', desc:'치명타 피해가 25% 늘어납니다.'},
   // ── 추가 완성템 (로보토미 코퍼레이션 E.G.O) ──
   heaven:   {name:'천국', ego:'Heaven', cat:'bruiser', total:3300, from:['saw', 'hammer', 'belt'], stats:{ad:40, hp:350, haste:20},
              passive:'응시', desc:'스킬이 챔피언에게 적중하면 3초 동안 대상이 받는 모든 피해가 6% 늘어납니다.'},
-  mimicry:  {name:'의태', ego:'Mimicry', cat:'bruiser', total:3100, from:['scythe', 'belt', 'belt'], stats:{ad:35, hp:500, omni:0.08},
+  mimicry:  {name:'미미크리', ego:'Mimicry', cat:'bruiser', total:3100, from:['scythe', 'belt', 'belt'], stats:{ad:35, hp:500, omni:0.08},
              passive:'흉내', desc:'잃은 체력에 비례해 모든 피해 흡혈이 최대 12% 더 늘어납니다.'},
-  redeyes:  {name:'빨간 눈', ego:'Red Eyes', cat:'assassin', total:2800, from:['shiv', 'shiv'], stats:{ad:42, leth:12, ms:0.05},
+  redeyes:  {name:'적안', ego:'Red Eyes', cat:'assassin', total:2800, from:['shiv', 'shiv'], stats:{ad:42, leth:12, ms:0.05},
              passive:'사냥감', desc:'5초 동안 전투하지 않으면 다음 기본 공격이 50 + 추가 공격력 60%의 물리 피해를 더 줍니다.'},
-  hornet:   {name:'말벌', ego:'Hornet', cat:'assassin', total:2900, from:['shiv', 'hammer'], stats:{ad:40, leth:10, haste:15},
+  hornet:   {name:'호넷', ego:'Hornet', cat:'assassin', total:2900, from:['shiv', 'hammer'], stats:{ad:40, leth:10, haste:15},
              passive:'독침', desc:'챔피언에게 피해를 주면 3초 동안 초당 10 + 추가 공격력 12%의 마법 피해를 주는 독을 겁니다.'},
-  lamp:     {name:'등불', ego:'Lamp', cat:'mage', total:3000, from:['tome', 'lens', 'belt'], stats:{ap:80, hp:300, haste:15},
+  lamp:     {name:'램프', ego:'Lamp', cat:'mage', total:3000, from:['tome', 'lens', 'belt'], stats:{ap:80, hp:300, haste:15},
              passive:'밤을 비추는 빛', desc:'스킬이 적중하면 대상을 1.5초 동안 20% 둔화시킵니다.'},
-  harmony:  {name:'화음', ego:'Harmony', cat:'mage', total:3000, from:['tome', 'rod', 'belt'], stats:{ap:85, hp:250, mpen:0.1},
+  harmony:  {name:'하모니', ego:'Harmony', cat:'mage', total:3000, from:['tome', 'rod', 'belt'], stats:{ap:85, hp:250, mpen:0.1},
              passive:'선율', desc:'스킬이 적중하면 대상 최대 체력 3%의 추가 마법 피해를 줍니다. (대상마다 1초에 한 번)'},
   regret:   {name:'후회', ego:'Regret', cat:'tank', total:2900, from:['vest', 'belt', 'ward'], stats:{hp:400, armor:40, mr:40},
              passive:'뉘우침', desc:'챔피언에게 받는 모든 피해가 8% 줄어듭니다.'},
@@ -1037,28 +1037,28 @@ const ITEMS = {
              passive:'마지막 수확', desc:'체력이 40% 아래로 떨어지면 3초 동안 최대 체력 20%의 보호막을 얻습니다. (60초마다)'},
   beak:     {name:'부리', ego:'Beak', cat:'adc', total:3300, from:['twin', 'zeal', 'saw'], stats:{ad:35, as:0.25, crit:0.2},
              passive:'쪼기', desc:'기본 공격이 치명타로 터지면 20 + 추가 공격력 15%의 물리 피해를 더 줍니다.'},
-  match:    {name:'네 번째 성냥불', ego:'Fourth Match Flame', cat:'adc', total:3000, from:['zeal', 'saw'], stats:{ad:40, as:0.15, crit:0.2},
+  match:    {name:'4번째 성냥불', ego:'Fourth Match Flame', cat:'adc', total:3000, from:['zeal', 'saw'], stats:{ad:40, as:0.15, crit:0.2},
              passive:'마지막 불꽃', desc:'기본 공격 4번째마다 대상 주변에 40 + 공격력 30%의 마법 피해 폭발을 일으킵니다.'},
   penitence:{name:'참회', ego:'Penitence', cat:'tank', total:2900, from:['vest', 'vest', 'belt'], stats:{hp:350, armor:80},
              passive:'속죄', desc:'기본 공격에 맞으면 공격자에게 10 + 추가 방어력 10%의 마법 피해를 되돌려줍니다.'},
   adoration:{name:'흠모', ego:'Adoration', cat:'tank', total:3000, from:['ward', 'belt', 'polar'], stats:{hp:650, mr:50, haste:10},
              passive:'녹아내리는 사랑', desc:'주변 적에게 초당 12 + 추가 체력 1%의 마법 피해를 줍니다.'},
   // ── 추가 완성템 2 ──
-  stem:     {name:'녹색 줄기', ego:'Green Stem', cat:'tank', total:3000, from:['vest', 'ward', 'belt'], stats:{hp:350, armor:30, mr:30},
+  stem:     {name:'녹색줄기', ego:'Green Stem', cat:'tank', total:3000, from:['vest', 'ward', 'belt'], stats:{hp:350, armor:30, mr:30},
              passive:'휘감는 덩굴', desc:'주변(300)의 적 챔피언 이동 속도가 10% 느려집니다.'},
-  frost:    {name:'겨울 파편', ego:'Frost Splinter', cat:'tank', total:2900, from:['vest', 'vest', 'thorn'], stats:{hp:250, armor:70},
+  frost:    {name:'서리조각', ego:'Frost Splinter', cat:'tank', total:2900, from:['vest', 'vest', 'thorn'], stats:{hp:250, armor:70},
              passive:'서리', desc:'기본 공격에 맞으면 2초 동안 공격자의 공격 속도가 15% 줄어듭니다.'},
   homing:   {name:'귀소본능', ego:'Homing Instinct', cat:'tank', total:2800, from:['belt', 'ward', 'boots'], stats:{hp:400, mr:40, ms:0.05},
              passive:'집으로 가는 길', desc:'체력이 30% 아래로 떨어지면 2.5초 동안 이동 속도 +40%, 방어력·마법저항력 +30. (90초마다)'},
   lovehate: {name:'사랑과 증오의 이름으로', ego:'In the Name of Love and Hate', cat:'tank', total:3000, from:['belt', 'vest', 'hourglass'], stats:{hp:350, armor:30, haste:15, uhaste:10},
              passive:'마법소녀의 가호', desc:'스킬이 적 챔피언에게 적중하면 주변 아군(자신 포함)에게 2초 동안 40 + 추가 체력 4%의 보호막을 줍니다. (8초마다)'},
-  goldrush: {name:'황금광', ego:'Gold Rush', cat:'bruiser', total:3300, from:['saw', 'belt', 'hourglass'], stats:{ad:40, hp:300, uhaste:30},
+  goldrush: {name:'골드러시', ego:'Gold Rush', cat:'bruiser', total:3300, from:['saw', 'belt', 'hourglass'], stats:{ad:40, hp:300, uhaste:30},
              passive:'탐욕', desc:'궁극기를 쓰면 6초 동안 최대 체력 +15%(그만큼 회복), 이동 속도 +20%, 공격 속도 +30%.'},
-  rage:     {name:'눈먼 분노', ego:'Blind Rage', cat:'bruiser', total:3100, from:['saw', 'belt', 'thorn'], stats:{ad:35, hp:400, armor:15},
+  rage:     {name:'눈 먼 분노', ego:'Blind Rage', cat:'bruiser', total:3100, from:['saw', 'belt', 'thorn'], stats:{ad:35, hp:400, armor:15},
              passive:'분노', desc:'잃은 체력에 비례해 주는 모든 피해가 최대 25% 늘어납니다.'},
-  smile:    {name:'미소', ego:'Smile', cat:'assassin', total:1600, from:['shiv'], stats:{ad:20, leth:6},
+  smile:    {name:'웃음', ego:'Smile', cat:'assassin', total:1600, from:['shiv'], stats:{ad:20, leth:6},
              passive:'쌓여가는 시체', desc:'챔피언 처치 시 중첩 4개, 도움 시 2개 (최대 25). 중첩당 공격력 +2, 15중첩부터 이동 속도 +8%. 죽으면 중첩 40%를 잃습니다.'},
-  tears:    {name:'눈물로 벼려낸 검', ego:'Sword Sharpened with Tears', cat:'assassin', total:3000, from:['shiv', 'hammer', 'boots'], stats:{ad:42, leth:11, haste:10, ms:0.04},
+  tears:    {name:'눈물로 벼려낸 검', ego:'Blade Forged from Tears', cat:'assassin', total:3000, from:['shiv', 'hammer', 'boots'], stats:{ad:42, leth:11, haste:10, ms:0.04},
              passive:'마지막 눈물', desc:'챔피언 처치에 관여하면 Q·W·E의 남은 재사용 대기시간이 30% 줄어듭니다.'},
   galaxy:   {name:'은하수', ego:'Our Galaxy', cat:'mage', total:1600, from:['tome'], stats:{ap:25, hp:100},
              passive:'별 모으기', desc:'챔피언 처치 시 중첩 4개, 도움 시 2개 (최대 25). 중첩당 주문력 +5, 15중첩부터 이동 속도 +8%. 죽으면 중첩 40%를 잃습니다.'},
@@ -1066,7 +1066,7 @@ const ITEMS = {
              passive:'우주의 부름', desc:'스킬에 맞은 적은 4초 동안 받는 마법 피해가 10% 늘어납니다.'},
   pink:     {name:'핑크', ego:'Pink', cat:'adc', total:3000, from:['zeal', 'saw', 'boots'], stats:{ad:35, as:0.2, crit:0.2, ms:0.04},
              passive:'분홍 발걸음', desc:'기본 공격이 치명타로 터지면 1.5초 동안 이동 속도가 25% 늘어납니다.'},
-  cobalt:   {name:'코발트 상처', ego:'Cobalt Scar', cat:'adc', total:3200, from:['twin', 'saw', 'zeal'], stats:{ad:35, as:0.25, crit:0.15, ls:0.12},
+  cobalt:   {name:'푸른 흉터', ego:'Cobalt Scar', cat:'adc', total:3200, from:['twin', 'saw', 'zeal'], stats:{ad:35, as:0.25, crit:0.15, ls:0.12},
              passive:'굶주림', desc:'체력이 50% 이하일 때 공격 속도가 20% 늘어납니다.'},
 };
 const LEGEND_CATS = ['bruiser', 'assassin', 'mage', 'tank', 'adc'];
@@ -1235,7 +1235,7 @@ function recalcStats(c) {
   c.as = st.as[0] * (1 + st.as[1] * L + (c.key === 'outis' ? 0 : bv('as')) + (c.ylWT > time ? KYU.W.as[c.ylWi || 0] : 0));   // 유리 격리 개시
   c.regen = st.regen[0] + st.regen[1] * L + bv('regen');
   c.haste = bv('haste'); c.uhaste = bv('uhaste'); c.leth = bv('leth'); c.mpen = bv('mpen');
-  const gr = c.grT > time && hasItem(c, 'goldrush');                          // 황금광 발동 중
+  const gr = c.grT > time && hasItem(c, 'goldrush');                          // 골드러시 발동 중
   c.omni = bv('omni'); c.ls = bv('ls'); c.crit = bv('crit');
   c.speed = st.speed * (1 + bv('ms') + (gr ? .2 : 0) + (((hasItem(c, 'smile') && c.soulN >= 15) || (hasItem(c, 'galaxy') && c.starN >= 15)) ? .08 : 0));
   if (gr) { c.maxHp *= 1.15; c.as *= 1.3; }
@@ -1353,7 +1353,7 @@ function EV(c) {
 const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * vgMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
   (u.hasteT > 0 ? 1 + K.P.haste * (u.hasteT / K.P.hasteDur) : 1) * (u.wT > 0 ? 1 + KR.W.ms : 1) * (u.key === 'ryoshu' && u.ryoRT > time ? 1 + KRY.R.ms[rk(u, 'R')] : 1) *
   (u.homingT > time ? 1.4 : 1) * (u.pinkT > time ? 1.25 : 1) * stemSlow(u);
-const stemSlow = u => isChamp(u) && heroes.some(c => c.alive && c.team !== u.team && hasItem(c, 'stem') && dist(c, u) < E(300)) ? .9 : 1;   // 녹색 줄기
+const stemSlow = u => isChamp(u) && heroes.some(c => c.alive && c.team !== u.team && hasItem(c, 'stem') && dist(c, u) < E(300)) ? .9 : 1;   // 녹색줄기
 
 // ═════════════ 입력 ═════════════
 const keys = new Set();
@@ -2426,10 +2426,10 @@ function damage(src, tgt, amount, opts = {}) {
   if (tgt.structure && isChamp(src) && hasBuff(src, 'siege')) amount *= 1.8;                 // 공성의 뿔
   if (tgt.structure && isMinion(src) && champs().some(c => c.team === src.team && c.alive && hasBuff(c, 'siege') && dist(c, src) < E(600))) amount *= 1.6;
   if (isMonster(tgt) && isChamp(src) && hasItem(src, 'hunter')) amount *= 1.4;               // 사냥꾼의 칼
-  if (isChamp(src) && hasItem(src, 'scar') && isChamp(tgt) && tgt.hp < tgt.maxHp * .5) amount *= 1.12;   // 진홍의 상처
+  if (isChamp(src) && hasItem(src, 'scar') && isChamp(tgt) && tgt.hp < tgt.maxHp * .5) amount *= 1.12;   // 붉은 흉터
   if (tgt.heavenT > time) amount *= 1.06;                                                   // 천국: 응시 받는 중
   if (isChamp(tgt) && isChamp(src) && hasItem(tgt, 'regret')) amount *= .92;                 // 후회
-  if (isChamp(src) && hasItem(src, 'rage')) amount *= 1 + .25 * (1 - src.hp / src.maxHp);   // 눈먼 분노
+  if (isChamp(src) && hasItem(src, 'rage')) amount *= 1 + .25 * (1 - src.hp / src.maxHp);   // 눈 먼 분노
   if (tgt.fragT > time && opts.type === 'magic') amount *= 1.1;                           // 어딘가의 파편
   if (tgt.guardT > 0 && src && src.x !== undefined) {                                       // 원한: 막는 방향 피해 경감
     const a = Math.atan2(src.y - tgt.y, src.x - tgt.x), da = Math.abs(Math.atan2(Math.sin(a - tgt.guardAng), Math.cos(a - tgt.guardAng)));
@@ -2462,7 +2462,7 @@ function damage(src, tgt, amount, opts = {}) {
   if (isChamp(src) && isChamp(tgt) && src.team !== tgt.team) { if (time - (tgt.lastChampHitT ?? -99) > 5) tgt.fightT0 = time; tgt.lastChampHitT = time; }
   if (isChamp(src) && src.alive) {                    // 흡혈
     const heal = amount * ((src.omni || 0) + (opts.basic ? src.ls || 0 : 0) + (src.vampT > 0 ? KY.R.vamp : 0)
-                          + (hasItem(src, 'mimicry') ? .12 * (1 - src.hp / src.maxHp) : 0));       // 의태
+                          + (hasItem(src, 'mimicry') ? .12 * (1 - src.hp / src.maxHp) : 0));       // 미미크리
     if (heal > 0) src.hp = Math.min(src.maxHp, src.hp + heal * (src.spBrand && time < src.spBrand.until ? .6 : 1));   // 불태우는 낙인: 회복 감소
   }
   tgt.hitBy.set(src, time);
@@ -2478,7 +2478,7 @@ function damage(src, tgt, amount, opts = {}) {
   if (isChamp(tgt) && hasItem(tgt, 'homing') && tgt.hp > 0 && tgt.hp < tgt.maxHp * .3 && time >= (tgt.homingCd || 0)) {   // 귀소본능
     tgt.homingCd = time + 90; tgt.homingT = time + 2.5; text(tgt.x, tgt.y - tgt.r - E(45), '집으로 가는 길', '#9fd6a8', true, .9);
   }
-  if (opts.basic && isChamp(tgt) && hasItem(tgt, 'frost') && src && src.alive && !src.structure) src.frostT = time + 2;   // 겨울 파편
+  if (opts.basic && isChamp(tgt) && hasItem(tgt, 'frost') && src && src.alive && !src.structure) src.frostT = time + 2;   // 서리조각
   if (tgt.recalling) cancelRecall(tgt);             // 맞으면 귀환 끊김
   if (isChamp(src) && (opts.skill || opts.basic) && !opts.noProc) hitFeedback(src, tgt, opts);
   if (isChamp(tgt)) tgt.lastDmgT = 0;
@@ -2506,7 +2506,7 @@ function damage(src, tgt, amount, opts = {}) {
       }
     }
     if (isChamp(src) && isChamp(tgt) && (opts.basic || opts.skill)) {
-      if (hasItem(src, 'hornet')) tgt.poison = {src, until:time + 3, dps:10 + src.bonusAd * .12, tick:tgt.poison ? tgt.poison.tick : .5};   // 말벌
+      if (hasItem(src, 'hornet')) tgt.poison = {src, until:time + 3, dps:10 + src.bonusAd * .12, tick:tgt.poison ? tgt.poison.tick : .5};   // 호넷
       if (opts.skill && hasItem(src, 'heaven')) tgt.heavenT = time + 3;                     // 천국
       if (opts.skill && hasItem(src, 'lovehate') && time >= (src.lhCd || 0)) {             // 사랑과 증오의 이름으로
         src.lhCd = time + 8;
@@ -2518,13 +2518,13 @@ function damage(src, tgt, amount, opts = {}) {
     }
     if (opts.skill && isChamp(src) && tgt.alive) {
       if (hasItem(src, 'fragment') && !tgt.structure) tgt.fragT = time + 4;               // 어딘가의 파편
-      if (hasItem(src, 'lamp') && !tgt.structure) { tgt.slowT = Math.max(tgt.slowT, 1.5); tgt.slowAmt = Math.max(tgt.slowT > 1.5 ? tgt.slowAmt : 0, .2); }   // 등불
-      if (hasItem(src, 'harmony') && time >= (tgt.harmT || 0)) {                             // 화음
+      if (hasItem(src, 'lamp') && !tgt.structure) { tgt.slowT = Math.max(tgt.slowT, 1.5); tgt.slowAmt = Math.max(tgt.slowT > 1.5 ? tgt.slowAmt : 0, .2); }   // 램프
+      if (hasItem(src, 'harmony') && time >= (tgt.harmT || 0)) {                             // 하모니
         tgt.harmT = time + 1;
         damage(src, tgt, tgt.maxHp * .03, {type:'magic', noProc:true, color:'#c9b8ff'});
       }
     }
-    // 다 카포: 스킬 적중 시 추가 마법 피해
+    // 다카포: 스킬 적중 시 추가 마법 피해
     if (opts.skill && isChamp(src) && hasItem(src, 'dacapo') && tgt.alive && time >= (tgt.dacapoT || 0)) {
       tgt.dacapoT = time + 5;
       damage(src, tgt, 40 + src.ap * .15, {type:'magic', noProc:true, color:'#b69cff'});
@@ -2645,7 +2645,7 @@ function kill(u, src) {
       c.a++; c.gold += g;
       if (c === player) text(u.x, u.y - u.r - E(30), '+' + g + ' 도움', '#e6c35c', true, 1.2);
     }
-    for (const c of [killer, ...helpers]) if (c) {                // 미소·은하수 중첩, 눈물로 벼려낸 검
+    for (const c of [killer, ...helpers]) if (c) {                // 웃음·은하수 중첩, 눈물로 벼려낸 검
       const n = c === killer ? 4 : 2;
       if (hasItem(c, 'smile')) c.soulN = Math.min(25, (c.soulN || 0) + n);
       if (hasItem(c, 'galaxy')) c.starN = Math.min(25, (c.starN || 0) + n);
@@ -2689,11 +2689,11 @@ function basicAttack(c, t) {
   cancelRecall(c);
   const enhanced = c.eStacks > 0 && time < c.eUntil;
   const e = EV(c);
-  if (hasItem(c, 'lament')) {                           // 장엄한 애도: 공격할수록 빨라짐
+  if (hasItem(c, 'lament')) {                           // 엄숙한 애도: 공격할수록 빨라짐
     c.lamentN = time < c.lamentT ? Math.min(5, c.lamentN + 1) : 1; c.lamentT = time + 5;
   }
   const lam = hasItem(c, 'lament') && time < c.lamentT ? .06 * c.lamentN : 0;
-  const cob = hasItem(c, 'cobalt') && c.hp < c.maxHp * .5 ? .2 : 0;                         // 코발트 상처
+  const cob = hasItem(c, 'cobalt') && c.hp < c.maxHp * .5 ? .2 : 0;                         // 푸른 흉터
   c.atkT = 1 / Math.min(2.5, c.as * (1 + (enhanced ? e.as : 0) + lam + cob + ryoAS(c)) * (c.frostT > time ? .85 : 1));
   c.swingT = 0.18; c.swingE = enhanced;
   c.face = Math.atan2(t.y - c.y, t.x - c.x);
@@ -2703,7 +2703,7 @@ function basicAttack(c, t) {
   if (crit) { dmg *= critMult(c); critFx(t, c.face, c.iceT > 0); }
   if (crit && hasItem(c, 'beak')) dmg += 20 + c.bonusAd * .15;                               // 부리
   if (crit && hasItem(c, 'pink')) c.pinkT = time + 1.5;                                      // 핑크
-  if (hasItem(c, 'redeyes') && time - (c.lastCombatT ?? -99) > 5) {                            // 빨간 눈: 매복
+  if (hasItem(c, 'redeyes') && time - (c.lastCombatT ?? -99) > 5) {                            // 적안: 매복
     dmg += 50 + c.bonusAd * .6;
     if (c === player) text(t.x, t.y - t.r - E(40), '사냥감', '#ff6b6b', true, .8);
   }
@@ -2721,7 +2721,7 @@ function basicAttack(c, t) {
     const n = t.shred && time < t.shred.until ? Math.min(6, t.shred.n + 1) : 1;
     t.shred = {n, until:time + 3};
   }
-  if (hasItem(c, 'match') && ++c.matchN % 4 === 0) {           // 네 번째 성냥불: 폭발
+  if (hasItem(c, 'match') && ++c.matchN % 4 === 0) {           // 4번째 성냥불: 폭발
     fx.push({type:'pop', x:t.x, y:t.y, r:E(150), color:'#ff9a3c', t:0, life:.35});
     for (const u of units) if (u.alive && u.team !== c.team && !u.structure && dist(u, t) < E(150))
       damage(c, u, 40 + c.ad * .3, {type:'magic', noProc:true, color:'#ffb070'});
@@ -2800,7 +2800,7 @@ const CAST = {Q:0.25, W:0.35, R:K.R.cast};
 const RECALL_TIME = 8;
 
 const hasteMul = c => 100 / (100 + (c.haste || 0) + (hasBuff(c, 'blue') ? 20 : 0));
-function castSkill(c, key, ang, frac = null) {                // 공통 후처리: 궁극기 가속, 황금광
+function castSkill(c, key, ang, frac = null) {                // 공통 후처리: 궁극기 가속, 골드러시
   if (key === 'D' || key === 'F') return castSpell(c, key, ang, frac);   // 소환사 주문
   if (key === 'T') return placeWard(c, ang, frac);               // 와드
   const prevR = c.cd ? c.cd.R : 0;
@@ -5460,7 +5460,7 @@ const KVG = {
   Q:{cd:[7, 6.5, 6, 5.5], win:1.6, lo:.3, hi:.55, len:290, wid:130, dmg:[34, 56, 78, 100], ad:.6, perf:.5, slamDash:230, slamR:200, slamMul:1.5, speed:1600},   // 글라디우스
   W:{cd:[11, 10, 9, 8], max:1.25, lo:.95, hi:1.15, len:660, wid:[80, 210], dmg:[80, 125, 170, 215], ad:.95, perfMul:2, stun:.6, knock:110, slow:.35},   // 홍련 베기
   E:{cd:[14, 13, 12, 11], dash:240, speed:1800, parry:.35, heat:30, counter:.6},                                         // 간파
-  R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[200, 320, 440], ad:1.1, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 피귀를 위한 장례
+  R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[200, 320, 440], ad:1.1, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 혈귀를 위한 장례
 };
 const vgHeatAdd = (c, n) => {
   if (c.key !== 'vergil' || !c.alive) return;
@@ -5563,7 +5563,7 @@ function castVergil(c, key, ang, frac) {
       c.cd.R = c.cdMax.R = .5;
       c.vgHeat = 100; c.vgGaze = Math.max(c.vgGaze || 0, time + KVG.P.dur); c.vgOverT = 0; vgGuard(c, c.maxHp * KVG.P.gazeShield);
       fx.push({type:'vgEgo', owner:c, t:0, life:1});
-      if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(70), '색 — Lavacrum Sanguinis', '#ff3b3b', true, 1.3);
+      if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(70), '개화 E.G.O :: 라바크롬 상귀니스', '#ff3b3b', true, 1.3);
       if (c === player) { impactFeel(.1, 12); camPunch(.06); }
       return true;
     }
@@ -5578,12 +5578,12 @@ function vgBeatOk(c) {                                                    // 웅
   const R = c.vgR, ph = (time - R.t0) % KVG.R.beat;
   return ph >= KVG.R.beat - KVG.R.win || ph <= .06;
 }
-function vgFinale(c, auto) {                                              // 죽은 피귀를 위한 장례: 뛰어올라 거대한 핏빛 검으로 십자 베기
+function vgFinale(c, auto) {                                              // 죽은 혈귀를 위한 장례: 뛰어올라 거대한 핏빛 검으로 십자 베기
   const R = c.vgR; if (!R || c.vgFin) return;
   const perfect = !auto && vgBeatOk(c);
   c.vgFin = {t:0, perfect, auto}; c.vgUT = true; c.target = null; c.vgW = null; c.vgQ = null; c.vgDash = null;
   fx.push({type:'vgRise', owner:c, x:R.x, y:R.y, r:E(KVG.R.radius), t:0, life:KVG.R.air});
-  if (c === player || onScreen(c)) text(R.x, R.y - E(KVG.R.radius) * .35, '죽은 피귀를 위한 장례', perfect ? '#ffffff' : '#ff3b3b', true, 1.5);
+  if (c === player || onScreen(c)) text(R.x, R.y - E(KVG.R.radius) * .35, '죽은 혈귀를 위한 장례', perfect ? '#ffffff' : '#ff3b3b', true, 1.5);
   if (perfect) vgPerfect(c, c.x, c.y, '고동');
 }
 function vgFinaleLand(c) {
@@ -6188,8 +6188,8 @@ function champTimers(c, dt) {
   const f = FOUNTAIN[c.team];
   if (Math.hypot(c.x - f.x, c.y - f.y) < 130) c.hp += c.maxHp * 0.25 * dt;
   else c.hp += (c.regen + (hasBuff(c, 'blue') ? c.maxHp * .006 : 0)) * dt * (c.spBrand && time < c.spBrand.until ? .6 : 1);
-  if (c.grOn && time > c.grT) { c.grOn = false; recalcStats(c); }       // 황금광 종료
-  if (c.poison) {                                             // 말벌 독
+  if (c.grOn && time > c.grT) { c.grOn = false; recalcStats(c); }       // 골드러시 종료
+  if (c.poison) {                                             // 호넷 독
     if (time >= c.poison.until || !c.alive) c.poison = null;
     else if ((c.poison.tick -= dt) <= 0) { c.poison.tick = .5; damage(c.poison.src, c, c.poison.dps * .5, {type:'magic', noProc:true, color:'#b7e35a'}); }
   }
@@ -11707,7 +11707,7 @@ CODEX_SK.vergil = {
   Q: {name:'글라디우스', cd: KVG.Q.cd, range: KVG.Q.len, text: H => `베르길리우스가 달궈진 글라디우스로 최대 세 번까지 이어서 벱니다.<br>첫 번째와 두 번째 베기는 전방 ${KVG.Q.len} 거리를 베어 맞은 모든 적에게 ${H.phys(H.r(KVG.Q.dmg) + ' ' + H.ad(KVG.Q.ad))}를 입힙니다. 세 번째 베기에서는 지정한 방향으로 최대 ${KVG.Q.slamDash}만큼 뛰어올라 내려찍어, 반경 ${KVG.Q.slamR} 안의 모든 적에게 ${KVG.Q.slamMul}배의 피해를 입힙니다.<br>이전 베기 후 ${H.s(KVG.Q.win)} 안에 다음 베기를 쓰지 않으면 연속 베기가 끝나고 재사용 대기시간이 돌기 시작합니다.<br><br>${H.b('박자')}: 이전 베기 후 ${KVG.Q.lo}~${KVG.Q.hi}초 사이, 베르길리우스 주위의 고리가 ${H.b('하얗게 빛날 때')} 다음 베기를 쓰면 '완벽' 판정이 됩니다. 완벽한 베기는 피해가 ${H.p(KVG.Q.perf)} 증가하며, 세 번째 내려찍기라면 맞은 적 챔피언을 0.4초 동안 기절시킵니다.`},
   W: {name:'홍련 베기', cd: KVG.W.cd, range: KVG.W.len, text: H => `베르길리우스가 글라디우스를 뒤로 젖히고 힘을 모읍니다. 힘을 모으는 동안에는 이동 속도가 ${H.p(KVG.W.slow)} 느려지며 기본 공격을 할 수 없습니다.<br>스킬을 한 번 더 사용하면 지정한 방향으로 거대한 붉은 초승달 파동(길이 ${KVG.W.len})을 날려, 경로 위의 모든 적에게 ${H.phys(H.r(KVG.W.dmg) + ' ' + H.ad(KVG.W.ad))}를 입힙니다. 힘을 오래 모을수록 파동이 넓어지고 피해도 커집니다.<br>${KVG.W.max + .2}초가 지나도록 놓지 않으면 파동이 저절로 나가며, 이때는 피해가 크게 줄어듭니다.<br><br>${H.b('박자')}: 힘을 모은 지 ${KVG.W.lo}~${KVG.W.hi}초 사이, 베르길리우스 아래 막대가 ${H.b('금색 구간')}에 있을 때 놓으면 '완벽한 베기'가 됩니다. 완벽한 베기는 피해가 ${KVG.W.perfMul}배가 되고, 맞은 적을 ${H.s(KVG.W.stun)} 동안 기절시키며 뒤로 밀쳐냅니다.`},
   E: {name:'간파', cd: KVG.E.cd, range: KVG.E.dash, text: H => `베르길리우스가 지정한 방향으로 짧게 ${KVG.E.dash}만큼 몸을 옮깁니다.<br>스킬을 사용한 뒤 ${H.s(KVG.E.parry)} 안에 적의 공격을 받으면 그 공격을 ${H.b('간파')}합니다. 간파한 공격의 피해는 받지 않으며, 공격한 적에게 즉시 반격해 Q 피해의 ${H.p(KVG.E.counter)}만큼 피해를 입힙니다.<br>간파에 성공하면 열기가 ${KVG.E.heat} 오르고, 간파의 재사용 대기시간이 바로 초기화되며, 다음에 쓰는 글라디우스(Q)는 박자와 상관없이 무조건 완벽 판정이 됩니다.<br><br>${H.b('박자')}: 적의 스킬이나 공격이 닿기 직전에 사용해야 간파할 수 있습니다.`},
-  R: {name:'색 — Lavacrum Sanguinis', cd: KVG.R.cd, range: KVG.R.radius, text: H => `베르길리우스가 E.G.O를 개화해 피의 망토와 붉은 가시 월계관을 쓴 모습이 되고, 손에 든 글라디우스는 ${H.b('피를 머금은 창')}으로 바뀝니다. 동시에 발밑으로 반경 ${KVG.R.radius}의 ${H.b('피의 욕장')}이 번져 ${H.s(KVG.R.dur)} 동안 남습니다. 사용하는 즉시 열기가 100이 되어 붉은시선 상태가 되며, 욕장이 남아 있는 동안 이동 속도가 12% 증가하고 과열되지 않습니다.<br><br>피의 욕장 안에 있는 적은 이동 속도가 ${H.p(KVG.R.slow)} 느려지고, 적 챔피언에게는 붉은 시선 표식이 새겨져 베르길리우스의 기본 공격이 최대 체력의 ${H.p(KVG.R.markPct)}만큼 추가 피해를 입힙니다.<br>욕장이 남아 있는 동안 베르길리우스의 기본 스킬도 함께 강해집니다. 글라디우스(Q)의 베기는 창 찌르기로 바뀌어 ${KVG.R.qMul}배 길게 뻗고 내려찍기 범위는 ${KVG.R.slamMul}배 넓어지며, 홍련 베기(W)의 파동은 ${KVG.R.wMul}배 멀리 나아갑니다. 간파(E)에 성공하면 피 속을 건너 공격한 적 바로 앞으로 이동해 반격합니다.<br>욕장 안의 적 챔피언에게 스킬을 맞힐 때마다 ${H.b('핏빛 낙인')}이 하나씩 새겨집니다 (최대 ${KVG.R.brandMax}개). 베르길리우스가 자신의 욕장 안에 서 있으면 매초 최대 체력의 ${H.p(KVG.R.poolRegen)}만큼 체력을 회복합니다.<br><br>스킬을 다시 사용하면 ${H.b('죽은 피귀를 위한 장례')}를 거행합니다. 베르길리우스가 ${KVG.R.air}초 동안 하늘로 뛰어올라 (이 동안 대상으로 지정되지 않음) 욕장 안의 적들을 가운데로 끌어당긴 뒤, 거대한 피의 창을 내리꽂으며 욕장 전체를 십자로 가릅니다. 욕장 안의 모든 적은 ${H.phys(H.r(KVG.R.final) + ' ' + H.ad(KVG.R.ad) + ' + 잃은 체력의 ' + H.p(KVG.R.miss))}를 받고, 핏빛 낙인 하나마다 피해가 ${H.p(KVG.R.brandMul)} 증가합니다.<br>장례에 맞은 적 챔피언 하나마다 베르길리우스는 최대 체력의 ${H.p(KVG.R.finHeal)}만큼 체력을 회복하며, 그 적에게 새겨진 낙인 하나마다 ${H.p(KVG.R.brandHeal)}씩 더 회복합니다.<br>장례를 거행하지 않고 지속 시간이 끝나면 저절로 거행되지만, 이때는 피해가 ${H.p(KVG.R.auto)}로 줄어듭니다.<br><br>${H.b('박자')}: 피의 욕장은 ${KVG.R.beat}초마다 고동칩니다. 욕장의 테두리가 ${H.b('하얗게 빛나는 순간')}에 장례를 거행하면, 피해가 ${KVG.R.perfMul}배가 되고 맞은 적을 모두 ${H.s(KVG.R.stun)} 동안 기절시킵니다.`},
+  R: {name:'개화 E.G.O :: 라바크롬 상귀니스', cd: KVG.R.cd, range: KVG.R.radius, text: H => `베르길리우스가 E.G.O를 개화해 피의 망토와 붉은 가시 월계관을 쓴 모습이 되고, 손에 든 글라디우스는 ${H.b('피를 머금은 창')}으로 바뀝니다. 동시에 발밑으로 반경 ${KVG.R.radius}의 ${H.b('피의 욕장')}이 번져 ${H.s(KVG.R.dur)} 동안 남습니다. 사용하는 즉시 열기가 100이 되어 붉은시선 상태가 되며, 욕장이 남아 있는 동안 이동 속도가 12% 증가하고 과열되지 않습니다.<br><br>피의 욕장 안에 있는 적은 이동 속도가 ${H.p(KVG.R.slow)} 느려지고, 적 챔피언에게는 붉은 시선 표식이 새겨져 베르길리우스의 기본 공격이 최대 체력의 ${H.p(KVG.R.markPct)}만큼 추가 피해를 입힙니다.<br>욕장이 남아 있는 동안 베르길리우스의 기본 스킬도 함께 강해집니다. 글라디우스(Q)의 베기는 창 찌르기로 바뀌어 ${KVG.R.qMul}배 길게 뻗고 내려찍기 범위는 ${KVG.R.slamMul}배 넓어지며, 홍련 베기(W)의 파동은 ${KVG.R.wMul}배 멀리 나아갑니다. 간파(E)에 성공하면 피 속을 건너 공격한 적 바로 앞으로 이동해 반격합니다.<br>욕장 안의 적 챔피언에게 스킬을 맞힐 때마다 ${H.b('핏빛 낙인')}이 하나씩 새겨집니다 (최대 ${KVG.R.brandMax}개). 베르길리우스가 자신의 욕장 안에 서 있으면 매초 최대 체력의 ${H.p(KVG.R.poolRegen)}만큼 체력을 회복합니다.<br><br>스킬을 다시 사용하면 ${H.b('죽은 혈귀를 위한 장례')}를 거행합니다. 베르길리우스가 ${KVG.R.air}초 동안 하늘로 뛰어올라 (이 동안 대상으로 지정되지 않음) 욕장 안의 적들을 가운데로 끌어당긴 뒤, 거대한 피의 창을 내리꽂으며 욕장 전체를 십자로 가릅니다. 욕장 안의 모든 적은 ${H.phys(H.r(KVG.R.final) + ' ' + H.ad(KVG.R.ad) + ' + 잃은 체력의 ' + H.p(KVG.R.miss))}를 받고, 핏빛 낙인 하나마다 피해가 ${H.p(KVG.R.brandMul)} 증가합니다.<br>장례에 맞은 적 챔피언 하나마다 베르길리우스는 최대 체력의 ${H.p(KVG.R.finHeal)}만큼 체력을 회복하며, 그 적에게 새겨진 낙인 하나마다 ${H.p(KVG.R.brandHeal)}씩 더 회복합니다.<br>장례를 거행하지 않고 지속 시간이 끝나면 저절로 거행되지만, 이때는 피해가 ${H.p(KVG.R.auto)}로 줄어듭니다.<br><br>${H.b('박자')}: 피의 욕장은 ${KVG.R.beat}초마다 고동칩니다. 욕장의 테두리가 ${H.b('하얗게 빛나는 순간')}에 장례를 거행하면, 피해가 ${KVG.R.perfMul}배가 되고 맞은 적을 모두 ${H.s(KVG.R.stun)} 동안 기절시킵니다.`},
 };
 CODEX_SK.sinclair = {
   P: {name:'어느 표지', text: H => `스킬을 사용하거나 기본 공격을 할 때마다 ${H.b('표지')}를 1개 얻습니다 (최대 ${KS.P.max}개).<br>표지가 ${KS.P.max}개일 때 쓰는 다음 Q·W·E는 ${H.b('강화')}되며 표지를 모두 소모합니다 (강화 스킬은 표지를 얻지 않음).<br>R은 표지를 소모하지 않고, 끝나면 표지를 ${KS.P.max}개 얻습니다.`},
