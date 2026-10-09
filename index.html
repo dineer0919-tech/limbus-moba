@@ -414,11 +414,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v103 · 한국어 명칭 교정</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v104 · 멀티 튕김 수정</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v103</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v104</em></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
   </div>
@@ -647,6 +647,15 @@
 const PAGE_SRC = '<!doctype html>\n' + document.documentElement.outerHTML;   // 도감 시연용 (같은 게임을 iframe에서 시연 모드로)
 const cvs = document.getElementById('c');
 const ctx = cvs.getContext('2d');
+(function canvasGuard() {                                              // 안전장치: 시간차로 반지름이 살짝 음수가 되거나 값이 비어도 그리기가 멈추지 않게
+  const P = CanvasRenderingContext2D.prototype, ok = Number.isFinite, pos = v => v > 0 ? v : 0;
+  const arc = P.arc, ell = P.ellipse, rg = P.createRadialGradient, lg = P.createLinearGradient, acs = CanvasGradient.prototype.addColorStop;
+  P.arc = function (x, y, r, a0, a1, ccw) { if (!ok(x) || !ok(y) || !ok(r)) return; return arc.call(this, x, y, pos(r), a0, a1, ccw); };
+  P.ellipse = function (x, y, rx, ry, rot, a0, a1, ccw) { if (!ok(x) || !ok(y) || !ok(rx) || !ok(ry)) return; return ell.call(this, x, y, pos(rx), pos(ry), rot || 0, a0, a1, ccw); };
+  P.createRadialGradient = function (x0, y0, r0, x1, y1, r1) { if (![x0, y0, r0, x1, y1, r1].every(ok)) return rg.call(this, 0, 0, 0, 0, 0, 1); return rg.call(this, x0, y0, pos(r0), x1, y1, pos(r1)); };
+  P.createLinearGradient = function (x0, y0, x1, y1) { if (![x0, y0, x1, y1].every(ok)) return lg.call(this, 0, 0, 1, 0); return lg.call(this, x0, y0, x1, y1); };
+  CanvasGradient.prototype.addColorStop = function (o, c) { try { acs.call(this, ok(o) ? Math.min(1, Math.max(0, o)) : 0, c); } catch (e) {} };
+})();
 const $ = id => document.getElementById(id);
 
 // ═════════════ 맵 ═════════════
@@ -7457,7 +7466,7 @@ function drawCorpses(g) {
   corpses = corpses.filter(c => time - c.t0 < c.life && !(c.champ && c.u.alive));
   for (const c of corpses) {
     if (!visAt(player.team, c.x, c.y) && c.u.team !== player.team) continue;
-    const age = time - c.t0, grow = Math.min(1, age / .6), fade = Math.min(1, (c.life - age) / 2);
+    const age = Math.max(0, time - c.t0), grow = Math.min(1, age / .6), fade = Math.min(1, (c.life - age) / 2);
     g.globalAlpha = .82 * fade;
     g.fillStyle = '#4a0a12';                                       // 피 웅덩이
     for (const [ox, oy, s, rot] of c.blobs) { g.beginPath(); g.ellipse(c.x + ox * c.r, c.y + oy * c.r + c.r * .2, c.r * s * grow * (c.champ ? 1.3 : 1), c.r * s * .7 * grow, rot, 0, 7); g.fill(); }
@@ -10010,9 +10019,27 @@ function drawVergilFx(g, f, k) {
   }
 }
 
+// ── 안전장치: 이펙트 하나가 오류를 내도 게임 전체가 멈추거나 화면이 까맣게 되지 않도록 ──
+let gfxDirty = false;
+const errLog = [];
+function errNote(where, e) {
+  const msg = where + ': ' + (e && e.message || e);
+  if (errLog.length < 40 && !errLog.some(x => x.msg === msg)) { errLog.push({msg, t: Date.now()}); console.warn('[복구됨]', msg, e && e.stack); }
+}
+function fxFail(g, f, e) {
+  f.__bad = 1; f.t = f.life || 0; gfxDirty = true;
+  errNote('fx ' + f.type, e);
+  g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+}
+function ctxClean(g) {
+  if (gfxDirty) { gfxDirty = false; if (g.reset) g.reset(); else { const c = g.canvas; c.width = c.width; } }
+  g.globalAlpha = 1; g.globalCompositeOperation = 'source-over'; g.shadowBlur = 0; g.filter = 'none'; g.setLineDash([]);
+}
 function drawFx(g) {
   g.textAlign = 'center'; g.textBaseline = 'middle';
   for (const f of fx) {
+    if (f.__bad) continue;
+    try {
     const k = Math.max(0, f.t / f.life);
     if (!fxSeen(f)) continue;
     if (f.type === 'wardSet' || f.type === 'wardDie') { drawWardFx(g, f, k); continue; }
@@ -10142,6 +10169,7 @@ function drawFx(g) {
       g.strokeText(f.text, f.x + dx + sh, f.y + dy); g.fillText(f.text, f.x + dx + sh, f.y + dy);
       g.globalAlpha = 1;
     }
+    } catch (e) { fxFail(g, f, e); }
   }
 }
 
@@ -10383,6 +10411,7 @@ function drawStatPanel(g) {
 let shopBtnTop = -1;
 
 function render() {
+  ctxClean(ctx);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, vw, vh);
   ctx.save();
@@ -10851,9 +10880,11 @@ function loop(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
   shake.mag *= Math.exp(-dt * 14); if (shake.mag < .2) shake.mag = 0;
   juice.punch *= Math.exp(-dt * 11); juice.hurt *= Math.exp(-dt * 3.5);
-  if (!started) {} else if (hitStop > 0) hitStop -= dt; else if (mpRole === 'guest') mpGuestFrame(dt); else if (spectating && specSpeed > 1) { for (let q = 0; q < specSpeed && !gameOver; q++) update(dt); } else update(dt);
-  render();
-  requestAnimationFrame(loop);
+  requestAnimationFrame(loop);                                          // 먼저 다음 프레임 예약: 오류가 나도 루프가 끊기지 않음
+  try {
+    if (!started) {} else if (hitStop > 0) hitStop -= dt; else if (mpRole === 'guest') mpGuestFrame(dt); else if (spectating && specSpeed > 1) { for (let q = 0; q < specSpeed && !gameOver; q++) update(dt); } else update(dt);
+  } catch (e) { errNote(mpRole === 'guest' ? 'guestFrame' : 'update', e); }
+  try { render(); } catch (e) { gfxDirty = true; errNote('render', e); }
 }
 // ═════════════ 멀티플레이 1단계: 로비 · 픽창 · 로딩 (Firebase Realtime Database) ═════════════
 const FB_CFG = {
@@ -11021,6 +11052,13 @@ async function mpLeave(msg) {
 function mpOnRoom(room) {
   if (!MP.code) return;
   if (!room) {                                                          // 방이 사라짐 = 방장이 나감
+    const inGame0 = mpInGame();
+    if (inGame0 && mpRole === 'host' && MP.room) {                      // 방장 인터넷이 잠깐 끊겨 방 기록이 지워졌을 뿐: 다시 세움
+      const code = MP.code, N = MP.net;
+      N.set('rooms/' + code, MP.room).then(() => N.onDisc('rooms/' + code, null)).catch(e => console.warn(e));
+      return;
+    }
+    if (inGame0 && mpRole === 'guest' && performance.now() - (MPS.rxT || 0) < 10000) return;   // 방장과 직접 연결은 살아 있음: 방 기록이 다시 생길 때까지 계속 진행
     clearInterval(MP.tick); if (MP.unsub) MP.unsub(); MP.unsub = null;
     const inGame = mpInGame();
     MP.code = null; MP.room = null; MP.host = false;
@@ -11028,7 +11066,16 @@ function mpOnRoom(room) {
     if (inGame) { mpGameNotice('방장이 나가서 방이 닫혔습니다 (이 판은 혼자 계속됩니다)'); return; }
     $('mp').hidden = false; MP.err = '방장이 나가서 방이 닫혔습니다.'; mpView('home'); return;
   }
-  if (mpInGame() && mpRole) { MP.room = room; mpHostCheckLeavers(room); return; }
+  if (mpInGame() && mpRole) {
+    MP.room = room;
+    const me = room.players && room.players[MP.net.uid];
+    if (me) MP.lastMe = me;
+    else if (mpRole === 'guest' && MP.lastMe) {                         // 잠깐 끊긴 사이 명단에서 빠졌으면 다시 이름을 올림
+      const N = MP.net, path = `rooms/${MP.code}/players/${N.uid}`;
+      N.set(path, MP.lastMe).then(() => N.onDisc(path, null)).catch(e => console.warn(e));
+    }
+    mpHostCheckLeavers(room); return;
+  }
   if (!room.players || !room.players[MP.net.uid]) {                     // 내가 빠짐
     if (!mpInGame()) { mpLeave('방에서 나왔습니다.'); }
     return;
@@ -11366,7 +11413,7 @@ function mpEncode(full) {                                               // full:
       let any = false;
       for (const k in o) {
         if (k[0] === '_' || NET_SKIP.has(k)) continue;
-        if (name === 'fx' && k === 't' && prev) continue;               // 이펙트 시간은 손님이 알아서 흘려보냄
+        if (name === 'fx' && k === 't' && prev) { cur.t = prev.t; continue; }   // 이펙트 시간은 손님이 알아서 흘려보냄 (지워졌다고 착각하지 않게 이전 값 유지)
         const e = encV(o[k], 1); if (e === undefined) continue;
         const s = e !== null && typeof e === 'object' ? JSON.stringify(e) : e;
         cur[k] = s;
@@ -11427,7 +11474,13 @@ function mpApply(m) {                                                   // 손�
 
 // ── 방장: 다른 사람 조작을 받아서 그 챔피언을 움직임 ──
 function mpHostOnMsg(uid, m) {
-  if (m.t === 'i') { MPS.remote[uid] = m; return; }
+  if (m.t === 'i') {
+    MPS.remote[uid] = m;
+    const c = heroes.find(h => h.mpUid === uid);                        // 잠깐 끊겼다 돌아온 사람: AI에게서 조작을 돌려줌
+    if (c && c.mpAi && c.mpLeft) { c.mpAi = false; c.mpLeft = false; c.path = null; bots = bots.filter(b => b !== c); announce(`${c.name} 님이 다시 연결되었습니다`, '#8fd18f'); }
+    return;
+  }
+  if (m.t === 'r') { const L = MPS.links[uid]; if (L) L.synced = false; return; }   // 손님이 놓친 게 있어 전체 상태를 다시 달라고 함
   if (m.t === 'p') { const L = MPS.links[uid]; if (L) mpLinkSend(L, {t:'q', s:m.s}); return; }
   if (m.t === 'c') mpHostCmd(uid, m);
 }
@@ -11462,6 +11515,7 @@ function mpHostRemotes(dt) {
     player = sp; atk.id = sid; atk.aiming = sa;
   }
 }
+const MP_BUF_MAX = 768 * 1024;
 function mpHostTick(dt) {
   if ((MPS.sendT -= dt) > 0) return;
   MPS.sendT = 1 / MP_HZ;
@@ -11469,9 +11523,12 @@ function mpHostTick(dt) {
   if (!guests.length) return;
   const delta = mpEncode(false);
   let full = null;
+  const hasDelta = Object.keys(delta.e).length || Object.keys(delta.c).length || Object.keys(delta.g).length;
   for (const L of guests) {
-    if (!L.synced) { full = full || mpEncode(true); mpLinkSend(L, full); L.synced = true; }
-    else if (Object.keys(delta.e).length || Object.keys(delta.c).length || Object.keys(delta.g).length) mpLinkSend(L, delta);
+    const busy = L.ch && L.ch.readyState === 'open' && L.ch.bufferedAmount > MP_BUF_MAX;   // 상대 회선이 밀려 있으면 쌓지 않고 기다렸다가 전체 상태로 다시 맞춤
+    if (busy) { L.synced = false; continue; }
+    if (!L.synced) { full = full || mpEncode(true); L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...full, q:L.seq}); L.synced = true; }
+    else if (hasDelta) { L.seq = (L.seq || 0) + 1; mpLinkSend(L, {...delta, q:L.seq}); }
   }
 }
 
@@ -11479,6 +11536,12 @@ function mpHostTick(dt) {
 function mpGuestSend(obj) { const L = MPS.links.host; if (L) mpLinkSend(L, obj); }
 function mpGuestFrame(dt) {
   if (!MPS.gotFull) { if (started && player) updateView(dt); return; }
+  const gap = performance.now() - (MPS.rxT || performance.now());       // 방장 소식이 끊긴 시간
+  if (gap > 3000 && !gameOver) {
+    if (!MPS.lostT) MPS.lostT = performance.now();
+    if (performance.now() - (MPS.lostNote || 0) > 2500) { MPS.lostNote = performance.now(); mpGameNotice('방장과 연결이 불안정합니다 · 다시 연결하는 중...'); }
+    if (gap > 30000) { mpEndSync(); $('overText').textContent = '방장과의 연결이 끊겼습니다'; $('overText').style.color = '#e6c35c'; $('again').textContent = '메인으로'; $('over').hidden = false; return; }
+  }
   time += dt;                                                           // 방장 시계에 부드럽게 맞춤 (뚝 끊기지 않게)
   if (MPS.hostAt) { const est = MPS.hostT + (performance.now() - MPS.hostAt) / 1000, e = est - time; if (Math.abs(e) > .5) time = est; else time += e * Math.min(1, dt * 2); }
   for (const f of fx) if (f && f.t !== undefined && f.life) f.t = Math.min(f.life * .999, f.t + dt);
@@ -11534,8 +11597,14 @@ function mpGuestFrame(dt) {
 }
 function mpGuestOnMsg(m) {
   if (m.t === 'q') { MPS.ping = Math.round(performance.now() - m.s); return; }
-  if (m.t === 'F' || m.t === 'D') mpApply(m);
+  if (m.t === 'F' || m.t === 'D') {
+    if (m.t === 'D' && (!MPS.gotFull || (MPS.seq && m.q && m.q !== MPS.seq + 1))) mpAskResync();   // 중간에 빠진 조각이 있으면 전체 상태를 다시 받음
+    if (m.q) MPS.seq = m.q;
+    if (MPS.lostT) { MPS.lostT = 0; mpAskResync(); }
+    mpApply(m);
+  }
 }
+function mpAskResync() { const n = performance.now(); if (n - (MPS.resyncAt || 0) < 1500) return; MPS.resyncAt = n; mpGuestSend({t:'r'}); }
 
 // ── 손님 쪽에서는 '직접 실행' 대신 방장에게 부탁 ──
 const MP_ORIG = {castSkill, learn, buyItem, sellItem, buyWard, startRecall, cancelRecall, donChargeStart, outisSnipeFire};
@@ -11556,7 +11625,7 @@ outisSnipeFire = function (c) { if (mpMine(c)) { mpGuestSend({t:'c', c:'snipe', 
 // ── 시작 · 종료 ──
 function mpSyncStart(room) {
   const others = mpPlayers(room).filter(p => p.uid !== MP.net.uid);
-  MPS.remote = {}; MPS.hostAt = 0; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
+  MPS.remote = {}; MPS.hostAt = 0; MPS.seq = 0; MPS.lostT = 0; MPS.resyncAt = 0; MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0;
   if (MP.host) {
     mpRole = 'host';
     for (const c of heroes) { const b = room.lineup.blue.find(x => x.role === c.role && c.team === 'blue'); if (b && b.uid) c.mpUid = b.uid; }
@@ -11574,8 +11643,8 @@ function mpHostCheckLeavers(room) {                                     // 게�
   if (mpRole !== 'host') return;
   const here = new Set(Object.keys(room.players || {}));
   for (const c of heroes) if (c.mpUid && c.mpUid !== MP.net.uid && !c.mpAi && !here.has(c.mpUid)) {
-    c.mpAi = true; c.target = null; c.path = null; if (!bots.includes(c)) bots.push(c);
-    announce(`${c.name} 님이 나갔습니다 · AI가 이어받습니다`, '#e6c35c');
+    c.mpAi = true; c.mpLeft = true; c.target = null; c.path = null; if (!bots.includes(c)) bots.push(c);
+    announce(`${c.name} 님의 연결이 끊겼습니다 · 돌아올 때까지 AI가 이어받습니다`, '#e6c35c');
   }
 }
 
