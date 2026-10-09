@@ -414,11 +414,11 @@
 <button id="fs" class="topbtn" type="button">전체화면</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v94 · 멀티 2단계 (부드러운 화면)</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v101 · 베르길리우스 붉은 보호막</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v94</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v101</em></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
   </div>
@@ -589,13 +589,37 @@
         <span class="sel-token" style="background:#c8405a"></span>
         <b>유리</b><span class="role">공속 원딜 · 백설공주의 사과 E.G.O · 전 L사 통제팀</span>
         <ul>
-          <li><span>P</span>분석, 관찰, 격리 — 광선 평타(경로 광역), 적마다 적합·부적합 작업 배정 · 3종류로 맞히면 드러남 (적합 +25% / 부적합 −25%)</li>
-          <li><span>Q</span>E.G.O 장비 교체 — 관리 단계 R·B·P·W 순서로 교체, 단계마다 평타 효과 (단일 강화 / 둔화 / 최대 체력 피해 / 처형)</li>
-          <li><span>W</span>격리 개시 — 돌진 + 5초 공속 상승, 무작위 관리 단계 하나를 함께 활성화</li>
+          <li><span>P</span>분석, 관찰, 격리 — 기본 공격이 경로의 적까지 꿰뚫는 광선입니다. 적마다 취약·저항 피해 속성이 정해져 있고, 세 가지 속성으로 맞히면 내성이 드러납니다 (취약 +25% / 저항 −25%).</li>
+          <li><span>Q</span>E.G.O 장비 교체 — 피해 속성을 RED → WHITE → BLACK → PALE 순서로 바꿉니다. RED는 단일 강화, WHITE는 낮은 체력 추가 피해, BLACK은 둔화, PALE은 최대 체력 비례 피해입니다.</li>
+          <li><span>W</span>격리 개시 — 돌진한 뒤 5초 동안 공격 속도가 오르고, 무작위 피해 속성 하나가 함께 활성화됩니다.</li>
           <li><span>E</span>L사의 시선 — 적 챔피언에게 피해 + 표식, 다가가는 아군 이속 증가, 평타 시 마법 피해·표식 연장</li>
           <li><span>R</span>...죽고 싶지 않았어요. — 자신·아군에게 4초 황금의 기운, 그동안 죽으면 처치 판정 없이 황금 사과로 부활 + 공포</li>
         </ul>
         <span class="go">유리로 시작</span>
+      </button>
+      <button type="button" class="sel-card" data-champ="kromer">
+        <span class="sel-token" style="background:#ece4d6"></span>
+        <b>크로머</b><span class="role">AD 암살자 · 못과 망치 · 대못 검과 쇠망치</span>
+        <ul>
+          <li><span>P</span>못과 망치 — 스킬이 맞으면 못 (최대 3), 못 박힌 적은 움직일수록 출혈 · 이스터에그 '나의 싱클레어'</li>
+          <li><span>Q</span>광소 — 관통 대못 일직선, 처음 맞은 챔피언에게 더 큰 피해</li>
+          <li><span>W</span>정화 — 다음 평타 망치 내려치기 (잃은 체력 비례 + 못 비례) + 50% 둔화 · 못 박힌 적에게 갈 때 이속</li>
+          <li><span>E</span>이단 말살 — 회전 → 돌진 → 회전, 못 3개 대상은 기절 + 추가 피해</li>
+          <li><span>R</span>가장!! 순수한!! 세상으로!!! — 지정 불가 후 순간이동 · 대못 속박 · 망치로 원래 자리 쪽으로 밀쳐냄</li>
+        </ul>
+        <span class="go">크로머로 시작</span>
+      </button>
+      <button type="button" class="sel-card" data-champ="vergil">
+        <span class="sel-token" style="background:#2b2c31;box-shadow:0 0 0 2px #ff2a2a"></span>
+        <b>베르길리우스</b><span class="role">특색 해결사 '붉은시선' · 달궈진 글라디우스 · <em style="font-style:normal;color:#ff5a4a;font-weight:800">난이도 극악 ★★★★★</em></span>
+        <ul>
+          <li><span>P</span>붉은시선 — 싸우며 열기를 쌓고, 100이 되면 5초 동안 눈이 붉게 빛나며 피해가 30% 늘고 스킬을 맞힐 때마다 다른 스킬 쿨타임이 줄고 체력을 조금씩 회복합니다. 박자를 맞추거나 간파에 성공하면 붉은 보호막이 쌓입니다. 끝나면 잠시 과열되어 느려집니다. 체력이 낮은 적은 안개 속에서도 보입니다.</li>
+          <li><span>Q</span>글라디우스 — 최대 세 번까지 이어 베고, 세 번째에는 뛰어올라 내려찍습니다. 몸 주위 고리가 하얗게 빛날 때 이어 쓰면 완벽한 베기가 됩니다.</li>
+          <li><span>W</span>홍련 베기 — 한 번 눌러 힘을 모으고, 다시 눌러 거대한 초승달 파동을 날립니다. 막대가 금색 구간일 때 놓으면 피해 2배에 기절까지 겁니다.</li>
+          <li><span>E</span>간파 — 짧게 몸을 옮기고, 직후에 공격을 받으면 그 피해를 무시한 채 반격하며 재사용 대기시간이 초기화됩니다.</li>
+          <li><span>R</span>색 — E.G.O를 개화해 글라디우스가 피를 머금은 창으로 바뀌고, 발밑에 피의 욕장을 펼쳐 기본 스킬을 강화하며 욕장 안의 적에게 핏빛 낙인을 새깁니다. 다시 사용하면 하늘로 뛰어올라 거대한 피의 창을 내리꽂아 욕장 전체를 십자로 가르는 '죽은 피귀를 위한 장례'를 거행합니다. 욕장이 하얗게 고동칠 때 거행하면 모두 기절합니다.</li>
+        </ul>
+        <span class="go">베르길리우스로 시작</span>
       </button>
     </div>
   </div>
@@ -892,6 +916,10 @@ const STATS = {
            hp:[510, 104], regen:[1.3, 0.12], ad:[48, 2.8], armor:[22, 4.6], mr:[30, 2.6], as:[0.63, 0.02]},
   sinclair:{name:'싱클레어', r:30, range:115, speed:285, acquire:260,
            hp:[590, 108], regen:[1.5, 0.14], ad:[60, 3.6], armor:[30, 5], mr:[30, 2.7], as:[0.66, 0.025]},
+  vergil: {name:'베르길리우스', r:30, range:120, speed:305, acquire:270,
+           hp:[620, 112], regen:[1.6, 0.15], ad:[70, 4.1], armor:[30, 5], mr:[32, 3], as:[0.72, 0.03]},
+  kromer: {name:'크로머', r:29, range:110, speed:300, acquire:260,
+           hp:[560, 100], regen:[1.4, 0.13], ad:[64, 3.7], armor:[27, 4.6], mr:[30, 2.5], as:[0.66, 0.028]},
   yuri:   {name:'유리', r:28, range:500, speed:280, acquire:540, ranged:true,
            hp:[520, 100], regen:[1.3, 0.12], ad:[55, 3.1], armor:[22, 4.4], mr:[30, 2.6], as:[0.68, 0.032]},
   meursault:{name:'뫼르소', r:31, range:78, speed:290, acquire:240, ap:[10, 5],
@@ -1200,6 +1228,7 @@ function recalcStats(c) {
   c.bonusArmor = bv('armor');
   c.maxHp = (st.hp[0] + st.hp[1] * L + c.bonusHp) * (c.key === 'donq' ? 1 + KD.P.hpPer * (teamBadges[c.team] || 0) : 1);   // 팀 뱃지 판매 수
   c.ad = st.ad[0] + st.ad[1] * L + c.bonusAd;
+  if (c.krEggBuff) c.ad *= 1 + KKR.egg.ad;                              // 이스터에그: 나의 싱클레어
   c.ap = ((st.ap ? st.ap[0] + st.ap[1] * L : 0) + bv('ap') + (hasItem(c, 'galaxy') ? 5 * (c.starN || 0) : 0)) * (hasItem(c, 'star') ? 1.15 : 1);   // AP 챔피언은 레벨당 주문력 성장
   c.armor = st.armor[0] + st.armor[1] * L + c.bonusArmor;
   c.mr = st.mr[0] + st.mr[1] * L + bv('mr');
@@ -1291,14 +1320,14 @@ function resetGame() {
   initCamps(); banner = null; killFeed = [];
   corpses = [];
   wards = []; for (const c of heroes) { c.wards = 1; giveSpells(c, c === player && !spectating ? chosenSpells : c.mpSpells || defaultSpells(c.role, c.key)); }
-  yuriAssignWork(heroes);                                             // 유리: 적합·부적합 작업 배정               // 시작할 때 와드 1개
+  yuriAssignWork(heroes); krBolts = []; krEggInit();                                             // 유리: 취약·저항 속성 배정               // 시작할 때 와드 1개
   visT = 0; visionUpdate(); fogA.fill(1);
   $('over').hidden = true;
 }
 
 const invulnerable = u => u.protectors && u.protectors.length > 0 &&
   (u.protectAny ? u.protectors.every(p => p.alive) : u.protectors.some(p => p.alive));
-const targetable = u => u && u.alive && !u.hidden && !u.ylRevive && !(u.structure && invulnerable(u));   // hidden: 료슈 Q·R 중 무적
+const targetable = u => u && u.alive && !u.hidden && !u.ylRevive && !u.krUT && !u.vgUT && !(u.structure && invulnerable(u));   // hidden: 료슈 Q·R 중 무적
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 const edge = (a, b) => dist(a, b) - a.r - b.r;
 const isMinion = u => u.kind === 'melee' || u.kind === 'ranged';
@@ -1321,7 +1350,7 @@ function EV(c) {
   return {cd:K.E.cd[i], hits:K.E.hits, window:K.E.window, as:K.E.as[i], pct:K.E.pct[i] + (R ? R.pctAdd : 0),
           slow:R ? R.slow : K.E.slow, slowDur:K.E.slowDur};
 }
-const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * spellMs(u) * yuMarkMs(u) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
+const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * vgMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
   (u.hasteT > 0 ? 1 + K.P.haste * (u.hasteT / K.P.hasteDur) : 1) * (u.wT > 0 ? 1 + KR.W.ms : 1) * (u.key === 'ryoshu' && u.ryoRT > time ? 1 + KRY.R.ms[rk(u, 'R')] : 1) *
   (u.homingT > time ? 1.4 : 1) * (u.pinkT > time ? 1.25 : 1) * stemSlow(u);
 const stemSlow = u => isChamp(u) && heroes.some(c => c.alive && c.team !== u.team && hasItem(c, 'stem') && dist(c, u) < E(300)) ? .9 : 1;   // 녹색 줄기
@@ -1453,6 +1482,10 @@ const CHAMP_UI = {
            cast:{Q:'발포'}},
   honglu: {names:{Q:'비취의 흔적', W:'창옥집멸', E:'홍원의 청안', R:'허환경'},
            cast:{}},
+  vergil: {names:{Q:'글라디우스', W:'홍련 베기', E:'간파', R:'색'},
+           cast:{}},
+  kromer: {names:{Q:'광소', W:'정화', E:'이단 말살', R:'순수한 세상'},
+           cast:{}},
   yuri:   {names:{Q:'장비 교체', W:'격리 개시', E:'L사의 시선', R:'황금 사과'},
            cast:{}},
   meursault:{names:{Q:'원, 투', W:'태양', E:'봉쇄', R:'타인의 사슬'},
@@ -1491,6 +1524,8 @@ function aimShape(c, key) {
   if (c.key === 'heathcliff') return heathShape(c, key);
   if (c.key === 'meursault') return meurShape(c, key);
   if (c.key === 'yuri') return yuriShape(c, key);
+  if (c.key === 'kromer') return kromerShape(c, key);
+  if (c.key === 'vergil') return vergilShape(c, key);
   if (key === 'Q') { const v = QV(c); return {len:E(v.len), wid:E(v.wid)}; }
   if (key === 'W') { const v = WV(c); return {len:E(v.len), wid:E(v.wid)}; }
   return null;
@@ -2381,6 +2416,8 @@ function damage(src, tgt, amount, opts = {}) {
     tgt.parryBy = src; fx.push({type:'pop', x:tgt.x, y:tgt.y, r:tgt.r * 1.3, color:'#fff0e8', t:0, life:.2}); return;   // 무아몽중: 막고 반격
   }
   if (src && src.key === 'heathcliff' && tgt.team !== src.team && !tgt.structure && !opts.noStack && !opts.noBleed && (opts.basic || opts.skill)) hcBleedAdd(src, tgt);   // 뼈 부수기: 출혈
+  if (tgt.key === 'vergil' && tgt.vgParryT > time && src && src.team !== tgt.team && src.x !== undefined && !opts.noParry) { vgParry(tgt, src); return; }   // 간파
+  if (src && src.vgGaze > time) amount *= 1 + KVG.P.dmgUp;                                  // 붉은시선 개안
   if (src && src.spGasT > time) amount *= 1 - SPELLS.gas.weak;                               // 착란 가스: 주는 피해 감소
   if (isChamp(src) && hasBuff(src, 'punish')) amount *= 1.15;                              // 환상체의 가호
   if (isChamp(src)) amount *= wyrmMul(src.team);
@@ -2503,7 +2540,7 @@ function damage(src, tgt, amount, opts = {}) {
 
 // ═════════════ 적중 피드백 (모든 챔피언 공통) ═════════════
 // 맞은 대상: 하얗게 번쩍 + 맞은 방향으로 살짝 밀림. 스킬이면 챔피언 색의 충격 고리, 챔피언을 맞히면 조준 표시(X)
-const HIT_COL = {gregor:'#ffb347', rodion:'#e8ecf4', yisang:'#ffffff', ryoshu:'#ff5a3a', faust:'#ffb8d2', donq:'#ffd23f', outis:'#8ff0b0', honglu:'#8ff5e0', sinclair:'#e8f070', heathcliff:'#d9a8ff', meursault:'#bcd6ff', yuri:'#ffd0d8', bot:'#ff6b6b'};
+const HIT_COL = {gregor:'#ffb347', rodion:'#e8ecf4', yisang:'#ffffff', ryoshu:'#ff5a3a', faust:'#ffb8d2', donq:'#ffd23f', outis:'#8ff0b0', honglu:'#8ff5e0', sinclair:'#e8f070', heathcliff:'#d9a8ff', meursault:'#bcd6ff', yuri:'#ffd0d8', kromer:'#ffe7a3', vergil:'#ff6a5a', bot:'#ff6b6b'};
 function hitFeedback(src, tgt, opts) {
   const a = Math.atan2(tgt.y - src.y, tgt.x - src.x);
   tgt.flashT = opts.skill ? .16 : .1;
@@ -2554,6 +2591,7 @@ function callForHelp(attacker, victim) {
 
 function kill(u, src) {
   if (yuriSaveFromDeath(u)) return;                                   // 유리 R: 황금 사과 부활
+  krEggKill(u, src);                                                  // 이스터에그: 나의 싱클레어
   u.alive = false; u.hp = 0; u.mark = null;
   if (u.structure) fx.push({type:'pop', x:u.x, y:u.y, r:u.r, color:TEAM_COL[u.team], t:0, life:.35});
   else deathFx(u, src);                                          // 피가 튀고 시체가 남음
@@ -2578,7 +2616,7 @@ function kill(u, src) {
     const xpTo = champs().filter(c => c.team !== u.team && c.alive &&            // 처치 경험치: 근처에 있거나 관여한 적끼리 나눔
       (dist(c, u) < XP_RANGE || (u.hitBy.get(c) !== undefined && time - u.hitBy.get(c) < 10)));
     for (const c of xpTo) gainXp(c, champKillXp(u) * xpShare(xpTo.length));
-    u.respawnT = respawnTime(u.level); u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
+    u.respawnT = respawnTime(u.level); u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.vgDash = null; u.vgW = null; u.vgQ = null; u.vgR = null; u.vgFin = null; u.vgUT = false; u.vgBrand = 0; u.vgGaze = 0; u.vgOverT = 0; u.vgHeat = 0; u.vgMark = 0; u.vgParryT = 0; u.krDash = null; u.krR = null; u.krUT = false; u.krW = 0; u.krNails = null; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
     if (u.donBlood && u.donBlood.until > time) donPoolBurst(u);           // 라 샹그라 데 산쵸: 피의 샘
     u.donBlood = null; u.tauntT = 0; u.qCharge = null; u.donMarkT = 0;
     if (u.rT > 0) endRForm(u);
@@ -2641,7 +2679,7 @@ function fire(src, tgt, amount, speed, color, size) {
 // ═════════════ 기본 공격 ═════════════
 function basicAttack(c, t) {
   if (t.ward) { hitWard(c, t); return; }
-  if (c.hcQ || c.hcR || c.mrDash || c.mrGrab || c.ylDash || c.ylRevive || c.fearT > time) return;                                      // 히스클리프 Q 준비·R 도약, 뫼르소 돌진·잡기 중엔 평타 불가
+  if (c.hcQ || c.hcR || c.mrDash || c.mrGrab || c.ylDash || c.ylRevive || c.fearT > time || c.krDash || c.krR || c.vgDash || c.vgW || c.vgFin) return;                                      // 히스클리프 Q 준비·R 도약, 뫼르소 돌진·잡기 중엔 평타 불가
   if (c.blindT > time && !t.structure) {                           // 실명: 기본 공격이 빗나감
     c.atkT = 1 / Math.min(2.5, c.as); c.swingT = .18; c.face = Math.atan2(t.y - c.y, t.x - c.x);
     if (c === player || t === player || onScreen(c)) text(t.x, t.y - t.r - E(30), '빗나감', '#ffe9a8', false, .6);
@@ -2700,6 +2738,8 @@ function basicAttack(c, t) {
     if (c.ammo <= 0) { if (!t.structure) dmg += (t.maxHp - t.hp) * (KO.P.last[0] + KO.P.last[1] * c.level); c.outisMsT = time + KO.P.msDur; outisReload(c, KO.P.reload); fx.push({type:'oEgo', owner:c, t:0, life:.35}); }
   }
   if (c.key === 'heathcliff' && c.hcW > time) { dmg += KHC.W.dmg[c.hcWi || 0] + KHC.W.ad * c.ad; c.hcW = 0; c.hcWHit = t; fx.push({type:'hcBleedMax', x:t.x, y:t.y, r:t.r * .8, t:0, life:.3}); }   // 다리 분쇄
+  if (c.key === 'kromer' && c.krW > time && !t.structure) dmg = krSmash(c, t, dmg);
+  if (c.key === 'vergil' && !t.structure) dmg = vgBasic(c, t, dmg);   // 붉은시선: 열기 · 표식 추가 피해   // 정화: 망치로 내려침
   if (c.key === 'yuri') yuriBeam(c, t, dmg, crit);                  // 광선 평타
   else if (c.st.ranged) projectiles.push({x:c.x + Math.cos(c.face + .5) * c.r, y:c.y + Math.sin(c.face + .5) * c.r, tgt:t, src:c, amount:dmg, speed:E(c.key === 'outis' ? 2400 : 1500), color:'#ffc4dc', size:E(7), opts:{basic:true, crit}, faust:c.key === 'faust', outis:c.key === 'outis', honglu:c.key === 'honglu', lastShot:c.key === 'outis' && c.ammo <= 0});   // 원거리: 투사체
   else damage(c, t, dmg, enhanced ? {color:'#d9a066', basic:true, skill:true, crit} : {basic:true, crit});
@@ -2776,11 +2816,21 @@ function castSkill(c, key, ang, frac = null) {                // 공통 후처�
   return r;
 }
 function castSkillCore(c, key, ang, frac = null) {
-  const recast = (c.key === 'meursault' && key === 'E' && !!c.mrGrab) || (c.key === 'ishmael' && ((key === 'W' && c.guardT > 0) || (key === 'R' && ishCanExecute(c)))) || (c.key === 'outis' && key === 'R' && !!c.snipe) || (c.key === 'sinclair' && key === 'E' && !!c.scGuard);   // 이스마엘 재사용
+  const recast = (c.key === 'vergil' && vgRecast(c, key)) || (c.key === 'meursault' && key === 'E' && !!c.mrGrab) || (c.key === 'ishmael' && ((key === 'W' && c.guardT > 0) || (key === 'R' && ishCanExecute(c)))) || (c.key === 'outis' && key === 'R' && !!c.snipe) || (c.key === 'sinclair' && key === 'E' && !!c.scGuard);   // 이스마엘 재사용
   if (!c.alive || !c.rank[key] || c.stunT > 0 || c.cast || (c.cd[key] > 0 && !recast) || gameOver) return;
   if (c.tauntT > time || c.fearT > time) return;          // 도발·공포 중엔 스킬 불가
   cancelRecall(c);
   if (c.blink || c.leap || c.alpha || c.rcut) return;
+  if (c.key === 'vergil') {
+    if (castVergil(c, key, ang, frac) === false) return;
+    if (hasItem(c, 'grinder') && time >= c.grinderCd) c.grinderReady = true;
+    return;
+  }
+  if (c.key === 'kromer') {
+    if (castKromer(c, key, ang, frac) === false) return;
+    if (hasItem(c, 'grinder') && time >= c.grinderCd) c.grinderReady = true;
+    return;
+  }
   if (c.key === 'yuri') {
     if (castYuri(c, key, ang, frac) === false) return;
     if (hasItem(c, 'grinder') && time >= c.grinderCd) c.grinderReady = true;
@@ -5004,19 +5054,19 @@ function aiMeur(b, p, d, hpP) {
 }
 
 // ═════════════ 유리 ═════════════
-// 공속 원딜 · 전 L사 통제팀. 광선 평타(경로 광역) + 관리 단계(R·B·P·W) 교체 + 적합/부적합 작업 + 황금 사과 부활
+// 공속 원딜 · 전 L사 통제팀. 광선 평타(경로 광역) + E.G.O 피해 속성(RED·WHITE·BLACK·PALE) 교체 + 적마다 취약·저항 속성 + 황금 사과 부활
 const KYU = {
   P:{pathMul:.55, pathWid:34, good:.25, bad:.25, reveal:3},          // 분석·관찰·격리
-  stages:['R', 'B', 'P', 'W'],
+  stages:['R', 'W', 'B', 'P'],                                        // 로보토미 피해 속성: RED → WHITE → BLACK → PALE
   S:{R:{dmg:[12, 1.6], bad:.25}, B:{every:3, slow:.1, slowDur:.5}, P:{every:3, pct:.045}, W:{low:.55}},
   Q:{cd:1.2},                                                         // E.G.O 장비 교체
   W:{cd:[14, 13, 12, 11], dash:260, speed:1500, dur:5, as:[.3, .38, .46, .54]},   // 격리 개시
   E:{cd:[11, 10, 9, 8], range:560, dmg:[50, 80, 110, 140], ad:.6, dur:3, ms:.15, mag:[8, 2], magAp:.2, add:.6, max:6},   // L사의 시선
   R:{cd:[120, 100, 80], range:650, dur:4, maggot:1.0, apple:.55, pop:.3, heal:[.2, .3], healAs:.25, radius:220, dmg:[150, 250, 350], ad:.6, fear:.85},   // 죽고 싶지 않았어요
 };
-const YU_COL = {R:'#e0453a', B:'#4a8fe0', P:'#9a5ad8', W:'#f2f2f2'};
-const YU_NAME = {R:'본능', B:'억압', P:'애착', W:'통찰'};
-function yuriAssignWork(list) {                                      // 게임 시작: 챔피언마다 적합·부적합 작업 무작위 배정
+const YU_COL = {R:'#e0453a', W:'#f2f2f2', B:'#26262c', P:'#7fe0d8'};   // RED · WHITE · BLACK · PALE
+const YU_NAME = {R:'RED', W:'WHITE', B:'BLACK', P:'PALE'};
+function yuriAssignWork(list) {                                      // 게임 시작: 챔피언마다 취약·저항 피해 속성 무작위 배정 (환상체의 내성처럼)
   for (const c of list) { const s = KYU.stages.slice().sort(() => Math.random() - .5); c.ylGood = s[0]; c.ylBad = s[1]; c.ylSeen = {}; c.ylRev = {}; }
 }
 const yuStages = c => c.ylStage2 && c.ylWT > time ? [c.ylStage || 'R', c.ylStage2] : [c.ylStage || 'R'];
@@ -5039,7 +5089,7 @@ function yuRTarget(c, ang, frac) {                                    // 황금�
   const d = E(KYU.R.range) * Math.max(.05, frac), ax = c.x + Math.cos(ang) * d, ay = c.y + Math.sin(ang) * d;
   return cands.sort((a, b) => Math.hypot(a.x - ax, a.y - ay) - Math.hypot(b.x - ax, b.y - ay))[0] || c;
 }
-function yuCycle(c) {                                                 // 다음 관리 단계로
+function yuCycle(c) {                                                 // 다음 피해 속성으로
   const st = KYU.stages, cur = c.ylStage || 'R';
   c.ylStage = st[(st.indexOf(cur) + 1) % 4];
   if (c.ylWT > time) { const pool = st.filter(s => s !== c.ylStage && s !== c.ylStage2); c.ylStage2 = pool[Math.floor(Math.random() * pool.length)]; }   // 격리 중: 보조 단계도 새 종류로
@@ -5084,10 +5134,10 @@ function yuriBeam(c, t, dmg, crit) {                                  // 광선 
   const st = yuStages(c), champT = isChamp(t);
   c.ylN = (c.ylN || 0) + 1;
   let mul = 1;
-  if (champT && t.ylGood) {                                           // 적합·부적합 작업
+  if (champT && t.ylGood) {                                           // 취약(×1.25) · 저항(×0.75) 속성
     if (st.includes(t.ylGood)) mul += KYU.P.good; else if (st[0] === t.ylBad) mul -= KYU.P.bad;
     const seen = t.ylSeen[c.team] || (t.ylSeen[c.team] = new Set()); for (const s of st) seen.add(s);
-    if (seen.size >= KYU.P.reveal && !t.ylRev[c.team]) { t.ylRev[c.team] = true; fx.push({type:'ylReveal', tgt:t, t:0, life:.8}); if (c === player) text(t.x, t.y - t.r - E(70), '작업 적합도 파악', '#ffffff', true, 1); }
+    if (seen.size >= KYU.P.reveal && !t.ylRev[c.team]) { t.ylRev[c.team] = true; fx.push({type:'ylReveal', tgt:t, t:0, life:.8}); if (c === player) text(t.x, t.y - t.r - E(70), '속성 내성 파악', '#ffffff', true, 1); }
   }
   let d = dmg * mul;
   if (st.includes('W')) d *= 1 + KYU.S.W.low * (1 - t.hp / t.maxHp);
@@ -5174,7 +5224,7 @@ function aiYuri(b, p, d, hpP) {
     const near = champs().filter(u => u.alive && u.team === b.team && dist(u, b) < E(KYU.R.range) && u.hp / u.maxHp < .22 && (u.lastDmgT ?? 99) < 1.2 && !u.ylRevive && !(u.ylAuraT > time))[0];
     if (near) { castSkill(b, 'R', Math.atan2(near.y - b.y, near.x - b.x), Math.min(1, dist(b, near) / E(KYU.R.range))); return true; }
   }
-  if (ready('Q') && isChamp(p)) {                                     // 적합 작업을 알면 그쪽으로, 모르면 종류를 돌려 가며 관찰
+  if (ready('Q') && isChamp(p)) {                                     // 취약 속성을 알면 그쪽으로, 모르면 속성을 돌려 가며 관찰
     const rev = p.ylRev && p.ylRev[b.team], st = b.ylStage || 'R';
     if (rev ? st !== p.ylGood : (time > (b.ylQT || 0) && d < E(600))) { b.ylQT = time + 2.5; castSkill(b, 'Q', null); return true; }
   }
@@ -5183,6 +5233,489 @@ function aiYuri(b, p, d, hpP) {
     const away = hpP < .3 || (b.hp / b.maxHp < .4), a = Math.atan2(p.y - b.y, p.x - b.x) + (away ? Math.PI : Math.PI / 2 * (Math.random() < .5 ? 1 : -1));
     castSkill(b, 'W', a); return true;
   }
+  return false;
+}
+
+// ═════════════ 크로머 ═════════════
+// AD 암살자 · 못과 망치. 스킬로 못을 박고(최대 3), 못 박힌 적은 움직일수록 피를 흘림. 망치로 마무리
+const KKR = {
+  P:{max:3, dur:5, step:150, bleed:[5, 1.1], bleedAd:.07},                 // 못과 망치: 이동 150마다 (5 + 1.1×레벨 + 공격력 7%) × 못 개수
+  Q:{cd:[8, 7.5, 7, 6.5], len:760, wid:46, speed:1800, dmg:[60, 95, 130, 165], ad:.85, first:1.3, after:.6},   // 광소
+  W:{cd:[9, 8.5, 8, 7.5], window:5, dmg:[35, 60, 85, 110], ad:.45, miss:[.08, .09, .10, .11], perNail:.25, slow:.5, slowDur:1, ms:.14, msRange:1300},   // 정화
+  E:{cd:[12, 11, 10, 9], radius:165, dash:300, speed:1500, dmg:[45, 70, 95, 120], ad:.45, stun:.5, bonus:[40, 60, 80, 100], bonusAd:.4},   // 이단 말살
+  R:{cd:[100, 85, 70], range:650, wind:.45, root:1.1, dmg:[100, 170, 240], ad:.6, smashAt:.45, smash:[60, 100, 140], smashAd:.4, miss:[.10, .13, .16], perNail:.2, knock:360, back:.25},   // 가장!! 순수한!! 세상으로!!!
+  egg:{need:3, ad:.12, bleed:.4, ms:.08},                                  // 이스터에그: 나의 싱클레어
+};
+let krBolts = [];
+const krNailN = u => u.krNails && u.krNails.until > time ? u.krNails.n : 0;
+function krNail(c, t) {                                                   // 못 하나 박기 (적 챔피언만)
+  if (!isChamp(t) || t.team === c.team || !t.alive) return;
+  const N = t.krNails && t.krNails.until > time ? t.krNails : (t.krNails = {n:0, acc:0, lx:t.x, ly:t.y});
+  N.n = Math.min(KKR.P.max, N.n + 1); N.until = time + KKR.P.dur; N.by = c;
+  fx.push({type:'krNailIn', tgt:t, n:N.n, t:0, life:.35});
+}
+function kromerShape(c, key) {
+  if (key === 'Q') return {len:E(KKR.Q.len), wid:E(KKR.Q.wid)};
+  if (key === 'E') return {len:E(KKR.E.dash), wid:E(KKR.E.radius) * 2};
+  if (key === 'R') return {point:E(KKR.R.range)};
+  return null;                                                            // W: 즉시
+}
+function krRTarget(c, ang, frac) {
+  const cands = champs().filter(u => u.alive && u.team !== c.team && targetable(u) && seenBy(c.team, u) && edge(c, u) <= E(KKR.R.range));
+  if (!cands.length) return null;
+  if (ang === null || ang === undefined || frac === null || frac === undefined) return cands.sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
+  const d = E(KKR.R.range) * Math.max(.1, frac), ax = c.x + Math.cos(ang) * d, ay = c.y + Math.sin(ang) * d;
+  return cands.sort((a, b) => Math.hypot(a.x - ax, a.y - ay) - Math.hypot(b.x - ax, b.y - ay))[0];
+}
+function krSpin(c, i, last) {                                             // E 회전 베기
+  fx.push({type:'krSpin', x:c.x, y:c.y, r:E(KKR.E.radius), ang:c.face, t:0, life:.3});
+  let hitC = false;
+  for (const u of units) {
+    if (!u.alive || u.team === c.team || !targetable(u) || u.structure || dist(u, c) > E(KKR.E.radius) + u.r) continue;
+    const full = last && krNailN(u) >= KKR.P.max;
+    if (isChamp(u)) callForHelp(c, u);
+    damage(c, u, KKR.E.dmg[i] + KKR.E.ad * c.ad, {skill:true, color:'#e8d6d6'});
+    if (full && u.alive) {                                                // 못이 다 박힌 대상: 기절 + 추가 피해
+      u.stunT = Math.max(u.stunT || 0, KKR.E.stun);
+      damage(c, u, KKR.E.bonus[i] + KKR.E.bonusAd * c.ad, {skill:true, color:'#ff5a6a', big:true});
+      fx.push({type:'krImpact', x:u.x, y:u.y, r:u.r, t:0, life:.4});
+      if (c === player || u === player) text(u.x, u.y - u.r - E(50), '기절', '#ffe7a3', false, .7);
+    }
+    if (u.alive) krNail(c, u);
+    if (isChamp(u)) hitC = true;
+  }
+  if (hitC && (c === player || onScreen(c))) impactFeel(c === player ? .05 : 0, last ? 7 : 4);
+}
+function castKromer(c, key, ang, frac) {
+  const i = rk(c, key);
+  if (c.krDash || c.krR) return false;
+  if (key === 'Q') {
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KKR.Q.len));
+    c.cd.Q = c.cdMax.Q = KKR.Q.cd[i] * hasteMul(c); c.face = ang; c.swingT = .18;
+    krBolts.push({x:c.x + Math.cos(ang) * c.r, y:c.y + Math.sin(ang) * c.r, ang, left:E(KKR.Q.len), owner:c, i, hit:new Set(), champHit:false});
+    fx.push({type:'krLaugh', owner:c, t:0, life:.5});
+    return true;
+  }
+  if (key === 'W') {
+    c.cd.W = c.cdMax.W = KKR.W.cd[i] * hasteMul(c);
+    c.krW = time + KKR.W.window; c.krWi = i; c.atkT = Math.min(c.atkT, .05);
+    fx.push({type:'krRaise', owner:c, t:0, life:.4});
+    return true;
+  }
+  if (key === 'E') {
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KKR.E.dash) + E(KKR.E.radius));
+    c.cd.E = c.cdMax.E = KKR.E.cd[i] * hasteMul(c); c.face = ang;
+    krSpin(c, i, false);
+    c.krDash = {ang, left:E(KKR.E.dash) * Math.max(.35, Math.min(1, frac ?? 1)), i};
+    return true;
+  }
+  if (key === 'R') {
+    const t = krRTarget(c, ang, frac);
+    if (!t) { if (c === player) text(c.x, c.y - c.r - E(45), '대상이 없음', '#aab4c0', false, .8); return false; }
+    c.cd.R = c.cdMax.R = KKR.R.cd[i] * hasteMul(c);
+    c.krR = {t:0, tgt:t, ox:c.x, oy:c.y, i, phase:'wind'};
+    c.krUT = true; c.target = null; c.recalling = false;
+    fx.push({type:'krWind', owner:c, t:0, life:KKR.R.wind});
+    if (c === player || t === player) text(c.x, c.y - c.r - E(60), '가장!! 순수한!! 세상으로!!!', '#ff5a6a', true, 1.2);
+    return true;
+  }
+  return false;
+}
+function krSmash(c, t, dmg) {                                             // W 강화 평타: 망치로 머리를 내려침
+  const i = c.krWi || 0, n = krNailN(t);
+  c.krW = 0;
+  dmg += (KKR.W.dmg[i] + KKR.W.ad * c.ad + (t.maxHp - t.hp) * KKR.W.miss[i]) * (1 + KKR.W.perNail * n);
+  if (isChamp(t) || isMinion(t) || isMonster(t)) { t.slowT = Math.max(t.slowT || 0, KKR.W.slowDur); t.slowAmt = Math.max(t.slowAmt || 0, KKR.W.slow); }
+  fx.push({type:'krHammer', x:t.x, y:t.y, r:t.r, ang:c.face, n, t:0, life:.4});
+  if (isChamp(t) && (c === player || t === player)) { impactFeel(.07, 9); if (c === player) camPunch(.04); }
+  if (t.alive) krNail(c, t);
+  return dmg;
+}
+function kromerTick(c, dt) {
+  if (c.krW && time > c.krW) c.krW = 0;
+  const D = c.krDash;
+  if (D) {                                                                // E 돌진 → 끝나면 다시 회전
+    const step = Math.min(D.left, E(KKR.E.speed) * dt), nx = c.x + Math.cos(D.ang) * step, ny = c.y + Math.sin(D.ang) * step;
+    const blocked = walls.some(w => inRect(nx, ny, w));
+    if (!blocked && c.stunT <= 0) { c.x = nx; c.y = ny; D.left -= step; c.vx = c.vy = 0; if (Math.random() < .5) fx.push({type:'krTrail', x:c.x, y:c.y, t:0, life:.25}); }
+    if (blocked || c.stunT > 0 || D.left <= 0) { c.krDash = null; krSpin(c, D.i, true); }
+  }
+  const R = c.krR;
+  if (R) {
+    R.t += dt; c.vx = c.vy = 0;
+    const t = R.tgt;
+    if (R.phase === 'wind' && R.t >= KKR.R.wind) {                         // 순간이동 → 대못
+      if (!t.alive || !c.alive) { c.krR = null; c.krUT = false; return; }
+      R.phase = 'nail'; R.t = 0; c.krUT = false;
+      const a = Math.atan2(R.oy - t.y, R.ox - t.x);                       // 원래 자리 쪽에 내려섬
+      fx.push({type:'krBlink', x:c.x, y:c.y, t:0, life:.35});
+      const sx = c.x, sy = c.y;
+      c.x = t.x + Math.cos(a) * (t.r + c.r + E(6)); c.y = t.y + Math.sin(a) * (t.r + c.r + E(6)); c.face = a + Math.PI;
+      fx.push({type:'krStreak', x:sx, y:sy, x2:c.x, y2:c.y, t:0, life:.4});
+      fx.push({type:'krBlink', x:c.x, y:c.y, t:0, life:.35});
+      callForHelp(c, t);
+      t.rootT = Math.max(t.rootT || 0, time + KKR.R.root);
+      damage(c, t, KKR.R.dmg[R.i] + KKR.R.ad * c.ad, {skill:true, color:'#ff5a6a', big:true});
+      if (t.alive) krNail(c, t);
+      fx.push({type:'krStake', tgt:t, t:0, life:KKR.R.root});
+      if (c === player || t === player) { impactFeel(.08, 10); }
+    } else if (R.phase === 'nail' && R.t >= KKR.R.smashAt) {               // 망치 → 원래 자리 쪽으로 날려 보냄
+      R.phase = 'back'; R.t = 0;
+      if (t.alive) {
+        const n = krNailN(t);
+        damage(c, t, (KKR.R.smash[R.i] + KKR.R.smashAd * c.ad + (t.maxHp - t.hp) * KKR.R.miss[R.i]) * (1 + KKR.R.perNail * n), {skill:true, color:'#ff3a4a', big:true});
+        if (t.alive) {
+          const a = Math.atan2(R.oy - t.y, R.ox - t.x), d = Math.min(E(KKR.R.knock), Math.hypot(R.ox - t.x, R.oy - t.y));
+          let px = t.x + Math.cos(a) * d, py = t.y + Math.sin(a) * d;
+          for (let s = 1; s <= 8; s++) { const qx = t.x + Math.cos(a) * d * s / 8, qy = t.y + Math.sin(a) * d * s / 8; if (walls.some(w => inRect(qx, qy, w))) { px = t.x + Math.cos(a) * d * (s - 1) / 8; py = t.y + Math.sin(a) * d * (s - 1) / 8; break; } }
+          t.pull = {x:px, y:py, t:.32}; t.stunT = Math.max(t.stunT || 0, .32);
+        }
+        fx.push({type:'krHammer', x:t.x, y:t.y, r:t.r * 1.4, ang:c.face, n, big:true, t:0, life:.5});
+        if (c === player || t === player) { impactFeel(.11, 14); camPunch(.06); }
+      }
+    } else if (R.phase === 'back' && R.t >= KKR.R.back) {                  // 원래 자리로 돌아옴
+      fx.push({type:'krBlink', x:c.x, y:c.y, t:0, life:.35});
+      fx.push({type:'krStreak', x:c.x, y:c.y, x2:R.ox, y2:R.oy, t:0, life:.35});
+      c.x = R.ox; c.y = R.oy; c.krR = null;
+      fx.push({type:'krBlink', x:c.x, y:c.y, t:0, life:.35});
+    }
+  }
+}
+function updateKromer(dt) {                                               // 못 화살 + 출혈
+  krBolts = krBolts.filter(b => {
+    const c = b.owner, step = Math.min(b.left, E(KKR.Q.speed) * dt);
+    b.x += Math.cos(b.ang) * step; b.y += Math.sin(b.ang) * step; b.left -= step;
+    if (walls.some(w => inRect(b.x, b.y, w))) return false;
+    for (const u of units) {
+      if (!u.alive || u.team === c.team || !targetable(u) || u.structure || b.hit.has(u) || Math.hypot(u.x - b.x, u.y - b.y) > u.r + E(KKR.Q.wid) / 2) continue;
+      b.hit.add(u);
+      let mul = KKR.Q.after;
+      if (isChamp(u) && !b.champHit) { b.champHit = true; mul = KKR.Q.first; }   // 처음 맞은 적 챔피언: 더 큰 피해
+      else if (!b.champHit && b.hit.size === 1) mul = 1;
+      if (isChamp(u)) callForHelp(c, u);
+      damage(c, u, (KKR.Q.dmg[b.i] + KKR.Q.ad * c.ad) * mul, {skill:true, color:mul > 1 ? '#ff8a96' : '#e8d6d6', big:mul > 1});
+      if (u.alive) krNail(c, u);
+      fx.push({type:'krPierce', x:u.x, y:u.y, ang:b.ang, r:u.r, t:0, life:.25});
+    }
+    return b.left > 0;
+  });
+  for (const u of heroes) {                                               // 못: 움직인 만큼 출혈
+    const N = u.krNails; if (!N) continue;
+    if (!u.alive || N.until <= time) { u.krNails = null; continue; }
+    const d = Math.hypot(u.x - N.lx, u.y - N.ly); N.lx = u.x; N.ly = u.y;
+    if (d > E(200)) continue;                                              // 순간이동 등은 제외
+    N.acc += d;
+    if (N.acc >= E(KKR.P.step)) {
+      N.acc -= E(KKR.P.step);
+      const c = N.by; if (!c) continue;
+      const egg = c.krEggBuff ? 1 + KKR.egg.bleed : 1;
+      damage(c, u, (KKR.P.bleed[0] + KKR.P.bleed[1] * c.level + KKR.P.bleedAd * c.ad) * N.n * egg, {noProc:true, noStack:true, color:'#c8233a'});
+      fx.push({type:'krBleed', x:u.x, y:u.y, n:N.n, t:0, life:.45});
+    }
+  }
+}
+const krMs = u => {                                                       // 정화 (기본 지속): 못 박힌 적을 향해 갈 때 이속
+  if (u.key !== 'kromer' || !u.rank || !u.rank.W) return 1;
+  const vx = u.vx || 0, vy = u.vy || 0; if (!vx && !vy) return 1;
+  for (const t of heroes) if (t.alive && t.team !== u.team && krNailN(t) && dist(u, t) < E(KKR.W.msRange) && vx * (t.x - u.x) + vy * (t.y - u.y) > 0) return 1 + KKR.W.ms;
+  return 1;
+};
+
+// ── 이스터에그: 나의 싱클레어 ──
+let krEgg = null;
+function krEggInit() {
+  krEgg = null;
+  const k = heroes.find(h => h.key === 'kromer'), s = k && heroes.find(h => h.key === 'sinclair' && h.team !== k.team);
+  if (!k || !s) return;
+  krEgg = {k, s, kn:0, sn:0, done:false};
+  setTimeout(() => { if (krEgg && started) announce('이스터에그 · 나의 싱클레어 — 크로머와 싱클레어가 만났습니다', '#ff8a96'); }, 1500);
+}
+function krEggKill(u, src) {
+  const E2 = krEgg; if (!E2 || E2.done || !src || !isChamp(src)) return;
+  if (u === E2.s && src === E2.k) E2.kn++;
+  else if (u === E2.k && src === E2.s) E2.sn++;
+  else return;
+  const win = E2.kn >= KKR.egg.need ? E2.k : E2.sn >= KKR.egg.need ? E2.s : null;
+  if (!win) { setTimeout(() => announce(`나의 싱클레어 · 크로머 ${E2.kn} : ${E2.sn} 싱클레어`, '#ff8a96'), 1600); return; }
+  E2.done = true; win.krEggBuff = true; recalcStats(win);
+  setTimeout(() => { if (win.key === 'kromer') announce('나의 싱클레어… 이번에도 제가 이겼네요 · 크로머 강화 (공격력 · 출혈)', '#ff5a6a');
+  else announce('더는 당신 것이 아니에요 · 싱클레어 강화 (공격력 · 이동 속도)', '#c9e04a'); }, 1600);
+  fx.push({type:'krEgg', owner:win, t:0, life:1.2});
+}
+
+function aiKromer(b, p, d, hpP) {
+  const ready = k => b.rank[k] > 0 && b.cd[k] <= 0 && !b.krDash && !b.krR;
+  const n = isChamp(p) ? krNailN(p) : 0, hpB = b.hp / b.maxHp;
+  if (ready('R') && isChamp(p) && d < E(KKR.R.range) && (hpP < .5 || n >= 2) && hpB > .3) { castSkill(b, 'R', Math.atan2(p.y - b.y, p.x - b.x), Math.min(1, dist(b, p) / E(KKR.R.range))); return true; }
+  if (ready('Q') && d < E(KKR.Q.len) * .9) { castSkill(b, 'Q', aimAt(b, p, d / E(KKR.Q.speed))); return true; }
+  if (ready('E') && d < E(KKR.E.dash) + E(KKR.E.radius) * .8 && (n >= 2 || hpP < .6 || b.stance === 'allin')) { castSkill(b, 'E', Math.atan2(p.y - b.y, p.x - b.x), Math.min(1, (d + E(40)) / E(KKR.E.dash))); return true; }
+  if (ready('W') && d < E(b.st.range) + E(140)) { castSkill(b, 'W', null); return true; }
+  return false;
+}
+
+// ═════════════ 베르길리우스 · 붉은시선 ═════════════
+// 특색 해결사. 압도적인 피해와 다수 상대력 — 대신 박자(타이밍)를 맞춰야만 제 힘이 나오는 극악의 난이도
+const KVG = {
+  P:{basic:8, hit:14, decay:7, idle:3, dur:5, dmgUp:.3, cdr:1, overSlow:.3, overDur:2, reveal:.3, revealR:1600, shield:[50, .06], shieldCap:.2, shieldDur:3, gazeShield:.1, gazeHeal:.03},   // 붉은시선 (열기 게이지)
+  Q:{cd:[7, 6.5, 6, 5.5], win:1.6, lo:.3, hi:.55, len:290, wid:130, dmg:[34, 56, 78, 100], ad:.6, perf:.5, slamDash:230, slamR:200, slamMul:1.5, speed:1600},   // 글라디우스
+  W:{cd:[11, 10, 9, 8], max:1.25, lo:.95, hi:1.15, len:660, wid:[80, 210], dmg:[80, 125, 170, 215], ad:.95, perfMul:2, stun:.6, knock:110, slow:.35},   // 홍련 베기
+  E:{cd:[14, 13, 12, 11], dash:240, speed:1800, parry:.35, heat:30, counter:.6},                                         // 간파
+  R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[200, 320, 440], ad:1.1, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 피귀를 위한 장례
+};
+const vgHeatAdd = (c, n) => {
+  if (c.key !== 'vergil' || !c.alive) return;
+  c.vgHeatT = time;
+  if (c.vgGaze > time || c.vgOverT > time) return;
+  c.vgHeat = Math.min(100, (c.vgHeat || 0) + n);
+  if (c.vgHeat >= 100) { c.vgGaze = time + KVG.P.dur; vgGuard(c, c.maxHp * KVG.P.gazeShield); fx.push({type:'vgGazeOn', owner:c, t:0, life:.7}); if (c === player || onScreen(c)) { text(c.x, c.y - c.r - E(60), '붉은시선', '#ff3b3b', true, 1); if (c === player) impactFeel(.06, 8); } }
+};
+function vgGuard(c, amt) {                                                // 붉은 보호막: 완벽한 판정마다 쌓임 (최대 체력의 20%까지)
+  if (!c.alive) return;
+  c.shield = Math.min(c.maxHp * KVG.P.shieldCap, (c.shieldT > 0 ? c.shield || 0 : 0) + amt); c.shieldT = KVG.P.shieldDur; c.vgGuardT = time + KVG.P.shieldDur;
+  fx.push({type:'vgGuard', owner:c, t:0, life:.45});
+}
+function vgHeal(c, amt) {
+  if (!c.alive || amt <= 0) return;
+  const h = Math.min(c.maxHp - c.hp, amt); if (h <= 0) return;
+  c.hp += h; if (c === player || onScreen(c)) text(c.x + E(18), c.y - c.r - E(28), '+' + Math.round(h), '#ff8a8a', false, .6);
+}
+const vgPerfShield = c => vgGuard(c, KVG.P.shield[0] + KVG.P.shield[1] * c.maxHp);
+const vgOnHit = (c, u) => {                                               // 스킬이 챔피언에게 맞음: 열기 + 개안 중엔 다른 스킬 쿨 감소 + (욕장 안) 핏빛 낙인
+  if (!isChamp(u)) return;
+  vgHeatAdd(c, KVG.P.hit);
+  if (c.vgGaze > time) vgHeal(c, c.maxHp * KVG.P.gazeHeal);             // 붉은시선 중: 피를 머금음
+  if (c.vgR && vgInPool(c, u)) { if (u.vgBrandBy !== c) u.vgBrand = 0; u.vgBrandBy = c; u.vgBrand = Math.min(KVG.R.brandMax, (u.vgBrand || 0) + 1); fx.push({type:'vgBrandIn', tgt:u, n:u.vgBrand, t:0, life:.4}); }
+  if (c.vgGaze > time) for (const k of ['Q', 'W', 'E']) c.cd[k] = Math.max(0, c.cd[k] - KVG.P.cdr);
+};
+function vergilShape(c, key) {
+  if (key === 'Q') { const n = vgQNext(c); return n === 3 ? {len:E(KVG.Q.slamDash), wid:E(KVG.Q.slamR) * 2} : {len:E(KVG.Q.len), wid:E(KVG.Q.wid)}; }
+  if (key === 'W') return {len:E(KVG.W.len), wid:E(c.vgW ? vgWWid(c) : KVG.W.wid[1])};
+  if (key === 'E') return {len:E(KVG.E.dash), wid:E(60)};
+  if (key === 'R') return null;                                           // 제자리 시전 · 다시 누르면 장례
+  return null;
+}
+const vgQNext = c => c.vgQ && time < c.vgQ.until ? c.vgQ.n + 1 : 1;
+const vgWHold = c => c.vgW ? time - c.vgW.t0 : 0;
+const vgWWid = c => { const k = Math.min(1, vgWHold(c) / KVG.W.max); return KVG.W.wid[0] + (KVG.W.wid[1] - KVG.W.wid[0]) * k; };
+function vgRecast(c, key) {                                               // 쿨타임이 있어도 다시 누를 수 있는 순간
+  if (key === 'Q') return !!(c.vgQ && time < c.vgQ.until && c.vgQ.n < 3 && time - c.vgQ.t > .15);
+  if (key === 'W') return !!c.vgW;
+  if (key === 'R') return !!(c.vgR && !c.vgFin && time - c.vgR.t0 > .5);
+  return false;
+}
+function vgPerfect(c, x, y, label) {
+  vgPerfShield(c);
+  fx.push({type:'vgPerfect', x, y, owner:c, t:0, life:.5});
+  if (c === player || onScreen(c)) text(x, y - E(56), label || '완벽', '#ffffff', true, .7);
+  if (c === player) { impactFeel(.06, 9); camPunch(.04); }
+}
+function vgSlashHits(c, ang, len, wid, dmg, perfect) {
+  let hitC = false;
+  for (const u of segHits(c, ang, len, wid)) {
+    if (isChamp(u)) { callForHelp(c, u); hitC = true; }
+    damage(c, u, dmg, {skill:true, color:perfect ? '#ffffff' : '#ffb27a', big:perfect && isChamp(u)});
+    if (u.alive && isChamp(u)) vgOnHit(c, u);
+  }
+  return hitC;
+}
+function castVergil(c, key, ang, frac) {
+  const i = rk(c, key);
+  if (c.vgDash || c.vgStrike || c.vgFin) return false;
+  if (key === 'Q') {
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KVG.Q.len));
+    const n = vgQNext(c), since = c.vgQ ? time - c.vgQ.t : 0;
+    const perfect = c.vgPerfNext || (n > 1 && since >= KVG.Q.lo && since <= KVG.Q.hi);
+    c.vgPerfNext = false; c.face = ang; c.swingT = .18;
+    const dmg = (KVG.Q.dmg[i] + KVG.Q.ad * c.ad) * (perfect ? 1 + KVG.Q.perf : 1), qL = E(KVG.Q.len) * (c.vgR ? KVG.R.qMul : 1);
+    if (n < 3) {
+      c.vgQ = {n, t:time, until:time + KVG.Q.win, i};
+      c.cd.Q = c.cdMax.Q = .15;
+      fx.push(c.vgR ? {type:'vgThrust', x:c.x, y:c.y, ang, len:qL, wid:E(KVG.Q.wid), perfect, t:0, life:.3} : {type:'vgSlash', x:c.x, y:c.y, ang, len:qL, wid:E(KVG.Q.wid), side:n % 2 ? 1 : -1, perfect, t:0, life:.28});
+      vgSlashHits(c, ang, qL, E(KVG.Q.wid), dmg, perfect);
+      if (perfect) vgPerfect(c, c.x + Math.cos(ang) * E(120), c.y + Math.sin(ang) * E(120));
+    } else {                                                              // 세 번째: 뛰어올라 내려찍기
+      c.vgQ = null; c.cd.Q = c.cdMax.Q = KVG.Q.cd[i] * hasteMul(c);
+      c.vgDash = {ang, left:E(KVG.Q.slamDash) * Math.max(.2, Math.min(1, frac ?? 1)), speed:E(KVG.Q.speed), slam:{dmg:dmg * KVG.Q.slamMul, perfect}};
+    }
+    return true;
+  }
+  if (key === 'W') {
+    if (!c.vgW) {                                                         // 누르면 기 모으기 시작, 다시 누르면 벰
+      c.vgW = {t0:time, i}; c.cd.W = c.cdMax.W = 0;
+      fx.push({type:'vgCharge', owner:c, t:0, life:.4});
+      return true;
+    }
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KVG.W.len));
+    vgWRelease(c, ang, false);
+    return true;
+  }
+  if (key === 'E') {
+    if (ang === null || ang === undefined) ang = c.face;
+    c.cd.E = c.cdMax.E = KVG.E.cd[i] * hasteMul(c);
+    c.vgParryT = time + KVG.E.parry; c.face = ang;
+    c.vgDash = {ang, left:E(KVG.E.dash) * Math.max(.3, Math.min(1, frac ?? 1)), speed:E(KVG.E.speed)};
+    fx.push({type:'vgStep', owner:c, t:0, life:KVG.E.parry});
+    return true;
+  }
+  if (key === 'R') {
+    if (!c.vgR) {                                                         // 피의 욕장: 발밑에 피의 웅덩이가 번지고 E.G.O를 두름
+      c.vgR = {x:c.x, y:c.y, t0:time, until:time + KVG.R.dur, i};
+      c.cd.R = c.cdMax.R = .5;
+      c.vgHeat = 100; c.vgGaze = Math.max(c.vgGaze || 0, time + KVG.P.dur); c.vgOverT = 0; vgGuard(c, c.maxHp * KVG.P.gazeShield);
+      fx.push({type:'vgEgo', owner:c, t:0, life:1});
+      if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(70), '색 — Lavacrum Sanguinis', '#ff3b3b', true, 1.3);
+      if (c === player) { impactFeel(.1, 12); camPunch(.06); }
+      return true;
+    }
+    if (c.vgFin) return false;
+    vgFinale(c, false);                                                   // 다시 누름: 장례
+    return true;
+  }
+  return false;
+}
+const vgInPool = (c, u) => c.vgR && Math.hypot(u.x - c.vgR.x, u.y - c.vgR.y) < E(KVG.R.radius) + u.r;
+function vgBeatOk(c) {                                                    // 웅덩이의 고동이 가장 클 때 (박자)
+  const R = c.vgR, ph = (time - R.t0) % KVG.R.beat;
+  return ph >= KVG.R.beat - KVG.R.win || ph <= .06;
+}
+function vgFinale(c, auto) {                                              // 죽은 피귀를 위한 장례: 뛰어올라 거대한 핏빛 검으로 십자 베기
+  const R = c.vgR; if (!R || c.vgFin) return;
+  const perfect = !auto && vgBeatOk(c);
+  c.vgFin = {t:0, perfect, auto}; c.vgUT = true; c.target = null; c.vgW = null; c.vgQ = null; c.vgDash = null;
+  fx.push({type:'vgRise', owner:c, x:R.x, y:R.y, r:E(KVG.R.radius), t:0, life:KVG.R.air});
+  if (c === player || onScreen(c)) text(R.x, R.y - E(KVG.R.radius) * .35, '죽은 피귀를 위한 장례', perfect ? '#ffffff' : '#ff3b3b', true, 1.5);
+  if (perfect) vgPerfect(c, c.x, c.y, '고동');
+}
+function vgFinaleLand(c) {
+  const R = c.vgR, F = c.vgFin, i = R.i;
+  c.x = R.x; c.y = R.y; c.vgUT = false;
+  fx.push({type:'vgFuneral', x:R.x, y:R.y, r:E(KVG.R.radius), perfect:F.perfect, ang:c.face, t:0, life:1.1});
+  let healSum = 0;
+  for (const u of units) {
+    if (!u.alive || u.team === c.team || !targetable(u) || u.structure || !vgInPool(c, u)) continue;
+    const br = isChamp(u) && u.vgBrandBy === c ? (u.vgBrand || 0) : 0;
+    if (isChamp(u)) callForHelp(c, u);
+    const mul = (1 + KVG.R.brandMul * br) * (F.perfect ? KVG.R.perfMul : 1) * (F.auto ? KVG.R.auto : 1);
+    damage(c, u, (KVG.R.final[i] + KVG.R.ad * c.ad + (u.maxHp - u.hp) * KVG.R.miss) * mul, {skill:true, color:F.perfect ? '#ffffff' : '#ff3b3b', big:isChamp(u)});
+    u.vgBrand = 0;
+    if (isChamp(u)) healSum += c.maxHp * (KVG.R.finHeal + KVG.R.brandHeal * br);
+    if (!u.alive) continue;
+    if (F.perfect) u.stunT = Math.max(u.stunT || 0, KVG.R.stun);
+    if (br) fx.push({type:'vgBrandPop', x:u.x, y:u.y, r:u.r, n:br, t:0, life:.6});
+  }
+  vgHeal(c, healSum);                                                   // 장례: 벤 적의 피를 거둬들임
+  if (c === player || dist(c, player) < E(1400)) { impactFeel(F.perfect ? .16 : .1, F.perfect ? 20 : 13); camPunch(F.perfect ? .09 : .06); }
+  c.vgFin = null; c.vgR = null; c.cd.R = c.cdMax.R = KVG.R.cd[i] * hasteMul(c);
+}
+function vgEndR(c) { if (c.vgR && !c.vgFin) vgFinale(c, true); }
+function vgWRelease(c, ang, auto) {
+  const W = c.vgW, hold = time - W.t0, i = W.i;
+  c.vgW = null; c.cd.W = c.cdMax.W = KVG.W.cd[i] * hasteMul(c); c.face = ang; c.swingT = .2;
+  const perfect = !auto && hold >= KVG.W.lo && hold <= KVG.W.hi;
+  const k = Math.min(1, hold / KVG.W.max), wid = E(KVG.W.wid[0] + (KVG.W.wid[1] - KVG.W.wid[0]) * k), wL = E(KVG.W.len) * (c.vgR ? KVG.R.wMul : 1);
+  const dmg = (KVG.W.dmg[i] + KVG.W.ad * c.ad) * (.45 + .55 * k) * (perfect ? KVG.W.perfMul : 1) * (auto ? .6 : 1);
+  fx.push({type:'vgWave', x:c.x, y:c.y, ang, len:wL, wid, perfect, blood:!!c.vgR, t:0, life:.45});
+  for (const u of segHits(c, ang, wL, wid)) {
+    if (isChamp(u)) callForHelp(c, u);
+    damage(c, u, dmg, {skill:true, color:perfect ? '#ffffff' : '#ff6a3a', big:isChamp(u)});
+    if (!u.alive) continue;
+    if (isChamp(u)) vgOnHit(c, u);
+    if (perfect) {                                                        // 완벽한 베기: 기절 + 밀쳐냄
+      u.stunT = Math.max(u.stunT || 0, KVG.W.stun);
+      if (!u.structure) u.pull = {x:u.x + Math.cos(ang) * E(KVG.W.knock), y:u.y + Math.sin(ang) * E(KVG.W.knock), t:.2};
+    }
+  }
+  if (perfect) vgPerfect(c, c.x + Math.cos(ang) * E(200), c.y + Math.sin(ang) * E(200), '완벽한 베기');
+  else if (auto && (c === player)) text(c.x, c.y - c.r - E(50), '너무 오래 모음', '#aab4c0', false, .8);
+  if (c === player) { impactFeel(perfect ? .09 : .04, perfect ? 12 : 6); if (perfect) camPunch(.05); }
+}
+function vgParry(c, src) {                                                // 간파: 공격을 흘려 내고 반격
+  vgPerfShield(c);
+  c.vgParryT = 0; c.cd.E = 0; c.vgPerfNext = true;
+  vgHeatAdd(c, KVG.E.heat);
+  fx.push({type:'vgParry', x:c.x, y:c.y, r:c.r, ang:Math.atan2(src.y - c.y, src.x - c.x), t:0, life:.5});
+  if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(56), '간파', '#ffffff', true, .8);
+  if (c === player) { impactFeel(.08, 10); camPunch(.05); }
+  if (c.vgR && src.alive && !src.structure && isChamp(src) && dist(src, c) < E(900)) {   // 욕장 중 간파: 피 속을 건너 공격한 적 앞으로
+    const a = Math.atan2(c.y - src.y, c.x - src.x); fx.push({type:'vgBlink', x:c.x, y:c.y, x2:src.x, y2:src.y, t:0, life:.4});
+    c.x = src.x + Math.cos(a) * (src.r + c.r + E(4)); c.y = src.y + Math.sin(a) * (src.r + c.r + E(4)); c.face = a + Math.PI;
+  }
+  if (src.alive && !src.structure && dist(src, c) < E(500)) {
+    const i = Math.max(0, c.rank.Q - 1);
+    damage(c, src, (KVG.Q.dmg[i] + KVG.Q.ad * c.ad) * KVG.E.counter, {skill:true, color:'#ffffff', noParry:true});
+    if (src.alive) vgOnHit(c, src);
+    fx.push({type:'vgStrike', x:src.x, y:src.y, r:src.r, ang:Math.atan2(src.y - c.y, src.x - c.x), perfect:false, t:0, life:.4});
+  }
+}
+function vergilTick(c, dt) {
+  if (c.vgHeatT !== undefined && time - c.vgHeatT > KVG.P.idle && !(c.vgGaze > time)) c.vgHeat = Math.max(0, (c.vgHeat || 0) - KVG.P.decay * dt);
+  if (c.vgGaze && time >= c.vgGaze) {                                     // 개안이 끝남 → 과열 (궁극기 중이면 없음)
+    c.vgGaze = 0; c.vgHeat = 0;
+    if (!c.vgR) { c.vgOverT = time + KVG.P.overDur; if (c === player) text(c.x, c.y - c.r - E(50), '과열', '#ff8a5a', true, .9); }
+  }
+  if (c.vgQ && time >= c.vgQ.until) { const i = c.vgQ.i; c.vgQ = null; c.cd.Q = c.cdMax.Q = KVG.Q.cd[i] * hasteMul(c); }   // 박자를 놓침
+  if (c.vgW && time - c.vgW.t0 > KVG.W.max + .2) vgWRelease(c, c.face, true);                                              // 너무 오래 모음
+  if (c.vgR && !c.vgFin) {
+    if (vgInPool(c, c) && c.hp < c.maxHp) c.hp = Math.min(c.maxHp, c.hp + c.maxHp * KVG.R.poolRegen * dt);   // 욕장 안: 피로 상처를 메움
+    if (time >= c.vgR.until) vgEndR(c);                                   // 다시 누르지 않으면 저절로 장례 (약하게)
+    else for (const u of units) if (u.alive && u.team !== c.team && !u.structure && targetable(u) && vgInPool(c, u)) {   // 욕장 안의 적: 둔화 + 붉은 시선
+      u.slowT = Math.max(u.slowT || 0, .15); u.slowAmt = Math.max(u.slowT > .15 ? u.slowAmt || 0 : 0, KVG.R.slow);
+      if (isChamp(u)) { u.vgMark = time + .4; u.vgMarkBy = c; }
+    }
+  }
+  if (c.vgFin) { c.vgFin.t += dt; c.vx = c.vy = 0; if (c.vgFin.t >= KVG.R.air - KVG.R.gather && !c.vgFin.pulled) {   // 내려오기 직전 욕장 안의 적을 가운데로 끌어당김
+      c.vgFin.pulled = true; const R = c.vgR;
+      for (const u of units) if (u.alive && u.team !== c.team && !u.structure && targetable(u) && vgInPool(c, u)) u.pull = {x:u.x + (R.x - u.x) * .45, y:u.y + (R.y - u.y) * .45, t:.3};
+    }
+    if (c.vgFin.t >= KVG.R.air) vgFinaleLand(c); }
+  const D = c.vgDash;
+  if (D) {
+    const step = Math.min(D.left, D.speed * dt), nx = c.x + Math.cos(D.ang) * step, ny = c.y + Math.sin(D.ang) * step;
+    const blocked = walls.some(w => inRect(nx, ny, w));
+    if (!blocked) { c.x = nx; c.y = ny; D.left -= step; c.vx = c.vy = 0; if (Math.random() < .6) fx.push({type:'vgTrail', x:c.x, y:c.y, ang:D.ang, t:0, life:.3}); }
+    if (blocked || D.left <= 0) {
+      c.vgDash = null;
+      if (D.slam) {                                                       // 내려찍기
+        const sR = E(KVG.Q.slamR) * (c.vgR ? KVG.R.slamMul : 1);
+        fx.push({type:'vgSlam', x:c.x, y:c.y, r:sR, perfect:D.slam.perfect, blood:!!c.vgR, t:0, life:.5});
+        for (const u of units) {
+          if (!u.alive || u.team === c.team || !targetable(u) || u.structure || dist(u, c) > sR + u.r) continue;
+          if (isChamp(u)) callForHelp(c, u);
+          damage(c, u, D.slam.dmg, {skill:true, color:D.slam.perfect ? '#ffffff' : '#ffb27a', big:isChamp(u)});
+          if (u.alive && isChamp(u)) { vgOnHit(c, u); if (D.slam.perfect) u.stunT = Math.max(u.stunT || 0, .4); }
+        }
+        if (D.slam.perfect) vgPerfect(c, c.x, c.y);
+        if (c === player) impactFeel(D.slam.perfect ? .09 : .05, D.slam.perfect ? 12 : 7);
+      }
+    }
+  }
+  if (c.alive) for (const u of heroes) if (u.alive && u.team !== c.team && u.hp < u.maxHp * KVG.P.reveal && dist(u, c) < E(KVG.P.revealR)) u.revealT = Math.max(u.revealT || 0, time + .25);   // 인도자의 시선
+}
+const vgMs = u => u.key !== 'vergil' ? 1 : (u.vgW ? 1 - KVG.W.slow : 1) * (u.vgOverT > time ? 1 - KVG.P.overSlow : 1) * (u.vgR ? 1.12 : 1) * (u.vgFin ? 0 : 1);
+function vgBasic(c, t, dmg) {                                             // 평타: 열기 + 표식 대상 추가 피해 + 개안 중 강화
+  vgHeatAdd(c, KVG.P.basic);
+  if (t.vgMark > time && t.vgMarkBy === c) dmg += t.maxHp * KVG.R.markPct;
+  return dmg;
+}
+
+// ── 쓰러질 때: 피 대신 한 걸음씩 물러나며 전장을 벗어남 ──
+function vgRetreat(u, src) {
+  const a = src && src.x !== undefined ? Math.atan2(u.y - src.y, u.x - src.x) : Math.PI;
+  fx.push({type:'vgRetreat', x:u.x, y:u.y, ang:a, r:u.r, face:u.face, team:u.team, t:0, life:2.2});
+  if (u === player || onScreen(u)) text(u.x, u.y - u.r - E(60), '...여기까지인가.', '#c9c9d1', false, 2);
+}
+
+// ── AI: 박자를 못 맞춤 (일부러 서툴게) ──
+function aiVergil(b, p, d, hpP) {
+  const ready = k => b.rank[k] > 0 && (b.cd[k] <= 0 || vgRecast(b, k)) && !b.vgDash;
+  const jit = (lo, hi) => lo + Math.random() * (hi - lo);
+  if (b.vgW) { if (time - b.vgW.t0 > (b.vgAiW ??= jit(.35, 1.5))) { b.vgAiW = null; castSkill(b, 'W', Math.atan2(p.y - b.y, p.x - b.x)); return true; } return false; }
+  if (b.vgR && !b.vgFin && ready('R') && time - b.vgR.t0 > (b.vgAiR ??= jit(1.5, 6.5))) { b.vgAiR = null; castSkill(b, 'R', null); return true; }
+  if (ready('R') && !b.vgR && isChamp(p) && d < E(KVG.R.radius) * .8 && (hpP < .5 || Math.random() < .3)) { castSkill(b, 'R', null); return true; }
+  if (b.vgQ && ready('Q') && time - b.vgQ.t > (b.vgAiQ ??= jit(.12, 1.3))) { b.vgAiQ = null; castSkill(b, 'Q', Math.atan2(p.y - b.y, p.x - b.x), Math.min(1, d / E(KVG.Q.slamDash))); return true; }
+  if (ready('Q') && !b.vgQ && d < E(KVG.Q.len)) { castSkill(b, 'Q', Math.atan2(p.y - b.y, p.x - b.x)); return true; }
+  if (ready('W') && d < E(KVG.W.len) * .8 && Math.random() < .5) { castSkill(b, 'W', null); return true; }
+  if (ready('E') && Math.random() < .25) { castSkill(b, 'E', Math.atan2(p.y - b.y, p.x - b.x) + jit(-1.2, 1.2), 1); return true; }
   return false;
 }
 
@@ -5644,6 +6177,8 @@ function champTimers(c, dt) {
   if (c.key === 'heathcliff') heathTick(c, dt);
   if (c.key === 'meursault') meurTick(c, dt);
   if (c.key === 'yuri') yuriTick(c, dt);
+  if (c.key === 'kromer') kromerTick(c, dt);
+  if (c.key === 'vergil') vergilTick(c, dt);
   if (c.cast && c.cast.t >= c.cast.dur) finishCast(c);
   if (c.recalling) {
     if (c.stunT > 0) cancelRecall(c);
@@ -5686,7 +6221,7 @@ function moveChamp(c, dx, dy, dt) {
 function updatePlayer(dt, ix, iy) {
   if (!player.alive) { respawnTick(player, dt); return; }
   champTimers(player, dt);
-  if (player.dash || player.blink || player.leap || player.alpha || player.rcut || player.scR || player.hcR || player.mrDash || player.mrGrab || player.ylDash) return;
+  if (player.dash || player.blink || player.leap || player.alpha || player.rcut || player.scR || player.hcR || player.mrDash || player.mrGrab || player.ylDash || player.krDash || player.krR || player.vgDash || player.vgFin) return;
   if (player.ylRevive) { moveChamp(player, 0, 0, dt); return; }                                            // 돌진 중엔 조작 불가
   if (player.stunT > 0 || player.cast) { moveChamp(player, 0, 0, dt); return; }
   if (tauntedMove(player, dt) || fearMove(player, dt)) return;                               // 도발당함
@@ -5724,10 +6259,12 @@ const AI_BUILD = {
   sinclair: ['s_blade', 'goldrush', 'rage', 'tears', 'heaven'],
   heathcliff: ['s_blade', 'rage', 'tears', 'goldrush', 'heaven'],
   meursault: ['s_shield', 'harvest', 'galaxy', 'fragment', 'star'],
+  kromer: ['s_blade', 'smile', 'tears', 'bullet', 'scar'],
+  vergil: ['s_blade', 'goldrush', 'rage', 'tears', 'scar'],
   yuri: ['s_blade', 'lament', 'pink', 'cobalt', 'justitia'],
   yisang: ['s_ring', 'galaxy', 'fragment', 'dacapo', 'star'],
 };
-const AI_SKILL_ORDER = {gregor:['Q', 'W', 'E'], rodion:['Q', 'E', 'W'], yisang:['W', 'Q', 'E'], ishmael:['Q', 'E', 'W'], ryoshu:['Q', 'E', 'W'], faust:['Q', 'E', 'W'], donq:['Q', 'W', 'E'], outis:['Q', 'W', 'E'], honglu:['Q', 'W', 'E'], sinclair:['Q', 'W', 'E'], heathcliff:['Q', 'E', 'W'], meursault:['Q', 'E', 'W'], yuri:['E', 'W', 'Q']};
+const AI_SKILL_ORDER = {gregor:['Q', 'W', 'E'], rodion:['Q', 'E', 'W'], yisang:['W', 'Q', 'E'], ishmael:['Q', 'E', 'W'], ryoshu:['Q', 'E', 'W'], faust:['Q', 'E', 'W'], donq:['Q', 'W', 'E'], outis:['Q', 'W', 'E'], honglu:['Q', 'W', 'E'], sinclair:['Q', 'W', 'E'], heathcliff:['Q', 'E', 'W'], meursault:['Q', 'E', 'W'], yuri:['E', 'W', 'Q'], kromer:['Q', 'E', 'W'], vergil:['Q', 'W', 'E']};
 const AI = {react:[.14, .3], dodgeReact:[.1, .2], dodgeChance:.7, engage:600, lastHit:1.15};   // 반응 0.14~0.3초, 스킬 피하기는 보고 0.1~0.2초 뒤 (선딜이 짧으면 못 피함)
 
 // ── 포탑 철거: 맞아 줄 챔피언(탱커)을 앞세워 포탑 어그로를 받게 하고 나머지가 같이 침 ──
@@ -5801,6 +6338,8 @@ function aiCombo(b, p) {
   if (b.key === 'heathcliff') return aiHeath(b, p, d, hpP);
   if (b.key === 'meursault') return aiMeur(b, p, d, hpP);
   if (b.key === 'yuri') return aiYuri(b, p, d, hpP);
+  if (b.key === 'kromer') return aiKromer(b, p, d, hpP);
+  if (b.key === 'vergil') return aiVergil(b, p, d, hpP);
   if (b.key === 'honglu') {                                  // 홍루: 허환경 → 창옥지대 → 옥구슬 포킹
     const lead = (s) => ({x:p.x + (p.vx || 0) * s, y:p.y + (p.vy || 0) * s});
     const aimPt = (key, s) => { const q = lead(s), R = hlRange(b, hlBaseRange(key)); return [Math.atan2(q.y - b.y, q.x - b.x), Math.min(1, Math.hypot(q.x - b.x, q.y - b.y) / R)]; };
@@ -5901,6 +6440,20 @@ function skillEst(a, k, t) {                     // 스킬 한 번의 대략적�
     if (k === 'W') return a.ad * .6 * pm;
     if (k === 'R') return (a.qStack >= KR.Q.need || t.airT > 0) ? ((KR.R.hitDmg[i] + KR.R.hitAd * a.ad) * 4 + KR.R.slam[i] + KR.R.slamAd * a.ad) * cm * pm : 0;
   }
+  if (a.key === 'vergil') {
+    if (k === 'Q') return (KVG.Q.dmg[i] + KVG.Q.ad * a.ad) * (2 + KVG.Q.slamMul) * pm;
+    if (k === 'W') return (KVG.W.dmg[i] + KVG.W.ad * a.ad) * pm;
+    if (k === 'R') return (KVG.R.final[Math.min(2, i)] + KVG.R.ad * a.ad + (t.maxHp - t.hp) * KVG.R.miss) * pm;
+    return 0;
+  }
+  if (a.key === 'kromer') {
+    const n = krNailN(t) + 1;
+    if (k === 'Q') return (KKR.Q.dmg[i] + KKR.Q.ad * a.ad) * KKR.Q.first * pm;
+    if (k === 'W') return (KKR.W.dmg[i] + KKR.W.ad * a.ad + (t.maxHp - t.hp) * KKR.W.miss[i]) * (1 + KKR.W.perNail * n) * pm;
+    if (k === 'E') return (2 * (KKR.E.dmg[i] + KKR.E.ad * a.ad) + (n >= 3 ? KKR.E.bonus[i] + KKR.E.bonusAd * a.ad : 0)) * pm;
+    if (k === 'R') return (KKR.R.dmg[i] + KKR.R.ad * a.ad + (KKR.R.smash[i] + KKR.R.smashAd * a.ad + (t.maxHp - t.hp) * KKR.R.miss[i]) * (1 + KKR.R.perNail * n)) * pm;
+    return 0;
+  }
   if (a.key === 'yuri') {
     if (k === 'E') return (KYU.E.dmg[i] + KYU.E.ad * a.ad) * pm;
     if (k === 'W') return a.ad * pm * 3 * (1 + KYU.W.as[i]);
@@ -5997,7 +6550,7 @@ const killableMinion = (b, u) => u.hp <= b.ad * physMul(u, b) * 1.1 + csExecHp(u
 
 // ═════════════ 3대3 봇전: 팀·역할 ═════════════
 const ROLES = ['top', 'jungle', 'mid', 'bottom'], ROLE_NAME = {top:'탑', jungle:'정글', mid:'미드', bottom:'바텀'};
-const CHAMP_POOL = ['gregor', 'rodion', 'yisang', 'ishmael', 'ryoshu', 'faust', 'donq', 'outis', 'honglu', 'sinclair', 'heathcliff', 'meursault', 'yuri'];
+const CHAMP_POOL = ['gregor', 'rodion', 'yisang', 'ishmael', 'ryoshu', 'faust', 'donq', 'outis', 'honglu', 'sinclair', 'heathcliff', 'meursault', 'yuri', 'kromer', 'vergil'];
 const JG_ROUTE = ['blood', 'thieves', 'rats', 'sweep', 'glutton', 'scribe'];            // 첫 정글 순서 (위 버프 → 쥐떼 → 아래 버프 → 청소부)
 const enemiesOf = b => champs().filter(c => c.team !== b.team && (!c.alive || seenBy(b.team, c)));   // 시야에 보이는 적만 (죽은 적은 알 수 있음)
 const UNSEEN = {alive:false, unseen:true, respawnT:99, x:-1e5, y:-1e5, r:0, hp:1, maxHp:1, team:'none', st:{range:0, speed:0}, rank:{}, cd:{}, key:'none', vx:0, vy:0, speed:0};
@@ -6092,6 +6645,8 @@ function threatRange(e) {
   if (e.key === 'rodion') { if (ready('E')) r = Math.max(r, E(KR.E.len) + E(e.st.range)); if (ready('Q')) r = Math.max(r, E(KR.Q.len)); }
   if (e.key === 'yisang') { if (ready('W')) r = Math.max(r, E(KY.W.range) * .8); if (ready('Q')) r = Math.max(r, E(KY.Q.len)); }
   if (e.key === 'ishmael') { if (ready('Q')) r = Math.max(r, E(KI.Q.range)); if (ready('E')) r = Math.max(r, E(KI.E.len)); }
+  if (e.key === 'vergil') { if (ready('W')) r = Math.max(r, E(KVG.W.len) * .8); if (ready('Q')) r = Math.max(r, E(KVG.Q.len)); if (ready('R') || e.vgR) r = Math.max(r, E(KVG.R.radius)); }
+  if (e.key === 'kromer') { if (ready('E')) r = Math.max(r, E(KKR.E.dash) + E(KKR.E.radius)); if (ready('Q')) r = Math.max(r, E(KKR.Q.len) * .8); if (ready('R')) r = Math.max(r, E(KKR.R.range)); }
   if (e.key === 'yuri') { if (ready('W')) r = Math.max(r, E(KYU.W.dash) + E(e.st.range)); }
   if (e.key === 'meursault') { if (ready('E')) r = Math.max(r, E(KM.E.dist + KM.E.grab)); if (ready('Q')) r = Math.max(r, E(KM.Q.dist)); }
   if (e.key === 'heathcliff') { if (ready('E')) r = Math.max(r, E(KHC.E.radius)); if (ready('Q')) r = Math.max(r, E(KHC.Q.outer)); if (ready('R')) r = Math.max(r, E(KHC.R.range)); }
@@ -6320,7 +6875,7 @@ function updateBot(b, dt) {
   if (!b.alive) { respawnTick(b, dt); b.path = null; b.stance = null; b.focus = null; return; }
   champTimers(b, dt);
   aiLearn(b);
-  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash) return;
+  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin) return;
   if (b.ylRevive) { moveChamp(b, 0, 0, dt); return; }
   if (b.stunT > 0 && b.spells && b.spells.includes('calm')) aiSpells(b, focusEnemy(b), b.hp / b.maxHp, null);   // 기절: 안정제
   if (b.stunT > 0 || b.cast) { moveChamp(b, 0, 0, dt); return; }
@@ -6670,7 +7225,7 @@ function update(dt) {
   updateHonglu(dt);
   updateSinclairThrows(dt);
   updateHeathBleed(dt);
-  updateMeurChains(dt); updateMeurWorld(dt); yuriReviveTick(dt);
+  updateMeurChains(dt); updateMeurWorld(dt); yuriReviveTick(dt); updateKromer(dt);
   updateSpells(dt);
   updateWards();
   if ((visT -= dt) <= 0) { visT = .08; visTeam ^= 1; visionUpdate(visTeam ? player.team : (player.team === 'blue' ? 'red' : 'blue')); }   // 두 팀을 번갈아 (팀마다 0.16초)
@@ -6881,6 +7436,7 @@ let corpses = [];
 const CORPSE_COL = u => isChamp(u) ? (CHAMP_COL[u.key] || '#777') : isMonster(u) ? '#3a2a20' : u.team === 'blue' ? '#3a5f8a' : '#8a3a3e';
 function deathFx(u, src) {
   if (u.structure || u.ward) return;
+  if (u.key === 'vergil') { vgRetreat(u, src); return; }               // 베르길리우스: 피 대신 물러남
   const champ = isChamp(u), big = champ || (isMonster(u) && MONSTERS[u.mk] && MONSTERS[u.mk].big);
   const ang = src && src.x !== undefined ? Math.atan2(u.y - src.y, u.x - src.x) : Math.random() * 7;
   const n = champ ? 26 : big ? 16 : 9, parts = [];
@@ -7118,7 +7674,7 @@ function drawChamp(g, c) {
     }
     g.restore();
   }
-  const base = c.key === 'gregor' ? (rForm(c) ? '#2e1c0e' : CHITIN) : c.key === 'rodion' ? '#c9a27a' : c.key === 'yisang' ? '#15151a' : c.key === 'ishmael' ? '#e8792b' : c.key === 'ryoshu' ? '#c8232b' : c.key === 'faust' ? '#f4f3f7' : c.key === 'donq' ? '#f2c230' : c.key === 'sinclair' ? '#8b9c15' : c.key === 'heathcliff' ? '#6a3d9a' : c.key === 'meursault' ? '#1d3461' : c.key === 'yuri' ? '#c8405a' : c.key === 'honglu' ? '#3fc7a8' : c.key === 'outis' ? '#1b5a33' : '#7a3438';
+  const base = c.key === 'gregor' ? (rForm(c) ? '#2e1c0e' : CHITIN) : c.key === 'rodion' ? '#c9a27a' : c.key === 'yisang' ? '#15151a' : c.key === 'ishmael' ? '#e8792b' : c.key === 'ryoshu' ? '#c8232b' : c.key === 'faust' ? '#f4f3f7' : c.key === 'donq' ? '#f2c230' : c.key === 'sinclair' ? '#8b9c15' : c.key === 'heathcliff' ? '#6a3d9a' : c.key === 'meursault' ? '#1d3461' : c.key === 'yuri' ? '#c8405a' : c.key === 'kromer' ? '#ece4d6' : c.key === 'vergil' ? '#2b2c31' : c.key === 'honglu' ? '#3fc7a8' : c.key === 'outis' ? '#1b5a33' : '#7a3438';
   g.fillStyle = base; g.beginPath(); g.arc(c.x, c.y, c.r, 0, 7); g.fill();
   if (isP && sprite) {
     g.save(); g.beginPath(); g.arc(c.x, c.y, c.r, 0, 7); g.clip();
@@ -7139,6 +7695,8 @@ function drawChamp(g, c) {
   if (c.key === 'heathcliff') drawHeathBody(g, c);
   if (c.key === 'meursault') drawMeurBody(g, c);
   if (c.key === 'yuri') drawYuriBody(g, c);
+  if (c.key === 'kromer') drawKromerBody(g, c);
+  if (c.key === 'vergil') drawVergilBody(g, c);
   // 바라보는 방향
   g.fillStyle = '#1b1b1b'; g.beginPath();
   g.moveTo(c.x + Math.cos(c.face) * (c.r + E(14)), c.y + Math.sin(c.face) * (c.r + E(14)));
@@ -7163,7 +7721,7 @@ function drawChamp(g, c) {
       drawFaustCast(g, c, k);
     } else if (c.key === 'ryoshu') {   // 아라야시키 베기
       drawKatanaSwing(g, c, k);
-    } else if (c.key === 'honglu' || c.key === 'sinclair' || c.key === 'heathcliff' || c.key === 'meursault' || c.key === 'yuri') {   // 몸통 그리기에서 처리
+    } else if (c.key === 'honglu' || c.key === 'sinclair' || c.key === 'heathcliff' || c.key === 'meursault' || c.key === 'yuri' || c.key === 'kromer' || c.key === 'vergil') {   // 몸통 그리기에서 처리
     } else if (c.key === 'outis') {    // 사격 반동은 몸통 그리기에서
     } else if (c.key === 'donq') {     // 랜스 찌르기는 몸통 그리기에서
     } else if (c.key === 'ishmael') {  // 검은 메이스 휘두르기 (세 번째 평타는 주황)
@@ -7259,6 +7817,8 @@ const AIM_COL = {
   heathcliff:{line:'rgba(200,150,240,.95)', fill:'rgba(80,40,120,.25)', prog:'rgba(150,90,210,.4)'},
   meursault:{line:'rgba(127,178,255,.95)', fill:'rgba(29,52,97,.3)', prog:'rgba(80,130,220,.4)'},
   yuri:{line:'rgba(255,190,200,.95)', fill:'rgba(200,64,90,.22)', prog:'rgba(230,110,130,.4)'},
+  vergil:{line:'rgba(255,80,70,.95)', fill:'rgba(255,42,42,.16)', prog:'rgba(255,90,60,.4)'},
+  kromer:{line:'rgba(255,231,163,.95)', fill:'rgba(242,193,78,.18)', prog:'rgba(242,193,78,.4)'},
   donq:   {line:'rgba(255,214,70,.92)', fill:'rgba(110,84,10,.28)', prog:'rgba(255,200,60,.42)'},
   faust:  {line:'rgba(255,196,222,.92)', fill:'rgba(120,56,86,.26)', prog:'rgba(255,170,205,.42)'},
   ryoshu: {line:'rgba(255,90,70,.9)',    fill:'rgba(110,10,16,.3)',  prog:'rgba(230,40,40,.42)'},
@@ -8921,7 +9481,7 @@ function yuStaff(g, len, col) {                                       // 원점 
   g.fillStyle = '#4f8a3a';                                              // 잎
   for (const [x, s] of [[.3, 1], [.55, -1]]) { g.beginPath(); g.ellipse(len * x, s * E(5), E(5), E(2.4), s * .6, 0, 7); g.fill(); }
   g.fillStyle = '#c8232b'; g.beginPath(); g.arc(len * .88, 0, E(7), 0, 7); g.fill();          // 사과
-  g.fillStyle = col; g.globalAlpha = .55; g.beginPath(); g.arc(len * .88, 0, E(4), 0, 7); g.fill(); g.globalAlpha = 1;   // 관리 단계 빛
+  g.fillStyle = col; g.globalAlpha = .55; g.beginPath(); g.arc(len * .88, 0, E(4), 0, 7); g.fill(); g.globalAlpha = 1;   // 피해 속성 빛
   g.fillStyle = '#fff'; g.beginPath(); g.arc(len * .86, -E(2.5), E(1.6), 0, 7); g.fill();
 }
 function drawYuriBody(g, c) {
@@ -8938,11 +9498,11 @@ function drawYuriWorld(g) {
   for (const u of heroes) {
     if (!u.alive) continue;
     const vis = seenBy(player.team, u);
-    if (vis && u.team !== player.team && u.ylRev && u.ylRev[player.team] && u.ylGood) {   // 적합(✓)·부적합(✗) 작업 색
+    if (vis && u.team !== player.team && u.ylRev && u.ylRev[player.team] && u.ylGood) {   // 취약(▲)·저항(▼) 속성 색
       const y = u.y - u.r - E(62);
-      for (const [k, s, dx] of [[u.ylGood, '✓', -E(10)], [u.ylBad, '✗', E(10)]]) {
-        g.fillStyle = YU_COL[k]; g.strokeStyle = '#0b0b0e'; g.lineWidth = E(2); g.beginPath(); g.roundRect(u.x + dx - E(8), y - E(7), E(16), E(14), E(3)); g.fill(); g.stroke();
-        g.fillStyle = k === 'W' ? '#111' : '#fff'; g.font = `900 ${E(11)}px system-ui,sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, u.x + dx, y + E(.5));
+      for (const [k, s, dx] of [[u.ylGood, '▲', -E(10)], [u.ylBad, '▼', E(10)]]) {
+        g.fillStyle = YU_COL[k]; g.strokeStyle = k === 'B' ? '#d0d0d8' : '#0b0b0e'; g.lineWidth = E(2); g.beginPath(); g.roundRect(u.x + dx - E(8), y - E(7), E(16), E(14), E(3)); g.fill(); g.stroke();
+        g.fillStyle = k === 'W' || k === 'P' ? '#111' : '#fff'; g.font = `900 ${E(10)}px system-ui,sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, u.x + dx, y + E(.5));
       }
     }
     if (vis && u.ylMarkT > time) {                                      // L사의 시선: 눈 표식
@@ -9001,7 +9561,7 @@ function drawYuriFx(g, f, k) {
     g.globalAlpha = al; yuMaggot(g, x, y, a, f.s, ph, col); g.globalAlpha = 1;
     return;
   }
-  if (f.type === 'ylBeam') {                                           // 광선 (관리 단계 색)
+  if (f.type === 'ylBeam') {                                           // 광선 (피해 속성 색)
     const n = f.cols.length;
     f.cols.forEach((col, i) => { g.globalAlpha = (1 - k) * .9; g.strokeStyle = col; g.lineWidth = E(n > 1 ? 4 : 6) * (1 - k * .5);
       const o = (i - (n - 1) / 2) * E(4), a = Math.atan2(f.y2 - f.y, f.x2 - f.x), ox = -Math.sin(a) * o, oy = Math.cos(a) * o;
@@ -9021,6 +9581,432 @@ function drawYuriFx(g, f, k) {
     g.globalAlpha = 1;
   } else if (f.type === 'ylReveal') {
     const t = f.tgt; if (!t.alive) return; g.globalAlpha = 1 - k; g.strokeStyle = '#ffffff'; g.lineWidth = E(3); g.beginPath(); g.arc(t.x, t.y, t.r * (1.2 + k * 1.5), 0, 7); g.stroke(); g.globalAlpha = 1;
+  }
+}
+
+// ═════════════ 크로머 그리기: 상아색 망토 · 은빛 판금 · 금빛 네모꼴 별 · 붉은 밀랍 봉인 · 대못과 쇠망치 ═════════════
+const KRC = {ivory:'#f1eadc', ivoryD:'#cbbfa8', silver:'#d9dde5', silverD:'#7d8494', gold:'#f2c14e', goldL:'#ffe7a3', wax:'#c8283a', waxD:'#7a1020', blood:'#b3122a', ink:'#14100c'};
+function krStar(g, x, y, r, rot = 0, fill = KRC.gold) {                  // 네 꼭짓점 별 (반짝임)
+  g.save(); g.translate(x, y); g.rotate(rot); g.fillStyle = fill; g.beginPath();
+  for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, rr = i % 2 ? r * .26 : r; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
+  g.closePath(); g.fill(); g.restore();
+}
+function krSeal(g, x, y, r, a = 1) {                                     // 붉은 밀랍 봉인 (리본 두 갈래)
+  g.globalAlpha *= a;
+  g.fillStyle = KRC.waxD; for (const s of [-1, 1]) { g.beginPath(); g.moveTo(x + s * r * .2, y + r * .4); g.lineTo(x + s * r * .75, y + r * 1.7); g.lineTo(x + s * r * .2, y + r * 1.35); g.closePath(); g.fill(); }
+  g.fillStyle = KRC.wax; g.beginPath(); for (let i = 0; i < 12; i++) { const an = i * Math.PI / 6, rr = r * (i % 2 ? .86 : 1); g.lineTo(x + Math.cos(an) * rr, y + Math.sin(an) * rr); } g.closePath(); g.fill();
+  g.strokeStyle = 'rgba(255,200,200,.55)'; g.lineWidth = Math.max(1, r * .14); g.beginPath(); g.arc(x, y, r * .55, 0, 7); g.stroke();
+  g.globalAlpha /= a;
+}
+function krNailShape(g, x, y, a, len, w, glow) {                         // 대못 (원점 = 금빛 못머리, +x = 뾰족한 끝)
+  g.save(); g.translate(x, y); g.rotate(a);
+  if (glow) { g.shadowColor = KRC.goldL; g.shadowBlur = w * 4; }
+  const sh = g.createLinearGradient(0, -w * .6, 0, w * .6); sh.addColorStop(0, '#ffffff'); sh.addColorStop(.45, KRC.silver); sh.addColorStop(1, KRC.silverD);
+  g.fillStyle = sh; g.beginPath(); g.moveTo(0, -w * .6); g.lineTo(len * .78, -w * .45); g.lineTo(len, 0); g.lineTo(len * .78, w * .45); g.lineTo(0, w * .6); g.closePath(); g.fill();
+  g.shadowBlur = 0;
+  g.fillStyle = KRC.gold; g.beginPath(); g.roundRect(-w * 1.1, -w * 1.7, w * 1.3, w * 3.4, w * .4); g.fill();   // 못머리
+  g.fillStyle = KRC.goldL; g.fillRect(-w * .9, -w * 1.5, w * .35, w * 3);
+  g.restore();
+}
+function krHammerShape(g, len, head, glow) {                             // 원점 = 손잡이, +x 방향 쇠망치 (금테 + 밀랍 봉인)
+  g.strokeStyle = '#2a211a'; g.lineWidth = Math.max(2, head * .32); g.lineCap = 'round';
+  g.beginPath(); g.moveTo(0, 0); g.lineTo(len, 0); g.stroke(); g.lineCap = 'butt';
+  if (glow) { g.shadowColor = KRC.gold; g.shadowBlur = head * 1.4; }
+  const hg = g.createLinearGradient(len - head * .5, 0, len + head * .5, 0); hg.addColorStop(0, KRC.silverD); hg.addColorStop(.5, '#ffffff'); hg.addColorStop(1, KRC.silver);
+  g.fillStyle = hg; g.beginPath(); g.roundRect(len - head * .5, -head, head, head * 2, head * .2); g.fill();
+  g.shadowBlur = 0;
+  g.fillStyle = KRC.gold; g.fillRect(len - head * .5, -head * .22, head, head * .44);   // 금테
+  krSeal(g, len, -head * .62, head * .26);
+}
+function drawKromerBody(g, c) {
+  const a = c.face, sw = c.swingT > 0 ? Math.min(1, c.swingT / .18) : 0, raise = c.krW > time;
+  g.save(); g.beginPath(); g.arc(c.x, c.y, c.r * .92, 0, 7); g.clip();       // 몸: 왼쪽 은빛 판금 · 금빛 별
+  g.fillStyle = KRC.silver; g.beginPath(); g.moveTo(c.x, c.y); g.arc(c.x, c.y, c.r, a + Math.PI * .5, a + Math.PI * 1.5); g.closePath(); g.fill();
+  g.strokeStyle = KRC.silverD; g.lineWidth = E(1.2); for (let i = 1; i <= 2; i++) { g.beginPath(); g.arc(c.x, c.y, c.r * i * .32, a + Math.PI * .55, a + Math.PI * 1.45); g.stroke(); }
+  g.restore();
+  krStar(g, c.x + Math.cos(a + 1.2) * c.r * .38, c.y + Math.sin(a + 1.2) * c.r * .38, c.r * .3, a, KRC.gold);
+  krSeal(g, c.x + Math.cos(a - 2) * c.r * .42, c.y + Math.sin(a - 2) * c.r * .42, c.r * .17);
+  // 오른손: 칼처럼 쥔 대못 (휘두르면 앞으로)
+  const ns = sw ? (1 - sw) * 1.5 - .75 : .25;
+  krNailShape(g, c.x + Math.cos(a + 1.05) * c.r * .7, c.y + Math.sin(a + 1.05) * c.r * .7, a + ns, E(46), E(2.6), sw > 0);
+  // 왼손: 쇠망치 (정화 준비 중이면 높이 들고 금빛)
+  g.save(); g.translate(c.x + Math.cos(a - 1.15) * c.r * .62, c.y + Math.sin(a - 1.15) * c.r * .62); g.rotate(a + (raise ? -1.55 + Math.sin(time * 10) * .06 : -.55));
+  krHammerShape(g, E(raise ? 50 : 38), E(raise ? 14 : 11), raise); g.restore();
+  if (raise) { g.globalCompositeOperation = 'lighter'; krStar(g, c.x + Math.cos(a - 1.6) * c.r * 1.9, c.y + Math.sin(a - 1.6) * c.r * 1.9, E(7) * (1 + .25 * Math.sin(time * 9)), time * 2, 'rgba(255,231,163,.85)'); g.globalCompositeOperation = 'source-over'; }
+  if (c.krR && c.krR.phase === 'wind') {                                 // 지정 불가: 금빛 후광 기둥 + 솟는 별
+    const k = Math.min(1, c.krR.t / KKR.R.wind);
+    g.save(); g.globalCompositeOperation = 'lighter';
+    const gr = g.createRadialGradient(c.x, c.y, c.r * .5, c.x, c.y, c.r * 3); gr.addColorStop(0, `rgba(255,231,163,${.45 * k})`); gr.addColorStop(1, 'rgba(255,231,163,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(c.x, c.y, c.r * 3, 0, 7); g.fill();
+    g.strokeStyle = `rgba(242,193,78,${.5 + .5 * k})`; g.lineWidth = E(2.5); g.beginPath(); g.ellipse(c.x, c.y - c.r * 1.5, c.r * .9, c.r * .3, 0, 0, 7); g.stroke();
+    for (let i = 0; i < 4; i++) { const ph = (k * 1.6 + i / 4) % 1; krStar(g, c.x + Math.cos(i * 1.7) * c.r * .9, c.y - ph * c.r * 2.6, E(5) * (1 - ph), ph * 3, KRC.goldL); }
+    g.restore();
+  }
+  if (c.krEggBuff) { g.strokeStyle = 'rgba(242,193,78,.7)'; g.lineWidth = E(2); g.setLineDash([E(3), E(4)]); g.beginPath(); g.arc(c.x, c.y, c.r + E(5), 0, 7); g.stroke(); g.setLineDash([]); }
+}
+function drawKromerWorld(g) {
+  for (const b of krBolts) {                                             // 날아가는 대못: 금빛 꼬리 + 은빛 못
+    if (!b.owner || (b.owner.team !== player.team && !visAt(player.team, b.x, b.y))) continue;
+    g.save(); g.globalCompositeOperation = 'lighter';
+    const tx = b.x - Math.cos(b.ang) * E(110), ty = b.y - Math.sin(b.ang) * E(110), tg = g.createLinearGradient(tx, ty, b.x, b.y);
+    tg.addColorStop(0, 'rgba(242,193,78,0)'); tg.addColorStop(1, 'rgba(255,231,163,.85)');
+    g.strokeStyle = tg; g.lineWidth = E(7); g.lineCap = 'round'; g.beginPath(); g.moveTo(tx, ty); g.lineTo(b.x, b.y); g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,.9)'; g.lineWidth = E(2); g.beginPath(); g.moveTo(b.x - Math.cos(b.ang) * E(50), b.y - Math.sin(b.ang) * E(50)); g.lineTo(b.x, b.y); g.stroke();
+    g.restore();
+    krNailShape(g, b.x - Math.cos(b.ang) * E(36), b.y - Math.sin(b.ang) * E(36), b.ang, E(44), E(3.4), true);
+  }
+  for (const u of heroes) {
+    if (!u.alive || !seenBy(player.team, u)) continue;
+    const n = krNailN(u);
+    if (n) {                                                              // 박힌 못: 몸에 꽂힌 대못 + 체력바 위 밀랍 봉인 (개수)
+      for (let i = 0; i < n; i++) { const an = Math.PI * .25 + i * Math.PI * .5 + Math.PI * .1; krNailShape(g, u.x + Math.cos(an) * (u.r + E(15)), u.y + Math.sin(an) * (u.r + E(15)), an + Math.PI, E(20), E(2.4)); }
+      const k = Math.max(0, (u.krNails.until - time) / KKR.P.dur), y = u.y - u.r - E(40), full = n >= KKR.P.max;
+      for (let i = 0; i < KKR.P.max; i++) { const x = u.x + (i - 1) * E(11);
+        if (i < n) krSeal(g, x, y, E(4.4)); else { g.strokeStyle = 'rgba(200,40,58,.45)'; g.lineWidth = E(1.2); g.beginPath(); g.arc(x, y, E(3.6), 0, 7); g.stroke(); } }
+      g.strokeStyle = full ? KRC.gold : 'rgba(200,40,58,.75)'; g.lineWidth = E(full ? 2.5 : 1.8);
+      g.beginPath(); g.arc(u.x, u.y, u.r + E(4), -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * k); g.stroke();
+      if (full) { g.save(); g.globalCompositeOperation = 'lighter'; krStar(g, u.x, y - E(12), E(7 + 1.5 * Math.sin(time * 8)), time * 1.5, KRC.goldL); g.restore(); }
+    }
+    if (u.krEggBuff && u.key === 'sinclair') { g.strokeStyle = 'rgba(201,224,74,.6)'; g.lineWidth = E(2); g.setLineDash([E(3), E(4)]); g.beginPath(); g.arc(u.x, u.y, u.r + E(5), 0, 7); g.stroke(); g.setLineDash([]); }
+  }
+}
+function drawKromerFx(g, f, k) {
+  const e = 1 - Math.pow(1 - k, 3);
+  if (f.type === 'krNailIn') {                                            // 못이 박힘: 금빛 별 반짝 + 고리
+    const t = f.tgt; if (!t || !t.alive) return;
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    krStar(g, t.x, t.y, t.r * (.6 + e * .9), k * 2, KRC.goldL);
+    g.strokeStyle = KRC.gold; g.lineWidth = E(2.5); g.beginPath(); g.arc(t.x, t.y, t.r * (1 + e * .7), 0, 7); g.stroke(); g.restore();
+  } else if (f.type === 'krSpin') {                                       // 회전 베기: 은빛 궤적 + 금빛 날
+    g.save(); g.globalAlpha = (1 - k) * .9;
+    const a0 = f.ang + e * 5.2;
+    for (let j = 0; j < 4; j++) { g.strokeStyle = `rgba(217,221,229,${.32 - j * .07})`; g.lineWidth = f.r * .1; g.beginPath(); g.arc(f.x, f.y, f.r * (.9 - j * .1), a0 + j * .15, a0 + Math.PI * 1.4); g.stroke(); }
+    g.globalCompositeOperation = 'lighter'; g.strokeStyle = KRC.goldL; g.lineWidth = E(3); g.beginPath(); g.arc(f.x, f.y, f.r * .93, a0 + .2, a0 + Math.PI * 1.4); g.stroke();
+    for (let i = 0; i < 3; i++) { const an = a0 + Math.PI * 1.4 - i * .35; krStar(g, f.x + Math.cos(an) * f.r * .93, f.y + Math.sin(an) * f.r * .93, E(5) * (1 - k) * (1 - i * .25), an, '#ffffff'); }
+    g.restore();
+    g.globalAlpha = (1 - k) * .5; g.strokeStyle = KRC.ivory; g.lineWidth = E(1.5); g.beginPath(); g.arc(f.x, f.y, f.r, 0, 7); g.stroke(); g.globalAlpha = 1;
+  } else if (f.type === 'krHammer') {                                     // 망치 내려찍기: 금빛 충격파 + 금 간 바닥 + 밀랍 판결 도장
+    const R = f.r * (f.big ? 2.6 : 1.9);
+    g.save(); g.globalAlpha = 1 - k;
+    g.strokeStyle = KRC.ivoryD; g.lineWidth = E(f.big ? 3 : 2.2);
+    for (let i = 0; i < 8; i++) { const an = i * .79 + f.ang, L = R * (.55 + .45 * (((i * 37) % 10) / 10)); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x + Math.cos(an) * L * .5, f.y + Math.sin(an) * L * .5 + E(3)); g.lineTo(f.x + Math.cos(an) * L, f.y + Math.sin(an) * L); g.stroke(); }
+    krSeal(g, f.x, f.y, f.r * (f.big ? .75 : .55) * (1 + (1 - e) * .6), 1 - k * .4);
+    g.globalCompositeOperation = 'lighter';
+    g.strokeStyle = KRC.gold; g.lineWidth = E(f.big ? 8 : 6) * (1 - k); g.beginPath(); g.arc(f.x, f.y, R * (.35 + e * .75), 0, 7); g.stroke();
+    krStar(g, f.x, f.y - f.r * .3, f.r * (f.big ? 1.6 : 1.1) * (1 - k * .7), f.ang + k, KRC.goldL);
+    g.restore();
+  } else if (f.type === 'krImpact') {                                     // 이단 말살 기절: 큰 금빛 별 + 붉은 봉인
+    g.save(); g.globalAlpha = 1 - k; krSeal(g, f.x, f.y + f.r * .2, f.r * .6);
+    g.globalCompositeOperation = 'lighter'; krStar(g, f.x, f.y, f.r * (1 + e * 1.4), e * 1.2, KRC.goldL); krStar(g, f.x, f.y, f.r * (.6 + e), e * 1.2 + .78, '#ffffff'); g.restore();
+  } else if (f.type === 'krPierce') {                                     // 대못 관통: 은빛 섬광
+    g.save(); g.globalAlpha = 1 - k; g.globalCompositeOperation = 'lighter';
+    g.translate(f.x, f.y); g.rotate(f.ang); g.fillStyle = 'rgba(255,255,255,.95)';
+    g.beginPath(); g.moveTo(-f.r * .4, 0); g.lineTo(f.r * (1.5 + e * 1.5), -f.r * .18); g.lineTo(f.r * (1.9 + e * 1.5), 0); g.lineTo(f.r * (1.5 + e * 1.5), f.r * .18); g.closePath(); g.fill();
+    krStar(g, 0, 0, f.r * (.5 + e * .6), e, KRC.goldL); g.restore();
+  } else if (f.type === 'krTrail') {                                      // 돌진 잔상: 상아색 망토 자락
+    g.globalAlpha = (1 - k) * .35; g.fillStyle = KRC.ivory; g.beginPath(); g.arc(f.x, f.y, E(13) * (1 - k * .5), 0, 7); g.fill();
+    g.globalAlpha = (1 - k) * .6; krStar(g, f.x, f.y, E(4) * (1 - k), k * 3, KRC.gold); g.globalAlpha = 1;
+  } else if (f.type === 'krBlink') {                                      // 순간이동: 금빛 섬광 + 흩어지는 별
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const gr = g.createRadialGradient(f.x, f.y, 0, f.x, f.y, E(40)); gr.addColorStop(0, 'rgba(255,240,200,.9)'); gr.addColorStop(1, 'rgba(242,193,78,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(f.x, f.y, E(40) * (.6 + e * .6), 0, 7); g.fill();
+    for (let i = 0; i < 6; i++) { const an = i * 1.05; krStar(g, f.x + Math.cos(an) * E(34) * e, f.y + Math.sin(an) * E(34) * e, E(4) * (1 - k), an, KRC.goldL); }
+    g.restore();
+  } else if (f.type === 'krStake') {                                      // R 대못: 위에서 박힌 거대한 못 + 바닥 봉인 원
+    const t = f.tgt; if (!t || !t.alive) return;
+    const drop = Math.min(1, f.t / .12), al = Math.min(1, (1 - k) * 4);
+    g.save(); g.globalAlpha = al;
+    g.strokeStyle = 'rgba(200,40,58,.8)'; g.lineWidth = E(2); g.beginPath(); g.ellipse(t.x, t.y + t.r * .5, t.r * 1.5, t.r * .55, 0, 0, 7); g.stroke();
+    for (let i = 0; i < 4; i++) { const an = i * Math.PI / 2 + .4; krSeal(g, t.x + Math.cos(an) * t.r * 1.5, t.y + t.r * .5 + Math.sin(an) * t.r * .55, E(3.6)); }
+    krNailShape(g, t.x, t.y - t.r - E(70) * (1 - drop) - E(22), Math.PI / 2, t.r + E(34), E(5), true);
+    g.restore();
+  } else if (f.type === 'krStreak') {                                    // 순간이동 궤적: 금빛 빛줄기
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const lg = g.createLinearGradient(f.x, f.y, f.x2, f.y2); lg.addColorStop(0, 'rgba(242,193,78,0)'); lg.addColorStop(1, 'rgba(255,231,163,.95)');
+    g.strokeStyle = lg; g.lineWidth = E(9) * (1 - k); g.lineCap = 'round'; g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,.9)'; g.lineWidth = E(2.5) * (1 - k); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke(); g.restore();
+  } else if (f.type === 'krBleed') {                                      // 출혈: 붉은 핏방울
+    g.globalAlpha = 1 - k; g.fillStyle = KRC.blood;
+    for (let i = 0; i < 3 + f.n * 2; i++) { const an = i * 2.1, d = E(6) + E(15) * e; g.beginPath(); g.ellipse(f.x + Math.cos(an) * d, f.y + Math.sin(an) * d + E(9) * k, E(2.6), E(3.4), 0, 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+  } else if (f.type === 'krLaugh') {                                      // 광소: 금빛 파문 + 웃음
+    const c = f.owner; if (!c) return; g.globalAlpha = 1 - k;
+    g.strokeStyle = KRC.gold; g.lineWidth = E(2); g.beginPath(); g.arc(c.x, c.y, c.r + E(6) + E(26) * e, -2.4, -.7); g.stroke();
+    g.fillStyle = KRC.goldL; g.strokeStyle = KRC.ink; g.lineWidth = E(2.5); g.font = `900 ${E(13)}px system-ui,sans-serif`; g.textAlign = 'center';
+    g.strokeText('아하하하!', c.x, c.y - c.r - E(24) - E(12) * e); g.fillText('아하하하!', c.x, c.y - c.r - E(24) - E(12) * e); g.globalAlpha = 1;
+  } else if (f.type === 'krRaise' || f.type === 'krWind' || f.type === 'krEgg') {
+    const c = f.owner; if (!c) return;
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.strokeStyle = f.type === 'krEgg' ? KRC.goldL : KRC.gold; g.lineWidth = E(f.type === 'krEgg' ? 5 : 3);
+    g.beginPath(); g.arc(c.x, c.y, c.r + E(6) + E(f.type === 'krEgg' ? 70 : 22) * e, 0, 7); g.stroke();
+    if (f.type === 'krEgg') for (let i = 0; i < 8; i++) { const an = i * .785 + e; krStar(g, c.x + Math.cos(an) * (c.r + E(70) * e), c.y + Math.sin(an) * (c.r + E(70) * e), E(7) * (1 - k), an, KRC.goldL); }
+    g.restore();
+  }
+}
+
+// ═════════════ 베르길리우스 그리기: 회색 줄무늬 정장 · 붉게 빛나는 눈 · 달궈진 주황 글라디우스 · E.G.O 피의 망토와 월계관 ═════════════
+const VGC = {suit:'#2b2c31', stripe:'rgba(190,192,202,.5)', skin:'#c9c6c4', eye:'#ff2a2a', blade:'#ff8a2a', hot:'#fff1c8', blood:'#9e0f1c', bloodL:'#e0263a', laurel:'#3f7a3a'};
+function vgGladius(g, len, heat, ego) {                                   // 원점 = 손잡이, +x 방향. 열기에 따라 주황 → 흰빛
+  const k = Math.min(1, heat);
+  g.fillStyle = '#1a1a1d'; g.fillRect(-E(6), -E(2.2), E(8), E(4.4));                     // 손잡이
+  g.fillStyle = '#6b6f78'; g.fillRect(E(1), -E(5), E(2.5), E(10));                       // 코등이
+  g.shadowColor = ego ? VGC.bloodL : VGC.blade; g.shadowBlur = E(6 + 10 * k);
+  const bg = g.createLinearGradient(E(3), 0, len, 0);
+  if (ego) { bg.addColorStop(0, '#ff3b3b'); bg.addColorStop(1, '#ffd0d0'); }
+  else { bg.addColorStop(0, '#ff7a1a'); bg.addColorStop(1, k > .7 ? VGC.hot : '#ffb35a'); }
+  g.fillStyle = bg; g.beginPath(); g.moveTo(E(3), -E(3.4)); g.lineTo(len - E(9), -E(3)); g.lineTo(len, 0); g.lineTo(len - E(9), E(3)); g.lineTo(E(3), E(3.4)); g.closePath(); g.fill();
+  g.shadowBlur = 0;
+  if (ego) { g.fillStyle = VGC.blood; for (let i = 0; i < 4; i++) { g.beginPath(); g.arc(E(10) + i * len * .2, E(2.6), E(1.6), 0, 7); g.fill(); } }
+}
+function vgSpear(g, len, glow) {                                          // E.G.O: 피를 머금은 창 (원점 = 손잡이 끝, +x = 창끝)
+  g.strokeStyle = '#3a0a10'; g.lineWidth = E(4.6); g.lineCap = 'round'; g.beginPath(); g.moveTo(0, 0); g.lineTo(len * .78, 0); g.stroke();
+  g.strokeStyle = '#b0182a'; g.lineWidth = E(1.4); g.beginPath(); g.moveTo(len * .1, 0); g.lineTo(len * .76, 0); g.stroke(); g.lineCap = 'butt';
+  g.fillStyle = '#7a0a14'; for (let i = 0; i < 3; i++) { const x = len * (.62 + i * .05); g.beginPath(); g.ellipse(x, 0, E(1.8), E(3.6), 0, 0, 7); g.fill(); }   // 감긴 피
+  if (glow) { g.shadowColor = '#ff2a2a'; g.shadowBlur = E(12); }
+  const hg = g.createLinearGradient(len * .74, 0, len, 0); hg.addColorStop(0, '#8a0a18'); hg.addColorStop(.6, '#e0263a'); hg.addColorStop(1, '#ffd0d0');
+  g.fillStyle = hg; g.beginPath(); g.moveTo(len * .74, 0); g.quadraticCurveTo(len * .84, -E(9), len, 0); g.quadraticCurveTo(len * .84, E(9), len * .74, 0); g.fill();   // 잎 모양 창날
+  g.shadowBlur = 0;
+  g.fillStyle = '#e0263a'; for (let i = 0; i < 3; i++) { const t2 = (time * 1.6 + i / 3) % 1; g.globalAlpha = 1 - t2; g.beginPath(); g.arc(len * (.8 - i * .07), E(3) + t2 * E(9), E(1.5), 0, 7); g.fill(); } g.globalAlpha = 1;   // 떨어지는 핏방울
+}
+function drawVergilBody(g, c) {
+  const a = c.face, ego = !!c.vgR, gaze = c.vgGaze > time, heat = (c.vgHeat || 0) / 100;
+  if (ego) {                                                              // 피의 망토 (뒤로 흩날림)
+    const b = a + Math.PI, wv = Math.sin(time * 7) * .15;
+    g.fillStyle = VGC.blood; g.beginPath();
+    g.moveTo(c.x + Math.cos(b - 1.3) * c.r * .9, c.y + Math.sin(b - 1.3) * c.r * .9);
+    g.quadraticCurveTo(c.x + Math.cos(b - .6 + wv) * c.r * 2.4, c.y + Math.sin(b - .6 + wv) * c.r * 2.4, c.x + Math.cos(b + wv) * c.r * 2.6, c.y + Math.sin(b + wv) * c.r * 2.6);
+    g.quadraticCurveTo(c.x + Math.cos(b + .6 + wv) * c.r * 2.4, c.y + Math.sin(b + .6 + wv) * c.r * 2.4, c.x + Math.cos(b + 1.3) * c.r * .9, c.y + Math.sin(b + 1.3) * c.r * .9);
+    g.closePath(); g.fill();
+    g.fillStyle = VGC.bloodL; for (let i = 0; i < 5; i++) { const t2 = (time * 1.3 + i * .2) % 1; g.globalAlpha = 1 - t2; g.beginPath(); g.arc(c.x + Math.cos(b + (i - 2) * .3) * c.r * (2.2 + t2), c.y + Math.sin(b + (i - 2) * .3) * c.r * (2.2 + t2) + t2 * E(8), E(2), 0, 7); g.fill(); } g.globalAlpha = 1;
+  }
+  g.save(); g.beginPath(); g.arc(c.x, c.y, c.r * .92, 0, 7); g.clip();     // 줄무늬 정장
+  g.strokeStyle = VGC.stripe; g.lineWidth = E(1);
+  for (let i = -4; i <= 4; i++) { const ox = Math.cos(a + Math.PI / 2) * i * c.r * .22, oy = Math.sin(a + Math.PI / 2) * i * c.r * .22; g.beginPath(); g.moveTo(c.x + ox - Math.cos(a) * c.r, c.y + oy - Math.sin(a) * c.r); g.lineTo(c.x + ox + Math.cos(a) * c.r, c.y + oy + Math.sin(a) * c.r); g.stroke(); }
+  g.restore();
+  // 붉은 눈 (분노·개안이면 강하게 빛남)
+  const ex = c.x + Math.cos(a) * c.r * .45, ey = c.y + Math.sin(a) * c.r * .45, glow = gaze || ego ? 1.25 : .6 + heat * .4;
+  for (const s of [-1, 1]) {
+    const x = ex + Math.cos(a + Math.PI / 2) * s * c.r * .22, y = ey + Math.sin(a + Math.PI / 2) * s * c.r * .22;
+    g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = `rgba(255,42,42,${.35 * glow})`; g.beginPath(); g.arc(x, y, E(6) * glow + E(2), 0, 7); g.fill(); g.restore();
+    g.fillStyle = VGC.eye; g.beginPath(); g.arc(x, y, E(2.4), 0, 7); g.fill(); g.fillStyle = '#ffd0d0'; g.beginPath(); g.arc(x, y, E(.9), 0, 7); g.fill();
+    if (gaze || ego) { g.strokeStyle = 'rgba(255,42,42,.55)'; g.lineWidth = E(1.6); g.beginPath(); g.moveTo(x, y); g.lineTo(x - Math.cos(a) * E(18), y - Math.sin(a) * E(18)); g.stroke(); }   // 눈빛 잔상
+  }
+  if (ego) {                                                              // 월계관 (붉은 가시)
+    g.strokeStyle = VGC.laurel; g.lineWidth = E(2.5); g.beginPath(); g.arc(c.x, c.y, c.r * .62, 0, 7); g.stroke();
+    g.fillStyle = VGC.bloodL; for (let i = 0; i < 8; i++) { const an = i * .785 + time * .3; g.beginPath(); g.arc(c.x + Math.cos(an) * c.r * .62, c.y + Math.sin(an) * c.r * .62, E(1.6), 0, 7); g.fill(); }
+  }
+  // 글라디우스 (기 모으는 중엔 뒤로 젖힘)
+  const sw = c.swingT > 0 ? Math.min(1, c.swingT / .18) : 0, charge = c.vgW ? Math.min(1, (time - c.vgW.t0) / KVG.W.max) : 0;
+  const ang = a + (c.vgW ? 2.2 - charge * .5 : sw ? (1 - sw) * 1.8 - .9 : .5);
+  g.save(); g.translate(c.x + Math.cos(a + .9) * c.r * .62, c.y + Math.sin(a + .9) * c.r * .62);
+  if (ego) { const thrust = sw ? Math.sin(sw * Math.PI) * E(16) : 0; g.rotate(c.vgW ? ang : a + .12); g.translate(-E(30) + thrust, 0); vgSpear(g, E(112), true); }   // E.G.O: 글라디우스가 피를 머금은 창으로
+  else { g.rotate(ang); vgGladius(g, E(54), Math.max(heat, charge), ego); }
+  g.restore();
+  // 열기 게이지 (발밑 반원)
+  if (heat > 0 || gaze) {
+    const k = gaze ? Math.max(0, (c.vgGaze - time) / KVG.P.dur) : heat;
+    g.strokeStyle = 'rgba(0,0,0,.45)'; g.lineWidth = E(3.5); g.beginPath(); g.arc(c.x, c.y, c.r + E(7), Math.PI * .15, Math.PI * .85); g.stroke();
+    g.strokeStyle = gaze ? VGC.eye : `rgb(255,${Math.round(160 - 110 * heat)},40)`; g.lineWidth = E(2.5);
+    g.beginPath(); g.arc(c.x, c.y, c.r + E(7), Math.PI * .85 - Math.PI * .7 * k, Math.PI * .85); g.stroke();
+  }
+  if (c.shield > 0 && c.vgGuardT > time) {                              // 붉은 보호막: 핏빛 육각 막
+    const k = Math.min(1, c.shield / (c.maxHp * KVG.P.shieldCap)), rr = c.r + E(11);
+    g.save(); g.globalCompositeOperation = 'lighter'; g.strokeStyle = `rgba(255,50,60,${.35 + .45 * k})`; g.lineWidth = E(2 + 3 * k);
+    g.beginPath(); for (let i = 0; i <= 6; i++) { const an = i * Math.PI / 3 + time * .6; g.lineTo(c.x + Math.cos(an) * rr, c.y + Math.sin(an) * rr); } g.stroke();
+    g.fillStyle = `rgba(200,20,40,${.08 + .12 * k})`; g.fill(); g.restore();
+  }
+  if (c.vgOverT > time) { g.fillStyle = 'rgba(160,160,170,.5)'; for (let i = 0; i < 3; i++) { const t2 = (time * 1.5 + i / 3) % 1; g.globalAlpha = (1 - t2) * .6; g.beginPath(); g.arc(c.x + (i - 1) * E(7), c.y - c.r - t2 * E(18), E(4) * (1 + t2), 0, 7); g.fill(); } g.globalAlpha = 1; }   // 과열 연기
+}
+function drawVergilPool(g) {                                              // 피의 욕장 (캐릭터 밑)
+  for (const c of heroes) {
+    const R = c.vgR; if (!R || !c.alive) continue;
+    if (c.team !== player.team && !visAt(player.team, R.x, R.y)) continue;
+    const r = E(KVG.R.radius), age = time - R.t0, grow = Math.min(1, age / .45), rr = r * (c.vgFin ? 1 : grow);
+    const left = Math.max(0, (R.until - time) / KVG.R.dur);
+    g.save();
+    const gr = g.createRadialGradient(R.x, R.y, rr * .1, R.x, R.y, rr);
+    gr.addColorStop(0, 'rgba(110,8,20,.55)'); gr.addColorStop(.75, 'rgba(90,6,16,.42)'); gr.addColorStop(1, 'rgba(60,2,10,.18)');
+    g.fillStyle = gr; g.beginPath(); g.arc(R.x, R.y, rr, 0, 7); g.fill();
+    g.strokeStyle = 'rgba(158,15,28,.35)'; g.lineWidth = E(1.5);                       // 잔물결
+    for (let i = 0; i < 4; i++) { const k = ((age * .35 + i / 4) % 1); g.globalAlpha = (1 - k) * .8; g.beginPath(); g.arc(R.x, R.y, rr * k, 0, 7); g.stroke(); }
+    g.globalAlpha = 1;
+    // 붉은 시선: 웅덩이 가운데 큰 눈
+    const ek = .35 + .15 * Math.sin(time * 2);
+    g.strokeStyle = `rgba(255,42,42,${ek})`; g.lineWidth = E(3); g.beginPath(); g.ellipse(R.x, R.y, rr * .32, rr * .13, 0, 0, 7); g.stroke();
+    g.fillStyle = `rgba(255,42,42,${ek * .8})`; g.beginPath(); g.arc(R.x, R.y, rr * .07, 0, 7); g.fill();
+    // 고동 (박자): 가장자리로 퍼지는 파동 · 박자 구간이면 테두리가 하얗게
+    const ph = age % KVG.R.beat, beatOk = !c.vgFin && (ph >= KVG.R.beat - KVG.R.win || ph <= .06), pk = ph / KVG.R.beat;
+    g.save(); g.globalCompositeOperation = 'lighter';
+    g.strokeStyle = `rgba(255,60,60,${.55 * (1 - pk)})`; g.lineWidth = E(4) * (1 - pk); g.beginPath(); g.arc(R.x, R.y, rr * (.15 + pk * .85), 0, 7); g.stroke();
+    g.strokeStyle = beatOk ? 'rgba(255,255,255,.95)' : 'rgba(255,60,60,.55)'; g.lineWidth = E(beatOk ? 5 : 2.5);
+    g.beginPath(); g.arc(R.x, R.y, rr, 0, 7); g.stroke();
+    if (beatOk && (c === player || c.team === player.team)) { g.strokeStyle = 'rgba(255,90,90,.45)'; g.lineWidth = E(14); g.beginPath(); g.arc(R.x, R.y, rr, 0, 7); g.stroke(); }
+    g.restore();
+    if (!c.vgFin) { g.strokeStyle = 'rgba(255,220,220,.8)'; g.lineWidth = E(3); g.beginPath(); g.arc(R.x, R.y, rr + E(9), -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * left); g.stroke(); }   // 남은 시간
+    g.fillStyle = 'rgba(224,38,58,.7)';                                        // 떠오르는 핏방울
+    for (let i = 0; i < 14; i++) { const k = (age * .5 + i * .137) % 1, an = i * 2.4, d = rr * (.2 + ((i * 37) % 10) / 12); g.globalAlpha = (1 - k) * .8; g.beginPath(); g.arc(R.x + Math.cos(an) * d, R.y + Math.sin(an) * d * .9 - k * E(24), E(2.2) * (1 - k * .5), 0, 7); g.fill(); }
+    g.globalAlpha = 1; g.restore();
+  }
+}
+function drawVergilWorld(g) {
+  for (const u of heroes) {
+    if (!u.alive || !seenBy(player.team, u)) continue;
+    if (u.vgMark > time) {                                                // 붉은 시선 표식: 붉은 눈
+      const y = u.y - u.r - E(78), k = .5 + .5 * Math.sin(time * 6);
+      g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = `rgba(255,42,42,${.25 + .2 * k})`; g.beginPath(); g.ellipse(u.x, y, E(14), E(7), 0, 0, 7); g.fill(); g.restore();
+      g.strokeStyle = VGC.eye; g.lineWidth = E(1.8); g.beginPath(); g.ellipse(u.x, y, E(11), E(5.5), 0, 0, 7); g.stroke();
+      g.fillStyle = VGC.eye; g.beginPath(); g.arc(u.x, y, E(3), 0, 7); g.fill();
+    }
+    if (u.vgBrand > 0 && u.vgBrandBy && u.vgBrandBy.vgR) {             // 핏빛 낙인 (장례 피해 증가)
+      for (let i = 0; i < u.vgBrand; i++) { const x = u.x + (i - (u.vgBrand - 1) / 2) * E(12), y = u.y - u.r - E(62);
+        g.strokeStyle = '#ff3b3b'; g.lineWidth = E(2.4); g.beginPath(); g.moveTo(x - E(4), y - E(4)); g.lineTo(x + E(4), y + E(4)); g.moveTo(x + E(4), y - E(4)); g.lineTo(x - E(4), y + E(4)); g.stroke(); }
+    }
+    if (u.key !== 'vergil') continue;
+    const mine = u === player;
+    if (u.vgQ && time < u.vgQ.until && (mine || u.team === player.team)) {  // 박자 표시: 고리가 줄어들다가 흰 구간에서 누르면 완벽
+      const s = time - u.vgQ.t, R0 = u.r + E(22);
+      g.strokeStyle = 'rgba(255,255,255,.18)'; g.lineWidth = E(3); g.beginPath(); g.arc(u.x, u.y, R0, 0, 7); g.stroke();
+      const inWin = s >= KVG.Q.lo && s <= KVG.Q.hi, k = Math.min(1, s / KVG.Q.hi);
+      g.strokeStyle = inWin ? '#ffffff' : s > KVG.Q.hi ? 'rgba(255,138,42,.6)' : 'rgba(255,138,42,.9)'; g.lineWidth = E(inWin ? 4 : 2.5);
+      g.beginPath(); g.arc(u.x, u.y, R0 + E(26) * (1 - k), 0, 7); g.stroke();
+      if (inWin) { g.save(); g.globalCompositeOperation = 'lighter'; g.strokeStyle = 'rgba(255,60,60,.6)'; g.lineWidth = E(8); g.beginPath(); g.arc(u.x, u.y, R0, 0, 7); g.stroke(); g.restore(); }
+      g.fillStyle = '#fff'; g.font = `800 ${E(10)}px system-ui,sans-serif`; g.textAlign = 'center'; g.fillText(`${u.vgQ.n}/3`, u.x, u.y + u.r + E(38));
+    }
+    if (u.vgW) {                                                          // 기 모으기 막대: 금색 구간에서 놓으면 완벽
+      const h = time - u.vgW.t0, w = E(70), x0 = u.x - w / 2, y0 = u.y + u.r + E(22);
+      g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(x0 - E(1), y0 - E(1), w + E(2), E(8));
+      g.fillStyle = 'rgba(255,240,200,.85)'; g.fillRect(x0 + w * KVG.W.lo / KVG.W.max, y0, w * (KVG.W.hi - KVG.W.lo) / KVG.W.max, E(6));
+      const k = Math.min(1, h / KVG.W.max), inWin = h >= KVG.W.lo && h <= KVG.W.hi;
+      g.fillStyle = inWin ? '#ff3b3b' : '#ff8a2a'; g.fillRect(x0, y0 + E(1.5), w * k, E(3));
+    }
+  }
+}
+function drawVergilFx(g, f, k) {
+  const e = 1 - Math.pow(1 - k, 3);
+  if (f.type === 'vgSlash') {                                             // 글라디우스 베기: 주황 → 흰 초승달
+    g.save(); g.translate(f.x, f.y); g.rotate(f.ang); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const L = f.len, W = f.wid / 2, s = f.side;
+    const gr = g.createLinearGradient(0, 0, L, 0); gr.addColorStop(0, f.blood ? 'rgba(200,20,40,0)' : 'rgba(255,138,42,0)'); gr.addColorStop(.6, f.perfect ? 'rgba(255,255,255,.9)' : f.blood ? 'rgba(230,30,50,.9)' : 'rgba(255,138,42,.85)'); gr.addColorStop(1, f.blood ? 'rgba(255,200,200,.95)' : 'rgba(255,240,200,.95)');
+    g.fillStyle = gr; g.beginPath(); g.moveTo(E(10), -W * s);
+    g.quadraticCurveTo(L * (.75 + e * .2), -W * s * .2, L * .55, W * s); g.quadraticCurveTo(L * (.55 + e * .2), -W * s * .1, E(10), -W * s); g.fill();
+    if (f.perfect) { g.strokeStyle = 'rgba(255,60,60,.8)'; g.lineWidth = E(2); g.beginPath(); g.moveTo(E(10), -W * s); g.quadraticCurveTo(L * (.75 + e * .2), -W * s * .2, L * .55, W * s); g.stroke(); }
+    g.restore();
+  } else if (f.type === 'vgWave') {                                       // 홍련 베기: 거대한 붉은 초승달 파동
+    g.save(); g.translate(f.x, f.y); g.rotate(f.ang); g.globalCompositeOperation = 'lighter';
+    const d = f.len * (.15 + e * .85), W = f.wid / 2;
+    const tg = g.createLinearGradient(0, 0, d, 0); tg.addColorStop(0, 'rgba(255,90,40,0)'); tg.addColorStop(1, f.perfect ? 'rgba(255,60,60,.4)' : 'rgba(255,120,40,.3)');
+    g.globalAlpha = 1 - k; g.fillStyle = tg; g.beginPath(); g.moveTo(0, -W * .15); g.lineTo(d - E(30), -W * .8); g.lineTo(d - E(30), W * .8); g.lineTo(0, W * .15); g.closePath(); g.fill();
+    g.globalAlpha = 1 - k;
+    const gr = g.createLinearGradient(d - E(40), 0, d + E(10), 0); gr.addColorStop(0, f.blood ? 'rgba(200,20,40,0)' : 'rgba(255,90,40,0)'); gr.addColorStop(1, f.perfect ? 'rgba(255,255,255,1)' : f.blood ? 'rgba(255,90,100,1)' : 'rgba(255,220,150,1)');
+    g.fillStyle = gr; g.beginPath(); g.moveTo(d - E(40), -W); g.quadraticCurveTo(d + E(36), 0, d - E(40), W); g.quadraticCurveTo(d - E(4), 0, d - E(40), -W); g.fill();
+    if (f.perfect) { g.strokeStyle = '#ff2a2a'; g.lineWidth = E(3); g.beginPath(); g.moveTo(d - E(40), -W); g.quadraticCurveTo(d + E(36), 0, d - E(40), W); g.stroke(); }
+    g.restore();
+  } else if (f.type === 'vgSlam') {                                       // 내려찍기: 불꽃 원 + 금 간 바닥
+    g.save(); g.globalAlpha = 1 - k;
+    g.strokeStyle = 'rgba(200,190,180,.8)'; g.lineWidth = E(2.5); for (let i = 0; i < 9; i++) { const an = i * .7; g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x + Math.cos(an) * f.r * (.6 + (i % 3) * .15), f.y + Math.sin(an) * f.r * (.6 + (i % 3) * .15)); g.stroke(); }
+    g.globalCompositeOperation = 'lighter'; g.strokeStyle = f.perfect ? '#ffffff' : f.blood ? '#ff3b3b' : '#ff8a2a'; g.lineWidth = E(7) * (1 - k); g.beginPath(); g.arc(f.x, f.y, f.r * (.4 + e * .7), 0, 7); g.stroke();
+    g.fillStyle = 'rgba(255,120,40,.35)'; g.beginPath(); g.arc(f.x, f.y, f.r * .5 * (1 - k), 0, 7); g.fill(); g.restore();
+  } else if (f.type === 'vgPerfect') {                                    // 완벽: 붉은 섬광 십자 + 흰 고리
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.strokeStyle = '#ffffff'; g.lineWidth = E(3) * (1 - k); g.beginPath(); g.arc(f.x, f.y, E(20) + E(50) * e, 0, 7); g.stroke();
+    g.fillStyle = 'rgba(255,40,40,.9)'; for (const r of [0, Math.PI / 2]) { g.save(); g.translate(f.x, f.y); g.rotate(r + .4); g.fillRect(-E(60) * (1 - k * .5), -E(1.5), E(120) * (1 - k * .5), E(3)); g.restore(); }
+    g.restore();
+  } else if (f.type === 'vgParry') {                                      // 간파: 흰 섬광 + 튕겨 나가는 불꽃
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.translate(f.x, f.y); g.rotate(f.ang);
+    g.strokeStyle = '#ffffff'; g.lineWidth = E(4) * (1 - k); g.beginPath(); g.arc(0, 0, f.r * (1.2 + e), -1, 1); g.stroke();
+    g.fillStyle = '#ffd0a0'; for (let i = 0; i < 8; i++) { const an = (i - 3.5) * .25; g.beginPath(); g.arc(Math.cos(an) * f.r * (1.4 + e * 2), Math.sin(an) * f.r * (1.4 + e * 2), E(2.2) * (1 - k), 0, 7); g.fill(); }
+    g.restore();
+  } else if (f.type === 'vgStep') {                                       // 간파 대기: 흰 테두리
+    const c = f.owner; if (!c) return; g.globalAlpha = (1 - k) * .8; g.strokeStyle = '#ffffff'; g.lineWidth = E(2); g.setLineDash([E(4), E(4)]); g.beginPath(); g.arc(c.x, c.y, c.r + E(6), 0, 7); g.stroke(); g.setLineDash([]); g.globalAlpha = 1;
+  } else if (f.type === 'vgTrail') {
+    g.globalAlpha = (1 - k) * .4; g.fillStyle = '#3a3b42'; g.beginPath(); g.arc(f.x, f.y, E(12) * (1 - k * .4), 0, 7); g.fill();
+    g.globalAlpha = (1 - k) * .8; g.strokeStyle = VGC.eye; g.lineWidth = E(1.5); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x - Math.cos(f.ang) * E(20), f.y - Math.sin(f.ang) * E(20)); g.stroke(); g.globalAlpha = 1;
+  } else if (f.type === 'vgBlink') {                                      // 처단 순간이동: 붉은 시선의 직선
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const lg = g.createLinearGradient(f.x, f.y, f.x2, f.y2); lg.addColorStop(0, 'rgba(255,42,42,0)'); lg.addColorStop(1, 'rgba(255,90,90,1)');
+    g.strokeStyle = lg; g.lineWidth = E(10) * (1 - k); g.lineCap = 'round'; g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+    g.strokeStyle = '#ffffff'; g.lineWidth = E(2) * (1 - k); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke(); g.restore();
+  } else if (f.type === 'vgStrike') {                                     // 처단 베기: 붉은 X
+    g.save(); g.translate(f.x, f.y); g.rotate(f.ang); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const L = f.r * (2.4 + e);
+    for (const r of [.7, -.7]) { g.save(); g.rotate(r); const gr = g.createLinearGradient(-L, 0, L, 0); gr.addColorStop(0, 'rgba(255,42,42,0)'); gr.addColorStop(.5, f.perfect ? '#ffffff' : '#ff5a4a'); gr.addColorStop(1, 'rgba(255,42,42,0)'); g.fillStyle = gr; g.fillRect(-L, -E(f.perfect ? 3.5 : 2.5), L * 2, E(f.perfect ? 7 : 5)); g.restore(); }
+    g.restore();
+    g.globalAlpha = 1 - k; g.fillStyle = VGC.blood; for (let i = 0; i < 6; i++) { const an = f.ang + (i - 2.5) * .35; g.beginPath(); g.arc(f.x + Math.cos(an) * f.r * (1 + e * 1.4), f.y + Math.sin(an) * f.r * (1 + e * 1.4), E(2.4), 0, 7); g.fill(); } g.globalAlpha = 1;
+  } else if (f.type === 'vgMarkOn') {
+    const t = f.tgt; if (!t || !t.alive) return; g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.strokeStyle = VGC.eye; g.lineWidth = E(3); g.beginPath(); g.ellipse(t.x, t.y, t.r * (1.2 + e * 1.4), t.r * (.6 + e * .7), 0, 0, 7); g.stroke(); g.restore();
+  } else if (f.type === 'vgGazeOn' || f.type === 'vgEgo' || f.type === 'vgCharge') {
+    const c = f.owner; if (!c) return; g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const R = f.type === 'vgEgo' ? E(160) : f.type === 'vgGazeOn' ? E(80) : E(30);
+    const gr = g.createRadialGradient(c.x, c.y, c.r * .5, c.x, c.y, c.r + R * e); gr.addColorStop(0, f.type === 'vgCharge' ? 'rgba(255,138,42,.5)' : 'rgba(255,42,42,.55)'); gr.addColorStop(1, 'rgba(255,42,42,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(c.x, c.y, c.r + R * e, 0, 7); g.fill();
+    g.strokeStyle = f.type === 'vgCharge' ? '#ffb35a' : VGC.eye; g.lineWidth = E(3); g.beginPath(); g.arc(c.x, c.y, c.r + R * e, 0, 7); g.stroke(); g.restore();
+  } else if (f.type === 'vgThrust') {                                    // E.G.O 창 찌르기: 길게 뻗는 핏빛 창날
+    g.save(); g.translate(f.x, f.y); g.rotate(f.ang); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const L = f.len * (.55 + e * .45), W = f.wid * .32 * (1 - k * .5);
+    const tg = g.createLinearGradient(0, 0, L, 0); tg.addColorStop(0, 'rgba(200,20,40,0)'); tg.addColorStop(.75, f.perfect ? 'rgba(255,255,255,.9)' : 'rgba(230,30,50,.85)'); tg.addColorStop(1, '#ffd0d0');
+    g.fillStyle = tg; g.beginPath(); g.moveTo(E(10), -W * .35); g.lineTo(L - E(40), -W); g.quadraticCurveTo(L - E(10), -W * .5, L + E(10), 0); g.quadraticCurveTo(L - E(10), W * .5, L - E(40), W); g.lineTo(E(10), W * .35); g.closePath(); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,.85)'; g.lineWidth = E(2); g.beginPath(); g.moveTo(E(20), 0); g.lineTo(L, 0); g.stroke();
+    if (f.perfect) { g.strokeStyle = '#ff2a2a'; g.lineWidth = E(3); g.beginPath(); g.arc(L, 0, E(14) + E(16) * e, 0, 7); g.stroke(); }
+    g.restore();
+    g.globalAlpha = 1 - k; g.fillStyle = '#9e0f1c'; for (let i = 0; i < 6; i++) { const d = f.len * (.3 + i * .12), o = (i % 2 ? 1 : -1) * E(8) * e; g.beginPath(); g.arc(f.x + Math.cos(f.ang) * d - Math.sin(f.ang) * o, f.y + Math.sin(f.ang) * d + Math.cos(f.ang) * o, E(2.2) * (1 - k), 0, 7); g.fill(); } g.globalAlpha = 1;
+  } else if (f.type === 'vgRise') {                                       // 장례 준비: 하늘에서 거대한 핏빛 검이 내려옴
+    const c = f.owner, x = f.x, y = f.y, e2 = Math.min(1, k * 1.1);
+    g.save(); g.globalCompositeOperation = 'lighter';
+    const pg = g.createLinearGradient(x, y - f.r * 1.6, x, y); pg.addColorStop(0, 'rgba(255,42,42,0)'); pg.addColorStop(1, `rgba(255,60,60,${.45 * e2})`);
+    g.fillStyle = pg; g.fillRect(x - E(26) - E(30) * e2, y - f.r * 1.6, (E(26) + E(30) * e2) * 2, f.r * 1.6);
+    g.restore();
+    const L = f.r * 1.25, by = y - f.r * 1.5 * (1 - e2 * e2);                    // 하늘에서 거대한 피의 창이 내리꽂힘 (창끝이 가운데로)
+    g.save(); g.translate(x, by); g.rotate(Math.PI / 2); g.shadowColor = '#ff2a2a'; g.shadowBlur = E(24);
+    g.strokeStyle = '#4a0810'; g.lineWidth = E(9); g.lineCap = 'round'; g.beginPath(); g.moveTo(-L, 0); g.lineTo(-E(70), 0); g.stroke();
+    g.strokeStyle = '#c8162c'; g.lineWidth = E(3.5); g.beginPath(); g.moveTo(-L * .9, 0); g.lineTo(-E(74), 0); g.stroke(); g.lineCap = 'butt';
+    const hg = g.createLinearGradient(-E(80), 0, 0, 0); hg.addColorStop(0, '#7a0a14'); hg.addColorStop(.6, '#e0263a'); hg.addColorStop(1, '#ffe0e0');
+    g.fillStyle = hg; g.beginPath(); g.moveTo(-E(80), 0); g.quadraticCurveTo(-E(44), -E(22), 0, 0); g.quadraticCurveTo(-E(44), E(22), -E(80), 0); g.fill();
+    g.shadowBlur = 0; g.fillStyle = '#e0263a'; for (let i = 0; i < 6; i++) { g.beginPath(); g.arc(-L * (.3 + i * .1), (i % 2 ? 1 : -1) * E(7), E(3), 0, 7); g.fill(); }
+    g.restore();
+    g.strokeStyle = `rgba(255,255,255,${.3 + .6 * e2})`; g.lineWidth = E(2); g.beginPath(); g.arc(x, y, f.r * (1 - e2 * .8), 0, 7); g.stroke();   // 조여드는 고리
+  } else if (f.type === 'vgFuneral') {                                    // 장례: 거대한 십자 베기 + 피의 분출
+    const x = f.x, y = f.y, rr = f.r;
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    const fl = g.createRadialGradient(x, y, 0, x, y, rr * 1.1); fl.addColorStop(0, f.perfect ? 'rgba(255,255,255,.95)' : 'rgba(255,120,120,.8)'); fl.addColorStop(1, 'rgba(255,40,40,0)');
+    g.fillStyle = fl; g.beginPath(); g.arc(x, y, rr * (.3 + e * .8), 0, 7); g.fill();
+    for (const a of [Math.PI / 4, -Math.PI / 4]) {                          // 십자 베기
+      g.save(); g.translate(x, y); g.rotate(a + f.ang * 0);
+      const L = rr * (.6 + e * .6), Wd = E(26) * (1 - k * .6);
+      const cg = g.createLinearGradient(-L, 0, L, 0); cg.addColorStop(0, 'rgba(255,40,40,0)'); cg.addColorStop(.5, f.perfect ? '#ffffff' : '#ff6a6a'); cg.addColorStop(1, 'rgba(255,40,40,0)');
+      g.fillStyle = cg; g.beginPath(); g.moveTo(-L, 0); g.lineTo(0, -Wd); g.lineTo(L, 0); g.lineTo(0, Wd); g.closePath(); g.fill();
+      g.fillStyle = 'rgba(255,255,255,.9)'; g.fillRect(-L * .8, -E(1.5), L * 1.6, E(3));
+      g.restore();
+    }
+    g.strokeStyle = f.perfect ? '#ffffff' : '#ff3b3b'; g.lineWidth = E(10) * (1 - k); g.beginPath(); g.arc(x, y, rr * (.2 + e * .85), 0, 7); g.stroke();
+    g.restore();
+    g.globalAlpha = 1 - k; g.fillStyle = '#9e0f1c';                           // 가장자리에서 솟는 피의 가시
+    for (let i = 0; i < 18; i++) { const a = i * .349, h = E(40 + (i % 3) * 18) * Math.sin(Math.min(1, k * 2.2) * Math.PI), bx = x + Math.cos(a) * rr * .92, by = y + Math.sin(a) * rr * .92;
+      g.beginPath(); g.moveTo(bx - E(6), by); g.lineTo(bx, by - h); g.lineTo(bx + E(6), by); g.closePath(); g.fill(); }
+    g.fillStyle = '#e0263a'; for (let i = 0; i < 24; i++) { const a = i * .262 + .1, d = rr * (.2 + e * .9) * (.6 + (i % 4) * .12); g.beginPath(); g.arc(x + Math.cos(a) * d, y + Math.sin(a) * d - E(20) * Math.sin(k * Math.PI), E(3) * (1 - k), 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+  } else if (f.type === 'vgBrandIn' || f.type === 'vgBrandPop') {
+    const t = f.tgt || f, x = t.x, y = t.y, r = t.r || f.r; if (f.tgt && !f.tgt.alive) return;
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.strokeStyle = '#ff3b3b'; g.lineWidth = E(f.type === 'vgBrandPop' ? 4 : 2.5);
+    for (const a of [.785, -.785]) { g.save(); g.translate(x, y); g.rotate(a); const L = r * (1 + e * (f.type === 'vgBrandPop' ? 2 : .8)); g.beginPath(); g.moveTo(-L, 0); g.lineTo(L, 0); g.stroke(); g.restore(); }
+    g.restore();
+  } else if (f.type === 'vgGuard') {                                     // 보호막이 쌓임
+    const c = f.owner; if (!c) return; g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = 1 - k;
+    g.strokeStyle = '#ff5a6a'; g.lineWidth = E(3) * (1 - k); g.beginPath(); for (let i = 0; i <= 6; i++) { const an = i * Math.PI / 3; g.lineTo(c.x + Math.cos(an) * (c.r + E(11) + E(16) * (1 - e)), c.y + Math.sin(an) * (c.r + E(11) + E(16) * (1 - e))); } g.stroke(); g.restore();
+  } else if (f.type === 'vgRetreat') {                                    // 쓰러지는 대신: 뒷걸음질쳐 물러나며 사라짐
+    const d = E(150) * e, x = f.x + Math.cos(f.ang) * d, y = f.y + Math.sin(f.ang) * d;
+    if (f.team !== player.team && !visAt(player.team, x, y)) return;
+    g.save(); g.globalAlpha = Math.max(0, 1 - k * 1.15);
+    for (let i = 3; i >= 1; i--) { const dd = E(150) * Math.max(0, e - i * .08); g.globalAlpha = Math.max(0, (1 - k) * .18 / i); g.fillStyle = '#5a5c66'; g.beginPath(); g.arc(f.x + Math.cos(f.ang) * dd, f.y + Math.sin(f.ang) * dd, f.r, 0, 7); g.fill(); }
+    g.globalAlpha = Math.max(0, 1 - k * 1.15);
+    g.fillStyle = VGC.suit; g.beginPath(); g.arc(x, y, f.r, 0, 7); g.fill();
+    g.strokeStyle = 'rgba(170,172,182,.5)'; g.lineWidth = E(1.5); g.beginPath(); g.arc(x, y, f.r, 0, 7); g.stroke();
+    const fa = f.face, ex = x + Math.cos(fa) * f.r * .45, ey = y + Math.sin(fa) * f.r * .45;
+    g.globalCompositeOperation = 'lighter'; g.fillStyle = `rgba(255,42,42,${.9 * (1 - k)})`;
+    for (const s of [-1, 1]) { g.beginPath(); g.arc(ex + Math.cos(fa + Math.PI / 2) * s * f.r * .22, ey + Math.sin(fa + Math.PI / 2) * s * f.r * .22, E(2.2), 0, 7); g.fill(); }
+    g.restore();
   }
 }
 
@@ -9045,6 +10031,8 @@ function drawFx(g) {
     else if (/^hc[A-Z]/.test(f.type)) drawHeathFx(g, f, k);
     else if (/^mr[A-Z]/.test(f.type)) drawMeurFx(g, f, k);
     else if (/^yl[A-Z]/.test(f.type)) drawYuriFx(g, f, k);
+    else if (/^kr[A-Z]/.test(f.type)) drawKromerFx(g, f, k);
+    else if (/^vg[A-Z]/.test(f.type)) drawVergilFx(g, f, k);
     else if (/^sp[A-Z]/.test(f.type)) drawSpellFx(g, f, k);
     else if (/^hl[A-Z]/.test(f.type)) {}          // 홍루 이펙트는 drawHongluWorld에서 (캐릭터 밑)
     else if (['shardpop', 'shardpick', 'featherhit', 'stab', 'fan', 'blinkY', 'wings', 'mburst'].includes(f.type)) drawYisangFx(g, f, k);
@@ -9183,7 +10171,7 @@ function drawMinimap(g) {
   g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 1;
   g.strokeRect((cam.x - hw) * s, (cam.y - hh) * s, hw * 2 * s, hh * 2 * s);
   for (const c of [...heroes.filter(h => h !== player), player]) if (c.alive && !(c.hidden && c.team !== player.team) && seenBy(player.team, c)) {         // 미니맵: 캐릭터 색 + 아군 파랑 / 적 빨강 테두리, 나는 흰 고리 추가
-    const MAPCOL = {gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a'};
+    const MAPCOL = {gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31'};
     if (c === player) { g.strokeStyle = '#fff'; g.lineWidth = 1.5; g.beginPath(); g.arc(c.x * s, c.y * s, 7.5, 0, 7); g.stroke(); }
     g.fillStyle = MAPCOL[c.key] || '#777'; g.strokeStyle = sideCol(c); g.lineWidth = 2.2;
     g.beginPath(); g.arc(c.x * s, c.y * s, 5, 0, 7); g.fill(); g.stroke();
@@ -9331,7 +10319,7 @@ function drawButtons(g) {
     g.strokeStyle = '#ffcf6b'; g.lineWidth = 3;
     g.beginPath(); g.arc(pp.x, pp.y, 16, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * player.pStacks / KR.P.max); g.stroke();
   }
-  g.fillStyle = '#fff'; g.font = '800 12px system-ui,sans-serif'; g.strokeStyle = 'rgba(0,0,0,.85)'; g.lineWidth = 3; g.lineJoin = 'round'; const pTxt = (player.key === 'yuri' ? yuStages(player).join('+') : player.key === 'meursault' ? (player.mrPCd > time ? Math.ceil(player.mrPCd - time) + '' : 'P') : player.key === 'heathcliff' ? (hcRaging(player) ? Math.ceil(player.hcRageT - time) + '' : 'P') : player.key === 'sinclair' ? scMarks(player) + '/5' : player.key === 'honglu' ? (player.hlEyeT > time ? '眼' : (player.hlStreak || 0) + '/3') : player.key === 'outis' ? (player.reloadT > time ? '↻' : player.ammo) : player.key === 'ryoshu' ? ryoStacks(player) + '/' + KRY.P.max : rodP ? player.pStacks : yiP ? player.featherN : isP ? (player.iStackT > time ? player.iStacks : 0) + '·' + (player.iAtk % 3 + 1) : 'P'); if (!(pic && pTxt === 'P')) { g.strokeText(pTxt, pp.x, pp.y); g.fillText(pTxt, pp.x, pp.y); }
+  g.fillStyle = '#fff'; g.font = '800 12px system-ui,sans-serif'; g.strokeStyle = 'rgba(0,0,0,.85)'; g.lineWidth = 3; g.lineJoin = 'round'; const pTxt = (player.key === 'vergil' ? (player.vgGaze > time ? '개안' : Math.round(player.vgHeat || 0) + '') : player.key === 'kromer' ? (player.krW > time ? '망치' : '') : player.key === 'yuri' ? yuStages(player).join('+') : player.key === 'meursault' ? (player.mrPCd > time ? Math.ceil(player.mrPCd - time) + '' : 'P') : player.key === 'heathcliff' ? (hcRaging(player) ? Math.ceil(player.hcRageT - time) + '' : 'P') : player.key === 'sinclair' ? scMarks(player) + '/5' : player.key === 'honglu' ? (player.hlEyeT > time ? '眼' : (player.hlStreak || 0) + '/3') : player.key === 'outis' ? (player.reloadT > time ? '↻' : player.ammo) : player.key === 'ryoshu' ? ryoStacks(player) + '/' + KRY.P.max : rodP ? player.pStacks : yiP ? player.featherN : isP ? (player.iStackT > time ? player.iStacks : 0) + '·' + (player.iAtk % 3 + 1) : 'P'); if (!(pic && pTxt === 'P')) { g.strokeText(pTxt, pp.x, pp.y); g.fillText(pTxt, pp.x, pp.y); }
 }
 
 // 화면 아래 가운데 캐스팅바 (LoL처럼)
@@ -9403,6 +10391,7 @@ function render() {
   ctx.translate(vw / 2 + sx, vh / 2 + sy); ctx.scale(zoom * (1 + juice.punch), zoom * (1 + juice.punch)); ctx.translate(-cam.x, -cam.y);
   drawWorld(ctx);
   drawHongluWorld(ctx);                           // 홍루 스킬은 가시성을 위해 모두 캐릭터 밑에
+  drawVergilPool(ctx);                            // 베르길리우스 피의 욕장
   drawSkillAim(ctx); drawPcHints(ctx);
   drawStructs(ctx);
   drawCampMarks(ctx);
@@ -9423,6 +10412,8 @@ function render() {
   drawHeathBleeds(ctx);
   drawMeurChains(ctx);
   drawYuriWorld(ctx);
+  drawKromerWorld(ctx);
+  drawVergilWorld(ctx);
   drawSpellMarks(ctx);
   drawProjectiles(ctx);
   drawShots(ctx);
@@ -9558,7 +10549,7 @@ function itemIconCanvas(id) {   // 배경(분류 색) + 그림을 한 번만 그
 }
 // ═════════════ 스킬 아이콘 (챔피언별 P/Q/W/E/R, 좌표계 -32..32) ═════════════
 const SKILL_BG = {gregor:['#5a3f22', '#1c140b'], rodion:['#4a3f55', '#16121a'], yisang:['#3a4a5a', '#0b0b10'], ishmael:['#8a4a1a', '#1e1008'],
-  ryoshu:['#7a141c', '#1a0406'], faust:['#6a5a78', '#1e1824'], donq:['#8a6a10', '#1e1804'], outis:['#1f5a34', '#08180e'], honglu:['#1f8f84', '#062422'], sinclair:['#5a6610', '#161a04'], heathcliff:['#4a2a6e', '#140a1e'], meursault:['#2a4a86', '#08101e'], yuri:['#8a2a3e', '#1e080e']};
+  ryoshu:['#7a141c', '#1a0406'], faust:['#6a5a78', '#1e1824'], donq:['#8a6a10', '#1e1804'], outis:['#1f5a34', '#08180e'], honglu:['#1f8f84', '#062422'], sinclair:['#5a6610', '#161a04'], heathcliff:['#4a2a6e', '#140a1e'], meursault:['#2a4a86', '#08101e'], yuri:['#8a2a3e', '#1e080e'], kromer:['#6a5a3a', '#14100c'], vergil:['#5a1a1a', '#0c0c10']};
 const SKILL_ICON_CACHE = {};
 const sArrow = (g, x1, y1, x2, y2, col, w) => { iconLine(g, x1, y1, x2, y2, col, w); const a = Math.atan2(y2 - y1, x2 - x1), h = w * 2.4; iconPoly(g, [[x2 + Math.cos(a) * h * .6, y2 + Math.sin(a) * h * .6], [x2 + Math.cos(a + 2.4) * h, y2 + Math.sin(a + 2.4) * h], [x2 + Math.cos(a - 2.4) * h, y2 + Math.sin(a - 2.4) * h]], col); };
 const sSlash = (g, x1, y1, x2, y2, col, w) => { g.fillStyle = col; const a = Math.atan2(y2 - y1, x2 - x1), nx = -Math.sin(a) * w, ny = Math.cos(a) * w, mx = (x1 + x2) / 2, my = (y1 + y2) / 2; g.beginPath(); g.moveTo(x1, y1); g.quadraticCurveTo(mx + nx, my + ny, x2, y2); g.quadraticCurveTo(mx + nx * .2, my + ny * .2, x1, y1); g.fill(); };
@@ -9658,9 +10649,23 @@ const SKILL_ICON_DRAW = {
   yuri: {
     P: g => { g.fillStyle = '#c8232b'; g.beginPath(); g.arc(-4, 4, 18, 0, 7); g.fill(); g.fillStyle = '#4f8a3a'; g.beginPath(); g.ellipse(6, -16, 9, 4, -.5, 0, 7); g.fill(); [['R', -20, -20], ['B', 20, -20], ['P', -20, 22], ['W', 20, 22]].forEach(([k, x, y]) => { g.fillStyle = YU_COL[k]; g.fillRect(x - 5, y - 5, 10, 10); }); },
     Q: g => { [['R', -1, -1], ['B', 1, -1], ['W', 1, 1], ['P', -1, 1]].forEach(([k, sx, sy]) => { g.fillStyle = YU_COL[k]; g.beginPath(); g.moveTo(0, 0); g.arc(0, 0, 26, Math.atan2(sy, sx) - .78, Math.atan2(sy, sx) + .78); g.closePath(); g.fill(); }); g.fillStyle = '#1e080e'; g.beginPath(); g.arc(0, 0, 9, 0, 7); g.fill(); sArrow(g, -6, 0, 8, 0, '#ffffff', 2); },
-    W: g => { sArrow(g, -24, 12, 14, -8, '#ffd0d8', 3.5); g.strokeStyle = '#e0453a'; g.lineWidth = 3; g.strokeRect(-6, -24, 26, 22); g.strokeStyle = '#4a8fe0'; g.strokeRect(-2, -20, 26, 22); },
+    W: g => { sArrow(g, -24, 12, 14, -8, '#ffd0d8', 3.5); g.strokeStyle = '#e0453a'; g.lineWidth = 3; g.strokeRect(-6, -24, 26, 22); g.strokeStyle = '#1a1a1f'; g.strokeRect(-2, -20, 26, 22); },
     E: g => { g.fillStyle = '#ffd27a'; g.beginPath(); g.ellipse(0, 0, 26, 14, 0, 0, 7); g.fill(); g.fillStyle = '#3a2408'; g.beginPath(); g.arc(0, 0, 8, 0, 7); g.fill(); g.fillStyle = '#fff'; g.beginPath(); g.arc(-3, -3, 2.5, 0, 7); g.fill(); },
     R: g => { g.fillStyle = '#ffd27a'; g.beginPath(); g.arc(-8, 4, 17, 0, 7); g.arc(8, 4, 17, 0, 7); g.fill(); g.strokeStyle = '#3d2a14'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, -10); g.lineTo(4, -24); g.stroke(); g.fillStyle = '#e8e2c8'; for (let i = 0; i < 7; i++) { g.beginPath(); g.ellipse(-16 + i * 5, 18 + (i % 2) * 3, 3, 1.5, .6, 0, 7); g.fill(); } },
+  },
+  kromer: {
+    P: g => { krNailShape(g, -20, -12, .45, 40, 3.6, true); krNailShape(g, -22, 8, -.05, 40, 3.6, true); krSeal(g, 16, 14, 7); krStar(g, 14, -16, 8, .3, KRC.goldL); },
+    Q: g => { const lg = g.createLinearGradient(-28, 0, 4, 0); lg.addColorStop(0, 'rgba(242,193,78,0)'); lg.addColorStop(1, 'rgba(255,231,163,.95)'); g.strokeStyle = lg; g.lineWidth = 8; g.lineCap = 'round'; g.beginPath(); g.moveTo(-28, 4); g.lineTo(2, 4); g.stroke(); krNailShape(g, -12, 4, 0, 40, 4.2, true); krStar(g, 22, -14, 8, .4, KRC.goldL); },
+    W: g => { g.save(); g.translate(-18, 20); g.rotate(-.95); krHammerShape(g, 30, 13, true); g.restore(); krStar(g, 16, -14, 10, .3, KRC.goldL); krSeal(g, -16, -14, 6); },
+    E: g => { g.strokeStyle = KRC.silver; g.lineWidth = 7; g.beginPath(); g.arc(-9, 4, 13, .3, 4.9); g.stroke(); g.strokeStyle = KRC.goldL; g.lineWidth = 3; g.beginPath(); g.arc(12, -4, 13, 3.4, 7.9); g.stroke(); krStar(g, 12, -4, 8, .2, '#ffffff'); },
+    R: g => { g.strokeStyle = KRC.wax; g.lineWidth = 2.5; g.beginPath(); g.ellipse(0, 20, 20, 6, 0, 0, 7); g.stroke(); krNailShape(g, 0, -26, Math.PI / 2, 48, 5.5, true); krStar(g, -16, -14, 7, .3, KRC.goldL); krStar(g, 17, -4, 5, .6, KRC.goldL); },
+  },
+  vergil: {
+    P: g => { g.fillStyle = '#2b2c31'; g.beginPath(); g.arc(0, 0, 24, 0, 7); g.fill(); for (const s of [-1, 1]) { g.fillStyle = 'rgba(255,42,42,.4)'; g.beginPath(); g.arc(s * 9, -2, 8, 0, 7); g.fill(); g.fillStyle = '#ff2a2a'; g.beginPath(); g.arc(s * 9, -2, 3.5, 0, 7); g.fill(); } g.strokeStyle = '#8a8c96'; g.lineWidth = 2; g.beginPath(); g.moveTo(-12, -16); g.lineTo(10, 10); g.stroke(); },
+    Q: g => { g.save(); g.rotate(-.7); g.translate(-22, 0); vgGladius(g, 44, .6, false); g.restore(); g.strokeStyle = '#ffd0a0'; g.lineWidth = 2.5; for (let i = 0; i < 3; i++) { g.beginPath(); g.arc(8, 6, 12 + i * 6, -1.9, -.6); g.stroke(); } },
+    W: g => { g.fillStyle = '#ff3b3b'; g.beginPath(); g.moveTo(-6, -26); g.quadraticCurveTo(30, 0, -6, 26); g.quadraticCurveTo(10, 0, -6, -26); g.fill(); g.fillStyle = 'rgba(255,220,150,.9)'; g.beginPath(); g.moveTo(-2, -18); g.quadraticCurveTo(22, 0, -2, 18); g.quadraticCurveTo(10, 0, -2, -18); g.fill(); g.strokeStyle = '#ffb35a'; g.lineWidth = 2; g.beginPath(); g.moveTo(-26, 0); g.lineTo(-10, 0); g.stroke(); },
+    E: g => { g.strokeStyle = '#ffffff'; g.lineWidth = 4; g.beginPath(); g.arc(-4, 0, 20, -1, 1); g.stroke(); g.fillStyle = '#ffd0a0'; for (let i = 0; i < 6; i++) { const a = (i - 2.5) * .3; g.beginPath(); g.arc(-4 + Math.cos(a) * 28, Math.sin(a) * 28, 2.5, 0, 7); g.fill(); } g.fillStyle = '#ff2a2a'; g.beginPath(); g.arc(-14, 0, 4, 0, 7); g.fill(); },
+    R: g => { g.fillStyle = '#9e0f1c'; g.beginPath(); g.moveTo(-18, -4); g.quadraticCurveTo(0, 34, 18, -4); g.lineTo(10, 26); g.lineTo(-10, 26); g.closePath(); g.fill(); g.strokeStyle = '#3f7a3a'; g.lineWidth = 3.5; g.beginPath(); g.ellipse(0, -12, 17, 7, 0, 0, 7); g.stroke(); g.fillStyle = '#e0263a'; for (let i = 0; i < 6; i++) { const a = i * 1.05; g.beginPath(); g.arc(Math.cos(a) * 17, -12 + Math.sin(a) * 7, 2.4, 0, 7); g.fill(); } for (const s of [-1, 1]) { g.fillStyle = '#ff2a2a'; g.beginPath(); g.arc(s * 6, 2, 2.6, 0, 7); g.fill(); } },
   },
 };
 function skillIconCanvas(champ, key) {
@@ -9794,7 +10799,7 @@ $('shopBtn').addEventListener('click', () => openShop(!shopOpen));
 addEventListener('keydown', e => { if (spectating || /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return; if (e.key.toLowerCase() === 'p') openShop(!shopOpen); if (e.key === 'Escape' && shopOpen) openShop(false); });
 
 // ═════════════ 점수판 (탭) ═════════════
-const CHAMP_COL = {gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', bot:'#7a3438'};
+const CHAMP_COL = {gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', bot:'#7a3438'};
 const TEAM_SIZE = 4;
 let boardOpen = false, boardT = 0;
 function openBoard(on) {
@@ -10322,7 +11327,7 @@ const NET_COLLS = {
   grenades:[() => grenades, v => { grenades = v; }], scThrows:[() => scThrows, v => { scThrows = v; }], mrChains:[() => mrChains, v => { mrChains = v; }],
   hlOrbs:[() => hlOrbs, v => { hlOrbs = v; }], hlPetals:[() => hlPetals, v => { hlPetals = v; }], hlDrops:[() => hlDrops, v => { hlDrops = v; }],
   donPools:[() => donPools, v => { donPools = v; }], corpses:[() => corpses, v => { corpses = v; }], camps:[() => camps, v => { camps = v; }],
-  killFeed:[() => killFeed, v => { killFeed = v; }],
+  killFeed:[() => killFeed, v => { killFeed = v; }], krBolts:[() => krBolts, v => { krBolts = v; }],
 };
 const NET_G = {
   time:[() => time, v => { time = v; }], nextWave:[() => nextWave, v => { nextWave = v; }], waveNo:[() => waveNo, v => { waveNo = v; }],
@@ -10478,7 +11483,7 @@ function mpGuestFrame(dt) {
   if (MPS.hostAt) { const est = MPS.hostT + (performance.now() - MPS.hostAt) / 1000, e = est - time; if (Math.abs(e) > .5) time = est; else time += e * Math.min(1, dt * 2); }
   for (const f of fx) if (f && f.t !== undefined && f.life) f.t = Math.min(f.life * .999, f.t + dt);
   const rt = time - MP_INTERP;
-  for (const name of ['units', 'projectiles', 'wards', 'shots', 'mirrors', 'harpoons', 'fMissiles', 'grenades', 'scThrows', 'hlOrbs', 'hlPetals', 'mrChains'])
+  for (const name of ['units', 'projectiles', 'krBolts', 'wards', 'shots', 'mirrors', 'harpoons', 'fMissiles', 'grenades', 'scThrows', 'hlOrbs', 'hlPetals', 'mrChains'])
     for (const o of NET_COLLS[name][0]() || []) {
       const h = o && o._h; if (!h || !h.length || o === player) continue;
       let i = h.length - 1; while (i > 0 && h[i].t > rt) i--;
@@ -10684,11 +11689,25 @@ CODEX_SK.meursault = {
   R: {name:'타인의 사슬', cd: KM.R.cd, range: KM.R.range, text: H => `지정한 적 챔피언에게 사슬을 뻗어 ${H.mag(H.r(KM.R.dmg) + ' ' + H.ap(KM.R.ap))}를 주고, 그 적의 ${H.b('궁극기를 복사')}합니다.<br>복사한 궁극기는 ${H.s(KM.R.keep)} 안에 R로 한 번 쓸 수 있으며, 쓰는 동안 잠시 그 챔피언의 방식으로 싸웁니다 (랭크는 뫼르소의 R 랭크).<br>복사한 궁극기를 쓰거나 시간이 지나면 원래 재사용 대기시간이 돌아갑니다.`},
 };
 CODEX_SK.yuri = {
-  P: {name:'분석, 관찰, 격리', text: H => `${H.b('E.G.O 백설공주의 사과')}: 기본 공격은 광선입니다. 대상에게 피해를 주고, 유리와 대상 사이 경로의 다른 적에게도 ${H.p(KYU.P.pathMul)} 피해를 줍니다.<br>${H.b('L.CORP')}: 게임 시작 때 적 챔피언마다 적합 작업·부적합 작업이 하나씩 무작위로 정해집니다. 한 챔피언에게 서로 다른 작업(관리 단계)으로 ${KYU.P.reveal}종류 이상 평타를 맞히면 체력바 위에 적합(✓)·부적합(✗) 색이 드러납니다.<br>적합 작업으로 맞히면 피해 +${H.p(KYU.P.good)}, 부적합 작업이면 −${H.p(KYU.P.bad)} (드러나기 전에도 적용됩니다).`},
-  Q: {name:'E.G.O 장비 교체', cd: KYU.Q.cd, text: H => `관리 단계를 ${H.b('R(본능·빨강) → B(억압·파랑) → P(애착·보라) → W(통찰·흰색)')} 순서로 교체합니다. 단계마다 기본 공격에 효과가 붙습니다.<br>${H.b('R')}: 광역 경로 피해 대신 대상에게 ${H.phys(KYU.S.R.dmg[0] + ' + ' + KYU.S.R.dmg[1] + ' × 레벨')}를 추가로 줍니다.<br>${H.b('B')}: ${KYU.S.B.every}번째 평타마다 ${H.s(KYU.S.B.slowDur)} 동안 ${H.p(KYU.S.B.slow)} 둔화.<br>${H.b('P')}: ${KYU.S.P.every}번째 평타마다 대상 최대 체력의 ${H.p(KYU.S.P.pct)} 물리 피해 추가.<br>${H.b('W')}: 대상의 현재 체력이 낮을수록 평타 피해 증가 (최대 +${H.p(KYU.S.W.low)}).`},
-  W: {name:'격리 개시', cd: KYU.W.cd, range: KYU.W.dash, text: H => `지정한 방향으로 ${KYU.W.dash}만큼 돌진하고 평타 대기시간을 초기화합니다. ${H.s(KYU.W.dur)} 동안 공격 속도가 ${H.rp(KYU.W.as)} 오르고, 지금 단계를 제외한 무작위 관리 단계 하나가 ${H.b('함께 활성화')}됩니다.<br>지속 중 Q로 단계를 교체하면 보조 단계도 새로운 종류로 바뀌며, 지속시간이 끝나면 사라집니다.`},
+  P: {name:'분석, 관찰, 격리', text: H => `${H.b('E.G.O 백설공주의 사과')}: 유리의 기본 공격은 광선입니다. 대상에게 피해를 입히고, 유리와 대상 사이 경로에 있는 다른 적들에게도 ${H.p(KYU.P.pathMul)}만큼 피해를 입힙니다.<br><br>${H.b('L.CORP')}: 로보토미 코퍼레이션의 환상체가 피해 속성마다 내성이 다르듯, 게임이 시작될 때 적 챔피언마다 ${H.b('취약 속성')} 하나와 ${H.b('저항 속성')} 하나가 무작위로 정해집니다. 피해 속성은 RED · WHITE · BLACK · PALE 네 가지입니다.<br>유리가 취약 속성으로 공격하면 피해가 ${H.p(KYU.P.good)} 증가하고, 저항 속성으로 공격하면 피해가 ${H.p(KYU.P.bad)} 감소합니다. 이 효과는 속성이 밝혀지기 전에도 적용됩니다.<br>한 적 챔피언에게 서로 다른 속성으로 ${KYU.P.reveal}종류 이상 기본 공격을 맞히면 내성이 파악되어, 체력바 위에 취약(▲) · 저항(▼) 속성의 색이 표시됩니다.`},
+  Q: {name:'E.G.O 장비 교체', cd: KYU.Q.cd, text: H => `유리가 E.G.O 장비를 갈아 끼워, 기본 공격의 피해 속성을 ${H.b('RED → WHITE → BLACK → PALE')} 순서로 바꿉니다. 속성마다 기본 공격에 다른 효과가 붙습니다.<br>${H.b('RED (붉은색 · 육체)')}: 경로 위의 적에게는 피해를 주지 않는 대신, 대상에게 ${H.phys(KYU.S.R.dmg[0] + ' + ' + KYU.S.R.dmg[1] + ' × 레벨')}를 추가로 입힙니다.<br>${H.b('WHITE (흰색 · 정신)')}: 대상의 정신을 무너뜨려, 대상의 현재 체력이 낮을수록 피해가 커집니다 (최대 +${H.p(KYU.S.W.low)}).<br>${H.b('BLACK (검은색 · 침식)')}: ${KYU.S.B.every}번째 기본 공격마다 대상을 침식시켜 ${H.s(KYU.S.B.slowDur)} 동안 ${H.p(KYU.S.B.slow)} 느리게 만듭니다.<br>${H.b('PALE (창백한 색 · 영혼)')}: ${KYU.S.P.every}번째 기본 공격마다 대상 최대 체력의 ${H.p(KYU.S.P.pct)}만큼 물리 피해를 추가로 입힙니다.`},
+  W: {name:'격리 개시', cd: KYU.W.cd, range: KYU.W.dash, text: H => `유리가 지정한 방향으로 ${KYU.W.dash}만큼 돌진하고, 기본 공격 대기시간을 초기화합니다.<br>${H.s(KYU.W.dur)} 동안 공격 속도가 ${H.rp(KYU.W.as)} 증가하고, 지금 쓰고 있는 속성을 제외한 무작위 피해 속성 하나가 ${H.b('함께 활성화')}되어 두 속성의 효과가 동시에 적용됩니다.<br>지속 중에 E.G.O 장비 교체(Q)를 사용하면 함께 활성화된 속성도 새로운 속성으로 바뀌며, 지속 시간이 끝나면 사라집니다.`},
   E: {name:'L사의 시선', cd: KYU.E.cd, range: KYU.E.range, text: H => `적 챔피언 하나를 지정해 ${H.phys(H.r(KYU.E.dmg) + ' ' + H.ad(KYU.E.ad))}를 주고 ${H.s(KYU.E.dur)} 동안 표식을 새깁니다 (새 표식을 새기면 이전 표식은 지워짐).<br>표식이 있는 적에게 다가가는 아군의 이동 속도가 ${H.p(KYU.E.ms)} 증가합니다.<br>유리가 표식 대상에게 평타를 맞히면 ${H.mag((KYU.E.mag[0] + ' + ' + KYU.E.mag[1] + ' × 레벨') + ' ' + H.ap(KYU.E.magAp))}를 주고 표식이 ${H.s(KYU.E.add)} 늘어납니다 (최대 ${H.s(KYU.E.max)}).`},
-  R: {name:'...죽고 싶지 않았어요.', cd: KYU.R.cd, range: KYU.R.range, text: H => `자신 또는 지정한 아군 챔피언에게 ${H.s(KYU.R.dur)} 동안 ${H.b('황금의 기운')}을 겁니다.<br>기운을 받은 채로 죽으면 ${H.b('처치 판정이 되지 않고')}, 구더기가 몰려와 몸을 덮어 사과가 되었다가 황금 사과로 변해 터지며 부활합니다 (그동안 대상으로 지정되지 않음).<br>부활할 때 최대 체력의 ${H.p(KYU.R.heal[0])} + 유리의 공격 속도에 비례한 만큼 회복하고, 주변 적에게 ${H.phys(H.r(KYU.R.dmg) + ' ' + H.ad(KYU.R.ad))}를 줍니다. 맞은 적 중 적합 작업이 밝혀진 챔피언은 ${H.s(KYU.R.fear)} 동안 ${H.b('공포')}에 걸려 도망칩니다.`},
+  R: {name:'...죽고 싶지 않았어요.', cd: KYU.R.cd, range: KYU.R.range, text: H => `자신 또는 지정한 아군 챔피언에게 ${H.s(KYU.R.dur)} 동안 ${H.b('황금의 기운')}을 겁니다.<br>기운을 받은 채로 죽으면 ${H.b('처치 판정이 되지 않고')}, 구더기가 몰려와 몸을 덮어 사과가 되었다가 황금 사과로 변해 터지며 부활합니다 (그동안 대상으로 지정되지 않음).<br>부활할 때 최대 체력의 ${H.p(KYU.R.heal[0])} + 유리의 공격 속도에 비례한 만큼 회복하고, 주변 적에게 ${H.phys(H.r(KYU.R.dmg) + ' ' + H.ad(KYU.R.ad))}를 줍니다. 맞은 적 중 내성이 파악된 챔피언은 ${H.s(KYU.R.fear)} 동안 ${H.b('공포')}에 걸려 도망칩니다.`},
+};
+CODEX_SK.kromer = {
+  P: {name:'못과 망치', text: H => `크로머의 스킬이 적 챔피언에게 맞을 때마다 ${H.b('못')}을 하나 박습니다 (최대 ${KKR.P.max}개, ${H.s(KKR.P.dur)} 유지 · 새로 박으면 갱신).<br>못이 박힌 적은 ${KKR.P.step}만큼 움직일 때마다 피를 흘려 ${H.phys(KKR.P.bleed[0] + ' + ' + KKR.P.bleed[1] + ' × 레벨 ' + H.ad(KKR.P.bleedAd))} × ${H.b('못 개수')}만큼 피해를 받습니다. 끌려가거나 밀려나도 흘립니다.<br>${H.b('이스터에그 · 나의 싱클레어')}: 크로머와 싱클레어가 서로 다른 팀일 때, 상대를 먼저 ${KKR.egg.need}번 처치한 쪽이 특수한 강화를 얻습니다 (크로머: 공격력 +${H.p(KKR.egg.ad)}·출혈 +${H.p(KKR.egg.bleed)} / 싱클레어: 공격력 +${H.p(KKR.egg.ad)}·이동 속도 +${H.p(KKR.egg.ms)}).`},
+  Q: {name:'광소', cd: KKR.Q.cd, range: KKR.Q.len, text: H => `전방으로 관통하는 대못을 일직선(길이 ${KKR.Q.len})으로 날려 맞은 모든 적에게 ${H.phys(H.r(KKR.Q.dmg) + ' ' + H.ad(KKR.Q.ad))}를 줍니다.<br>처음 맞은 적 챔피언은 ${H.p(KKR.Q.first)} 피해를 받고, 그 뒤로 맞은 대상은 ${H.p(KKR.Q.after)} 피해만 받습니다.`},
+  W: {name:'정화', cd: KKR.W.cd, text: H => `${H.b('기본 지속')}: 못이 박힌 적 챔피언을 향해 움직일 때 이동 속도 +${H.p(KKR.W.ms)}.<br>${H.b('사용')}: 평타 대기시간을 초기화하고 ${H.s(KKR.W.window)} 안의 다음 기본 공격을 강화합니다. 망치로 머리를 내려쳐 ${H.phys(H.r(KKR.W.dmg) + ' ' + H.ad(KKR.W.ad) + ' + 잃은 체력의 ' + H.rp(KKR.W.miss))}를 추가로 주고 ${H.s(KKR.W.slowDur)} 동안 ${H.p(KKR.W.slow)} 둔화시킵니다.<br>대상에게 박힌 못 하나마다 이 추가 피해가 +${H.p(KKR.W.perNail)} 늘어납니다.`},
+  E: {name:'이단 말살', cd: KKR.E.cd, range: KKR.E.dash, text: H => `제자리에서 회전해 주변(반경 ${KKR.E.radius})에 ${H.phys(H.r(KKR.E.dmg) + ' ' + H.ad(KKR.E.ad))}를 준 뒤, 지정한 방향으로 최대 ${KKR.E.dash}만큼 돌진하고 도착한 자리에서 한 번 더 회전해 같은 피해를 줍니다.<br>마지막 회전이 ${H.b('못이 ' + KKR.P.max + '개 모두 박힌')} 적에게 맞으면 ${H.s(KKR.E.stun)} 동안 기절시키고 ${H.phys(H.r(KKR.E.bonus) + ' ' + H.ad(KKR.E.bonusAd))}를 추가로 줍니다.`},
+  R: {name:'가장!! 순수한!! 세상으로!!!', cd: KKR.R.cd, range: KKR.R.range, text: H => `${H.s(KKR.R.wind)} 동안 ${H.b('지정할 수 없는 상태')}가 된 뒤, 지정한 적 챔피언 곁으로 순간이동해 대못을 박습니다: ${H.s(KKR.R.root)} 속박 + ${H.phys(H.r(KKR.R.dmg) + ' ' + H.ad(KKR.R.ad))}.<br>${H.s(KKR.R.smashAt)} 뒤 망치를 휘둘러 ${H.phys(H.r(KKR.R.smash) + ' ' + H.ad(KKR.R.smashAd) + ' + 잃은 체력의 ' + H.rp(KKR.R.miss))} (못 하나마다 +${H.p(KKR.R.perNail)})를 주고, 크로머가 궁극기를 쓴 자리 쪽으로 최대 ${KKR.R.knock}만큼 세게 밀쳐냅니다.<br>그 뒤 크로머는 궁극기를 썼던 원래 자리로 되돌아옵니다.`},
+};
+CODEX_SK.vergil = {
+  P: {name:'붉은시선', text: H => `${H.b('난이도: 극악 ★★★★★')}<br>베르길리우스의 모든 스킬에는 '박자'가 있습니다. 정해진 순간에 정확히 이어 쓰면 훨씬 강해지고, 박자를 놓치면 평범한 위력에 그칩니다. 박자는 베르길리우스 주위의 고리와 막대로 화면에 표시됩니다.<br><br>베르길리우스는 싸우는 동안 글라디우스에 ${H.b('열기')}를 쌓습니다. 기본 공격을 할 때마다 열기가 ${KVG.P.basic} 오르고, 스킬이 적 챔피언에게 적중할 때마다 ${KVG.P.hit} 오릅니다. ${KVG.P.idle}초 동안 싸우지 않으면 열기는 천천히 식습니다.<br><br>열기가 100에 도달하면 눈이 붉게 빛나며 ${H.s(KVG.P.dur)} 동안 ${H.b('붉은시선')} 상태가 됩니다. 이 동안 베르길리우스가 주는 모든 피해가 ${H.p(KVG.P.dmgUp)} 증가하고, 스킬이 적 챔피언에게 적중할 때마다 나머지 스킬들의 재사용 대기시간이 ${KVG.P.cdr}초씩 줄어듭니다.<br>붉은시선이 끝나면 열기가 0으로 돌아가고, 몸이 ${H.b('과열')}되어 ${H.s(KVG.P.overDur)} 동안 이동 속도가 ${H.p(KVG.P.overSlow)} 느려집니다. 단, 궁극기를 쓰고 있는 동안에는 과열되지 않습니다.<br><br>${H.b('붉은 보호막')}: 박자를 맞춰 '완벽' 판정을 받거나 (Q · W · 장례), 간파에 성공할 때마다 ${H.b(KVG.P.shield[0] + ' + 최대 체력의 ' + Math.round(KVG.P.shield[1] * 100) + '%')}만큼의 붉은 보호막을 얻습니다. 붉은시선이 열릴 때는 최대 체력의 ${H.p(KVG.P.gazeShield)}만큼 얻습니다. 보호막은 겹쳐 쌓이며 (최대 체력의 ${H.p(KVG.P.shieldCap)}까지) ${H.s(KVG.P.shieldDur)} 동안 유지되고, 새로 얻을 때마다 시간이 다시 채워집니다.<br>또한 붉은시선 상태에서는 스킬이 적 챔피언에게 적중할 때마다 최대 체력의 ${H.p(KVG.P.gazeHeal)}만큼 체력을 회복합니다.<br><br>또한 베르길리우스는 주변 ${KVG.P.revealR} 거리 안에 있는, 체력이 ${H.p(KVG.P.reveal)} 이하로 떨어진 적 챔피언을 안개 속에서도 볼 수 있습니다.<br><br>베르길리우스는 쓰러질 때 피를 흘리지 않습니다. 대신 뒷걸음질치며 전장에서 물러나 사라집니다.`},
+  Q: {name:'글라디우스', cd: KVG.Q.cd, range: KVG.Q.len, text: H => `베르길리우스가 달궈진 글라디우스로 최대 세 번까지 이어서 벱니다.<br>첫 번째와 두 번째 베기는 전방 ${KVG.Q.len} 거리를 베어 맞은 모든 적에게 ${H.phys(H.r(KVG.Q.dmg) + ' ' + H.ad(KVG.Q.ad))}를 입힙니다. 세 번째 베기에서는 지정한 방향으로 최대 ${KVG.Q.slamDash}만큼 뛰어올라 내려찍어, 반경 ${KVG.Q.slamR} 안의 모든 적에게 ${KVG.Q.slamMul}배의 피해를 입힙니다.<br>이전 베기 후 ${H.s(KVG.Q.win)} 안에 다음 베기를 쓰지 않으면 연속 베기가 끝나고 재사용 대기시간이 돌기 시작합니다.<br><br>${H.b('박자')}: 이전 베기 후 ${KVG.Q.lo}~${KVG.Q.hi}초 사이, 베르길리우스 주위의 고리가 ${H.b('하얗게 빛날 때')} 다음 베기를 쓰면 '완벽' 판정이 됩니다. 완벽한 베기는 피해가 ${H.p(KVG.Q.perf)} 증가하며, 세 번째 내려찍기라면 맞은 적 챔피언을 0.4초 동안 기절시킵니다.`},
+  W: {name:'홍련 베기', cd: KVG.W.cd, range: KVG.W.len, text: H => `베르길리우스가 글라디우스를 뒤로 젖히고 힘을 모읍니다. 힘을 모으는 동안에는 이동 속도가 ${H.p(KVG.W.slow)} 느려지며 기본 공격을 할 수 없습니다.<br>스킬을 한 번 더 사용하면 지정한 방향으로 거대한 붉은 초승달 파동(길이 ${KVG.W.len})을 날려, 경로 위의 모든 적에게 ${H.phys(H.r(KVG.W.dmg) + ' ' + H.ad(KVG.W.ad))}를 입힙니다. 힘을 오래 모을수록 파동이 넓어지고 피해도 커집니다.<br>${KVG.W.max + .2}초가 지나도록 놓지 않으면 파동이 저절로 나가며, 이때는 피해가 크게 줄어듭니다.<br><br>${H.b('박자')}: 힘을 모은 지 ${KVG.W.lo}~${KVG.W.hi}초 사이, 베르길리우스 아래 막대가 ${H.b('금색 구간')}에 있을 때 놓으면 '완벽한 베기'가 됩니다. 완벽한 베기는 피해가 ${KVG.W.perfMul}배가 되고, 맞은 적을 ${H.s(KVG.W.stun)} 동안 기절시키며 뒤로 밀쳐냅니다.`},
+  E: {name:'간파', cd: KVG.E.cd, range: KVG.E.dash, text: H => `베르길리우스가 지정한 방향으로 짧게 ${KVG.E.dash}만큼 몸을 옮깁니다.<br>스킬을 사용한 뒤 ${H.s(KVG.E.parry)} 안에 적의 공격을 받으면 그 공격을 ${H.b('간파')}합니다. 간파한 공격의 피해는 받지 않으며, 공격한 적에게 즉시 반격해 Q 피해의 ${H.p(KVG.E.counter)}만큼 피해를 입힙니다.<br>간파에 성공하면 열기가 ${KVG.E.heat} 오르고, 간파의 재사용 대기시간이 바로 초기화되며, 다음에 쓰는 글라디우스(Q)는 박자와 상관없이 무조건 완벽 판정이 됩니다.<br><br>${H.b('박자')}: 적의 스킬이나 공격이 닿기 직전에 사용해야 간파할 수 있습니다.`},
+  R: {name:'색 — Lavacrum Sanguinis', cd: KVG.R.cd, range: KVG.R.radius, text: H => `베르길리우스가 E.G.O를 개화해 피의 망토와 붉은 가시 월계관을 쓴 모습이 되고, 손에 든 글라디우스는 ${H.b('피를 머금은 창')}으로 바뀝니다. 동시에 발밑으로 반경 ${KVG.R.radius}의 ${H.b('피의 욕장')}이 번져 ${H.s(KVG.R.dur)} 동안 남습니다. 사용하는 즉시 열기가 100이 되어 붉은시선 상태가 되며, 욕장이 남아 있는 동안 이동 속도가 12% 증가하고 과열되지 않습니다.<br><br>피의 욕장 안에 있는 적은 이동 속도가 ${H.p(KVG.R.slow)} 느려지고, 적 챔피언에게는 붉은 시선 표식이 새겨져 베르길리우스의 기본 공격이 최대 체력의 ${H.p(KVG.R.markPct)}만큼 추가 피해를 입힙니다.<br>욕장이 남아 있는 동안 베르길리우스의 기본 스킬도 함께 강해집니다. 글라디우스(Q)의 베기는 창 찌르기로 바뀌어 ${KVG.R.qMul}배 길게 뻗고 내려찍기 범위는 ${KVG.R.slamMul}배 넓어지며, 홍련 베기(W)의 파동은 ${KVG.R.wMul}배 멀리 나아갑니다. 간파(E)에 성공하면 피 속을 건너 공격한 적 바로 앞으로 이동해 반격합니다.<br>욕장 안의 적 챔피언에게 스킬을 맞힐 때마다 ${H.b('핏빛 낙인')}이 하나씩 새겨집니다 (최대 ${KVG.R.brandMax}개). 베르길리우스가 자신의 욕장 안에 서 있으면 매초 최대 체력의 ${H.p(KVG.R.poolRegen)}만큼 체력을 회복합니다.<br><br>스킬을 다시 사용하면 ${H.b('죽은 피귀를 위한 장례')}를 거행합니다. 베르길리우스가 ${KVG.R.air}초 동안 하늘로 뛰어올라 (이 동안 대상으로 지정되지 않음) 욕장 안의 적들을 가운데로 끌어당긴 뒤, 거대한 피의 창을 내리꽂으며 욕장 전체를 십자로 가릅니다. 욕장 안의 모든 적은 ${H.phys(H.r(KVG.R.final) + ' ' + H.ad(KVG.R.ad) + ' + 잃은 체력의 ' + H.p(KVG.R.miss))}를 받고, 핏빛 낙인 하나마다 피해가 ${H.p(KVG.R.brandMul)} 증가합니다.<br>장례에 맞은 적 챔피언 하나마다 베르길리우스는 최대 체력의 ${H.p(KVG.R.finHeal)}만큼 체력을 회복하며, 그 적에게 새겨진 낙인 하나마다 ${H.p(KVG.R.brandHeal)}씩 더 회복합니다.<br>장례를 거행하지 않고 지속 시간이 끝나면 저절로 거행되지만, 이때는 피해가 ${H.p(KVG.R.auto)}로 줄어듭니다.<br><br>${H.b('박자')}: 피의 욕장은 ${KVG.R.beat}초마다 고동칩니다. 욕장의 테두리가 ${H.b('하얗게 빛나는 순간')}에 장례를 거행하면, 피해가 ${KVG.R.perfMul}배가 되고 맞은 적을 모두 ${H.s(KVG.R.stun)} 동안 기절시킵니다.`},
 };
 CODEX_SK.sinclair = {
   P: {name:'어느 표지', text: H => `스킬을 사용하거나 기본 공격을 할 때마다 ${H.b('표지')}를 1개 얻습니다 (최대 ${KS.P.max}개).<br>표지가 ${KS.P.max}개일 때 쓰는 다음 Q·W·E는 ${H.b('강화')}되며 표지를 모두 소모합니다 (강화 스킬은 표지를 얻지 않음).<br>R은 표지를 소모하지 않고, 끝나면 표지를 ${KS.P.max}개 얻습니다.`},
@@ -10932,6 +11951,14 @@ function demoScript(champ, key) {
             W:{len:4, acts:[[.3, c('Q')], [.8, A.cd0], [.9, A.castAt('Q', 1, .6, .5)], [1.5, c('W')]]}, R:{len:6, acts:[[.4, c('R')], [1.4, c('Q')], [2.2, A.cd0], [2.3, c('Q')]]}},
     heathcliff:{P:{len:6, acts:[[.2, A.atk(true)], [1.6, c('Q')], [3, c('W')]]}, Q:{len:3.2, acts:[[.4, c('Q')]]}, W:{len:3, acts:[[.4, c('W')], [.45, A.atk(true)]]},
                 E:{len:3.4, acts:[[.3, A.fn(() => { player.x -= 90; })], [.4, c('E')]]}, R:{len:4.5, acts:[[.2, A.fn(() => { demo.dum[0].hcBleed = {n:5, until:time + 5, src:player, tick:.5}; demo.dum[0].hp = demo.dum[0].maxHp * .3; })], [.5, c('R')]]}},
+    vergil:{P:{len:5, acts:[[.2, A.atk(true)], [1.6, A.fn(() => { player.vgHeat = 96; })]]},
+          Q:{len:3.5, acts:[[.3, c('Q')], [.72, c('Q')], [1.14, c('Q')]]}, W:{len:3.5, acts:[[.3, c('W')], [1.35, c('W')]]},
+          E:{len:3, acts:[[.4, A.castAt('E', -1, 0, .4)], [.5, A.hitMe]]},
+          R:{len:6, acts:[[.3, c('R')], [.9, c('Q')], [1.3, c('W')], [2.3, c('W')], [2.7, A.cd0], [2.8, c('Q')], [3.2, A.fn(() => { const R = player.vgR; if (R) { const ph = (time - R.t0) % KVG.R.beat; setTimeout(() => castSkill(player, 'R', null), Math.max(0, (KVG.R.beat - ph - .08) * 1000)); } })]]}},
+    kromer:{P:{len:5.5, acts:[[.2, c('Q')], [1.1, A.cd0], [1.2, c('Q')], [2.2, A.fn(() => { const d = demo.dum[0]; d.pull = {x:d.x + E(240), y:d.y, t:.9}; })], [3.6, A.fn(() => { const d = demo.dum[0]; d.pull = {x:d.x - E(240), y:d.y, t:.9}; })]]},
+          Q:{len:3.5, acts:[[.3, c('Q')]]}, W:{len:4, acts:[[.2, c('Q')], [.8, c('W')], [.9, A.atk(true)]]},
+          E:{len:4.5, acts:[[.2, c('Q')], [.7, A.cd0], [.8, c('Q')], [1.3, A.cd0], [1.4, c('Q')], [2.1, c('E')]]},
+          R:{len:5, acts:[[.3, c('R')]]}},
     yuri:{P:{len:5.5, acts:[[.2, A.atk(true)], [1.3, c('Q')], [2.5, c('Q')]]}, Q:{len:4.5, acts:[[.2, A.atk(true)], [1.2, c('Q')], [2.4, c('Q')], [3.6, c('Q')]]},
           W:{len:4.5, acts:[[.3, A.castAt('W', 0, -1, 1)], [.5, A.atk(true)]]}, E:{len:4, acts:[[.4, c('E')], [.6, A.atk(true)]]},
           R:{len:5.5, acts:[[.3, A.fn(() => castSkill(player, 'R', null, null))], [.8, A.fn(() => damage(demo.dum[0], player, 99999, {type:'true'}))]]}},
