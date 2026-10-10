@@ -114,7 +114,31 @@
   .mp-role{font-size:10px;font-weight:800;color:#a89378;width:24px;flex:none}
   .mp-tok{width:28px;height:28px;border-radius:50%;flex:none;border:2.5px solid #4aa3ff;box-sizing:border-box}
   .mp-tok.hover{opacity:.55;border-style:dashed} .mp-tok.empty{border:2px dashed #4a3120} .mp-tok.unk{border:2px dashed #7a3438}
-  .mp-tok.lg{width:46px;height:46px;border-width:4px}
+  .mp-tok.lg{width:46px;height:46px;border-width:4px} .mp-tok.xl{width:96px;height:96px;border-width:6px}
+  body.duel #shopBtn{display:none}
+  #fade{position:fixed;inset:0;z-index:95;background:#000;opacity:0;pointer-events:none}
+  #duelExit{display:none;right:calc(env(safe-area-inset-right,0px) + 12px);top:calc(env(safe-area-inset-top,0px) + 92px)} body.duel #duelExit{display:block}
+  .d-wrap{display:flex;flex-direction:column;gap:8px;width:100%;max-width:900px;margin:0 auto;padding:6px 10px;box-sizing:border-box}
+  .d-top{position:relative;text-align:center} .d-top h3{margin:2px 0 0;font-size:18px;color:#ffd66b} .d-top p{margin:2px 0 0;font-size:12px;color:#cdb898}
+  .d-sc{display:flex;justify-content:center;align-items:center;gap:10px;font-size:12px;color:#cdb898} .d-sc b{font-size:20px;color:#fff;font-weight:900;letter-spacing:.06em} .d-sc.big b{font-size:44px}
+  .d-timer{position:absolute;right:4px;top:0;font:900 26px system-ui,sans-serif;color:#e6c35c} .d-timer.hurry{color:#ff6a5a}
+  .d-rows{display:flex;flex-direction:column;gap:5px} .d-lab{font-size:12px;font-weight:800;color:#ff8a8e} .d-lab.me{color:#7ac0ff;text-align:right}
+  .d-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .d-vs{text-align:center;font:900 16px system-ui,sans-serif;color:#e6c35c;letter-spacing:.3em}
+  .dc{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:12px;border:2px solid #4a3120;background:linear-gradient(180deg,#2a1c10,#140e09);color:#f0e1c9;transition:transform .15s}
+  .dc b{font-size:13px} .dc small{font-size:10px;color:#a89378;text-align:center;line-height:1.2}
+  .dc[data-dban]:hover,.dc[data-dpick]:hover{transform:translateY(-3px);border-color:#e6c35c}
+  .dc.on{border-color:#ffd66b;box-shadow:0 0 14px rgba(255,214,107,.45)} .dc.ban,.dc.used{opacity:.4;filter:grayscale(.8)} .dc:disabled{cursor:default}
+  .dc em{position:absolute;top:4px;right:4px;font-style:normal;font-size:10px;font-weight:900;background:#c03a2a;color:#fff;border-radius:5px;padding:0 5px} .dc.on em{background:#e6c35c;color:#1a1405}
+  .reveal .dc{animation:dcIn .55s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i) * .16s)}
+  @keyframes dcIn{0%{opacity:0;transform:translateY(-40px) rotateY(90deg) scale(.6)}100%{opacity:1;transform:none}}
+  .d-wait{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;text-align:center} .d-wait h3{margin:0;color:#ffd66b}
+  .d-spin{width:46px;height:46px;border-radius:50%;border:5px solid #4a3120;border-top-color:#e6c35c;animation:dspin 1s linear infinite} @keyframes dspin{to{transform:rotate(360deg)}}
+  .d-vsbig{display:flex;align-items:center;justify-content:center;gap:28px;width:100%} .d-side{display:flex;flex-direction:column;align-items:center;gap:6px;animation:dcIn .5s both} .d-side b{font-size:22px} .d-side small{color:#7ac0ff}
+  .d-side:not(.me) small{color:#ff8a8e} .d-x{text-align:center;font-weight:800;color:#cdb898} .d-x span{font:900 44px system-ui,sans-serif;color:#e6c35c}
+  .d-res{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;text-align:center} .d-res h2{margin:0;font:900 52px system-ui,sans-serif}
+  .d-res.win h2{color:#ffd66b} .d-res.lose h2{color:#ff8a8e} .d-res.draw h2{color:#c8c8d0} .d-res p{color:#cdb898;font-size:13px}
+  @media (max-height:420px){ .dc{padding:5px 2px} .dc .mp-tok.lg{width:34px;height:34px} .d-top h3{font-size:15px} .mp-tok.xl{width:70px;height:70px} }
   .mp-sp{display:flex;gap:2px} .mp-sp img{width:16px;height:16px;border-radius:4px}
   .mp-mid{display:flex;flex-direction:column;gap:7px;min-height:0;overflow:auto}
   .mp-top{display:flex;align-items:center;gap:10px}
@@ -445,11 +469,12 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v132 · 알리사 승리 대사</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v135 · 쏠전 매 라운드 벤 · 부드러운 전환</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v132</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v135</em></button>
+      <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
     </div>
@@ -701,6 +726,8 @@
     <div class="spt red" id="specRed"></div>
   </div>
 </div>
+<div id="fade"></div>
+<button id="duelExit" class="topbtn" type="button">쏠전 나가기</button>
 <div id="vicMvp" hidden><canvas id="vicCv"></canvas><nav id="vmPick" hidden></nav></div>
 <div id="over" hidden>
   <h2 id="overText">승리</h2>
@@ -1512,7 +1539,16 @@ let heroes = [], bots = [], chosenRole = 'top';
 let units, projectiles, fx, player, bot, time, nextWave, waveNo, spawnQueue, gameOver, cs, kills, deaths;
 let spectating = false, specSpeed = 1;
 let mpRole = null;                                                      // 멀티: null | 'host'(계산) | 'guest'(받아서 그림)
-let mpLineup = null;                                                    // 멀티: 픽창에서 정한 구성 (resetGame이 읽음)
+let mpLineup = null;
+// ── 쏠전(1대1) 기본값: 결투장 · 라운드 상태 (resetGame보다 먼저 정의) ──
+const ARENA = {x:1600, y:800, w:800, h:800};                                // 맵 한가운데 강가 · 미드 벽을 엄폐물로 쓰는 결투장
+const DUEL_WALLS = [[ARENA.x - 400, ARENA.y - 400, ARENA.w + 800, 400], [ARENA.x - 400, ARENA.y + ARENA.h, ARENA.w + 800, 400],
+                    [ARENA.x - 400, ARENA.y, 400, ARENA.h], [ARENA.x + ARENA.w, ARENA.y, 400, ARENA.h]];
+const DUEL_T = {reveal:5.2, ban:20, pick:25, vs:2.2, result:4.2, limit:150, window:.45};
+const DUEL = {solo:false, on:false, round:0, freeze:false, deaths:{}, t0:0, sent:false, startedRound:0, resultShown:0, finished:false};
+function duelEnterArena() { for (const w of DUEL_WALLS) if (!walls.includes(w)) walls.push(w); }
+function duelExitArena() { for (const w of DUEL_WALLS) { const i = walls.indexOf(w); if (i >= 0) walls.splice(i, 1); } }
+                                                    // 멀티: 픽창에서 정한 구성 (resetGame이 읽음)
 const colTeam = () => spectating ? 'blue' : player.team;              // 관전: 블루=파랑 / 레드=빨강 고정
 let sprite = null, chosenChamp = 'gregor', started = false, shots = [], mirrors = [], feathers = [], harpoons = [];
 
@@ -1592,6 +1628,7 @@ function learn(c, k) {
 }
 
 function resetGame() {
+  duelExitArena(); DUEL.on = false; DUEL.freeze = false; document.body.classList.remove('duel');   // (쏠전 결투장은 duelSetup에서 다시 깜)
   teamBadges = {blue:0, red:0}; donPools = [];
   units = []; projectiles = []; fx = []; time = 0; nextWave = WAVE_FIRST; spawnQueue = [];
   TEAM_PLAN.blue = TEAM_PLAN.red = null;
@@ -2063,7 +2100,7 @@ function selStep(step) {
   $('selRoles').hidden = step !== 'role'; $('selCards').hidden = step !== 'champ'; $('selSpells').hidden = step !== 'champ'; if (step === 'champ') renderSpellPick(); $('selBack').hidden = step !== 'champ';
   $('selTitle').textContent = step === 'role' ? '라인 선택' : `챔피언 선택 · ${ROLE_NAME[chosenRole]}`;
 }
-$('again').addEventListener('click', () => { specEnd(); if (mpLineup) { mpLineup = null; mpEndSync(); if (MP.code) mpLeave(''); $('mp').hidden = true; } $('over').hidden = true; started = false; $('select').hidden = true; $('menu').hidden = false; selStep('role'); });
+$('again').addEventListener('click', () => { specEnd(); if (mpLineup && mpLineup.duel) duelCleanup(); if (mpLineup) { mpLineup = null; mpEndSync(); if (MP.code) mpLeave(''); $('mp').hidden = true; } $('over').hidden = true; started = false; $('select').hidden = true; $('menu').hidden = false; selStep('role'); });
 $('select').addEventListener('click', e => {
   if (e.target.closest('#selBack')) { selStep('role'); return; }
   const rn = e.target.closest('[data-rune]');
@@ -3099,6 +3136,7 @@ function kill(u, src) {
     const lastChamp = [...u.hitBy].filter(([c, t]) => isChamp(c) && time - t < 10).sort((a, b) => b[1] - a[1])[0];
     feed(lastChamp ? lastChamp[0] : src, u, u.team === player.team ? '아군 포탑이 파괴되었습니다' : '적 포탑을 파괴했습니다');
   }
+  if (isChamp(u) && DUEL.on) duelOnDeath(u);                          // 쏠전: 누가 먼저 쓰러졌나
   if (isChamp(u) && u.alSelf) { u.hitBy.clear(); src = u; }          // 알리사 최후의 불꽃: 처치 판정 없음
   if (isChamp(u)) {
     const xpTo = champs().filter(c => c.team !== u.team && c.alive &&            // 처치 경험치: 근처에 있거나 관여한 적끼리 나눔
@@ -7516,6 +7554,7 @@ function aiSnipe(b) {
 
 // ═════════════ 귀환 ═════════════
 function startRecall(c) {
+  if (DUEL.on) return;                                               // 쏠전: 귀환 없음
   if (!c.alive || c.cast || c.stunT > 0 || c.recalling) return;
   const f = FOUNTAIN[c.team];
   if (Math.hypot(c.x - f.x, c.y - f.y) < 120) return;
@@ -8382,6 +8421,7 @@ function aiStrafe(b, p, amt) {
 }
 
 function updateBot(b, dt) {
+  if (DUEL.on && DUEL.solo) return duelBot(b, dt);                    // 쏠전 AI 연습
   if (b.dummy) { if (b.alive) { champTimers(b, dt); b.target = null; moveChamp(b, 0, 0, dt); } return; }   // 도감 시연용 허수아비
   if (!b.alive) { respawnTick(b, dt); b.path = null; b.stance = null; b.focus = null; return; }
   champTimers(b, dt);
@@ -8689,6 +8729,7 @@ function updateBot(b, dt) {
 
 // ═════════════ 업데이트 ═════════════
 function update(dt) {
+  if (DUEL.on && DUEL.freeze) { if (mpRole === 'host') mpHostTick(dt); updateView(dt); return; }   // 쏠전: 라운드 끝
   if (gameOver) { if (mpRole === 'host') mpHostTick(dt); return; }   // 끝난 뒤에도 방장은 손님들에게 결과를 계속 알려 줌
   if (window.DEMO) demoTick(dt);
   time += dt;
@@ -8789,6 +8830,7 @@ function update(dt) {
   units = units.filter(u => u.alive || u.structure || isChamp(u));
   fx = fx.filter(f => (f.t += dt) < f.life);
   if (mpRole === 'host') mpHostTick(dt);
+  if (DUEL.on && (mpRole === 'host' || DUEL.solo)) duelHostCheck();                  // 쏠전: 라운드 판정
   updateView(dt);
 }
 function updateView(dt) {                                               // 카메라 · 화면 위 정보 (멀티 손님도 씀)
@@ -8854,7 +8896,7 @@ function updateView(dt) {                                               // 카�
   if (spectating && (specT -= dt) <= 0) { specT = .2; specUpdate(); }
   $('lv').textContent = player.level;
   $('xpbar').style.width = (player.level >= MAX_LEVEL ? 100 : player.xp / xpToNext(player.level) * 100) + '%';
-  $('wave').textContent = (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초' + (mpRole === 'guest' ? ` · 핑 ${MPS.ping}ms · ${(() => { const L = MPS.links.host; return !L ? '' : MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''; })()}` : mpRole === 'host' ? ` · 방장 · 손님 ${Object.values(MPS.links).filter(L => L.mode !== 'wait').map(L => `${L.ping || '-'}ms ${MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''}`).join(' / ') || '없음'}` : '');
+  $('wave').textContent = (DUEL.on ? duelHudText() : (time < WAVE_FIRST ? '첫 웨이브 ' : '다음 웨이브 ') + Math.ceil(nextWave - time) + '초') + (mpRole === 'guest' ? ` · 핑 ${MPS.ping}ms · ${(() => { const L = MPS.links.host; return !L ? '' : MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''; })()}` : mpRole === 'host' ? ` · 방장 · 손님 ${Object.values(MPS.links).filter(L => L.mode !== 'wait').map(L => `${L.ping || '-'}ms ${MP_VIA[L.ch && L.ch.readyState === 'open' ? L.via || 'p2p' : L.mode] || ''}`).join(' / ') || '없음'}` : '');
   $('zone').textContent = player.alive ? zoneName(player.x, player.y) + (player.inBush ? ' · 수풀' : '') : '부활 대기';
 }
 
@@ -8935,6 +8977,7 @@ function drawCityLamps(g) {                                        // 가로등 
 }
 function drawCityBuildings(g) {                                    // 벽 = 건물 옥상
   walls.forEach((w, i) => {
+    if (!BLDG_WIN[i]) return;                                      // (쏠전 결투장 경계벽은 따로 그림)
     g.fillStyle = 'rgba(0,0,0,.55)'; g.beginPath(); g.roundRect(w[0] + 6, w[1] + 12, w[2], w[3], 8); g.fill();   // 그림자
     g.fillStyle = CITY.bldg; g.beginPath(); g.roundRect(w[0], w[1], w[2], w[3], 8); g.fill();
     g.fillStyle = CITY.roof; g.beginPath(); g.roundRect(w[0] + 5, w[1] + 5, w[2] - 10, w[3] - 10, 5); g.fill();
@@ -11784,7 +11827,7 @@ function hhStaff(g, len, w, glow, noJaws) {                                     
 }
 function drawHohBody(g, c) {
   const Z = c.hhZ;
-  {                                                                                  // 스태프 (R 동안은 지네 입을 떼어 던져서 자루만)
+  if (!window.__mvpDraw) {                                                           // 스태프 (R 동안은 지네 입을 떼어 던져서 자루만 · MVP 연출은 따로 꽂아 그림)
     const atk = c.swingT > 0 ? Math.max(0, c.swingT / .18) : 0, D = c.hhDash;
     const stab = D && D.phase === 'stab' ? 1 : 0, a = c.face + (stab ? 0 : .55 - atk * .45);
     g.save(); g.translate(c.x + Math.cos(c.face + 1.2) * c.r * .7, c.y + Math.sin(c.face + 1.2) * c.r * .7); g.rotate(a);
@@ -12514,6 +12557,7 @@ function render() {
   drawFx(ctx);
   drawVictoryWorld(ctx);
   drawFog(ctx);
+  drawDuelArena(ctx);                             // 쏠전 결투장
   ctx.restore();
 
   if (player.alive && (juice.hurt > .02 || player.hp < player.maxHp * .3)) {   // 피격·빈사: 화면 가장자리 붉게
@@ -13036,7 +13080,8 @@ function mvpOpen(c, dev) {
   if (!mvpRun) { mvpRun = true; requestAnimationFrame(mvpFrame); }
 }
 function mvpClose() {
-  $('vicMvp').hidden = true; const wasDev = mvp && mvp.dev; mvp = null;
+  $('vicMvp').hidden = true; const wasDev = mvp && mvp.dev, cb = mvp && mvp.onClose; mvp = null;
+  if (cb) { cb(); return; }
   if (!wasDev) { $('over').hidden = false; }
 }
 function mvpSpawn() {                                                                       // 등장 연출 입자
@@ -13057,6 +13102,7 @@ function mvpFrame(now) {
 }
 function hexA(h, a) { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; }
 function drawMvpScene(g, W2, H2, M) {
+  if (M.list) return drawMvpTeam(g, W2, H2, M);                                            // 쏠전: 여러 명
   const L = MVP_LOOK[M.key], t = M.t, cx = W2 / 2, floor = H2 * (M.dev ? .76 : .86), S = Math.min(H2 * (M.dev ? .56 : .64), W2 * .42);
   const reveal = Math.min(1, Math.max(0, (t - 1.75) / .25)), sil = t > 1.15 && t < 2;
   // 배경: 어둠 → 챔피언 색 스포트라이트
@@ -13694,7 +13740,7 @@ function netFirebase() {
     cancelDisc: p => db.ref(p).onDisconnect().cancel(),
     push: (p, v) => db.ref(p).push(v),
     onChild(p, cb) { const r = db.ref(p), h = r.on('child_added', s => { const v = s.val(); s.ref.remove(); cb(v); }); return () => r.off('child_added', h); },
-    async openRooms() { return (await db.ref('rooms').orderByChild('openPub').equalTo(true).limitToFirst(20).once('value')).val() || {}; },
+    async openRooms(f = 'openPub') { return (await db.ref('rooms').orderByChild(f).equalTo(true).limitToFirst(20).once('value')).val() || {}; },
   };
   return N;
 }
@@ -13713,6 +13759,7 @@ function netLocal() {                                                   // 시�
   const lock = f => navigator.locks ? navigator.locks.request('mpLocalDb', () => f()) : Promise.resolve(f());   // 탭끼리 동시에 쓰면 덮어쓰지 않게
   const fire = () => { for (const s of subs) { const v = JSON.stringify(read(load(), s.p)); if (v !== s.last) { s.last = v; s.cb(JSON.parse(v)); } } };
   bc.onmessage = () => fire();
+  addEventListener('storage', e => { if (e.key === KEY) fire(); });   // (다른 탭의 저장이 늦게 보일 때도 놓치지 않게)
   const N = {kind:'local', uid:null,
     async init() { N.uid = 'u' + Math.random().toString(36).slice(2, 10); addEventListener('pagehide', () => N.disconnect()); },
     now: () => Date.now(),
@@ -13729,7 +13776,7 @@ function netLocal() {                                                   // 시�
       subs.add(s); setTimeout(fire, 0); return () => subs.delete(s);
     },
     async cancelDisc(p) { disc.delete(p); },
-    async openRooms() { const r = read(load(), 'rooms') || {}; const o = {}; for (const k in r) if (r[k] && r[k].openPub) o[k] = r[k]; return o; },
+    async openRooms(f = 'openPub') { const r = read(load(), 'rooms') || {}; const o = {}; for (const k in r) if (r[k] && r[k][f]) o[k] = r[k]; return o; },
     disconnect() { for (const [p, v] of disc) write(p, v); disc.clear(); },   // (닫히는 중이라 잠금 없이)
   };
   return N;
@@ -13752,7 +13799,7 @@ async function mpEnsureNet() {
 }
 function mpOpen(on) {
   $('mp').hidden = !on;
-  if (on) { MP.err = ''; mpView('home'); }
+  if (on) { MP.err = ''; mpView(MP.duelMode ? 'dhome' : 'home'); }
 }
 function mpView(v) { MP.view = v; mpRender(); }
 function mpSetErr(t) { MP.err = t; mpRender(); }
@@ -13775,6 +13822,7 @@ async function mpJoin(code) {
   let why = '';
   const r = await N.txn('rooms/' + code, room => {
     if (!room) { why = '그런 방이 없습니다.'; return null; }          // (Firebase는 처음에 빈 값으로 부를 수 있어서 null로 서버 확인)
+    if (room.mode === 'duel') { why = '쏠전 방입니다. 쏠전 메뉴에서 들어가세요.'; return undefined; }
     if (room.state !== 'lobby') { why = '이미 게임을 시작한 방입니다.'; return undefined; }
     const ps = room.players || {};
     if (ps[N.uid]) return room;
@@ -13803,7 +13851,7 @@ function mpEnter(code, host) {
   if (MP.unsub) MP.unsub();
   MP.unsub = MP.net.on('rooms/' + code, room => mpOnRoom(room));
   clearInterval(MP.tick); MP.tick = setInterval(mpTick, 250);
-  MP.view = 'lobby'; mpRender();
+  MP.view = MP.duelMode ? 'dlobby' : 'lobby'; mpRender();
 }
 async function mpLeave(msg) {
   const N = MP.net, code = MP.code;
@@ -13814,12 +13862,21 @@ async function mpLeave(msg) {
     else { await N.cancelDisc(`rooms/${code}/players/${N.uid}`); await N.remove(`rooms/${code}/players/${N.uid}`); }
   }
   MP.code = null; MP.room = null; MP.host = false; MP.lineup = null;
-  MP.err = msg || ''; mpView('home');
+  if (MP.duelMode) duelCleanup();
+  if (MP.net && MP.net.kind === 'solo') { MP.net = MP.realNet || null; MP.realNet = null; }
+  MP.err = msg || ''; mpView(MP.duelMode ? 'dhome' : 'home');
 }
 
 // ── 방 상태가 바뀔 때마다 ──
 function mpOnRoom(room) {
   if (!MP.code) return;
+  if (!room && MP.duelMode && !MP.host) {                                  // 쏠전: 상대(방장)가 나감
+    clearInterval(MP.tick); if (MP.unsub) MP.unsub(); MP.unsub = null; MP.code = null; MP.room = null;
+    const fin = DUEL.finished; mpEndSync(); duelCleanup(); DUEL.finished = false;
+    if (!fin) { $('mp').hidden = false; MP.err = '상대가 나가서 쏠전이 끝났습니다 (기권승).'; mpView('dhome'); }
+    return;
+  }
+  if (room && room.mode === 'duel') return duelOnRoom(room);
   if (!room) {                                                          // 방이 사라짐 = 방장이 나감
     const inGame0 = mpInGame();
     if (inGame0 && mpRole === 'host' && MP.room) {                      // 방장 인터넷이 잠깐 끊겨 방 기록이 지워졌을 뿐: 다시 세움
@@ -13867,6 +13924,7 @@ function mpHostDuty(room) {                                             // 방�
 }
 function mpTick() {                                                     // 타이머 · 시간 초과 자동 확정
   const r = MP.room; if (!r) return;
+  if (r.mode === 'duel') return duelTimerTick(r);
   if (r.state === 'pick') {
     const left = Math.max(0, Math.ceil((r.pickEnd - MP.net.now()) / 1000));
     const el = $('mpTimer'); if (el) { el.textContent = left; el.classList.toggle('hurry', left <= 10); }
@@ -13970,6 +14028,402 @@ function mpStartGame(room) {
     if (mpRole === 'guest') { MP.waitT = performance.now(); }
   }, wait);
 }
+// ═════════════ 쏠전 · 1대1 매칭 (5장 공개 → 벤 → 픽 → 결투 → 먼저 2승) ═════════════
+const dOrder = o => { const r = {}; for (const k in o) if (k !== 'state') r[k] = o[k]; if ('state' in o) r.state = o.state; return r; };   // 상태는 마지막에 써야 상대가 결과를 먼저 받음
+const dArr = v => Array.isArray(v) ? v.filter(x => x != null) : v && typeof v === 'object' ? Object.values(v) : [];
+const dOpp = r => Object.keys((r && r.players) || {}).find(u => u !== MP.net.uid);
+const dGuest = r => Object.keys((r && r.players) || {}).find(u => u !== r.host);
+const dName = (r, u) => (r && r.players && r.players[u] && r.players[u].name) || (u ? '상대' : '-');
+const dRole = k => (cxRole(k) || '').split(' · ')[0];
+function dAvail(r, u) {                                                           // 이번 라운드에 고를 수 있는 챔피언
+  const d = r.d || {}, opp = Object.keys(r.players || {}).find(x => x !== u);
+  const used = dArr((d.used || {})[u]), banned = (d.ban || {})[opp];
+  return dArr((d.pool || {})[u]).filter(k => !used.includes(k) && k !== banned);
+}
+function dBanInit(r) {                                                            // 상대가 남은 챔피언이 1명뿐이면 벤 없음('-')
+  const d = r.d || {}, ps = Object.keys(r.players || {}), o = {};
+  for (const u of ps) { const opp = ps.find(x => x !== u), left = dArr((d.pool || {})[opp]).filter(k => !dArr((d.used || {})[opp]).includes(k)); if (left.length < 2) o[u] = '-'; }
+  return Object.keys(o).length ? o : null;
+}
+// ── 화면 전환: 암전 → 바꾸기 → 밝아짐 ──
+function fadeTo(on, ms) { const f = document.getElementById('fade'); if (!f) return; f.style.transition = `opacity ${ms}ms ease`; f.style.opacity = on ? '1' : '0'; f.style.pointerEvents = on ? 'auto' : 'none'; }
+function fadeSwap(fn, out = 280, inn = 420) { fadeTo(true, out); setTimeout(() => { try { fn(); } catch (e) { console.warn(e); } requestAnimationFrame(() => requestAnimationFrame(() => fadeTo(false, inn))); }, out); }
+const FADE_SEL = '#mVsAi,#mSpec,#mMulti,#mDuel,#mCodex,#mVicDev,#again,#selHome,#cxBack,.sel-card[data-champ],#mpBack,[data-mp="dsolo"]';
+document.addEventListener('click', e => {                                          // 메뉴 버튼: 바로 넘기지 않고 살짝 암전
+  const b = e.target.closest(FADE_SEL); if (!b || b.__fadePass || b.disabled) return;
+  if (b.id === 'mpBack' && MP.code) return;                                         // (방 나가기는 그대로)
+  e.stopImmediatePropagation(); e.preventDefault();
+  fadeSwap(() => { b.__fadePass = true; try { b.click(); } finally { b.__fadePass = false; } }, 240, 420);
+}, true);
+function duelPlayerRec(slot) { return {name:mpName(), slot, spells:chosenSpells.slice(), rune:chosenRune, joined:MP.net.now()}; }
+async function duelCreate(pub) {
+  const N = await mpEnsureNet();
+  for (let tries = 0; tries < 6; tries++) {
+    const code = mpCode();
+    const r = await N.txn('rooms/' + code, cur => cur ? undefined : {mode:'duel', host:N.uid, state:'lobby', pub:!!pub, openDuel:!!pub, created:N.now(), turn:mpTurnUrl() || null, players:{[N.uid]:duelPlayerRec(0)}});
+    if (r.committed) { await N.onDisc('rooms/' + code, null); return mpEnter(code, true); }
+  }
+  mpSetErr('방을 만들지 못했습니다. 다시 시도해 주세요.');
+}
+async function duelJoin(code) {
+  const N = await mpEnsureNet();
+  code = (code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (code.length !== 4) return mpSetErr('방 코드는 4자리입니다.'), false;
+  let why = '';
+  const r = await N.txn('rooms/' + code, room => {
+    if (!room) { why = '그런 방이 없습니다.'; return null; }
+    if (room.mode !== 'duel') { why = '쏠전 방이 아닙니다. 멀티플레이 메뉴에서 들어가세요.'; return undefined; }
+    if (room.state !== 'lobby') { why = '이미 시작한 쏠전입니다.'; return undefined; }
+    const ps = room.players || {};
+    if (ps[N.uid]) return room;
+    if (Object.keys(ps).length >= 2) { why = '자리가 없습니다 (1대1).'; return undefined; }
+    ps[N.uid] = duelPlayerRec(1); room.players = ps; room.openDuel = false;
+    return room;
+  });
+  if (!r.committed || !r.value || !r.value.players || !r.value.players[N.uid]) { if (!why) why = '들어가지 못했습니다.'; return mpSetErr(why), false; }
+  await N.onDisc(`rooms/${code}/players/${N.uid}`, null);
+  mpEnter(code, false); return true;
+}
+async function duelQuick() {
+  const N = await mpEnsureNet();
+  mpSetErr(''); MP.view = 'dfind'; mpRender();
+  const rooms = await N.openRooms('openDuel'), now = N.now();
+  const list = Object.entries(rooms).filter(([, r]) => r.mode === 'duel' && r.state === 'lobby' && Object.keys(r.players || {}).length < 2 && now - (r.created || 0) < MP_ROOM_TTL);
+  for (const [code] of list) { MP.err = ''; if (await duelJoin(code)) return; }
+  await duelCreate(true);
+}
+// ── 방장: 단계 넘기기 ──
+function duelHostStep(r) {
+  if (!MP.host || MP.dBusy || !MP.code) return;
+  const N = MP.net, path = 'rooms/' + MP.code, now = N.now(), d = r.d || {}, ps = Object.keys(r.players || {});
+  const H = r.host, G = ps.find(u => u !== H);
+  const upd = o => { MP.dBusy = true; N.update(path, dOrder(o)).catch(e => console.warn(e)).finally(() => { MP.dBusy = false; }); };
+  if (r.state === 'lobby') {
+    const open = !!r.pub && ps.length < 2; if (!!r.openDuel !== open) N.update(path, {openDuel:open});
+    if (ps.length >= 2) {
+      const all = CHAMP_POOL.slice().sort(() => Math.random() - .5);
+      upd({state:'reveal', openDuel:false, d:{pool:{[H]:all.slice(0, 5), [G]:all.slice(5, 10)}, score:{[H]:0, [G]:0}, round:1, phaseEnd:now + DUEL_T.reveal * 1000, linked:!!r.solo}});
+    }
+    return;
+  }
+  if (r.state === 'done') return;
+  if (ps.length < 2) { upd({state:'done', 'd/winner':H, 'd/forfeit':true}); return; }   // 상대가 나감: 남은 사람 승리
+  const ban = d.ban || {}, pick = d.pick || {};
+  if (r.solo && G) {                                                             // AI 연습: 상대 AI가 잠시 고민하다 벤 · 픽
+    if (r.state === 'ban' && !ban[G] && now > d.phaseEnd - DUEL_T.ban * 1000 + 1600) { const pool = dArr(d.pool[H]).filter(k => !dArr((d.used || {})[H]).includes(k)); upd({[`d/ban/${G}`]:pool.length > 1 ? pool[Math.floor(Math.random() * pool.length)] : '-'}); return; }
+    if (r.state === 'pick' && !pick[G] && now > d.phaseEnd - DUEL_T.pick * 1000 + 2000) { const av = dAvail(r, G); upd({[`d/pick/${G}`]:av[Math.floor(Math.random() * av.length)]}); return; }
+  }
+  if (r.state === 'reveal' && now >= d.phaseEnd) upd({state:'ban', 'd/ban':dBanInit(r), 'd/phaseEnd':now + DUEL_T.ban * 1000});
+  else if (r.state === 'ban' && ((ban[H] && ban[G]) || now >= d.phaseEnd)) {
+    const nb = {...ban};
+    for (const u of [H, G]) if (!nb[u]) { const opp = u === H ? G : H, pool = dArr(d.pool[opp]).filter(k => !dArr((d.used || {})[opp]).includes(k)); nb[u] = pool.length > 1 ? pool[Math.floor(Math.random() * pool.length)] : '-'; }
+    upd({state:'pick', 'd/ban':nb, 'd/pick':null, 'd/phaseEnd':now + DUEL_T.pick * 1000});
+  } else if (r.state === 'pick' && ((pick[H] && pick[G]) || now >= d.phaseEnd)) {
+    const np = {...pick};
+    for (const u of [H, G]) if (!np[u] || !dAvail(r, u).includes(np[u])) { const av = dAvail(r, u); np[u] = av[Math.floor(Math.random() * av.length)]; }
+    if (!d.linked) { const o = {state:'loading', 'd/pick':np, loadEnd:now + 20000, startAt:null}; for (const u of ps) o[`players/${u}/loaded`] = 0; upd(o); }
+    else upd({state:'game', 'd/pick':np, startAt:now + DUEL_T.vs * 1000});
+  } else if (r.state === 'loading' && !r.startAt && (ps.every(u => (r.players[u].loaded || 0) >= 100) || now > (r.loadEnd || 0))) {
+    upd({state:'game', startAt:now + DUEL_T.vs * 1000, 'd/linked':true});
+  } else if (r.state === 'result' && now >= d.phaseEnd) {
+    const sc = d.score || {}, hs = sc[H] || 0, gs = sc[G] || 0;
+    if (hs >= 2 || gs >= 2) upd({state:'done', 'd/winner':hs > gs ? H : G});
+    else if (!dAvail(r, H).length || !dAvail(r, G).length) upd({state:'done', 'd/winner':hs === gs ? 'draw' : hs > gs ? H : G});
+    else upd({state:'ban', 'd/round':(d.round || 1) + 1, 'd/ban':dBanInit(r), 'd/pick':null, 'd/phaseEnd':now + DUEL_T.ban * 1000});   // 매 라운드: 벤 → 픽
+  }
+}
+function duelHostResult(win) {                                                    // 라운드 결과 기록
+  const r = MP.room; if (!r || !MP.host) return;
+  const d = r.d || {}, H = r.host, G = dGuest(r), now = MP.net.now();
+  const w = win === 'blue' ? H : win === 'red' ? G : 'draw', sc = {...(d.score || {})};
+  if (w !== 'draw') sc[w] = (sc[w] || 0) + 1;
+  const used = {[H]:[...dArr((d.used || {})[H]), d.pick[H]], [G]:[...dArr((d.used || {})[G]), d.pick[G]]};
+  MP.net.update('rooms/' + MP.code, dOrder({state:'result', 'd/score':sc, 'd/used':used, 'd/last':{win:w, round:d.round || 1}, 'd/phaseEnd':now + DUEL_T.result * 1000})).catch(e => console.warn(e));
+}
+// ── 방 상태 → 화면 ──
+function duelOnRoom(room) {
+  if (!room.players || !room.players[MP.net.uid]) { if (!DUEL.finished) mpLeave('방에서 나왔습니다.'); return; }
+  MP.room = room; MP.host = room.host === MP.net.uid; MP.me = room.players[MP.net.uid];
+  if (MP.host) duelHostStep(room);
+  const s = room.state, d = room.d || {};
+  if (s === 'loading') mpLoadingStep(room);
+  if (s === 'game') { if (DUEL.startedRound !== d.round) duelBeginRound(room); return; }
+  if (s === 'result') { duelShowResult(room); return; }
+  if (s === 'done') { duelFinish(room); return; }
+  if (started && DUEL.on) duelPause();
+  const v = {lobby:'dlobby', reveal:'dreveal', ban:'dban', pick:'dpick', loading:'dload'}[s] || 'dlobby';
+  if (v === 'dreveal' && MP.view === 'dreveal') return;                            // 카드 펼치기 애니메이션은 한 번만
+  if (MP.view !== v || $('mp').hidden) { if (DUEL.fadeTo === v) return; DUEL.fadeTo = v; fadeSwap(() => { DUEL.fadeTo = null; $('mp').hidden = false; MP.view = v; mpRender(); }, 260, 420); }
+  else mpRender();
+}
+function duelTimerTick(r) {
+  const d = r.d || {}, left = Math.max(0, Math.ceil(((r.state === 'game' ? 0 : d.phaseEnd) - MP.net.now()) / 1000));
+  const el = $('dTimer'); if (el) { el.textContent = left; el.classList.toggle('hurry', left <= 5); }
+  if (r.state === 'loading') mpLoadingStep(r);
+  if (MP.host) duelHostStep(r);
+}
+async function duelBan(k) { const r = MP.room; if (!r || r.state !== 'ban' || (r.d.ban || {})[MP.net.uid]) return; await MP.net.update('rooms/' + MP.code, {[`d/ban/${MP.net.uid}`]:k}); }
+async function duelPick(k) { const r = MP.room; if (!r || r.state !== 'pick' || (r.d.pick || {})[MP.net.uid] || !dAvail(r, MP.net.uid).includes(k)) return; await MP.net.update('rooms/' + MP.code, {[`d/pick/${MP.net.uid}`]:k}); }
+// ── 라운드 시작 (두 사람 모두) ──
+function duelBeginRound(room) {
+  const d = room.d || {}; DUEL.startedRound = d.round;
+  fadeSwap(() => { MP.view = 'dvs'; $('mp').hidden = false; mpRender(); }, 260, 420);
+  const wait = Math.max(600, (room.startAt || 0) - MP.net.now() - 300);
+  setTimeout(() => { if (MP.room && MP.room.state === 'game' && (MP.room.d || {}).round === d.round) fadeSwap(() => duelStartRound(MP.room), 320, 600); }, wait);
+}
+function duelStartRound(room) {
+  const d = room.d, H = room.host, G = dGuest(room);
+  const mk = u => { const p = room.players[u] || {}, k = d.pick[u]; return {role:'mid', key:k, spells:Array.isArray(p.spells) && p.spells.length === 2 ? p.spells : defaultSpells('mid', k), rune:RUNES[p.rune] ? p.rune : defaultRune('mid', k), name:p.name || '상대', uid:u}; };
+  const blue = [mk(H)], red = [mk(G)];
+  mpLineup = {blue, red, me:'mid', fresh:true, duel:true};
+  chosenChamp = (MP.host ? blue : red)[0].key; chosenRole = 'mid';
+  resetGame(); started = true;
+  for (const c of heroes) { const L = c.team === 'blue' ? blue[0] : red[0]; c.name = L.name; c.mpUid = room.solo && L.uid === 'ai' ? null : L.uid; giveSpells(c, L.spells); c.rune = L.rune; }
+  DUEL.solo = !!room.solo;
+  if (!MP.host) { const me = heroes.find(h => h.team === 'red'); if (me) player = me; }
+  duelSetup();
+  DUEL.round = d.round; DUEL.resultShown = 0;
+  $('mp').hidden = true; openMenu(false); $('select').hidden = true; $('over').hidden = true;
+  MPS.remote = {}; MPS.hostAt = 0; MPS.lags = []; MPS.interp = MP_INTERP; MPS.encN = 0; MPS.cdn.clear(); MPS.dnObjs.clear(); MPS.seq = 0; MPS.lostT = 0; MPS.resyncAt = 0;
+  MPS.N.clear(); MPS.last.clear(); MPS.lastColl = {}; MPS.lastG = {}; MPS.nid = 0; MPS.gotFull = false; MPS.myNid = 0; MPS.sendT = 0; MPS.rxT = performance.now();
+  if (room.solo) { mpRole = null; bots = heroes.filter(h => h.team === 'red'); }
+  else if (MP.host) { mpRole = 'host'; bots = []; for (const L of Object.values(MPS.links)) { L.synced = false; L.pend = null; } }
+  else { mpRole = 'guest'; MP.waitT = performance.now(); }
+  announce(`${d.round}라운드 시작!`, '#ffd66b');
+}
+function duelSetup() {                                                            // 결투장: 건물 · 미니언 · 정글 없음, 15레벨 · 스킬 전부 최대 · 아이템 없음
+  DUEL.on = true; duelEnterArena(); document.body.classList.add('duel');
+  units = units.filter(u => isChamp(u)); camps = []; spawnQueue = []; nextWave = 1e9; wards = []; projectiles = [];
+  for (const c of heroes) {
+    c.level = MAX_LEVEL; c.xp = 0; c.points = 0; c.rank = {Q:BASIC_MAX, W:BASIC_MAX, E:BASIC_MAX, R:R_LEVELS.length};
+    c.items = []; c.gold = 0; c.wards = 0; c.pots = 0;
+    if (c.key === 'hohenheim') { c.hhEvo = {}; c.hhEvoPend = R_LEVELS.length; }
+    recalcStats(c); c.hp = c.maxHp; c.cd = {Q:0, W:0, E:0, R:0}; c.spCd = {D:0, F:0};
+    const blue = c.team === 'blue';
+    c.x = blue ? ARENA.x + 120 : ARENA.x + ARENA.w - 120; c.y = ARENA.y + ARENA.h / 2; c.face = blue ? 0 : Math.PI;
+    c.target = null; c.path = null; c.vx = c.vy = 0; c.alive = true;
+  }
+  bots = heroes.filter(c => c !== player && !c.mpUid);
+  cam.x = player.x; cam.y = player.y;
+  DUEL.freeze = false; DUEL.deaths = {}; DUEL.t0 = time; DUEL.sent = false;
+}
+function duelOnDeath(u) { if (!DUEL.on || DUEL.freeze) return; if (!DUEL.deaths[u.team]) DUEL.deaths[u.team] = {t:time, self:!!u.alSelf}; }
+function duelHostCheck() {                                                        // 방장: 라운드 판정
+  if (DUEL.freeze || DUEL.sent) return;
+  const ds = DUEL.deaths, teams = Object.keys(ds);
+  let win = null;
+  if (teams.length) {
+    const first = Math.min(...teams.map(k => ds[k].t)); if (time - first < DUEL_T.window) return;
+    if (teams.length === 1) win = teams[0] === 'blue' ? 'red' : 'blue';           // 먼저 쓰러진 쪽이 짐
+    else {
+      const b = ds.blue, r = ds.red;
+      if (b.self && !r.self) win = 'blue'; else if (r.self && !b.self) win = 'red';   // 알리사 최후의 불꽃: 같이 쓰러지면 알리사 승
+      else if (Math.abs(b.t - r.t) < .35) win = 'draw'; else win = b.t < r.t ? 'red' : 'blue';
+    }
+  } else if (time - DUEL.t0 >= DUEL_T.limit) {                                     // 시간 초과: 체력 비율이 높은 쪽
+    const hp = t => { const c = heroes.find(h => h.team === t); return c && c.alive ? c.hp / c.maxHp : 0; };
+    const hb = hp('blue'), hr = hp('red'); win = Math.abs(hb - hr) < .02 ? 'draw' : hb > hr ? 'blue' : 'red';
+  } else return;
+  DUEL.freeze = true; DUEL.sent = true;
+  duelHostResult(win);
+}
+function duelShowResult(room) {
+  const d = room.d || {}, L = d.last || {}; if (DUEL.resultShown === d.round) return; DUEL.resultShown = d.round;
+  DUEL.freeze = true;
+  const me = MP.net.uid, txt = L.win === 'draw' ? '무승부' : L.win === me ? '라운드 승리!' : '라운드 패배';
+  if (started) announce(`${d.round}라운드 · ${txt}`, L.win === me ? '#ffd66b' : L.win === 'draw' ? '#c8c8d0' : '#ff8a8e');
+  setTimeout(() => { if (MP.room && MP.room.state === 'result') fadeSwap(() => { duelPause(); MP.view = 'dresult'; $('mp').hidden = false; mpRender(); }, 420, 450); }, 1500);
+}
+function duelPause() { started = false; shake.mag = 0; document.body.classList.remove('duel'); }
+function duelCleanup() { DUEL.solo = false; DUEL.on = false; DUEL.freeze = false; DUEL.startedRound = 0; DUEL.resultShown = 0; duelExitArena(); document.body.classList.remove('duel'); if (mpLineup && mpLineup.duel) { mpLineup = null; started = false; mpRole = null; } }
+function duelFinish(room) {
+  const d = room.d || {}, w = d.winner;
+  if (DUEL.finished || !w) return; DUEL.finished = true;
+  duelPause(); DUEL.on = false; duelExitArena();
+  const done = () => fadeSwap(() => { DUEL.finished = false; $('vicMvp').hidden = true; $('mp').hidden = false; mpLeave(''); }, 300, 450);
+  if (!w || w === 'draw') { fadeSwap(() => { MP.view = 'ddone'; $('mp').hidden = false; mpRender(); }); return; }
+  const keys = dArr((d.used || {})[w]).filter(k => STATS[k]);
+  if (!keys.length) { fadeSwap(() => { MP.view = 'ddone'; $('mp').hidden = false; mpRender(); }); return; }
+  const sc = d.score || {}, opp = Object.keys(sc).find(u => u !== w);
+  fadeSwap(() => { $('mp').hidden = true; mvpOpenTeam(keys, dName(room, w), `쏠전 승리 · ${sc[w] || 0} : ${sc[opp] || 0}${d.forfeit ? ' (상대 기권)' : ''}`, w === MP.net.uid, done); }, 450, 600);
+}
+function duelHudText() {
+  const r = MP.room, d = (r && r.d) || {}, me = MP.net.uid, opp = dOpp(r), sc = d.score || {};
+  const left = Math.max(0, DUEL_T.limit - (time - DUEL.t0)), mm = Math.floor(left / 60), ss = String(Math.floor(left % 60)).padStart(2, '0');
+  return `쏠전 ${d.round || 1}R · ${sc[me] || 0} : ${sc[opp] || 0} · ${mm}:${ss}`;
+}
+function drawDuelArena(g) {                                                       // 결투장 밖은 어둡게 · 테두리 불빛
+  if (!DUEL.on) return;
+  const A = ARENA, pad = 6000;
+  g.save(); g.fillStyle = 'rgba(6,5,9,.9)'; g.beginPath(); g.rect(A.x - pad, A.y - pad, A.w + pad * 2, A.h + pad * 2); g.rect(A.x + A.w, A.y, -A.w, A.h); g.fill('evenodd');
+  g.strokeStyle = 'rgba(230,195,92,.85)'; g.lineWidth = E(10); g.strokeRect(A.x, A.y, A.w, A.h);
+  g.strokeStyle = 'rgba(255,214,107,.35)'; g.lineWidth = E(4); g.setLineDash([E(30), E(20)]); g.lineDashOffset = -time * E(30); g.strokeRect(A.x + E(18), A.y + E(18), A.w - E(36), A.h - E(36)); g.setLineDash([]); g.lineDashOffset = 0;
+  for (const [x, y] of [[A.x, A.y], [A.x + A.w, A.y], [A.x, A.y + A.h], [A.x + A.w, A.y + A.h]]) {   // 네 모서리 화로
+    const gr = g.createRadialGradient(x, y, 0, x, y, E(90)); gr.addColorStop(0, `rgba(255,190,90,${.55 + .15 * Math.sin(time * 6 + x)})`); gr.addColorStop(1, 'rgba(255,120,40,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(x, y, E(90), 0, 7); g.fill();
+  }
+  g.restore();
+}
+// ── 화면 ──
+function dCard(k, i, st, attr = '') {
+  const tag = st.includes('ban') ? '<em>벤</em>' : st.includes('used') ? '<em>사용함</em>' : st.includes('on') ? '<em>선택</em>' : '';
+  return `<button type="button" class="dc ${st}" style="--i:${i}" ${attr}>${mpTok(k, 'lg')}<b>${esc(STATS[k].name)}</b><small>${esc(dRole(k))}</small>${tag}</button>`;
+}
+function duelRender() {
+  const el = $('mpBody'), v = MP.view, r = MP.room, me = MP.net && MP.net.uid;
+  $('mpTitle').textContent = '쏠전 · 1대1';
+  $('mpBack').textContent = MP.code ? '나가기' : '← 메인';
+  const err = MP.err ? `<p class="mp-err">${esc(MP.err)}</p>` : '';
+  if (v === 'dhome' || v === 'dfind') {
+    el.innerHTML = `<div class="mp-home">
+      <p class="mp-lead"><b>쏠전</b>은 1대1 결투 모드입니다. 매칭되면 서로 <b>무작위 챔피언 5장</b>이 공개되고, 라운드마다 상대 카드 하나를 <b>벤</b>한 뒤 챔피언을 골라 결투장에서 싸웁니다. 먼저 <b>2승</b>하면 승리! 한 번 쓴 챔피언은 다음 라운드에 다시 쓸 수 없어요. (모두 15레벨 · 스킬 최대 · 아이템 없음)</p>
+      <label class="mp-name">닉네임 <input id="mpName" maxlength="10" value="${esc(mpName())}" autocomplete="off"></label>
+      ${err}
+      <div class="mp-acts">
+        <button type="button" class="mn-btn main" data-mp="dquick" ${v === 'dfind' ? 'disabled' : ''}><b>${v === 'dfind' ? '상대를 찾는 중…' : '매칭 시작'}</b><span>기다리는 상대가 있으면 바로 붙고, 없으면 새로 기다립니다</span></button>
+        <button type="button" class="mn-btn" data-mp="dcreate"><b>친구와 쏠전</b><span>방 코드를 친구에게 알려 주세요</span></button>
+        <button type="button" class="mn-btn" data-mp="dsolo"><b>AI와 떠보기</b><span>연습 · 테스트용 · 인터넷 없이 AI와 똑같은 규칙으로</span></button>
+        <div class="mp-join"><input id="mpCodeIn" maxlength="4" placeholder="코드 4자리" autocomplete="off" autocapitalize="characters"><button type="button" data-mp="djoin">입장</button></div>
+      </div>
+      ${MP.net && MP.net.kind === 'local' ? '<p class="mp-note">시험 모드: 같은 브라우저의 다른 탭끼리만 연결됩니다</p>' : ''}
+    </div>`;
+    return;
+  }
+  if (!r) { el.innerHTML = '<p class="mp-lead">연결 중…</p>'; return; }
+  const d = r.d || {}, opp = dOpp(r), sc = d.score || {}, round = d.round || 1;
+  const head = (title, sub) => `<div class="d-top"><div class="d-sc"><span>${esc(dName(r, me))}</span><b>${sc[me] || 0} : ${sc[opp] || 0}</b><span>${esc(dName(r, opp))}</span></div><h3>${title}</h3><p>${sub}</p>${['dban', 'dpick', 'dreveal'].includes(v) ? '<span id="dTimer" class="d-timer"></span>' : ''}</div>`;
+  if (v === 'dlobby') {
+    el.innerHTML = `<div class="d-wait"><div class="d-spin"></div><h3>상대를 기다리는 중…</h3>${!r.pub ? `<div class="mp-code"><small>쏠전 방 코드</small><b>${MP.code}</b><button type="button" data-mp="copy">복사</button></div>` : '<p class="mp-note">매칭 대기열에 올라가 있어요</p>'}${err}</div>`;
+    return;
+  }
+  const pool = u => dArr((d.pool || {})[u]), used = u => dArr((d.used || {})[u]), ban = d.ban || {}, pick = d.pick || {};
+  const row = (u, mine, mode) => pool(u).map((k, i) => {
+    let st = '', attr = '';
+    const isBan = ban[mine ? opp : me] === k && v !== 'dban', isUsed = used(u).includes(k);
+    if (isBan) st += ' ban'; if (isUsed) st += ' used';
+    if (mode === 'ban' && !mine) { if (ban[me] === k) st += ' on'; if (!ban[me] && !isUsed) attr = `data-dban="${k}"`; else attr = 'disabled'; }
+    else if (mode === 'pick' && mine) { if (pick[me] === k) st += ' on'; if (!pick[me] && !isBan && !isUsed) attr = `data-dpick="${k}"`; else attr = 'disabled'; }
+    else attr = 'disabled';
+    return dCard(k, i + (mine ? 5 : 0), st, attr);
+  }).join('');
+  const rows = (mode) => `<div class="d-rows"><div class="d-lab">${esc(dName(r, opp))}</div><div class="d-row">${row(opp, false, mode)}</div><div class="d-vs">VS</div><div class="d-row">${row(me, true, mode)}</div><div class="d-lab me">${esc(dName(r, me))} (나)</div></div>`;
+  if (v === 'dreveal') { el.innerHTML = `<div class="d-wrap reveal">${head('카드 공개', '서로의 챔피언 5장이 공개됩니다')}${rows('none')}</div>`; return; }
+  if (v === 'dban') {
+    const st = ban[me] === '-' ? '상대에게 남은 챔피언이 하나뿐이라 이번 라운드엔 벤이 없어요' + (ban[opp] ? '' : ' · 상대를 기다리는 중…') : ban[me] ? (ban[opp] ? '벤 완료!' : '상대가 고르는 중…') : '상대 카드 하나를 눌러 <b>벤</b>하세요 · 이번 라운드에만 못 씁니다';
+    el.innerHTML = `<div class="d-wrap">${head(`${round}라운드 · 벤`, st)}${rows('ban')}</div>`; return;
+  }
+  if (v === 'dpick') {
+    const st = pick[me] ? (pick[opp] ? '선택 완료!' : '상대가 고르는 중… (상대 선택은 시작할 때 공개)') : `${round}라운드에 쓸 챔피언을 고르세요 · 벤 당한 카드${round > 1 ? '와 이전 라운드에 쓴 챔피언' : ''}은 못 씀`;
+    el.innerHTML = `<div class="d-wrap">${head(`${round}라운드 · 챔피언 선택`, st)}${rows('pick')}</div>`; return;
+  }
+  if (v === 'dload') { el.innerHTML = `<div class="d-wait"><div class="d-spin"></div><h3>상대와 연결하는 중…</h3><p class="mp-note">처음 한 번만 연결해요</p></div>`; return; }
+  if (v === 'dvs') {
+    const a = pick[me], b = pick[opp];
+    el.innerHTML = `<div class="d-vsbig"><div class="d-side me">${a ? mpTok(a, 'xl') : ''}<b>${a ? esc(STATS[a].name) : ''}</b><small>${esc(dName(r, me))}</small></div><div class="d-x">${round}라운드<br><span>VS</span></div><div class="d-side">${b ? mpTok(b, 'xl') : ''}<b>${b ? esc(STATS[b].name) : ''}</b><small>${esc(dName(r, opp))}</small></div></div>`;
+    return;
+  }
+  if (v === 'dresult') {
+    const L = d.last || {}, txt = L.win === 'draw' ? '무승부' : L.win === me ? '승리!' : '패배';
+    el.innerHTML = `<div class="d-res ${L.win === me ? 'win' : L.win === 'draw' ? 'draw' : 'lose'}"><small>${L.round || round}라운드</small><h2>${txt}</h2><div class="d-sc big"><span>${esc(dName(r, me))}</span><b>${sc[me] || 0} : ${sc[opp] || 0}</b><span>${esc(dName(r, opp))}</span></div><p>다음 라운드를 준비하는 중…</p></div>`;
+    return;
+  }
+  if (v === 'ddone') {
+    const w = d.winner;
+    el.innerHTML = `<div class="d-res ${w === me ? 'win' : w === 'draw' ? 'draw' : 'lose'}"><h2>${w === 'draw' || !w ? '무승부' : w === me ? '쏠전 승리!' : '쏠전 패배'}</h2><div class="d-sc big"><span>${esc(dName(r, me))}</span><b>${sc[me] || 0} : ${sc[opp] || 0}</b><span>${esc(dName(r, opp))}</span></div><button type="button" class="mp-go" data-mp="dleave">나가기</button></div>`;
+  }
+}
+function duelClick(e, act, run) {                                                 // 쏠전 화면 버튼
+  if (act === 'dquick') { run(duelQuick); return true; }
+  if (act === 'dcreate') { run(() => duelCreate(false)); return true; }
+  if (act === 'dsolo') { run(duelSolo); return true; }
+  if (act === 'djoin') { run(() => duelJoin($('mpCodeIn').value)); return true; }
+  if (act === 'dleave') { DUEL.finished = false; mpLeave(''); return true; }
+  const b = e.target.closest('[data-dban]'); if (b) { run(() => duelBan(b.dataset.dban)); return true; }
+  const p = e.target.closest('[data-dpick]'); if (p) { run(() => duelPick(p.dataset.dpick)); return true; }
+  return false;
+}
+// ── 승리 연출: 이긴 사람이 쓴 챔피언이 모두 나와 동시에 승리 동작 ──
+function mvpOpenTeam(keys, name, sub, mine, onClose) {
+  const el = $('vicMvp'); el.hidden = false; $('vmPick').hidden = true;
+  mvp = {key:keys[0], name, sub, kda:null, team:'blue', t:0, dev:false, parts:[], seed:Math.random() * 1000, last:performance.now(), dust:[], onClose, mine,
+         list:keys.map((k, i) => { let ch; try { ch = makeChamp('blue', k, 0, 0); } catch { ch = {key:k, r:E(STATS[k].r), team:'blue', alive:true, face:0, st:STATS[k], items:[], rank:{Q:0, W:0, E:0, R:0}}; } return {key:k, ch, delay:i * .28, dust:[], shake:0, t:0}; })};
+  if (!mvpRun) { mvpRun = true; requestAnimationFrame(mvpFrame); }
+}
+function drawMvpTeam(g, W2, H2, M) {
+  const t = M.t, n = M.list.length, cx = W2 / 2, floor = H2 * .84, S = Math.min(H2 * .5, W2 * .3), Rb = S * .22;
+  g.fillStyle = '#07080b'; g.fillRect(0, 0, W2, H2);
+  const bgk = Math.min(1, t / 2);
+  const gr = g.createRadialGradient(cx, H2 * .5, 0, cx, H2 * .5, Math.max(W2, H2) * .7); gr.addColorStop(0, `rgba(230,195,92,${.35 * bgk})`); gr.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, W2, H2);
+  g.fillStyle = `rgba(230,195,92,${.25 * bgk})`; g.beginPath(); g.ellipse(cx, floor + 6, Math.min(W2 * .45, Rb * 2.4 * n), S * .07, 0, 0, 7); g.fill();
+  const gap = Math.min(Rb * 3.2, W2 * .8 / Math.max(1, n));
+  M.list.forEach((B, i) => {
+    B.t = t - B.delay; B.W = W2; B.cz = 1; const L = MVP_LOOK[B.key]; if (!L || B.t < 1.15) return;
+    const reveal = Math.min(1, Math.max(0, (B.t - 1.75) / .25)), sil = B.t > 1.15 && B.t < 2;
+    for (const d of B.dust) { d.t += 1 / 60; d.x += d.vx / 60; d.y += d.vy / 60; d.vy += 300 / 60; }
+    B.dust = B.dust.filter(d => d.t < d.life);
+    mvpBall(g, B, L, cx + (i - (n - 1) / 2) * gap, floor, Rb, sil && reveal < 1, reveal);
+  });
+  if (t > 1.4 && t < 1.8) { g.fillStyle = `rgba(255,255,255,${(1 - (t - 1.4) / .4) * .5})`; g.fillRect(0, 0, W2, H2); }
+  if (t > 2.1) {
+    const k = Math.min(1, (t - 2.1) / .4), e = 1 - Math.pow(1 - k, 3);
+    g.save(); g.globalAlpha = e; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.font = `900 ${Math.round(Math.min(58, H2 * .1))}px system-ui,sans-serif`; g.fillStyle = M.mine ? '#ffd66b' : '#e8e8ee'; g.shadowColor = '#ffb020'; g.shadowBlur = 22;
+    g.fillText(M.mine ? '승리!' : `${M.name} 승리`, cx, H2 * .17); g.shadowBlur = 0;
+    g.font = `800 ${Math.round(Math.min(22, H2 * .042))}px system-ui,sans-serif`; g.fillStyle = '#fff'; g.fillText(`${M.name} · ${M.sub}`, cx, H2 * .17 + Math.min(40, H2 * .07));
+    g.font = `600 ${Math.round(Math.min(15, H2 * .03))}px system-ui,sans-serif`; g.fillStyle = '#d8dde6'; g.fillText(M.list.map(B => STATS[B.key].name).join('  ·  '), cx, H2 * .17 + Math.min(66, H2 * .115));
+    g.restore();
+  }
+  if (t > 3.2) { g.globalAlpha = .55 + .45 * Math.sin(performance.now() / 280); g.fillStyle = '#fff'; g.font = '700 14px system-ui,sans-serif'; g.textAlign = 'center'; g.fillText('화면을 눌러 나가기', W2 / 2, H2 * .96); g.globalAlpha = 1; }
+}
+// ── 쏠전 AI 연습: 네트워크 없이 같은 화면 흐름을 그대로 (방은 메모리 안에만) ──
+function netSolo() {
+  let db = {}; const subs = new Set(); let pend = false;
+  const parts = p => p.split('/').filter(Boolean);
+  const read = p => parts(p).reduce((o, k) => o == null ? null : o[k] ?? null, db);
+  const clean = v => v === undefined ? null : JSON.parse(JSON.stringify(v ?? null));
+  const write = (p, v) => { const ks = parts(p); let o = db; for (let i = 0; i < ks.length - 1; i++) o = (o[ks[i]] && typeof o[ks[i]] === 'object') ? o[ks[i]] : (o[ks[i]] = {}); if (v === null) delete o[ks[ks.length - 1]]; else o[ks[ks.length - 1]] = clean(v); };
+  const fire = () => { if (pend) return; pend = true; setTimeout(() => { pend = false; for (const s of [...subs]) { const v = JSON.stringify(read(s.p)); if (v !== s.last) { s.last = v; try { s.cb(JSON.parse(v)); } catch (e) { console.warn(e); } } } }, 0); };
+  return {kind:'solo', uid:'me', async init() {}, now:() => Date.now(),
+    async get(p) { return clean(read(p)); }, async set(p, v) { write(p, v); fire(); },
+    async update(p, o) { for (const k in o) write(p + '/' + k, o[k]); fire(); }, async remove(p) { write(p, null); fire(); },
+    on(p, cb) { const s = {p, cb, last:undefined}; subs.add(s); fire(); return () => subs.delete(s); },
+    async txn(p, fn) { const cur = clean(read(p)), nv = fn(cur); if (nv === undefined) return {committed:false, value:cur}; write(p, nv); fire(); return {committed:true, value:clean(nv)}; },
+    async onDisc() {}, async cancelDisc() {}, async push() {}, onChild() { return () => {}; }, async openRooms() { return {}; }, disconnect() {}};
+}
+async function duelSolo() {
+  if (!MP.net || MP.net.kind !== 'solo') { MP.realNet = MP.net; MP.net = netSolo(); }
+  const N = MP.net;
+  await N.set('rooms/SOLO', {mode:'duel', solo:true, host:'me', state:'lobby', pub:false, created:N.now(), players:{me:duelPlayerRec(0), ai:{name:'AI', slot:1, ai:true}}});
+  mpEnter('SOLO', true);
+}
+function duelBot(b, dt) {                                                         // 결투장 AI: 상대만 보고 싸움 (라인 · 귀환 없음)
+  if (!b.alive) return;
+  champTimers(b, dt);
+  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin || b.chE || b.chQ || b.chRide || b.stasisT > time || b.itDash || hhBusy(b) || alBusy(b)) return;
+  if (b.ylRevive || b.stunT > 0 || b.cast) { moveChamp(b, 0, 0, dt); return; }
+  if (tauntedMove(b, dt) || fearMove(b, dt)) return;
+  if (b.snipe) { aiSnipe(b); moveChamp(b, 0, 0, dt); return; }
+  const p = heroes.find(h => h.team !== b.team);
+  if (!p || !p.alive) { moveChamp(b, 0, 0, dt); return; }
+  if (b.hcQ) { const v = hcQMove(b, p); moveChamp(b, v.x, v.y, dt); return; }
+  if (b.qCharge) { const a = Math.atan2(p.y - b.y, p.x - b.x); b.face = a; moveChamp(b, Math.cos(a), Math.sin(a), dt); return; }
+  const hpB = b.hp / b.maxHp, hpP = p.hp / p.maxHp, pd = edge(b, p);
+  b.thinkT = (b.thinkT || 0) - dt;
+  if ((b.spThinkT = (b.spThinkT || 0) - dt) <= 0) { b.spThinkT = .25; aiSpells(b, p, hpB, aiEvaluate(b, p)); }
+  const dv = aiDodge(b); if (dv) { moveChamp(b, dv.x, dv.y, dt); return; }
+  b.stance = hpB < .3 && hpP > hpB + .15 ? 'retreat' : 'allin';
+  if (b.thinkT <= 0) { b.thinkT = AI.react[0] + Math.random() * (AI.react[1] - AI.react[0]); if (aiCombo(b, p)) { moveChamp(b, 0, 0, dt); return; } }
+  b.target = p;
+  const R = E(b.st.range); let dx = 0, dy = 0;
+  if (b.stance === 'retreat') { const a = Math.atan2(b.y - p.y, b.x - p.x) + Math.sin(time * 1.3) * .7; dx = Math.cos(a); dy = Math.sin(a); if (pd < R && b.atkT <= 0) basicAttack(b, p); }
+  else if (pd > R) { const q = navStep(b, p.x, p.y), d = Math.hypot(q.x - b.x, q.y - b.y) || 1; dx = (q.x - b.x) / d; dy = (q.y - b.y) / d; }
+  else if (b.atkT <= 0) basicAttack(b, p);
+  else { const s = aiStrafe(b, p, .35); dx = s.x; dy = s.y; }
+  const cx = ARENA.x + ARENA.w / 2, cy = ARENA.y + ARENA.h / 2, m = 90;              // 벽에 붙지 않게 안쪽으로
+  if (b.x < ARENA.x + m || b.x > ARENA.x + ARENA.w - m || b.y < ARENA.y + m || b.y > ARENA.y + ARENA.h - m) { const a = Math.atan2(cy - b.y, cx - b.x); dx = dx * .4 + Math.cos(a) * .8; dy = dy * .4 + Math.sin(a) * .8; }
+  moveChamp(b, dx, dy, dt);
+}
 function mpGameNotice(t) { if (started && player) text(player.x, player.y - E(110), t, '#e6c35c', true, 6); }
 function mpToast(t) { const el = $('mpToast'); if (!el) return; el.textContent = t; el.classList.add('on'); clearTimeout(mpToast.t); mpToast.t = setTimeout(() => el.classList.remove('on'), 1800); }
 
@@ -13977,6 +14431,7 @@ function mpToast(t) { const el = $('mpToast'); if (!el) return; el.textContent =
 const mpTok = (k, cls = '') => `<span class="mp-tok ${cls}" style="background:${k ? (CHAMP_COL[k] || '#777') : 'transparent'}"></span>`;
 function mpRender() {
   const el = $('mpBody'); if (!el || $('mp').hidden) return;
+  if (MP.view && MP.view[0] === 'd') return duelRender();
   const v = MP.view, r = MP.room;
   $('mpTitle').textContent = v === 'pick' ? '챔피언 선택' : v === 'loading' || v === 'game' ? '로딩' : v === 'lobby' ? '대기실' : '멀티플레이';
   $('mpBack').textContent = v === 'home' || v === 'finding' ? '← 메인' : '나가기';
@@ -14060,6 +14515,7 @@ document.addEventListener('click', e => {
   if (e.target.closest('#mpBack')) { if (MP.code) mpLeave(''); else { mpOpen(false); openMenu(true); } return; }
   const a = e.target.closest('[data-mp]'), act = a && a.dataset.mp;
   const run = f => f().catch(err => { console.error(err); MP.view = MP.code ? MP.view : 'home'; mpSetErr('연결 오류: ' + (err && err.message || err)); });
+  if (MP.duelMode && duelClick(e, act, run)) return;
   if (act === 'quick') return run(mpQuick);
   if (act === 'create') return run(() => mpCreate(false));
   if (act === 'join') return run(() => mpJoin($('mpCodeIn').value));
@@ -14076,7 +14532,9 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('input', e => { if (e.target.id === 'mpName') { const n = e.target.value.trim().slice(0, 10); mpNameMem = n; try { localStorage.setItem('mpName', n); } catch {} } });
 document.addEventListener('keydown', e => { if (e.target.id === 'mpCodeIn' && e.key === 'Enter') $('mp').querySelector('[data-mp="join"]').click(); });
-$('mMulti').addEventListener('click', () => { openMenu(false); mpOpen(true); });
+$('mMulti').addEventListener('click', () => { openMenu(false); MP.duelMode = false; mpOpen(true); });
+$('mDuel').addEventListener('click', () => { openMenu(false); MP.duelMode = true; mpOpen(true); });
+$('duelExit').addEventListener('click', () => fadeSwap(() => { $('vicMvp').hidden = true; $('mp').hidden = false; DUEL.finished = false; if (MP.code) mpLeave('쏠전에서 나왔습니다 (기권).'); else { duelCleanup(); mpView('dhome'); } }, 300, 450));
 
 // ═════════════ 멀티플레이 2단계: 실제 동기화 (방장 브라우저가 게임을 계산, 나머지는 받아서 그림) ═════════════
 // 연결: WebRTC P2P (Firebase로 연결 정보만 교환) → 7초 안에 안 붙으면 Firebase 중계로 대체
