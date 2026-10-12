@@ -157,7 +157,7 @@
   .mp-spn{font-size:11px;color:#cdb898;margin-left:4px}
   .mp-spell em{position:absolute;top:-6px;right:-5px;font-style:normal;font-size:9px;font-weight:900;background:#e6c35c;color:#1a1405;border-radius:4px;padding:0 3px}
   .mp-load{display:flex;flex-direction:column;justify-content:center;gap:10px;min-height:100%}
-  .mp-lrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .mp-lrow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
   .mp-card{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 6px;border-radius:12px;background:#1d140d;border:1px solid #3a2718;text-align:center}
   .mp-card.me{border-color:#4aa3ff;background:#18202a} .mp-card.red .mp-tok{border-color:#ff5a5f}
   .mp-card b{font-size:14px} .mp-card small{font-size:10.5px;color:#a89378}
@@ -408,7 +408,7 @@
   .sel header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
   .sel h1{margin:0;font-size:22px;letter-spacing:.12em}
   .sel header p{margin:0;color:#a89378;font-size:12px}
-  .sel-roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .sel-roles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
   .sel-role{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:22px 12px;border-radius:14px;
     background:#1c130b;border:2px solid #4a3522;color:#f0e1c9;font:500 13px system-ui,sans-serif}
   .sel-role:hover,.sel-role:focus-visible{border-color:#e6b47a;outline:none;background:#261a10}
@@ -425,6 +425,7 @@
   .sel-card .role{color:#a89378}
   .sel-card ul{grid-column:1 / -1;margin:8px 0 0;padding:0;list-style:none;display:grid;gap:2px}
   .sel-card li span{display:inline-block;width:18px;color:#e6b47a;font-weight:800}
+  .sel-card{position:relative}  .sel-card .rec{position:absolute;right:10px;top:10px;font-style:normal;font-size:10px;font-weight:800;color:#1a1405;background:#e6c35c;border-radius:999px;padding:1px 8px} .sel-card .rec.sub{background:#8a7a5a;color:#f0e1c9}
   .sel-card .go{grid-column:1 / -1;margin-top:8px;text-align:center;padding:8px;border-radius:8px;background:#e6c35c;color:#1a1405;font-weight:800}
   #rotate{z-index:50;position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
     background:rgba(8,12,10,.92);text-align:center;padding-inline:24px;font-size:15px}
@@ -469,11 +470,11 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v163 · 베르길리우스 간파 조정</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v169 · 관전 시점 버튼을 라인 순서로</p></div>
     <div class="mn-btns">
-      <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
-      <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v163</em></button>
+      <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>5대5 봇전 · 라인과 챔피언을 골라 시작</span></button>
+      <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 10명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v169</em></button>
       <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
@@ -488,12 +489,13 @@
 </div>
 <div id="select" hidden>
   <div class="sel">
-    <header><button type="button" id="selHome">← 메인</button><button type="button" id="selBack" hidden>← 라인 다시 고르기</button><h1 id="selTitle">라인 선택</h1><p>데모 · 4대4 봇전 · 아군 AI 3명 + 적 AI 4명 (한 팀 안에서 챔피언 중복 없음)</p></header>
+    <header><button type="button" id="selHome">← 메인</button><button type="button" id="selBack" hidden>← 라인 다시 고르기</button><h1 id="selTitle">라인 선택</h1><p>데모 · 5대5 봇전 · 아군 AI 4명 + 적 AI 5명 · 모두 선호 라인대로 (한 팀 안에서 챔피언 중복 없음)</p></header>
     <div class="sel-roles" id="selRoles">
       <button type="button" class="sel-role" data-role="top"><b>탑</b><span>위쪽 라인 1:1 라인전</span><small>미니언 막타로 골드 · 경험치</small></button>
       <button type="button" class="sel-role" data-role="jungle"><b>정글</b><span>정글 캠프 사냥 · 버프 · 갱킹</span><small>사냥꾼의 칼을 사면 캠프 보상 100%</small></button>
       <button type="button" class="sel-role" data-role="mid"><b>미드</b><span>가운데 라인 1:1 라인전</span><small>가장 짧은 라인 · 양쪽 정글 합류</small></button>
-      <button type="button" class="sel-role" data-role="bottom"><b>바텀</b><span>아래쪽 라인 1:1 라인전</span><small>미니언 막타로 골드 · 경험치</small></button>
+      <button type="button" class="sel-role" data-role="bottom"><b>바텀</b><span>아래쪽 라인 원딜 · 서폿과 2:2</span><small>미니언 막타로 골드 · 경험치</small></button>
+      <button type="button" class="sel-role" data-role="support"><b>서폿</b><span>바텀에서 원딜을 지키며 2:2</span><small>근처 아군이 막타를 치면 그 골드의 절반을 받음</small></button>
     </div>
     <p class="pc-keys">PC 조작 · <b>우클릭</b> 이동·공격 · <b>Q W E R</b> 누르는 즉시 커서 쪽으로 시전 (돈키호테 Q는 누르는 동안 충전) · <b>A</b>+클릭 공격 이동 · <b>S</b> 정지 · <b>D F</b> 소환사 주문 · <b>T</b> 커서 위치에 와드 · <b>B</b> 귀환 · <b>Y</b> 화면 고정/해제 (해제 중 화면 끝에 커서 · <b>Space</b> 내 챔피언) · <b>P</b> 상점 · <b>Tab</b> 점수판 · <b>Shift</b>+QWER 스킬 배우기 · 방향키 이동</p>
     <div class="sel-spells" id="selSpells" hidden></div>
@@ -1098,7 +1100,7 @@ const STATS = {
   alyssa: {name:'알리사', r:28, range:320, speed:290, acquire:370, ap:[25, 8], ranged:true,
            hp:[560, 108], regen:[1.5, 0.14], ad:[52, 3.0], armor:[28, 4.8], mr:[30, 2.6], as:[0.66, 0.025]},
   vergil: {name:'베르길리우스', r:30, range:120, speed:305, acquire:270,
-           hp:[620, 112], regen:[1.6, 0.15], ad:[70, 4.1], armor:[30, 5], mr:[32, 3], as:[0.72, 0.03]},
+           hp:[560, 110], regen:[1.4, 0.15], ad:[60, 4.1], armor:[26, 4.9], mr:[30, 2.9], as:[0.68, 0.03]},
   kromer: {name:'크로머', r:29, range:110, speed:300, acquire:260,
            hp:[560, 100], regen:[1.4, 0.13], ad:[64, 3.7], armor:[27, 4.6], mr:[30, 2.5], as:[0.66, 0.028]},
   yuri:   {name:'유리', r:28, range:500, speed:280, acquire:540, ranged:true,
@@ -1736,7 +1738,7 @@ function resetGame() {
     units.push(outerTop, innerTop, outerMid, innerMid, outerBot, innerBot, twinA, twinB, nexus);
   }
   shots = []; mirrors = []; feathers = []; harpoons = []; fMissiles = []; grenades = []; hlOrbs = []; hlPetals = []; hlDrops = []; scThrows = [];
-  // 4대4 봇전: 내 역할을 뺀 세 자리는 아군 AI, 적은 4명 모두 AI (한 팀 안에서 챔피언 중복 없음)
+  // 5대5 봇전: 내 역할을 뺀 네 자리는 아군 AI, 적은 5명 모두 AI (선호 라인대로 · 한 팀 안에서 챔피언 중복 없음)
   const spawn = (team, key, role) => {
     const f = FOUNTAIN[team], c = makeChamp(team, key, f.x + (team === 'blue' ? 40 : -40), MID - 105 + ROLES.indexOf(role) * 70);
     c.role = role; return c;
@@ -1752,9 +1754,9 @@ function resetGame() {
   } else {
   player = spawn('blue', chosenChamp, chosenRole);
   heroes = [player];
-  const allyKeys = pickKeys([chosenChamp], 3);
-  ROLES.filter(r => r !== chosenRole).forEach((r, i) => heroes.push(spawn('blue', allyKeys[i], r)));
-  const enemyKeys = pickKeys([], 4);
+  const allyRoles = ROLES.filter(r => r !== chosenRole), allyKeys = pickForRoles(allyRoles, [chosenChamp]);   // 선호 라인대로
+  allyRoles.forEach((r, i) => heroes.push(spawn('blue', allyKeys[i], r)));
+  const enemyKeys = pickForRoles(ROLES, []);
   ROLES.forEach((r, i) => { const c = spawn('red', enemyKeys[i], r); if (!spectating) c.name += ' (적)'; heroes.push(c); });
   }
   bots = heroes.filter(c => c !== player);
@@ -1804,7 +1806,7 @@ const camFree = {on:false, x:0, y:0, t:-9};                          // PC: Y로
 addEventListener('keyup', e => { if (spectating) return; if (e.code === 'Digit1' && player && player.key === 'donq' && player.qCharge) castSkill(player, 'Q', null); });
 addEventListener('keydown', e => {
   if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;     // 입력칸에 글자 칠 때는 게임 조작 안 함
-  if (spectating) { if (started && /^[1-8]$/.test(e.key)) specView(specOrder()[+e.key - 1]); return; }   // 관전: 1~8로 시점 전환
+  if (spectating) { if (started && /^[0-9]$/.test(e.key)) specView(specOrder()[(+e.key + 9) % 10]); return; }   // 관전: 1~9, 0으로 시점 전환
   const k = e.key.toLowerCase();
   if (!keys.has(k)) {
     if (k === 'j' || (k === ' ' && !camFree.on)) atkPress();          // 화면 고정 해제 중 Space = 내 챔피언 보기
@@ -2195,6 +2197,12 @@ function renderSpellPick() {
     const s = SPELLS[id], on = chosenSpells.indexOf(id);
     return `<button type="button" class="sp-chip" data-spell="${id}" aria-pressed="${on >= 0}" title="${esc(s.desc)}"><img src="${icon(id)}" alt=""><span>${esc(s.name)}<small>${s.lol} · ${s.cd}초</small></span>${on >= 0 ? `<em>${on ? 'F' : 'D'}</em>` : ''}</button>`; }).join('')}</div>` + runePickHtml(chosenRune);
 }
+function selRecommend(role) {                                          // 챔피언 선택: 고른 라인을 선호하는 챔피언을 앞으로 · 추천 표시
+  const box = $('selCards'), cards = [...box.querySelectorAll('.sel-card')];
+  const rank = el => { const i = (ROLE_PREF[el.dataset.champ] || []).indexOf(role); return i < 0 ? 9 : i; };
+  cards.sort((a, b) => rank(a) - rank(b) || cards.indexOf(a) - cards.indexOf(b));
+  for (const el of cards) { el.querySelector('.rec')?.remove(); const r = rank(el); if (r <= 1) { const em = document.createElement('em'); em.className = 'rec' + (r ? ' sub' : ''); em.textContent = r ? '추천' : '최적'; el.prepend(em); } box.appendChild(el); }
+}
 function selStep(step) {
   $('selRoles').hidden = step !== 'role'; $('selCards').hidden = step !== 'champ'; $('selSpells').hidden = step !== 'champ'; if (step === 'champ') renderSpellPick(); $('selBack').hidden = step !== 'champ';
   $('selTitle').textContent = step === 'role' ? '라인 선택' : `챔피언 선택 · ${ROLE_NAME[chosenRole]}`;
@@ -2209,7 +2217,7 @@ $('select').addEventListener('click', e => {
     if (i >= 0) { if (chosenSpells.length > 1) chosenSpells.splice(i, 1); } else { if (chosenSpells.length >= 2) chosenSpells.shift(); chosenSpells.push(id); }
     if (chosenSpells.length < 2) chosenSpells.push(SPELL_ORDER.find(s => !chosenSpells.includes(s)));
     renderSpellPick(); return; }
-  const r = e.target.closest('[data-role]'); if (r) { chosenRole = r.dataset.role; chosenSpells = chosenRole === 'jungle' ? ['warp', 'hook'] : ['warp', 'brand']; selStep('champ'); return; }
+  const r = e.target.closest('[data-role]'); if (r) { chosenRole = r.dataset.role; chosenSpells = chosenRole === 'jungle' ? ['warp', 'hook'] : chosenRole === 'support' ? ['warp', 'ampule'] : ['warp', 'brand']; selStep('champ'); selRecommend(chosenRole); return; }
   const b = e.target.closest('[data-champ]'); if (!b) return;
   chosenChamp = b.dataset.champ; mpLineup = null; resetGame(); started = true; $('select').hidden = true;
   text(player.x + E(80), player.y - E(80), `${ROLE_NAME[chosenRole]} 상대: ${STATS[bot.key].name}`, '#ff8a8a', true, 3);
@@ -2656,7 +2664,10 @@ function drawNests(g) {
 function objWanted(b, cp) {
   if (cp.obj === 'bird') return b.level >= 6;
   if (b.role === 'jungle') return b.level >= 3;
-  return b.role === (cp.y < MID ? 'top' : 'bottom') || b.role === 'mid';
+  const roleOk = b.role === (cp.y < MID ? 'top' : 'bottom') || b.role === 'mid' || (b.role === 'support' && cp.y >= MID);
+  if (!roleOk) return false;
+  if (time >= 840) return true;
+  return heroes.some(j => j.alive && j.team === b.team && j.role === 'jungle' && j.objCp === cp);   // 라인전: 우리 정글러가 그 오브젝트로 갈 때만 따라감
 }
 function aiObjective(b, hpB) {
   if (hpB < .45) { b.objCp = null; return null; }
@@ -2825,6 +2836,45 @@ function aiJungleSkill(b, m) {
   if (b.key === 'ryoshu' && ready('E') && d < E(KRY.E.len) - E(20)) { castSkill(b, 'E', a); return true; }
   if (b.key === 'ryoshu' && ready('Q') && d < E(KRY.Q.range)) { castSkill(b, 'Q', a); return true; }
   if (b.key === 'ishmael' && ready('Q') && d < E(KI.Q.range)) { castSkill(b, 'Q', a, Math.min(1, (d + b.r) / E(KI.Q.range))); return true; }
+  // 진입기·갱킹기(돌진·도약·원거리 기절·궁극기)는 아끼고, 나머지 피해 스킬은 캠프에 아낌없이
+  if (b.key === 'gregor' && ready('E') && d < E(b.st.range) + E(40)) { castSkill(b, 'E', null); return true; }
+  if (b.key === 'yisang' && ready('Q') && d < E(KY.Q.len) - E(20)) { castSkill(b, 'Q', a); return true; }
+  if (b.key === 'yisang' && ready('W') && d < E(KY.W.range) - E(40)) { castSkill(b, 'W', a, Math.min(1, dist(b, m) / E(KY.W.range))); return true; }
+  if (b.key === 'sinclair' && ready('E') && d < E(KS.E.radius) - E(30)) { castSkill(b, 'E', a); return true; }
+  if (b.key === 'kromer' && !b.krDash && !b.krR) {
+    if (ready('W') && d < E(b.st.range) + E(80)) { castSkill(b, 'W', null); return true; }
+    if (ready('Q') && d < E(KKR.Q.len) * .9) { castSkill(b, 'Q', a); return true; }
+  }
+  if (b.key === 'vergil' && !b.vgDash) {
+    if (b.vgW) { if (time - b.vgW.t0 > (b.vgJW ??= .75 + Math.random() * .6)) { b.vgJW = null; castSkill(b, 'W', a); return true; } b.thinkT = .03; return false; }   // 홍련 베기: 완벽한 박자에 놓음
+    if (b.vgQ && vgRecast(b, 'Q')) { if (time - b.vgQ.t > (b.vgJQ ??= .15 + Math.random() * .7)) { b.vgJQ = null; castSkill(b, 'Q', a, Math.min(1, d / E(KVG.Q.slamDash))); return true; } b.thinkT = .03; return false; }
+    if (ready('Q') && !b.vgQ && d < E(KVG.Q.len) - E(20)) { castSkill(b, 'Q', a); return true; }
+    if (ready('W') && !b.vgQ && d < E(KVG.W.len) * .8) { castSkill(b, 'W', null); b.thinkT = .03; return true; }
+  }
+  if (b.key === 'charon') {
+    if (ready('W') && d < E(KCH.W.radius) + E(40)) { castSkill(b, 'W', null); return true; }
+    if (ready('Q') && d < E(KCH.Q.len) * .9) { castSkill(b, 'Q', a); return true; }
+  }
+  if (b.key === 'marten') {
+    if (!b.mtW && ready('W')) { castSkill(b, 'W', null); return true; }
+    if (ready('E') && d < E(KMT.E.radius) - E(20)) { castSkill(b, 'E', null); return true; }
+  }
+  if (b.key === 'guido' && ready('Q') && d < E(KGD.Q.len) * .85) { castSkill(b, 'Q', a); return true; }
+  if (b.key === 'thoma' && ready('Q') && !b.tmQ && d < E(b.st.range) + E(140)) { castSkill(b, 'Q', null); return true; }
+  if (b.key === 'hohenheim') {
+    if (ready('Q') && d < E(KHH.Q.len) * .9) { castSkill(b, 'Q', a); return true; }
+    if (ready('W') && d < E(KHH.W.range)) { castSkill(b, 'W', a, Math.min(1, dist(b, m) / E(KHH.W.range))); return true; }
+  }
+  if (b.key === 'alyssa') {
+    if (ready('W') && d < E(b.st.range) + E(80)) { castSkill(b, 'W', null); return true; }
+    if (ready('Q') && !b.alQ && d < E(KAL.Q.len) * .85) { castSkill(b, 'Q', a); return true; }
+  }
+  if (b.key === 'dongbaek') {
+    if (ready('W') && d < E(KDB.W.range) * .95) { castSkill(b, 'W', a, Math.min(1, dist(b, m) / E(KDB.W.range))); return true; }
+    if (ready('Q') && d < E(KDB.Q.len) * .9) { castSkill(b, 'Q', a); return true; }
+  }
+  if (b.key === 'gubo' && ready('Q') && d < E(KGB.Q.len) * .92) { castSkill(b, 'Q', a); return true; }
+  if (b.key === 'rodion' && ready('W') && d < E(KR.W.radius) - E(20) && b.pStacks >= KR.W.need) { castSkill(b, 'W', a); return true; }
   return false;
 }
 
@@ -3249,6 +3299,7 @@ function kill(u, src) {
   }
   if (isMinion(u) && isChamp(src)) {                // 막타 골드
     const g = STATS[u.kind].gold; src.gold += g; src.cs++;
+    for (const s of heroes) if (s.role === 'support' && s.alive && s !== src && s.team === src.team && dist(s, u) < E(900)) { const sg = Math.round(g * .5); s.gold += sg; if (s === player) text(s.x, s.y - s.r - E(20), '+' + sg, '#e6c35c', false, .8); }   // 서포터 몫
     if (src === player) { text(u.x, u.y - u.r - E(20), '+' + g, '#e6c35c', true, 1); }
   }
   if (isMonster(u)) monsterReward(u, src);
@@ -5396,6 +5447,7 @@ function defaultSpells(role, key) {                               // AI·기본�
   if (role === 'jungle') return ['warp', 'hook'];
   const r = Math.random();
   if (role === 'bottom') return ['warp', r < .45 ? 'ampule' : r < .75 ? 'hourglass' : 'calm'];
+  if (role === 'support') return ['warp', r < .55 ? 'ampule' : r < .8 ? 'hourglass' : 'brand'];
   if (role === 'mid') return ['warp', r < .5 ? 'brand' : r < .75 ? 'hourglass' : 'gas'];
   return ['warp', r < .45 ? 'brand' : r < .75 ? 'rush' : 'calm'];
 }
@@ -5440,6 +5492,7 @@ function defaultRune(role, key) {                                   // AI: 라�
   if (role === 'jungle') return pick(['keter', 'keter', 'gebura', 'yesod']);
   if (role === 'top') return pick(['gebura', 'netzach', 'hod', 'gebura']);
   if (role === 'mid') return pick(['binah', 'hokma', 'malkuth', 'keter']);
+  if (role === 'support') return pick(['chesed', 'tiphereth', 'yesod', 'hod']);
   return pick(['tiphereth', 'gebura', 'chesed', 'yesod']);
 }
 const runeOf = c => c && RUNES[c.rune] ? c.rune : null;
@@ -6361,11 +6414,11 @@ function aiKromer(b, p, d, hpP) {
 // ═════════════ 베르길리우스 · 붉은시선 ═════════════
 // 특색 해결사. 압도적인 피해와 다수 상대력 — 대신 박자(타이밍)를 맞춰야만 제 힘이 나오는 극악의 난이도
 const KVG = {
-  P:{basic:8, hit:14, decay:7, idle:3, dur:5, dmgUp:.3, cdr:1, overSlow:.3, overDur:2, reveal:.3, revealR:1600, shield:[50, .06], shieldCap:.2, shieldDur:3, gazeShield:.1, gazeHeal:.03},   // 붉은시선 (열기 게이지)
-  Q:{cd:[7, 6.5, 6, 5.5], win:1.6, lo:.3, hi:.55, len:290, wid:130, dmg:[34, 56, 78, 100], ad:.6, perf:.5, slamDash:230, slamR:200, slamMul:1.5, speed:1600},   // 글라디우스
-  W:{cd:[11, 10, 9, 8], max:1.25, lo:.95, hi:1.15, len:660, wid:[80, 210], dmg:[80, 125, 170, 215], ad:.95, perfMul:2, stun:.6, knock:110, slow:.35},   // 홍련 베기
+  P:{basic:8, hit:14, decay:7, idle:3, dur:5, dmgUp:.3, cdr:1, overSlow:.3, overDur:2, reveal:.3, revealR:1600, shield:[25, .05], shieldCap:.18, shieldDur:3, gazeShield:.1, gazeHeal:.03},   // 붉은시선 (열기 게이지)
+  Q:{cd:[8.5, 7.5, 6.5, 5.5], win:1.6, lo:.3, hi:.55, len:290, wid:130, dmg:[18, 42, 66, 90], ad:.55, perf:.5, slamDash:230, slamR:200, slamMul:1.5, speed:1600},   // 글라디우스
+  W:{cd:[14, 12, 10, 8.5], max:1.25, lo:.95, hi:1.15, len:660, wid:[80, 210], dmg:[45, 95, 145, 195], ad:.85, perfMul:1.8, stun:.6, knock:110, slow:.35},   // 홍련 베기
   E:{cd:[14, 13, 12, 11], dash:240, speed:1800, parry:.35, heat:30, counter:.6, refund:.7},                                         // 간파
-  R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[200, 320, 440], ad:1.1, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 혈귀를 위한 장례
+  R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[180, 290, 400], ad:1.0, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 혈귀를 위한 장례
 };
 const vgHeatAdd = (c, n) => {
   if (c.key !== 'vergil' || !c.alive) return;
@@ -6640,15 +6693,15 @@ const KCH = {
   R:{cd:[110, 95, 80], start:3, speed:900, drive:3.2, turn:1.1, radius:78, blast:280, dmg:[220, 340, 460], ad:.9, reach:150, len:240, wid:112},   // 부릉부릉 메피
 };
 const MEPHI_UP = [                                                                          // 상점: 엔케팔린으로 메피 개조
-  {id:'preheat',  name:'예열 플러그',      cost:8,  desc:'시동 시간이 3초에서 1.8초로 줄어듭니다.'},
-  {id:'accel',    name:'가속장치',         cost:8,  desc:'메피스토펠레스의 돌진 속도가 30% 빨라집니다.'},
-  {id:'handle',   name:'파워 핸들',        cost:6,  desc:'운전대를 두 배 빠르게 꺾을 수 있습니다.'},
-  {id:'escape',   name:'비상 탈출 장치',   cost:12,  desc:'버스에서 내린 카론과 승객이 3초 동안 최대 체력 15%만큼의 보호막을 얻습니다.'},
-  {id:'transfer', name:'환승 할인',        cost:10,  desc:'버스에서 내린 카론과 승객의 이동 속도가 3초 동안 35% 빨라집니다.'},
-  {id:'bumper',   name:'강철 범퍼',        cost:12,  desc:'달리는 동안 부딪힌 미니언과 몬스터를 옆으로 튕겨 내며 폭발 피해의 40%를 줍니다. 버스는 멈추지 않습니다.'},
-  {id:'tank',     name:'대용량 연료 탱크', cost:15, desc:'폭발 범위가 35% 넓어집니다.'},
-  {id:'art',      name:'폭발은 예술',      cost:18, desc:'메피스토펠레스가 적 챔피언을 들이받으면, 그 챔피언 근처(반경 300)의 모든 적 챔피언을 0.5초 동안 공중에 띄웁니다.'},
-  {id:'recycle',  name:'엔케팔린 재활용',  cost:18, desc:'폭발에 맞은 적 챔피언 1명당 궁극기 재사용 대기시간이 12%씩 돌아옵니다. (최대 36%)'},
+  {id:'preheat',  name:'예열 플러그',      cost:25, desc:'시동 시간이 3초에서 1.8초로 줄어듭니다.'},
+  {id:'accel',    name:'가속장치',         cost:25, desc:'메피스토펠레스의 돌진 속도가 30% 빨라집니다.'},
+  {id:'handle',   name:'파워 핸들',        cost:20, desc:'운전대를 두 배 빠르게 꺾을 수 있습니다.'},
+  {id:'escape',   name:'비상 탈출 장치',   cost:40, desc:'버스에서 내린 카론과 승객이 3초 동안 최대 체력 15%만큼의 보호막을 얻습니다.'},
+  {id:'transfer', name:'환승 할인',        cost:35, desc:'버스에서 내린 카론과 승객의 이동 속도가 3초 동안 35% 빨라집니다.'},
+  {id:'bumper',   name:'강철 범퍼',        cost:40, desc:'달리는 동안 부딪힌 미니언과 몬스터를 옆으로 튕겨 내며 폭발 피해의 40%를 줍니다. 버스는 멈추지 않습니다.'},
+  {id:'tank',     name:'대용량 연료 탱크', cost:50, desc:'폭발 범위가 35% 넓어집니다.'},
+  {id:'art',      name:'폭발은 예술',      cost:60, desc:'메피스토펠레스가 적 챔피언을 들이받으면, 그 챔피언 근처(반경 300)의 모든 적 챔피언을 0.5초 동안 공중에 띄웁니다.'},
+  {id:'recycle',  name:'엔케팔린 재활용',  cost:60, desc:'폭발에 맞은 적 챔피언 1명당 궁극기 재사용 대기시간이 12%씩 돌아옵니다. (최대 36%)'},
 ];
 const MEPHI_AI_ORDER = ['preheat', 'accel', 'escape', 'art', 'tank', 'handle', 'transfer', 'bumper', 'recycle'];
 let chBuses = [];
@@ -9357,7 +9410,28 @@ const csExecHp = u => Math.max(u.maxHp * CS_EXEC, 40);
 const killableMinion = (b, u) => u.hp <= b.ad * physMul(u, b) * 1.1 + csExecHp(u);
 
 // ═════════════ 3대3 봇전: 팀·역할 ═════════════
-const ROLES = ['top', 'jungle', 'mid', 'bottom'], ROLE_NAME = {top:'탑', jungle:'정글', mid:'미드', bottom:'바텀'};
+const ROLES = ['top', 'jungle', 'mid', 'bottom', 'support'], ROLE_NAME = {top:'탑', jungle:'정글', mid:'미드', bottom:'바텀', support:'서폿'};
+// 챔피언별 선호 라인 (앞쪽일수록 우선). 봇전 · 관전 · 멀티 빈자리 AI가 이 순서로 자리를 찾아감
+const ROLE_PREF = {gregor:['top', 'jungle'], rodion:['top', 'mid'], yisang:['mid', 'jungle'], ishmael:['top', 'support'], ryoshu:['top', 'mid'],
+  faust:['support', 'mid'], donq:['support', 'top'], outis:['bottom', 'mid'], honglu:['mid', 'support'], sinclair:['jungle', 'top'], heathcliff:['top'],
+  meursault:['support', 'top'], yuri:['bottom', 'support'], kromer:['jungle', 'mid'], vergil:['jungle', 'top'], charon:['jungle', 'top'], hohenheim:['mid', 'bottom'],
+  alyssa:['mid', 'top'], marten:['support', 'jungle', 'top'], guido:['support', 'jungle'], thoma:['support', 'jungle'], dongbaek:['bottom'], gubo:['bottom', 'mid']};
+const ROLE_W = [1, .4, .2];                                             // 선호 순위별 등장 가중치 (부라인 챔피언도 가끔 나옴)
+function pickForRoles(roles, taken = []) {                            // 자리마다: 1·2·3순위 챔피언 중 가중치로 추첨 → 없으면 아무나 (한 팀 안 중복 없음)
+  const used = new Set(taken), out = [];
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  for (const r of roles) {
+    const pool = CHAMP_POOL.filter(k => !used.has(k));
+    let k = null;
+    const cand = pool.map(x => { const t = (ROLE_PREF[x] || []).indexOf(r); return {x, w:t >= 0 ? ROLE_W[t] || 0 : 0}; }).filter(o => o.w > 0);
+    let roll = Math.random() * cand.reduce((a, o) => a + o.w, 0);
+    for (const o of cand) { roll -= o.w; if (roll <= 0) { k = o.x; break; } }
+    if (!k && cand.length) k = cand[cand.length - 1].x;
+    if (!k) k = shuffle(pool)[0];
+    used.add(k); out.push(k);
+  }
+  return out;
+}
 const CHAMP_POOL = ['gregor', 'rodion', 'yisang', 'ishmael', 'ryoshu', 'faust', 'donq', 'outis', 'honglu', 'sinclair', 'heathcliff', 'meursault', 'yuri', 'kromer', 'vergil', 'charon', 'hohenheim', 'alyssa', 'marten', 'guido', 'thoma', 'dongbaek', 'gubo'];
 const JG_ROUTE = ['blood', 'thieves', 'rats', 'sweep', 'glutton', 'scribe'];            // 첫 정글 순서 (위 버프 → 쥐떼 → 아래 버프 → 청소부)
 const enemiesOf = b => champs().filter(c => c.team !== b.team && (!c.alive || seenBy(b.team, c)));   // 시야에 보이는 적만 (죽은 적은 알 수 있음)
@@ -9392,7 +9466,7 @@ function aiEvaluate(b, p) {
 }
 
 function aiLanePath(b) {
-  const lane = b.laneOverride || (b.role === 'bottom' ? 'bottom' : b.role === 'mid' ? 'mid' : 'top');
+  const lane = b.laneOverride || (b.role === 'bottom' || b.role === 'support' ? 'bottom' : b.role === 'mid' ? 'mid' : 'top');
   if (lane === 'mid') return b.team === 'red' ? [[W - 480, MID], [480, MID]] : [[480, MID], [W - 480, MID]];
   const y = lane === 'bottom' ? H - 220 : 220, gate = lane === 'bottom' ? H - 1000 : 1000;
   return b.team === 'red' ? [[W - 380, gate], [W - 380, y], [380, y]] : [[380, gate], [380, y], [W - 380, y]];
@@ -9642,13 +9716,15 @@ function aiMacro(b, hpB, p, pd) {                             // 반환: 이동�
     }
     return null;
   }
-  // 아군 구출: 우리 편 한 명이 여럿에게 물리면 멀리 있어도 합류
+  // 아군 구출: 우리 편이 수적으로 밀리며 물리면 멀리 있어도 합류 (2:2 맞싸움엔 안 감)
   if (hpB > .4) {
-    let best = null, bd = E(4200);
+    const laning = time < 840 && b.role !== 'jungle';                          // 라인전: 라이너는 자기 라인 근처만 도우러 감
+    let best = null, bd = laning ? E(1700) : E(4200);
     for (const a of heroes) {
       if (a === b || !a.alive || a.team !== b.team) continue;
       const n = enemiesOf(b).filter(e => e.alive && dist(e, a) < E(950)).length;
-      if (n < 2 || !((a.lastDmgT ?? 99) < 2 || a.hp / a.maxHp < .7)) continue;
+      const m = heroes.filter(x => x.alive && x.team === b.team && x !== b && dist(x, a) < E(950)).length;   // 그 자리에 이미 있는 아군 (a 포함)
+      if (n < 2 || n <= m || !((a.lastDmgT ?? 99) < 2 || a.hp / a.maxHp < .7)) continue;
       const d = dist(a, b); if (d < bd) { bd = d; best = a; }
     }
     if (best) {
@@ -9935,10 +10011,27 @@ function updateBot(b, dt) {
     }
   }
 
+  // ── 서포터: 원딜 곁을 지키며 상대 챔피언을 견제하고, 미니언 막타는 원딜에게 양보
+  if (b.role === 'support' && b.mode === 'lane') {
+    const adc = alliesOf(b).find(a => a.alive && a.role === 'bottom' && !a.recalling && a.mode !== 'recall' && dist(a, b) < E(2800));
+    if (adc) {
+      const f = FOUNTAIN[b.team], a = Math.atan2(f.y - adc.y, f.x - adc.x) + (b.team === 'blue' ? .55 : -.55), fx = adc.x + Math.cos(a) * E(150), fy = adc.y + Math.sin(a) * E(150);
+      b.target = null;
+      if (p.alive && pd <= E(b.st.range) + E(30) && !nearTurret(p.team, b) && !dangerFor(b, p) && hpB > .35) {
+        b.target = p; if (b.thinkT <= 0) { b.thinkT = react(); if (aiPoke(b, p)) { moveChamp(b, 0, 0, dt); return; } }
+        if (b.atkT <= 0) basicAttack(b, p);
+      } else if (go(fx, fy) < E(45)) { dx = dy = 0; if (p.alive && pd < E(900)) { const s = aiStrafe(b, p, .22); dx = s.x; dy = s.y; } }
+      if (dangerFor(b, {x:b.x + dx * E(40), y:b.y + dy * E(40)})) dx = dy = 0;
+      moveChamp(b, dx, dy, dt); return;
+    }
+  }
+
   // ── 파밍: 막타 우선. 상대 위협 범위 안의 미니언은 막타일 때만 (체력 낮으면 그것도 안 함)
   let tgt = null, best = Infinity;
+  const myLane = time < 840 && b.role !== 'jungle' && !b.laneOverride ? (b.role === 'mid' ? 'mid' : b.role === 'top' ? 'top' : 'bottom') : null;   // 라인전: 자기 라인 미니언만
   for (const u of units) {
     if (!isMinion(u) || !u.alive || u.team === b.team || edge(b, u) > E(500) || dangerFor(b, u)) continue;
+    if (myLane && u.lane && u.lane !== myLane) continue;
     const kill = killableMinion(b, u);
     if (p.alive && pd < E(900)) {
       const inThreat = Math.hypot(u.x - p.x, u.y - p.y) < tr * .9;
@@ -15574,7 +15667,7 @@ addEventListener('keydown', e => { if (spectating || /^(INPUT|TEXTAREA)$/.test(e
 
 // ═════════════ 점수판 (탭) ═════════════
 const CHAMP_COL = {gubo:'#2c2a48', dongbaek:'#d6a93e', thoma:'#8a7b4c', guido:'#8f1d24', marten:'#4f6a34', alyssa:'#e04a24', hohenheim:'#2e55b8', gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', charon:'#26393a', bot:'#7a3438'};
-const TEAM_SIZE = 4;
+const TEAM_SIZE = 5;
 let boardOpen = false, boardT = 0;
 function openBoard(on) {
   boardOpen = on; $('board').hidden = !on; $('tabBtn').setAttribute('aria-expanded', on);
@@ -15821,10 +15914,10 @@ async function mpJoin(code) {
     const ps = room.players || {};
     if (ps[N.uid]) return room;
     const used = Object.values(ps).map(p => p.slot);
-    const slot = [0, 1, 2, 3].find(s => !used.includes(s));
-    if (slot === undefined) { why = '방이 꽉 찼습니다 (4명).'; return undefined; }
+    const slot = [0, 1, 2, 3, 4].find(s => !used.includes(s));
+    if (slot === undefined) { why = '방이 꽉 찼습니다 (5명).'; return undefined; }
     ps[N.uid] = mpNewPlayer(slot, name); room.players = ps;
-    if (Object.keys(ps).length >= 4) room.openPub = false;
+    if (Object.keys(ps).length >= 5) room.openPub = false;
     return room;
   });
   if (!r.committed || !r.value || !r.value.players || !r.value.players[N.uid]) { if (!why) why = '들어가지 못했습니다.'; return mpSetErr(why), false; }
@@ -15835,7 +15928,7 @@ async function mpQuick() {
   const N = await mpEnsureNet();
   mpSetErr(''); MP.view = 'finding'; mpRender();
   const rooms = await N.openRooms(), now = N.now();
-  const list = Object.entries(rooms).filter(([, r]) => r.state === 'lobby' && Object.keys(r.players || {}).length < 4 && now - (r.created || 0) < MP_ROOM_TTL && (!r.ver || !GAME_VER || r.ver === GAME_VER))
+  const list = Object.entries(rooms).filter(([, r]) => r.state === 'lobby' && Object.keys(r.players || {}).length < 5 && now - (r.created || 0) < MP_ROOM_TTL && (!r.ver || !GAME_VER || r.ver === GAME_VER))
     .sort((a, b) => Object.keys(b[1].players || {}).length - Object.keys(a[1].players || {}).length);
   for (const [code] of list) { MP.err = ''; if (await mpJoin(code)) return; }
   await mpCreate(true);
@@ -15995,13 +16088,14 @@ async function mpHostAutoLock() {                                       // 시�
 async function mpHostToLoading() {
   const room = MP.room; if (!room || room.state !== 'pick') return;
   const ps = mpPlayers(room), taken = ps.map(p => p.champ);
-  const fill = pickKeys(taken, 4);
+  const empty = ROLES.filter(role => !ps.find(q => q.role === role)), fillKeys = pickForRoles(empty, taken), fill = {};
+  empty.forEach((r, i) => { fill[r] = fillKeys[i]; });
   const blue = ROLES.map(role => {
     const p = ps.find(q => q.role === role);
     if (p) return {role, key:p.champ, spells:p.spells || defaultSpells(role, p.champ), rune:RUNES[p.rune] ? p.rune : defaultRune(role, p.champ), name:p.name, uid:p.uid};
-    const key = fill.shift(); return {role, key, spells:defaultSpells(role, key), rune:defaultRune(role, key), name:'', uid:''};
+    const key = fill[role]; return {role, key, spells:defaultSpells(role, key), rune:defaultRune(role, key), name:'', uid:''};
   });
-  const redKeys = pickKeys([], 4), red = ROLES.map((role, i) => ({role, key:redKeys[i], spells:defaultSpells(role, redKeys[i]), rune:defaultRune(role, redKeys[i])}));
+  const redKeys = pickForRoles(ROLES, []), red = ROLES.map((role, i) => ({role, key:redKeys[i], spells:defaultSpells(role, redKeys[i]), rune:defaultRune(role, redKeys[i])}));
   const upd = {state:'loading', lineup:{blue, red}, loadEnd:MP.net.now() + 20000};
   for (const p of ps) upd[`players/${p.uid}/loaded`] = 0;
   await MP.net.update('rooms/' + MP.code, upd);
@@ -16447,7 +16541,7 @@ function mpRender() {
   const err = MP.err ? `<p class="mp-err">${esc(MP.err)}</p>` : '';
   if (v === 'home' || v === 'finding') {
     el.innerHTML = `<div class="mp-home">
-      <p class="mp-lead">사람 4명이 한 팀이 되어 <b>AI 4명</b>과 싸웁니다. 빈 자리는 AI가 채워요.</p>
+      <p class="mp-lead">사람 5명이 한 팀이 되어 <b>AI 5명</b>과 싸웁니다. 빈 자리는 AI가 채워요.</p>
       <label class="mp-name">닉네임 <input id="mpName" maxlength="10" value="${esc(mpName())}" autocomplete="off"></label>
       ${err}
       <div class="mp-acts">
@@ -16462,13 +16556,13 @@ function mpRender() {
   if (!r) { el.innerHTML = '<p class="mp-lead">연결 중…</p>'; return; }
   const ps = mpPlayers(r), meU = MP.net.uid;
   if (v === 'lobby') {
-    const slots = [0, 1, 2, 3].map(s => { const p = ps.find(q => q.slot === s);
+    const slots = [0, 1, 2, 3, 4].map(s => { const p = ps.find(q => q.slot === s);
       return p ? `<li class="${p.uid === meU ? 'me' : ''}"><b>${esc(p.name)}</b>${(r.lead || r.host) === p.uid ? '<em>방장</em>' : ''}${p.uid === meU ? '<small>나</small>' : ''}</li>` : '<li class="empty"><span>빈 자리 · AI가 채움</span></li>'; }).join('');
     el.innerHTML = `<div class="mp-lobby">
       <div class="mp-code"><small>방 코드${r.pub ? ' · 공개' : ' · 비공개'}</small><b>${MP.code}</b><button type="button" data-mp="copy">복사</button></div>
       <ul class="mp-slots">${slots}</ul>
       ${err}
-      ${mpIsLead(r) ? `<button type="button" class="mp-go" data-mp="start">${ps.length}명으로 챔피언 선택 시작</button><p class="mp-note">4명이 다 모이면 시작하는 걸 추천해요</p>` : '<p class="mp-note">방장이 시작하길 기다리는 중…</p>'}
+      ${mpIsLead(r) ? `<button type="button" class="mp-go" data-mp="start">${ps.length}명으로 챔피언 선택 시작</button><p class="mp-note">5명이 다 모이면 시작하는 걸 추천해요</p>` : '<p class="mp-note">방장이 시작하길 기다리는 중…</p>'}
     </div>`;
     return;
   }
@@ -17211,16 +17305,16 @@ $('mVsAi').addEventListener('click', () => { openMenu(false); $('select').hidden
 $('mCodex').addEventListener('click', () => { openMenu(false); openCodex(true); });
 $('mSpec').addEventListener('click', () => specStart());
 
-// ═════════════ 관전 모드: AI 8명만으로 진행, 버튼으로 시점 전환 (시야 = 보고 있는 챔피언의 팀) ═════════════
+// ═════════════ 관전 모드: AI 10명만으로 진행, 버튼으로 시점 전환 (시야 = 보고 있는 챔피언의 팀) ═════════════
 let specT = 0, specCards = [];
 const SPEC_ICON = {};
 const specIcon = (key, k) => { const id = key + k; if (!(id in SPEC_ICON)) { const cv = skillIconCanvas(key, k); SPEC_ICON[id] = cv ? cv.toDataURL() : ''; } return SPEC_ICON[id]; };
-const specOrder = () => [...heroes.filter(c => c.team === 'blue'), ...heroes.filter(c => c.team === 'red')];
+const specOrder = () => { const byRole = (a, b) => ROLES.indexOf(a.role) - ROLES.indexOf(b.role); return [...heroes.filter(c => c.team === 'blue').sort(byRole), ...heroes.filter(c => c.team === 'red').sort(byRole)]; };   // 팀마다 탑 · 정글 · 미드 · 바텀 · 서폿 순
 function specStart() {
   const pool = Object.keys(CHAMP_COL).filter(k => STATS[k] && k !== 'bot');
   spectating = true; specSpeed = 1; mpLineup = null;
   chosenRole = ROLES[Math.floor(Math.random() * ROLES.length)];
-  chosenChamp = pool[Math.floor(Math.random() * pool.length)];
+  chosenChamp = pickForRoles([chosenRole], [])[0] || pool[Math.floor(Math.random() * pool.length)];
   resetGame(); started = true;
   openMenu(false); $('select').hidden = true;
   document.body.classList.add('spec'); $('spec').hidden = false;
@@ -17242,8 +17336,9 @@ function specView(c) {
 }
 function specBuild() {
   const mk = c => `<button type="button" class="spk" data-sv="${heroes.indexOf(c)}" style="--tc:${c.team === 'blue' ? '#4aa3ff' : '#ff5a5f'}"><em class="key">${specOrder().indexOf(c) + 1}</em><span class="tok" style="background:${CHAMP_COL[c.key] || '#777'}"></span><b>${esc(c.name)}</b><small></small><span class="hp"><em></em></span><span class="rs"></span></button>`;
-  $('specBlue').innerHTML = heroes.filter(c => c.team === 'blue').map(mk).join('');
-  $('specRed').innerHTML = heroes.filter(c => c.team === 'red').map(mk).join('');
+  const order = specOrder();                                              // 탑 · 정글 · 미드 · 바텀 · 서폿 순
+  $('specBlue').innerHTML = order.filter(c => c.team === 'blue').map(mk).join('');
+  $('specRed').innerHTML = order.filter(c => c.team === 'red').map(mk).join('');
   specCards = [...document.querySelectorAll('#spec .spk')].map(el => ({el, c:heroes[+el.dataset.sv], lv:el.querySelector('small'), hp:el.querySelector('.hp em'), rs:el.querySelector('.rs')}));
 }
 function specUpdate() {
