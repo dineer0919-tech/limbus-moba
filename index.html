@@ -331,7 +331,7 @@
   .cx-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px 10px;border-radius:12px;background:#1d140d;border:1px solid #4a3120;color:inherit;font:12px system-ui,sans-serif;cursor:pointer;text-align:center}
   .cx-card:hover,.cx-card:focus-visible{border-color:#e6b47a;outline:none;background:#261a10}
   .cx-card b{font-size:15px}
-  .cx-card small{color:#a89378;font-size:11px;line-height:1.35;min-height:2.7em}
+  .cx-card small{color:#a89378;font-size:11px;line-height:1.35}
   .cx-token{width:44px;height:44px;border-radius:50%;border:4px solid #4aa3ff;box-sizing:border-box;flex:none}
   .cx-token.lg{width:52px;height:52px}
   .cx-icons{display:flex;gap:3px;margin-top:2px}
@@ -346,6 +346,9 @@
   .cx-head{display:flex;align-items:center;gap:12px}
   .cx-head b{font-size:20px;display:block}
   .cx-head small{color:#a89378;font-size:12px}
+  .cx-clss{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:3px}
+  .cx-cls{font-size:11px;font-weight:800;padding:1px 9px;border-radius:999px;color:#1a1405;background:var(--c)}
+  .cx-cls.sub{background:transparent;color:var(--c);box-shadow:inset 0 0 0 1.5px var(--c)}
   .cx-stats{background:#1d140d;border:1px solid #4a3120;border-radius:10px;padding:6px 10px}
   .cx-stats summary{cursor:pointer;font-weight:700;font-size:13px;color:#e6b47a;padding:2px 0}
   .cx-stats table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;margin-top:4px}
@@ -398,12 +401,11 @@
   #select *{touch-action:pan-y}
   @media (max-height:620px){
     .sel{gap:8px}
-    .sel-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-    .sel-card{padding:9px 10px;gap:2px 8px;font-size:11px}
+    .sel-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+    .sel-card{padding:10px 8px 8px;gap:5px;font-size:11px}
     .sel-card b{font-size:14px}
     .sel-token{width:36px;height:36px;border-width:3px}
-    .sel-card ul{margin-top:4px;gap:1px;line-height:1.3}
-    .sel-card .go{margin-top:5px;padding:6px}
+    .sel-card .go{margin-top:0;padding:6px}
   }
   .sel header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
   .sel h1{margin:0;font-size:22px;letter-spacing:.12em}
@@ -416,17 +418,14 @@
   .sel-role small{color:#a89378;font-size:11px}
   #selBack{background:none;border:1px solid #6a5238;color:#e6b47a;border-radius:8px;padding:5px 10px;font:600 12px system-ui,sans-serif}
   @media (max-width:560px){ .sel-role{padding:14px 8px} .sel-role b{font-size:20px} }
-  .sel-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
-  .sel-card{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;text-align:left;padding:14px;border-radius:12px;
+  .sel-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .sel-card{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:16px 10px 10px;border-radius:12px;
     background:#1d140d;border:1px solid #4a3120;color:inherit;font:12px/1.5 "Noto Sans KR",system-ui,sans-serif;cursor:pointer}
   .sel-card:hover,.sel-card:focus-visible{border-color:#e6b47a;outline:none;background:#261a10}
-  .sel-token{grid-row:span 2;width:52px;height:52px;border-radius:50%;border:4px solid #4aa3ff;align-self:center}
-  .sel-card b{font-size:17px;letter-spacing:.04em}
-  .sel-card .role{color:#a89378}
-  .sel-card ul{grid-column:1 / -1;margin:8px 0 0;padding:0;list-style:none;display:grid;gap:2px}
-  .sel-card li span{display:inline-block;width:18px;color:#e6b47a;font-weight:800}
+  .sel-token{width:52px;height:52px;border-radius:50%;border:4px solid #4aa3ff;flex:none}
+  .sel-card b{font-size:17px;letter-spacing:.04em;white-space:nowrap}
   .sel-card{position:relative}  .sel-card .rec{position:absolute;right:10px;top:10px;font-style:normal;font-size:10px;font-weight:800;color:#1a1405;background:#e6c35c;border-radius:999px;padding:1px 8px} .sel-card .rec.sub{background:#8a7a5a;color:#f0e1c9}
-  .sel-card .go{grid-column:1 / -1;margin-top:8px;text-align:center;padding:8px;border-radius:8px;background:#e6c35c;color:#1a1405;font-weight:800}
+  .sel-card .go{align-self:stretch;margin-top:2px;text-align:center;padding:8px;border-radius:8px;background:#e6c35c;color:#1a1405;font-weight:800}
   #rotate{z-index:50;position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
     background:rgba(8,12,10,.92);text-align:center;padding-inline:24px;font-size:15px}
   #rotate small{color:var(--muted)}
@@ -470,11 +469,11 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v171 · 관전 시점 버튼을 라인 순서로</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v174 · 관전 시점 버튼을 라인 순서로</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>5대5 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 10명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v171</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v174</em></button>
       <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
@@ -502,279 +501,118 @@
     <div class="sel-cards" id="selCards" hidden>
       <button type="button" class="sel-card" data-champ="gregor">
         <span class="sel-token" style="background:#5a3a20"></span>
-        <b>그레고르</b><span class="role">브루저 · 갈색 벌레 팔</span>
-        <ul>
-          <li><span>P</span>전장 압도 — 스킬로 표식, 피해가 쌓이면 추가 피해 + 가속</li>
-          <li><span>Q</span>꿰뚫기 — 직선 찌르기, 맞힌 챔피언당 회복</li>
-          <li><span>W</span>'심장을 노려야지, 아들.' — 꿰뚫고 기절시켜 끌어옴</li>
-          <li><span>E</span>내장파기 — 다음 기본 공격 3회 강화</li>
-          <li><span>R</span>어느 날 갑자기 — 바퀴 황제로 변신, 변신 중 주변에 계속 물리 피해</li>
-        </ul>
-        <span class="go">그레고르로 시작</span>
+        <b>그레고르</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="rodion">
         <span class="sel-token" style="background:#c9a27a"></span>
-        <b>로쟈</b><span class="role">칼챔 · 검은 할버드 · 공속·치명타</span>
-        <ul>
-          <li><span>P</span>뜬구름 잡기 — 치명타 확률 중첩, 치명타 시 보호막</li>
-          <li><span>Q</span>머리 가르기 — 2번 맞히면 할버드 투척 + 에어본</li>
-          <li><span>W</span>올인 — 치명타 피해 증가, 중첩을 전부 걸고 앞을 올려베기 (6중첩 이상이면 띄움)</li>
-          <li><span>E</span>도박수 — 돌진, 돌진 중 Q는 원형 공격</li>
-          <li><span>R</span>던져지는 것 — 공중에 뜬 적에게 순간이동, 얼음 할버드</li>
-        </ul>
-        <span class="go">로쟈로 시작</span>
+        <b>로쟈</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="yisang">
         <span class="sel-token" style="background:#15151a"></span>
-        <b>이상</b><span class="role">AP 암살자 · 거울 파편 · 단검</span>
-        <ul>
-          <li><span>P</span>자아심도 — 거울 파편을 밟으면 깃털 발사 + 평타 강화</li>
-          <li><span>Q</span>박제선언 — 단검 찌르기, 맞힌 적 뒤에 파편 (챔피언 우선, 미니언·몬스터도 1개)</li>
-          <li><span>W</span>비상 — 적의 등 뒤·파편으로 순간이동, 경로 위 파편 회수, 적중 시 Q·E 쿨 −2초, 파편을 주우면 쿨 초기화</li>
-          <li><span>E</span>정오의 커튼 — 부채꼴 그림자 단검 + 둔화, 파편</li>
-          <li><span>R</span>한번만 더 날아오르고 싶었소 — 거울 날개 폭발, 흡혈</li>
-        </ul>
-        <span class="go">이상으로 시작</span>
+        <b>이상</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="ishmael">
         <span class="sel-token" style="background:#e8792b"></span>
-        <b>이스마엘</b><span class="role">탱커 · 검은 메이스와 방패 · 방어 비례 마법 피해</span>
-        <ul>
-          <li><span>P</span>생존자의 집념 — 맞을수록 방어·마저·둔화 저항, 3타 마법 피해</li>
-          <li><span>Q</span>파도 헤집기 — 지정 위치로 점프해 내려찍기 (방어 태세면 에어본)</li>
-          <li><span>W</span>원한 — 방향 방어 태세로 막아 낸 피해를 원한으로 쌓고, 충격파로 되갚음 (원한이 차면 기절·넉백)</li>
-          <li><span>E</span>항해사의 슬라이딩 — 돌진해 부딪힌 챔피언을 뒤로 넘기고 기절</li>
-          <li><span>R</span>작살박이 — 작살로 둔화, 체력 25% 미만이면 끌어와 처형 · 처형 성공 시 주변 적 챔피언 속박 0.75초</li>
-        </ul>
-        <span class="go">이스마엘로 시작</span>
+        <b>이스마엘</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="ryoshu">
         <span class="sel-token" style="background:#c8232b"></span>
-        <b>료슈</b><span class="role">후반 캐리 · 아라야시키 · 공격 속도</span>
-        <ul>
-          <li><span>P</span>화폭집중 — 평타마다 작열 중첩(공속), 최대 중첩 시 불태워 추가 마법 피해</li>
-          <li><span>Q</span>모.분.조.도 — 사라진 채 주변 적을 4번 베고, 벤 적 모두 다시 벰 (평타 시 쿨 −1초)</li>
-          <li><span>W</span>무아몽중 — 0.75초 반격 자세, 맞으면 막고 휘둘러 반격 + 보호막</li>
-          <li><span>E</span>모.분 — 짧게 내려베어 띄우기, 챔피언 적중 시 3연참</li>
-          <li><span>R</span>공간참 : 아라야시키 — 원형 범위를 불꽃 칼날로 계속 벤 뒤 나타나 8초 강화</li>
-        </ul>
-        <span class="go">료슈로 시작</span>
+        <b>료슈</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="faust">
         <span class="sel-token" style="background:#f4f3f7"></span>
-        <b>파우스트</b><span class="role">AP 서포터 메이지 · 최초의 원거리 · 츠바이헨더</span>
-        <ul>
-          <li><span>P</span>게젤샤프트 공유 — 스킬이 아군에게도 맞음, 맞은 아군과 4초 링크 (주는 피해 +10%, 받는 피해 −10%)</li>
-          <li><span>Q</span>E.G.O 미사일 — 처음 맞은 대상 주위에서 폭발, 적 마법 피해 + 자신·아군 회복</li>
-          <li><span>W</span>길잡이 대행 — 지정 위치로 도약, 적 둔화(중앙 70%) / 아군 적중 시 함께 이속 +50%</li>
-          <li><span>E</span>비장의 수 — 부채꼴 화염, 적 1초 기절 / 아군 4초 보호막</li>
-          <li><span>R</span>표상 방출기 — 시야를 넓혀 맵 어디든 포탈, 3초 뒤 아군과 함께 이동 + 도착지 속박</li>
-        </ul>
-        <span class="go">파우스트로 시작</span>
+        <b>파우스트</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="donq">
         <span class="sel-token" style="background:#f2c230"></span>
-        <b>돈키호테</b><span class="role">돌격형 탱커 · 검은 랜스 · AD</span>
-        <ul>
-          <li><span>P</span>특제 배앳쥐 — 처치 관여 시 관여한 아군 모두 뱃지, 팔면 골드·경험치, 판 수만큼 돈키호테 체력 +1%</li>
-          <li><span>Q</span>해결사 돌진 — 창 찌르기 + 방어력 감소, 길게 누르면 충전해 돌진 (충전 중 둔화)</li>
-          <li><span>W</span>스포트라이트 — 회전 후 빛을 받고 범위 마법 피해 + 1초 도발, 맞힌 챔피언 수만큼 방어 증가</li>
-          <li><span>E</span>회전풍차 — 한 바퀴 휩쓸기, 끝부분에 맞은 챔피언마다 보호막</li>
-          <li><span>R</span>라 샹그라 데 산쵸 — 표적 지정 → 빛의 기사와 함께 확정 돌격 에어본, 6초 안에 죽으면 피의 샘(회복)</li>
-        </ul>
-        <span class="go">돈키호테로 시작</span>
+        <b>돈키호테</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="outis">
         <span class="sel-token" style="background:#1f4d2e"></span>
-        <b>오티스</b><span class="role">원딜 저격수 · 건블레이드 · AD</span>
-        <ul>
-          <li><span>P</span>여행엔 목적이 있었지 — 아이템 공속은 공격력으로, 5발 탄창, 마지막 탄은 잃은 체력 비례 추가 피해 + 이속</li>
-          <li><span>Q</span>발포 — 남은 탄을 모두 관통 사격 (뒤로 갈수록 강함), 쏜 뒤 재장전</li>
-          <li><span>W</span>수류탄 기폭 — 광역 피해 + 포착 표식, 포착된 적을 평타로 맞히면 1초 속박 + 고정 피해</li>
-          <li><span>E</span>전략적 후퇴 — 탄 1발로 부채꼴 사격하며 뒤로 물러남</li>
-          <li><span>R</span>토 파토스 마토스 — 저격총으로 변환, 고정된 채 시야 확장, 공격 버튼으로 최대 4발 (마지막 탄 치명타 200%)</li>
-        </ul>
-        <span class="go">오티스로 시작</span>
+        <b>오티스</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="honglu">
         <span class="sel-token" style="background:#3fc7a8"></span>
-        <b>홍루</b><span class="role">스탠딩 AP 포킹 누커 · 옥구슬 · 청옥빛</span>
-        <ul>
-          <li><span>P</span>만개하는 옥잎 — 스킬로 챔피언을 맞히면 옥잎이 떨어짐, 주우면 다음 스킬 사거리 +25%·추가 피해, 3연속이면 개안 (마법 관통 +20%)</li>
-          <li><span>Q</span>비취의 흔적 — 옥구슬을 떨어뜨려 작은 범위 피해 + W 쿨 −0.5초, 옥구슬은 8초 남음 (최대 3개)</li>
-          <li><span>W</span>창옥집멸 — 창옥지대 설치, 1초 뒤 터져 띄우고 가운데로 당김. 옥구슬이 끌려오며 경로 피해·둔화, 도착하면 고정 피해</li>
-          <li><span>E</span>홍원의 청안 — 보호막 + 강한 이속 (점점 줄어듦), 도중에 옥잎을 주우면 이속 초기화</li>
-          <li><span>R</span>허환경 — 넓은 사각 지대, 경계에 닿은 적 1초 기절. Q가 안의 적을 맞히면 +0.3초, 스킬 피해 8번마다 지대 폭발</li>
-        </ul>
-        <span class="go">홍루로 시작</span>
+        <b>홍루</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="sinclair">
         <span class="sel-token" style="background:#8b9c15"></span>
-        <b>싱클레어</b><span class="role">AD 근접 · 할버드 · 브루저 / 암살자</span>
-        <ul>
-          <li><span>P</span>어느 표지 — 스킬 사용·평타 적중마다 1개 (최대 5), 5개면 다음 스킬 강화 · 처치 관여 시 즉시 5개 + 이속</li>
-          <li><span>Q</span>꿰뚫는 알껍질 — 빠른 찌르기 (쿨타임 60% 감소), 길게 누르면 할버드를 던짐 (첫 적 100%·나머지 50%), 체력 20% 미만 추가 피해 · 강화: 추가 피해</li>
-          <li><span>W</span>낙인 — 근처 적에게 도약해 피해 + 1초 기절 · 강화: 다음 평타 3연타</li>
-          <li><span>E</span>마주하는 방벽 — 1.5초 부채꼴 연속 찌르기, 그 방향 피해 면역(포탑 제외), 끝나면 폭발 (재사용: 조기 종료) · 강화: 방어·마저 증가 + 종료 후 이속 60%</li>
-          <li><span>R</span>지식나무의 가지 — (전역) 맵 어디든 지정, 2초 집중 → 도약해 사라짐 → 할버드가 꽂혀 광역 피해 → 뒤에 착지해 할버드까지 돌진, 끝나면 표지 5개</li>
-        </ul>
-        <span class="go">싱클레어로 시작</span>
+        <b>싱클레어</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="heathcliff">
         <span class="sel-token" style="background:#6a3d9a"></span>
-        <b>히스클리프</b><span class="role">AD 캐리 브루저 · REMEMBER 야구방망이 · 이동기 없음</span>
-        <ul>
-          <li><span>P</span>뼈 부수기 — 평타·스킬 피해마다 출혈(최대 5중첩), 챔피언 5중첩 또는 시체자루 처치 시 격노 (공격력 증가 + 모든 피해가 출혈 최대)</li>
-          <li><span>Q</span>이 꽉 깨물어!!! — 0.75초 준비(이동만 가능, CC에 끊기지 않음) 후 원형 휘두르기, 안쪽은 35% · 바깥에 맞은 챔피언·대형 몬스터마다 잃은 체력 14% 회복 (최대 42%)</li>
-          <li><span>W</span>다리 분쇄 — 다음 평타 강화: 추가 피해 + 1초 90% 둔화, 처치하면 쿨 절반</li>
-          <li><span>E</span>싹 다 집겨얼!! — 좁은 부채꼴 땅을 갈라 적을 앞으로 끌어와 1초 띄움, 이후 40% 둔화</li>
-          <li><span>R</span>시체자루 — 가까운 적 챔피언에게 뛰어올라 내려쳐 고정 피해 (출혈 1중첩당 +40%, 5중첩이면 3배), 처치 시 20초 안에 재사용 · 3랭크는 챔피언 처치 시 초기화</li>
-        </ul>
-        <span class="go">히스클리프로 시작</span>
+        <b>히스클리프</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="meursault">
         <span class="sel-token" style="background:#1d3461"></span>
-        <b>뫼르소</b><span class="role">AP 근접 탱커 · 강철 주먹 · 궁극기 복사</span>
-        <ul>
-          <li><span>P</span>이방인 — 군중 제어에 걸린 적을 평타로 치면 추가 마법 피해 + CC 0.5초 연장 (쿨타임, 같은 대상 연속 불가)</li>
-          <li><span>Q</span>원, 투 — 잠깐 충전 후 주먹을 내지르며 돌진, 챔피언 적중 시 한 번 더 휘둘러 0.7초 기절</li>
-          <li><span>W</span>태양이 눈부셨을 뿐인데 — 주위로 햇빛 발산, 마법 피해 + 챔피언 1.5초 실명 (평타 빗나감)</li>
-          <li><span>E</span>봉쇄 — 짧게 전진해 붙잡고 최대 1.1초 동안 방향을 돌려 원하는 쪽으로 내던짐 (E 재사용), 벽에 부딪히면 추가 피해 + 0.5초 기절</li>
-          <li><span>R</span>타인의 사슬 — 적 챔피언에게 사슬을 뻗어 그 궁극기를 복사, 60초 안에 한 번 사용</li>
-        </ul>
-        <span class="go">뫼르소로 시작</span>
+        <b>뫼르소</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="yuri">
         <span class="sel-token" style="background:#c8405a"></span>
-        <b>유리</b><span class="role">공속 원딜 · 백설공주의 사과 E.G.O · 전 L사 통제팀</span>
-        <ul>
-          <li><span>P</span>분석, 관찰, 격리 — 기본 공격이 경로의 적까지 꿰뚫는 광선입니다. 적마다 취약·저항 피해 속성이 정해져 있고, 세 가지 속성으로 맞히면 내성이 드러납니다 (취약 +25% / 저항 −25%).</li>
-          <li><span>Q</span>E.G.O 장비 교체 — 피해 속성을 RED → WHITE → BLACK → PALE 순서로 바꿉니다. RED는 단일 강화, WHITE는 낮은 체력 추가 피해, BLACK은 둔화, PALE은 최대 체력 비례 피해입니다.</li>
-          <li><span>W</span>격리 개시 — 돌진한 뒤 5초 동안 공격 속도가 오르고, 무작위 피해 속성 하나가 함께 활성화됩니다.</li>
-          <li><span>E</span>L사의 시선 — 적 챔피언에게 피해 + 표식, 다가가는 아군 이속 증가, 평타 시 마법 피해·표식 연장</li>
-          <li><span>R</span>...죽고 싶지 않았어요. — 자신·아군에게 4초 황금의 기운, 그동안 죽으면 처치 판정 없이 황금 사과로 부활 + 공포</li>
-        </ul>
-        <span class="go">유리로 시작</span>
+        <b>유리</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="kromer">
         <span class="sel-token" style="background:#ece4d6"></span>
-        <b>크로머</b><span class="role">AD 암살자 · 못과 망치 · 대못 검과 쇠망치</span>
-        <ul>
-          <li><span>P</span>못과 망치 — 스킬이 맞으면 못 (최대 3), 못 박힌 적은 움직일수록 출혈 · 이스터에그 '나의 싱클레어'</li>
-          <li><span>Q</span>광소 — 관통 대못 일직선, 처음 맞은 챔피언에게 더 큰 피해</li>
-          <li><span>W</span>정화 — 다음 평타 망치 내려치기 (잃은 체력 비례 + 못 비례) + 50% 둔화 · 못 박힌 적에게 갈 때 이속</li>
-          <li><span>E</span>이단 말살 — 회전 → 돌진 → 회전, 못 3개 대상은 기절 + 추가 피해</li>
-          <li><span>R</span>가장!! 순수한!! 세상으로!!! — 지정 불가 후 순간이동 · 대못 속박 · 망치로 원래 자리 쪽으로 밀쳐냄</li>
-        </ul>
-        <span class="go">크로머로 시작</span>
+        <b>크로머</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="vergil">
         <span class="sel-token" style="background:#2b2c31;box-shadow:0 0 0 2px #ff2a2a"></span>
-        <b>베르길리우스</b><span class="role">특색 해결사 '붉은시선' · 달궈진 글라디우스 · <em style="font-style:normal;color:#ff5a4a;font-weight:800">난이도 극악 ★★★★★</em></span>
-        <ul>
-          <li><span>P</span>붉은시선 — 싸우며 열기를 쌓고, 100이 되면 5초 동안 눈이 붉게 빛나며 피해가 30% 늘고 스킬을 맞힐 때마다 다른 스킬 쿨타임이 줄고 체력을 조금씩 회복합니다. 박자를 맞추거나 간파에 성공하면 붉은 보호막이 쌓입니다. 끝나면 잠시 과열되어 느려집니다. 체력이 낮은 적은 안개 속에서도 보입니다.</li>
-          <li><span>Q</span>글라디우스 — 최대 세 번까지 이어 베고, 세 번째에는 뛰어올라 내려찍습니다. 몸 주위 고리가 하얗게 빛날 때 이어 쓰면 완벽한 베기가 됩니다.</li>
-          <li><span>W</span>홍련 베기 — 한 번 눌러 힘을 모으고, 다시 눌러 거대한 초승달 파동을 날립니다. 막대가 금색 구간일 때 놓으면 피해 2배에 기절까지 겁니다.</li>
-          <li><span>E</span>간파 — 짧게 몸을 옮기고, 직후에 적 챔피언의 공격을 받으면 그 피해를 무시한 채 반격하며 재사용 대기시간이 70% 줄어듭니다.</li>
-          <li><span>R</span>색 — E.G.O를 개화해 글라디우스가 피를 머금은 창으로 바뀌고, 발밑에 피의 욕장을 펼쳐 기본 스킬을 강화하며 욕장 안의 적에게 핏빛 낙인을 새깁니다. 다시 사용하면 하늘로 뛰어올라 거대한 피의 창을 내리꽂아 욕장 전체를 십자로 가르는 '죽은 혈귀를 위한 장례'를 거행합니다. 욕장이 하얗게 고동칠 때 거행하면 모두 기절합니다.</li>
-        </ul>
-        <span class="go">베르길리우스로 시작</span>
+        <b>베르길리우스</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="charon">
         <span class="sel-token" style="background:#26393a;box-shadow:0 0 0 2px #84a79d"></span>
-        <b>카론</b><span class="role">메피스토펠레스의 운전사 · 노를 휘두르는 브루저 · 부릉부릉!</span>
-        <ul>
-          <li><span>P</span>메피는 배고파 — 처치·관여로 엔케팔린 획득 → 상점 맨 위에서 궁극기 버스를 개조</li>
-          <li><span>Q</span>민폐 승객 정리 — 노로 직선 내려치기 (둔화 + 표식), 표식 대상 평타 시 추가 피해 + 회복</li>
-          <li><span>W</span>빙글빙글 — 노 끝을 잡고 팽이처럼 3초 회전, 맞을수록 방어력 감소, 돌수록 빨라짐</li>
-          <li><span>E</span>카론, 점프 — 누르고 있으면 새총을 당기고, 떼면 도약해 착지 지점 적을 띄움</li>
-          <li><span>R</span>부릉부릉 메피 — 버스 소환 · 3초 시동 동안 아군 탑승 → 돌진해 적 챔피언과 부딪히면 대폭발</li>
-        </ul>
-        <span class="go">카론으로 시작</span>
+        <b>카론</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="hohenheim">
         <span class="sel-token" style="background:#2e55b8;box-shadow:0 0 0 2px #7fd8ff"></span>
-        <b>호엔하임</b><span class="role">AP 컨트롤 메이지 · LCE E.G.O::AEDD · 충격지네 스태프</span>
-        <ul>
-          <li><span>P</span>충격지네 — 네 번째 스킬마다 기절 + 추가 피해, 쓰러져도 1초 뒤 3초 동안 다시 움직임</li>
-          <li><span>Q</span>전류 방출 — 직선 전류, 많이 맞힐수록 강해짐 (진화: 세 갈래)</li>
-          <li><span>W</span>직류 변환 — 지정 위치에 전기 장판 (진화: 둔화)</li>
-          <li><span>E</span>발작 대응 — 멀면 연속 전류 연결, 가까우면 찌르기 기절 + 밀쳐내기 (진화: 세 명 · 보호막)</li>
-          <li><span>R</span>초고압 전류 방출 — 스태프 끝 지네 입을 던져 적 챔피언을 충격지네로 감쌈 · 배울 때마다 Q/W/E 진화</li>
-        </ul>
-        <span class="go">호엔하임으로 시작</span>
+        <b>호엔하임</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="alyssa">
         <span class="sel-token" style="background:#e04a24;box-shadow:0 0 0 2px #ffb04a"></span>
-        <b>알리사</b><span class="role">중거리 AP 전투 메이지 · LCE E.G.O 홍염살 · 불꽃 스태프</span>
-        <ul>
-          <li><span>P</span>작열하는 홍염살 — 쓰러지면 0.3초 뒤 자폭, 주문력 1당 체력 +1</li>
-          <li><span>Q</span>착화 — 고정 방향으로 3초 불꽃 방사 (걸으면서 가능, 재사용 시 취소)</li>
-          <li><span>W</span>E.G.O 홍염살 전개 — 평타 3회 강화(현재 체력 비례) + 공속, 강화 평타로 처치 시 1회 충전</li>
-          <li><span>E</span>염화비행 — 날아올라 이속 증가 · 모든 공격 회피, 발밑에 작열 지대</li>
-          <li><span>R</span>불에 끌리는 마음으로 — 폭발로 끌어당기고 표식 → 너머로 날아가 표식 폭발 · 체력 25% 미만이면 자폭 강화</li>
-        </ul>
-        <span class="go">알리사로 시작</span>
+        <b>알리사</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="marten">
         <span class="sel-token" style="background:#4f6a34;box-shadow:0 0 0 2px #ffd36a"></span>
-        <b>마튼</b><span class="role">탱커 · 범위 군중 제어 · LCE E.G.O 요정초롱</span>
-        <ul>
-          <li><span>P</span>요정초롱 — 평타로 요정 표식 3초, 표식이 있는 적은 마법 피해의 10%를 고정 피해로 추가로 받음</li>
-          <li><span>Q</span>나무뿌리 투척 — 처음 닿은 적 1초 기절 + 그 대상에게 날아감 (2회 충전 · 최소 3초)</li>
-          <li><span>W</span>현혹의 초롱불 — 켜기/끄기, 주변에 최대 체력 1% 마법 피해 + 표식 시간 갱신</li>
-          <li><span>E</span>휩쓸기 — 한 바퀴 휩쓸어 범위 피해, 적 평타에 맞을 때마다 쿨 0.5초 감소</li>
-          <li><span>R</span>초롱 대해방 — 0.1초 뒤 주변으로 뿌리 전개: 피해 + 1.5초 기절 + 요정 표식</li>
-        </ul>
-        <span class="go">마튼으로 시작</span>
+        <b>마튼</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="guido">
         <span class="sel-token" style="background:#8f1d24;box-shadow:0 0 0 2px #d8dce4"></span>
-        <b>귀도</b><span class="role">탱커 · 아군 보호 · 반격 · N사 그로스하머</span>
-        <ul>
-          <li><span>P</span>N사 큰 망치 — 스킬로 못을 박아 출혈 (크로머와 공유), 박힌 못만큼 방어력·마저 증가</li>
-          <li><span>Q</span>정화의 못 — 선딜 후 전방 내려찍기 + 밀쳐내기</li>
-          <li><span>W</span>이단 추적 — 돌진 + 보호막, 재사용 시 적을 꿰뚫고 돌진해 도발</li>
-          <li><span>E</span>집행 유예 — 아군에게 돌격해 둘 다 보호막, 3초 동안 아군 피해 30% 대신 받고 아군 딜 15% 회복</li>
-          <li><span>R</span>쥐는 자의 망치는 이곳에 있나니 — 체력 20% 바쳐 3초 고정 · 저지 불가, 주변 아군에게 보호막을 겹겹이</li>
-        </ul>
-        <span class="go">귀도로 시작</span>
+        <b>귀도</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="thoma">
         <span class="sel-token" style="background:#8a7b4c;box-shadow:0 0 0 2px #c8e2d6"></span>
-        <b>토마</b><span class="role">AP 이니시에이터 · 힐 서포터 · 구 G사 일등대리</span>
-        <ul>
-          <li><span>P</span>G사의 전진 — 주변 시체로 순간이동해 먹어치움 (피해 50% 감소), 자신과 주변 아군 회복</li>
-          <li><span>Q</span>사지절단 — 다음 평타 강화: 추가 마법 피해 + 띄움, 자신과 가장 아픈 아군 회복</li>
-          <li><span>W</span>선봉대의 의지 — 울부짖어 가까운 적 피해 + 공포 0.75초, 넓게 아군 회복</li>
-          <li><span>E</span>도약하겠습니다! — 기운을 모은 뒤 유체화 돌진: 적 피해 · 둔화, 아군 회복</li>
-          <li><span>R</span>전화위복 — 포효 피해 + 모든 아군 정화, 정화한 만큼 회복 (CC 중에도 사용)</li>
-        </ul>
-        <span class="go">토마로 시작</span>
+        <b>토마</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="dongbaek">
         <span class="sel-token" style="background:#d6a93e;box-shadow:0 0 0 2px #fff1a8"></span>
-        <b>동백</b><span class="role">치명타 원딜 · 구인회 · 산초 E.G.O 꽃잎 부채</span>
-        <ul>
-          <li><span>P</span>알싸한 향기 — 치명타 피해 증가 + 치명타 시 추가 마법 피해, 스킬 뒤 다음 평타는 두 발</li>
-          <li><span>Q</span>찬란한 봄바람 — 부채꼴로 노란 동백꽃, 보호막 중이거나 이동 불가 대상에게 평타 추가 마법 피해</li>
-          <li><span>W</span>만개 — 지정 위치 폭발 + 표식, 표식 대상 평타마다 추가 피해 · 이속</li>
-          <li><span>E</span>허물어지는 꽃처럼 — 돌진, 치명타마다 쿨 1초 감소 (챔피언 2초)</li>
-          <li><span>R</span>피어나는 폭죽처럼 — 일직선으로 폭죽 22발 난사, 치명타 25%당 5.5발 추가 · 재사용 시 멈춤</li>
-        </ul>
-        <span class="go">동백으로 시작</span>
+        <b>동백</b>
+        <span class="go">선택</span>
       </button>
       <button type="button" class="sel-card" data-champ="gubo">
         <span class="sel-token" style="background:#2c2a48;box-shadow:0 0 0 2px #b8283a"></span>
-        <b>구보</b><span class="role">포킹 원딜 · N사 이사 · E.G.O 흉탄 저격총</span>
-        <ul>
-          <li><span>P</span>그대로 꿰어 쏘리라 — 스킬 적중으로 초종 게이지 → 팬던트, 챔피언 평타 때 팬던트마다 붉은 마법진이 추가 사격</li>
-          <li><span>Q</span>총신을 꿰뚫어라 — 짧은 선딜 후 흉탄, 첫 대상 뒤로 부채꼴 산탄</li>
-          <li><span>W</span>부고를 전하지 — 붉은 덫, 밟은 적 1초 속박 + 팬던트 1개</li>
-          <li><span>E</span>차단 — 회전 베기 + 이속, 1초 잔상이 적 투사체를 지움</li>
-          <li><span>R</span>흉탄이 저들을 꿰뚫으리라 — 적 · 시체 · 아군 표준점에 거대한 흉탄, 처치하거나 시체를 터뜨리면 뒤로 흉탄 세례</li>
-        </ul>
-        <span class="go">구보로 시작</span>
+        <b>구보</b>
+        <span class="go">선택</span>
       </button>
     </div>
   </div>
@@ -16236,7 +16074,6 @@ const dOpp = r => Object.keys((r && r.players) || {}).find(u => u !== MP.net.uid
 const dGuest = r => dHG(r)[1];
 function dHG(r) { const d = (r && r.d) || {}; if (d.H) return [d.H, d.G]; const ps = mpPlayers(r); return [ps[0] && ps[0].uid, ps[1] && ps[1].uid]; }   // [파랑, 빨강]
 const dName = (r, u) => (r && r.players && r.players[u] && r.players[u].name) || (u ? '상대' : '-');
-const dRole = k => (cxRole(k) || '').split(' · ')[0];
 function dAvail(r, u) {                                                           // 이번 라운드에 고를 수 있는 챔피언
   const d = r.d || {}, opp = Object.keys(r.players || {}).find(x => x !== u);
   const used = dArr((d.used || {})[u]), banned = (d.ban || {})[opp];
@@ -16469,7 +16306,7 @@ function drawDuelArena(g) {                                                     
 // ── 화면 ──
 function dCard(k, i, st, attr = '') {
   const tag = st.includes('ban') ? '<em>벤</em>' : st.includes('used') ? '<em>사용함</em>' : st.includes('on') ? '<em>선택</em>' : '';
-  return `<button type="button" class="dc ${st}" style="--i:${i}" ${attr}>${mpTok(k, 'lg')}<b>${esc(STATS[k].name)}</b><small>${esc(dRole(k))}</small>${tag}</button>`;
+  return `<button type="button" class="dc ${st}" style="--i:${i}" ${attr}>${mpTok(k, 'lg')}<b>${esc(STATS[k].name)}</b>${tag}</button>`;
 }
 function duelRender() {
   if (MP_SRV) return;
@@ -16685,7 +16522,7 @@ function mpRender() {
       const sp = (p.spells || []).map(id => `<img src="${spellIconUrl(id)}" alt="">`).join('') + (RUNES[p.rune] ? runeImg(p.rune) : '');
       return `<li class="${p.uid === meU ? 'me' : ''} ${p.locked ? 'lk' : ''}"><span class="mp-role">${ROLE_NAME[role]}</span>${mpTok(p.champ, p.locked ? '' : 'hover')}<div><b>${esc(p.name)}</b><small>${p.champ ? esc(STATS[p.champ].name) : '고르는 중…'}${p.locked ? ' ✓' : ''}</small></div><span class="mp-sp">${sp}</span></li>`; }).join('');
     const grid = CHAMP_POOL.map(k => { const dis = locked.includes(k), on = me.champ === k;
-      return `<button type="button" class="mp-ch${on ? ' on' : ''}" data-ch="${k}" ${dis || me.locked ? 'disabled' : ''}>${mpTok(k)}<b>${esc(STATS[k].name)}</b><small>${esc(cxRole(k))}</small></button>`; }).join('');
+      return `<button type="button" class="mp-ch${on ? ' on' : ''}" data-ch="${k}" ${dis || me.locked ? 'disabled' : ''}>${mpTok(k)}<b>${esc(STATS[k].name)}</b></button>`; }).join('');
     const roles = ROLES.map(role => { const o = ps.find(q => q.role === role && q.uid !== meU);
       return `<button type="button" class="mp-chip${me.role === role ? ' on' : ''}" data-role2="${role}" ${me.locked || (o && o.locked) ? 'disabled' : ''}>${ROLE_NAME[role]}${o ? `<small>${esc(o.name)}</small>` : ''}</button>`; }).join('');
     const mySp = me.spells || (me.champ ? defaultSpells(me.role, me.champ) : ['warp', 'brand']);
@@ -17323,7 +17160,15 @@ const CX_H = {
   tru: s => `<span class="cx-tru">${s} 고정 피해</span>`,
   b: s => `<b>${s}</b>`,
 };
-const cxRole = k => { const el = document.querySelector(`.sel-card[data-champ="${k}"] .role`); return el ? el.textContent : ''; };
+const CX_CLASS = {                                              // 역할군: [주, 부]
+  gregor:['전사', '탱커'], rodion:['전사', '암살자'], yisang:['마법사', '암살자'], ishmael:['탱커', '서포터'], ryoshu:['암살자', '전사'],
+  faust:['마법사', '서포터'], donq:['전사', '서포터'], outis:['원거리', '암살자'], honglu:['마법사', '서포터'], sinclair:['전사', '암살자'],
+  heathcliff:['전사'], meursault:['탱커', '서포터'], yuri:['원거리', '서포터'], kromer:['암살자', '전사'], vergil:['전사', '암살자'],
+  charon:['전사', '탱커'], hohenheim:['마법사', '원거리'], alyssa:['마법사', '암살자'], marten:['서포터', '탱커'], guido:['탱커', '서포터'],
+  thoma:['서포터', '전사'], dongbaek:['원거리'], gubo:['원거리', '암살자'],
+};
+const CX_CLASS_COL = {'전사':'#d9824a', '암살자':'#c9455a', '마법사':'#8a7cf0', '탱커':'#5c9bd6', '서포터':'#4fbf8f', '원거리':'#e6c35c'};
+const cxClassHtml = k => (CX_CLASS[k] || []).map((c, i) => `<span class="cx-cls${i ? ' sub' : ''}" style="--c:${CX_CLASS_COL[c]}">${i ? '부' : '주'} · ${c}</span>`).join('');
 const cxCol = k => { const el = document.querySelector(`.sel-card[data-champ="${k}"] .sel-token`); return el ? el.style.background : '#777'; };
 const cxIcon = (k, key) => { const cv = skillIconCanvas(k, key); try { return cv ? cv.toDataURL() : ''; } catch { return ''; } };
 let cxChamp = null, cxKey = 'P';
@@ -17347,7 +17192,7 @@ function cxList() {
   $('cxBody').innerHTML = `<div class="cx-grid">${CODEX_ORDER.map(k => `
     <button type="button" class="cx-card" data-cx="${k}">
       <span class="cx-token" style="background:${cxCol(k)}"></span>
-      <b>${esc(STATS[k].name)}</b><small>${esc(cxRole(k))}</small>
+      <b>${esc(STATS[k].name)}</b>
       <span class="cx-icons">${['P', 'Q', 'W', 'E', 'R'].map(s => { const u = cxIcon(k, s); return u ? `<img src="${u}" alt="">` : `<i>${s}</i>`; }).join('')}</span>
     </button>`).join('')}</div>` + cxSpellsHtml() + cxRunesHtml();
 }
@@ -17373,7 +17218,7 @@ function cxDetail(k, key = 'P') {
     <div class="cx-detail">
       <div class="cx-left">
         <div class="cx-head"><span class="cx-token lg" style="background:${cxCol(k)}"></span>
-          <div><b>${esc(STATS[k].name)}</b><small>${esc(cxRole(k))} · ${STATS[k].ranged ? '원거리' : '근접'}</small></div></div>
+          <div><b>${esc(STATS[k].name)}</b><div class="cx-clss">${cxClassHtml(k)}<small>${STATS[k].ranged ? '원거리 공격' : '근접 공격'}</small></div></div></div>
         <details class="cx-stats" open><summary>기초 스탯 개요</summary>
           <table><thead><tr><th></th><th>1레벨</th><th>레벨당</th><th>${MAX_LEVEL}레벨</th></tr></thead><tbody>${cxStatRows(k)}</tbody></table>
         </details>
