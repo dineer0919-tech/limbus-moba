@@ -469,11 +469,11 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v174 · 관전 시점 버튼을 라인 순서로</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v175 · 관전 시점 버튼을 라인 순서로</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>5대5 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 10명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v174</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v175</em></button>
       <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
@@ -1548,6 +1548,7 @@ function learn(c, k) {
 }
 
 function resetGame() {
+  inputReset();                                                  // 지난 판에 누르고 있던 조이스틱 · 버튼 상태를 비움
   duelExitArena(); DUEL.on = false; DUEL.freeze = false; document.body.classList.remove('duel');   // (쏠전 결투장은 duelSetup에서 다시 깜)
   teamBadges = {blue:0, red:0}; donPools = [];
   units = []; projectiles = []; fx = []; time = 0; nextWave = WAVE_FIRST; spawnQueue = [];
@@ -1753,7 +1754,7 @@ addEventListener('mouseout', e => { if (e.relatedTarget) return;                
   if (e.clientY <= 0) mouse.y = 0; else if (e.clientY >= vh) mouse.y = vh;
   if (e.clientX <= 0) mouse.x = 0; else if (e.clientX >= vw) mouse.x = vw;
 });
-addEventListener('blur', () => { mouse.on = false; });
+addEventListener('blur', () => { mouse.on = false; if (typeof inputReset === 'function') inputReset(); });
 const stick = {id:null, ox:0, oy:0, x:0, y:0, dx:0, dy:0, radius:60};
 const atk = {id:null, aiming:false, dx:0, dy:0, candidate:null};
 const skAim = {id:null, key:null, aiming:false, dx:0, dy:0, overCancel:false};
@@ -1976,6 +1977,19 @@ const endPointer = e => {
 };
 cvs.addEventListener('pointerup', endPointer);
 cvs.addEventListener('pointercancel', endPointer);
+cvs.addEventListener('lostpointercapture', e => {                     // 결과 화면 등이 떠서 손가락을 놓침: 손을 뗀 것으로 처리 (스킬은 쓰지 않음)
+  if (e.pointerId === stick.id) { stick.id = null; stick.dx = stick.dy = 0; }
+  if (e.pointerId === atk.id) { atk.id = null; atk.aiming = false; atk.dx = atk.dy = 0; }
+  if (e.pointerId === skAim.id) { skAim.id = null; skAim.aiming = false; skAim.overCancel = false; }
+  if (e.pointerId === mm.id) { mm.id = null; mmLook = null; }
+});
+function inputReset() {                                               // 조작 상태 초기화 (새 판 시작 · 화면을 벗어남)
+  stick.id = null; stick.dx = stick.dy = 0;
+  atk.id = null; atk.aiming = false; atk.dx = atk.dy = 0;
+  skAim.id = null; skAim.key = null; skAim.aiming = false; skAim.overCancel = false;
+  mm.id = null; mmLook = null; keys.clear(); pcMove = null; rightHeld = false;
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) inputReset(); });
 
 function atkPress() {
   if (player && player.snipe) { outisSnipeFire(player); return; }   // 저격 모드: 공격 버튼 = 발사
