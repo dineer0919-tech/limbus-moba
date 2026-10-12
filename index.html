@@ -469,11 +469,11 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v153 · 아이템 개편 (전투 흉갑 · 허리띠 정리 · 탱커템 체력)</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>4대4 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v163 · 베르길리우스 간파 조정</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>4대4 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 8명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v153</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 4명 vs AI 4명 · 방 코드 / 빠른 매칭</span><em>v163</em></button>
       <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
@@ -673,7 +673,7 @@
           <li><span>P</span>붉은시선 — 싸우며 열기를 쌓고, 100이 되면 5초 동안 눈이 붉게 빛나며 피해가 30% 늘고 스킬을 맞힐 때마다 다른 스킬 쿨타임이 줄고 체력을 조금씩 회복합니다. 박자를 맞추거나 간파에 성공하면 붉은 보호막이 쌓입니다. 끝나면 잠시 과열되어 느려집니다. 체력이 낮은 적은 안개 속에서도 보입니다.</li>
           <li><span>Q</span>글라디우스 — 최대 세 번까지 이어 베고, 세 번째에는 뛰어올라 내려찍습니다. 몸 주위 고리가 하얗게 빛날 때 이어 쓰면 완벽한 베기가 됩니다.</li>
           <li><span>W</span>홍련 베기 — 한 번 눌러 힘을 모으고, 다시 눌러 거대한 초승달 파동을 날립니다. 막대가 금색 구간일 때 놓으면 피해 2배에 기절까지 겁니다.</li>
-          <li><span>E</span>간파 — 짧게 몸을 옮기고, 직후에 공격을 받으면 그 피해를 무시한 채 반격하며 재사용 대기시간이 초기화됩니다.</li>
+          <li><span>E</span>간파 — 짧게 몸을 옮기고, 직후에 적 챔피언의 공격을 받으면 그 피해를 무시한 채 반격하며 재사용 대기시간이 70% 줄어듭니다.</li>
           <li><span>R</span>색 — E.G.O를 개화해 글라디우스가 피를 머금은 창으로 바뀌고, 발밑에 피의 욕장을 펼쳐 기본 스킬을 강화하며 욕장 안의 적에게 핏빛 낙인을 새깁니다. 다시 사용하면 하늘로 뛰어올라 거대한 피의 창을 내리꽂아 욕장 전체를 십자로 가르는 '죽은 혈귀를 위한 장례'를 거행합니다. 욕장이 하얗게 고동칠 때 거행하면 모두 기절합니다.</li>
         </ul>
         <span class="go">베르길리우스로 시작</span>
@@ -749,6 +749,30 @@
           <li><span>R</span>전화위복 — 포효 피해 + 모든 아군 정화, 정화한 만큼 회복 (CC 중에도 사용)</li>
         </ul>
         <span class="go">토마로 시작</span>
+      </button>
+      <button type="button" class="sel-card" data-champ="dongbaek">
+        <span class="sel-token" style="background:#d6a93e;box-shadow:0 0 0 2px #fff1a8"></span>
+        <b>동백</b><span class="role">치명타 원딜 · 구인회 · 산초 E.G.O 꽃잎 부채</span>
+        <ul>
+          <li><span>P</span>알싸한 향기 — 치명타 피해 증가 + 치명타 시 추가 마법 피해, 스킬 뒤 다음 평타는 두 발</li>
+          <li><span>Q</span>찬란한 봄바람 — 부채꼴로 노란 동백꽃, 보호막 중이거나 이동 불가 대상에게 평타 추가 마법 피해</li>
+          <li><span>W</span>만개 — 지정 위치 폭발 + 표식, 표식 대상 평타마다 추가 피해 · 이속</li>
+          <li><span>E</span>허물어지는 꽃처럼 — 돌진, 치명타마다 쿨 1초 감소 (챔피언 2초)</li>
+          <li><span>R</span>피어나는 폭죽처럼 — 일직선으로 폭죽 22발 난사, 치명타 25%당 5.5발 추가 · 재사용 시 멈춤</li>
+        </ul>
+        <span class="go">동백으로 시작</span>
+      </button>
+      <button type="button" class="sel-card" data-champ="gubo">
+        <span class="sel-token" style="background:#2c2a48;box-shadow:0 0 0 2px #b8283a"></span>
+        <b>구보</b><span class="role">포킹 원딜 · N사 이사 · E.G.O 흉탄 저격총</span>
+        <ul>
+          <li><span>P</span>그대로 꿰어 쏘리라 — 스킬 적중으로 초종 게이지 → 팬던트, 챔피언 평타 때 팬던트마다 붉은 마법진이 추가 사격</li>
+          <li><span>Q</span>총신을 꿰뚫어라 — 짧은 선딜 후 흉탄, 첫 대상 뒤로 부채꼴 산탄</li>
+          <li><span>W</span>부고를 전하지 — 붉은 덫, 밟은 적 1초 속박 + 팬던트 1개</li>
+          <li><span>E</span>차단 — 회전 베기 + 이속, 1초 잔상이 적 투사체를 지움</li>
+          <li><span>R</span>흉탄이 저들을 꿰뚫으리라 — 적 · 시체 · 아군 표준점에 거대한 흉탄, 처치하거나 시체를 터뜨리면 뒤로 흉탄 세례</li>
+        </ul>
+        <span class="go">구보로 시작</span>
       </button>
     </div>
   </div>
@@ -1061,6 +1085,10 @@ const STATS = {
            hp:[640, 106], regen:[1.7, 0.16], ad:[64, 3.7], armor:[32, 4.6], mr:[32, 2.8], as:[0.68, 0.025]},
   hohenheim:{name:'호엔하임', r:28, range:470, speed:280, acquire:510, ap:[28, 7.5], ranged:true,
            hp:[530, 104], regen:[1.3, 0.12], ad:[50, 2.9], armor:[23, 4.6], mr:[30, 2.6], as:[0.63, 0.02]},
+  gubo: {name:'구보', r:28, range:550, speed:280, acquire:590, ranged:true,
+           hp:[520, 98], regen:[1.3, 0.12], ad:[60, 3.2], armor:[24, 4.4], mr:[30, 2.6], as:[0.625, 0.025]},
+  dongbaek: {name:'동백', r:28, range:520, speed:285, acquire:560, ranged:true,
+           hp:[530, 100], regen:[1.3, 0.12], ad:[58, 3.2], armor:[24, 4.5], mr:[30, 2.6], as:[0.66, 0.03]},
   thoma: {name:'토마', r:30, range:125, speed:295, acquire:260, ap:[0, 0],
            hp:[640, 112], regen:[1.8, 0.16], ad:[63, 3.5], armor:[35, 4.8], mr:[32, 2.3], as:[0.65, 0.025]},
   guido: {name:'귀도', r:32, range:110, speed:285, acquire:265, ap:[0, 0],
@@ -1567,7 +1595,7 @@ const KI = {
 const BASE_CRIT_DMG = 1.6;
 const asRatio = c => Math.max(1, c.as / c.st.as[0]);
 const critChance = c => Math.min(1, (c.crit || 0) + (c.key === 'rodion' ? c.pStacks * KR.P.per : 0));
-const critMult = c => BASE_CRIT_DMG + (c.key === 'rodion' && c.rank.W ? KR.W.critDmg[c.rank.W - 1] : 0) + (hasItem(c, 'justitia') ? 0.25 : 0);
+const critMult = c => BASE_CRIT_DMG + (c.key === 'dongbaek' ? KDB.P.critDmg : 0) + (c.key === 'rodion' && c.rank.W ? KR.W.critDmg[c.rank.W - 1] : 0) + (hasItem(c, 'justitia') ? 0.25 : 0);
 
 const TURRET_RANGE = E(480);   // 캐릭터 기준 480
 const MINION_AGGRO = E(650);
@@ -1765,7 +1793,7 @@ function EV(c) {
   return {cd:K.E.cd[i], hits:K.E.hits, window:K.E.window, as:K.E.as[i], pct:K.E.pct[i] + (R ? R.pctAdd : 0),
           slow:R ? R.slow : K.E.slow, slowDur:K.E.slowDur};
 }
-const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * (u.scSnowT > time ? 1 + KS.P.snowMs : 1) * (u.alFlyT > time ? 1 + KAL.E.ms[u.alFlyI || 0] : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * vgMs(u) * chMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
+const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * (u.scSnowT > time ? 1 + KS.P.snowMs : 1) * (u.alFlyT > time ? 1 + KAL.E.ms[u.alFlyI || 0] : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * dbMs(u) * gbMs(u) * vgMs(u) * chMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
   (u.hasteT > 0 ? 1 + K.P.haste * (u.hasteT / K.P.hasteDur) : 1) * (u.wT > 0 ? 1 + KR.W.ms : 1) * (u.key === 'ryoshu' && u.ryoRT > time ? 1 + KRY.R.ms[rk(u, 'R')] : 1) *
   (u.homingT > time ? 1.4 : 1) * (u.pinkT > time ? 1.25 : 1) * stemSlow(u) * itemMs(u);
 const stemSlow = u => isChamp(u) && heroes.some(c => c.alive && c.team !== u.team && hasItem(c, 'stem') && dist(c, u) < E(300)) ? .9 : 1;   // 녹색줄기
@@ -1912,6 +1940,10 @@ const CHAMP_UI = {
            cast:{Q:'정화의 못'}},
   thoma: {names:{Q:'사지절단', W:'선봉대의 의지', E:'도약하겠습니다!', R:'전화위복'},
            cast:{E:'도약하겠습니다!'}},
+  dongbaek: {names:{Q:'찬란한 봄바람', W:'만개', E:'허물어지는 꽃처럼', R:'피어나는 폭죽처럼'},
+           cast:{}},
+  gubo: {names:{Q:'총신을 꿰뚫어라', W:'부고를 전하지', E:'차단', R:'흉탄'},
+           cast:{Q:'총신을 꿰뚫어라', R:'흉탄'}},
   vergil: {names:{Q:'글라디우스', W:'홍련 베기', E:'간파', R:'색'},
            cast:{}},
   kromer: {names:{Q:'광소', W:'정화', E:'이단 말살', R:'순수한 세상'},
@@ -1964,6 +1996,8 @@ function aimShape(c, key) {
   if (c.key === 'marten') return martenShape(c, key);
   if (c.key === 'guido') return guidoShape(c, key);
   if (c.key === 'thoma') return thomaShape(c, key);
+  if (c.key === 'dongbaek') return dongbaekShape(c, key);
+  if (c.key === 'gubo') return guboShape(c, key);
   if (key === 'Q') { const v = QV(c); return {len:E(v.len), wid:E(v.wid)}; }
   if (key === 'W') { const v = WV(c); return {len:E(v.len), wid:E(v.wid)}; }
   return null;
@@ -2998,6 +3032,7 @@ function mitigate(tgt, amount, type, src) {
     if (tgt.chShred && time < tgt.chShred.until) res *= 1 - KCH.W.shred * tgt.chShred.n;   // 빙글빙글
     if (tgt.shred && time < tgt.shred.until) res *= 1 - 0.04 * tgt.shred.n;     // 벌목
     if (src && src.iceT > 0) res *= 1 - KR.R.pen;                                // 로쟈 얼음 할버드
+    if (src && src.gbPen) res *= 1 - KGB.R.pen;                                   // 구보 흉탄: 방어력 관통
     if (res > 0) res = Math.max(0, res - ((src && src.leth) || 0));
   }
   return amount * (res >= 0 ? 100 / (100 + res) : 2 - 100 / (100 - res));
@@ -3013,7 +3048,7 @@ function damage(src, tgt, amount, opts = {}) {
     tgt.parryBy = src; fx.push({type:'pop', x:tgt.x, y:tgt.y, r:tgt.r * 1.3, color:'#fff0e8', t:0, life:.2}); return;   // 무아몽중: 막고 반격
   }
   if (src && src.key === 'heathcliff' && tgt.team !== src.team && !tgt.structure && !opts.noStack && !opts.noBleed && (opts.basic || opts.skill)) hcBleedAdd(src, tgt);   // 뼈 부수기: 출혈
-  if (tgt.key === 'vergil' && tgt.vgParryT > time && src && src.team !== tgt.team && src.x !== undefined && !opts.noParry) { vgParry(tgt, src); return; }   // 간파
+  if (tgt.key === 'vergil' && tgt.vgParryT > time && src && isChamp(src) && src.team !== tgt.team && !opts.noParry && !(opts.noProc && !opts.skill)) { vgParry(tgt, src); return; }   // 간파
   if (src && src.vgGaze > time) amount *= 1 + KVG.P.dmgUp;                                  // 붉은시선 개안
   if (src && src.spGasT > time) amount *= 1 - SPELLS.gas.weak;                               // 착란 가스: 주는 피해 감소
   if (isChamp(src) && hasBuff(src, 'punish')) amount *= 1.15;                              // 환상체의 가호
@@ -3145,7 +3180,7 @@ function damage(src, tgt, amount, opts = {}) {
 
 // ═════════════ 적중 피드백 (모든 챔피언 공통) ═════════════
 // 맞은 대상: 하얗게 번쩍 + 맞은 방향으로 살짝 밀림. 스킬이면 챔피언 색의 충격 고리, 챔피언을 맞히면 조준 표시(X)
-const HIT_COL = {thoma:'#e8d48a', guido:'#d8dce4', marten:'#ffd36a', alyssa:'#ffb04a', hohenheim:'#9fe0ff', gregor:'#ffb347', rodion:'#e8ecf4', yisang:'#ffffff', ryoshu:'#ff5a3a', faust:'#ffb8d2', donq:'#ffd23f', outis:'#8ff0b0', honglu:'#8ff5e0', sinclair:'#e8f070', heathcliff:'#d9a8ff', meursault:'#bcd6ff', yuri:'#ffd0d8', kromer:'#ffe7a3', vergil:'#ff6a5a', charon:'#bfe8de', bot:'#ff6b6b'};
+const HIT_COL = {gubo:'#e0303e', dongbaek:'#ffd84a', thoma:'#e8d48a', guido:'#d8dce4', marten:'#ffd36a', alyssa:'#ffb04a', hohenheim:'#9fe0ff', gregor:'#ffb347', rodion:'#e8ecf4', yisang:'#ffffff', ryoshu:'#ff5a3a', faust:'#ffb8d2', donq:'#ffd23f', outis:'#8ff0b0', honglu:'#8ff5e0', sinclair:'#e8f070', heathcliff:'#d9a8ff', meursault:'#bcd6ff', yuri:'#ffd0d8', kromer:'#ffe7a3', vergil:'#ff6a5a', charon:'#bfe8de', bot:'#ff6b6b'};
 function hitFeedback(src, tgt, opts) {
   const a = Math.atan2(tgt.y - src.y, tgt.x - src.x);
   tgt.flashT = opts.skill ? .16 : .1;
@@ -3204,6 +3239,8 @@ function kill(u, src) {
   mtOnDeath(u);
   gdOnDeath(u);
   tmOnDeath(u);
+  dbOnDeath(u);
+  gbOnDeath(u);
   if (u.structure) fx.push({type:'pop', x:u.x, y:u.y, r:u.r, color:TEAM_COL[u.team], t:0, life:.35});
   else deathFx(u, src);                                          // 피가 튀고 시체가 남음
   if (isMinion(u)) {                                 // 근처 적 챔피언끼리 경험치 나눠먹기 (벽 너머는 못 받음)
@@ -3229,7 +3266,7 @@ function kill(u, src) {
     const xpTo = champs().filter(c => c.team !== u.team && c.alive &&            // 처치 경험치: 근처에 있거나 관여한 적끼리 나눔
       (dist(c, u) < XP_RANGE || (u.hitBy.get(c) !== undefined && time - u.hitBy.get(c) < 10)));
     for (const c of xpTo) gainXp(c, champKillXp(u) * xpShare(xpTo.length));
-    u.respawnT = respawnTime(u.level); u.bdoor = false; u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.itDash = null; u.stasisT = 0; u.potHeal = null; u.itMsT = 0; u.chQ = null; u.chW = null; u.chE = null; u.chRide = null; u.chGoBus = false; u.hhZ = null; u.hhE = null; u.hhDash = null; u.alSelf = false; u.alMarkBy = null; u.mtMarkT = 0; u.mtW = false; u.mtDash = null; u.mtR = null; u.gdDash = null; u.gdR = null; u.gdW = null; u.gdGuard = null; u.tmDash = null; u.tmEat = null; u.tmQ = null; u.tmDrT = 0; u.vgDash = null; u.vgW = null; u.vgQ = null; u.vgR = null; u.vgFin = null; u.vgUT = false; u.vgBrand = 0; u.vgGaze = 0; u.vgOverT = 0; u.vgHeat = 0; u.vgMark = 0; u.vgParryT = 0; u.krDash = null; u.krR = null; u.krUT = false; u.krW = 0; u.krNails = null; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
+    u.respawnT = respawnTime(u.level); u.bdoor = false; u.target = null; u.stunT = 0; u.slowT = 0; u.hasteT = 0; u.pull = null; u.cast = null; u.recalling = false; u.dash = null; u.blink = null; u.leap = null; u.guardT = 0; u.harpoon = null; u.harpoonT = null; u.iStacks = 0; u.snipe = null; u.spotT = 0; if (u.key === 'outis') { u.ammo = KO.P.ammo; u.reloadT = 0; } u.hlZone = null; u.hlRealm = null; u.hlMsT = 0; u.hlStreak = 0; u.scGuard = null; u.scR = null; u.scExtra = []; u.scTriple = false; u.scHoldStart = null; u.spBrand = null; u.spGasT = 0; u.spRushT = 0; u.itDash = null; u.stasisT = 0; u.potHeal = null; u.itMsT = 0; u.chQ = null; u.chW = null; u.chE = null; u.chRide = null; u.chGoBus = false; u.hhZ = null; u.hhE = null; u.hhDash = null; u.alSelf = false; u.alMarkBy = null; u.mtMarkT = 0; u.mtW = false; u.mtDash = null; u.mtR = null; u.gdDash = null; u.gdR = null; u.gdW = null; u.gdGuard = null; u.tmDash = null; u.tmEat = null; u.tmQ = null; u.tmDrT = 0; u.dbR = null; u.dbDash = null; u.dbBul = []; u.dbW = []; u.dbTwinT = 0; u.vgDash = null; u.vgW = null; u.vgQ = null; u.vgR = null; u.vgFin = null; u.vgUT = false; u.vgBrand = 0; u.vgGaze = 0; u.vgOverT = 0; u.vgHeat = 0; u.vgMark = 0; u.vgParryT = 0; u.krDash = null; u.krR = null; u.krUT = false; u.krW = 0; u.krNails = null; u.ylDash = null; u.ylWT = 0; u.ylStage2 = null; u.ylMarkT = 0; u.fearT = 0; u.ylAuraT = 0; u.ylRevive = null; u.mrDash = null; u.mrGrab = null; u.mrTwo = null; u.blindT = 0; if (u.mrBorrow) mrRestore(u); u.hcQ = null; u.hcR = null; u.hcW = 0; u.hcBleed = null; if (u.hcRageT) { u.hcRageT = 0; recalcStats(u); } u.linkT = 0; u.fMsT = 0; u.rootT = 0; u.hidden = false; u.alpha = null; u.rcut = null; u.ryoE = null; u.ryoN = 0; u.ryoRT = 0; u.parryBy = null; u.featherN = 0; u.pStacks = 0; u.qStack = 0; u.iceT = 0; u.wT = 0;
     if (u.donBlood && u.donBlood.until > time) donPoolBurst(u);           // 라 샹그라 데 산쵸: 피의 샘
     u.donBlood = null; u.tauntT = 0; u.qCharge = null; u.donMarkT = 0;
     if (u.rT > 0) endRForm(u);
@@ -3300,7 +3337,7 @@ function fire(src, tgt, amount, speed, color, size) {
 // ═════════════ 기본 공격 ═════════════
 function basicAttack(c, t) {
   if (t.ward) { hitWard(c, t); return; }
-  if (c.hcQ || c.hcR || c.mrDash || c.mrGrab || c.ylDash || c.ylRevive || c.fearT > time || c.krDash || c.krR || c.vgDash || c.vgW || c.vgFin || c.chW || c.chE || c.chQ || c.chRide || c.stasisT > time || c.itDash || hhBusy(c) || c.hhE || c.alQ || c.alR || c.alFlyT > time || c.mtDash || gdBusy(c) || tmBusy(c)) return;                                      // 히스클리프 Q 준비·R 도약, 뫼르소 돌진·잡기 중엔 평타 불가
+  if (c.hcQ || c.hcR || c.mrDash || c.mrGrab || c.ylDash || c.ylRevive || c.fearT > time || c.krDash || c.krR || c.vgDash || c.vgW || c.vgFin || c.chW || c.chE || c.chQ || c.chRide || c.stasisT > time || c.itDash || hhBusy(c) || c.hhE || c.alQ || c.alR || c.alFlyT > time || c.mtDash || gdBusy(c) || tmBusy(c) || dbBusy(c) || c.dbR) return;                                      // 히스클리프 Q 준비·R 도약, 뫼르소 돌진·잡기 중엔 평타 불가
   if (c.blindT > time && !t.structure) {                           // 실명: 기본 공격이 빗나감
     c.atkT = 1 / Math.min(2.5, c.as); c.swingT = .18; c.face = Math.atan2(t.y - c.y, t.x - c.x);
     if (c === player || t === player || onScreen(c)) text(t.x, t.y - t.r - E(30), '빗나감', '#ffe9a8', false, .6);
@@ -3361,10 +3398,11 @@ function basicAttack(c, t) {
   if (c.key === 'heathcliff' && c.hcW > time) { dmg += KHC.W.dmg[c.hcWi || 0] + KHC.W.ad * c.ad; c.hcW = 0; c.hcWHit = t; fx.push({type:'hcBleedMax', x:t.x, y:t.y, r:t.r * .8, t:0, life:.3}); }   // 다리 분쇄
   if (c.key === 'kromer' && c.krW > time && !t.structure) dmg = krSmash(c, t, dmg);
   if (c.key === 'vergil' && !t.structure) dmg = vgBasic(c, t, dmg);
+  if (c.key === 'gubo') gbBasic(c, t);                                // 팬던트 → 마법진
   if (c.key === 'thoma' && !t.structure) dmg = tmBasic(c, t, dmg);   // 사지절단
   if (c.key === 'charon' && !t.structure) dmg = chBasic(c, t, dmg);   // 민폐 승객 정리 표식   // 붉은시선: 열기 · 표식 추가 피해   // 정화: 망치로 내려침
   if (c.key === 'yuri') yuriBeam(c, t, dmg, crit);                  // 광선 평타
-  else if (c.st.ranged) projectiles.push({x:c.x + Math.cos(c.face + .5) * c.r, y:c.y + Math.sin(c.face + .5) * c.r, tgt:t, src:c, amount:dmg, speed:E(c.key === 'outis' ? 2400 : 1500), color:'#ffc4dc', size:E(7), opts:{basic:true, crit, alW:alUseW(c)}, alyssa:c.key === 'alyssa', faust:c.key === 'faust', outis:c.key === 'outis', honglu:c.key === 'honglu', hoh:c.key === 'hohenheim', lastShot:c.key === 'outis' && c.ammo <= 0});   // 원거리: 투사체
+  else if (c.st.ranged) { if (c.key === 'dongbaek') dbTwinShot(c, t, dmg, crit); projectiles.push({x:c.x + Math.cos(c.face + .5) * c.r, y:c.y + Math.sin(c.face + .5) * c.r, tgt:t, src:c, amount:dmg, speed:E(c.key === 'outis' ? 2400 : 1500), color:'#ffc4dc', size:E(7), opts:{basic:true, crit, alW:alUseW(c)}, alyssa:c.key === 'alyssa', faust:c.key === 'faust', outis:c.key === 'outis', honglu:c.key === 'honglu', hoh:c.key === 'hohenheim', lastShot:c.key === 'outis' && c.ammo <= 0}); }   // 원거리: 투사체
   else damage(c, t, dmg, enhanced ? {color:'#d9a066', basic:true, skill:true, crit} : {basic:true, crit});
   if (c.key === 'meursault') mrPassive(c, t);                      // 이방인
   if (c.key === 'marten') mtMark(c, t);                              // 요정초롱: 요정 표식
@@ -3460,13 +3498,23 @@ function castSkill(c, key, ang, frac = null) {                // 공통 후처�
   return r;
 }
 function castSkillCore(c, key, ang, frac = null) {
-  const recast = (c.key === 'guido' && key === 'W' && !!c.gdW) || (c.key === 'marten' && key === 'W' && !!c.mtW) || (c.key === 'alyssa' && key === 'Q' && !!c.alQ) || (c.key === 'vergil' && vgRecast(c, key)) || (c.key === 'meursault' && key === 'E' && !!c.mrGrab) || (c.key === 'ishmael' && ((key === 'W' && c.guardT > 0) || (key === 'R' && ishCanExecute(c)))) || (c.key === 'outis' && key === 'R' && !!c.snipe) || (c.key === 'sinclair' && key === 'E' && !!c.scGuard);   // 이스마엘 재사용
+  const recast = (c.key === 'dongbaek' && key === 'R' && !!c.dbR) || (c.key === 'guido' && key === 'W' && !!c.gdW) || (c.key === 'marten' && key === 'W' && !!c.mtW) || (c.key === 'alyssa' && key === 'Q' && !!c.alQ) || (c.key === 'vergil' && vgRecast(c, key)) || (c.key === 'meursault' && key === 'E' && !!c.mrGrab) || (c.key === 'ishmael' && ((key === 'W' && c.guardT > 0) || (key === 'R' && ishCanExecute(c)))) || (c.key === 'outis' && key === 'R' && !!c.snipe) || (c.key === 'sinclair' && key === 'E' && !!c.scGuard);   // 이스마엘 재사용
   const tmFree = c.key === 'thoma' && key === 'R' && !tmBusy(c);   // 토마 전화위복: 군중 제어 중에도 사용
   if (!c.alive || !c.rank[key] || (c.stunT > 0 && !tmFree) || (c.cast && !tmFree) || (c.cd[key] > 0 && !recast) || gameOver) return;
   if (!tmFree && (c.tauntT > time || c.fearT > time)) return;          // 도발·공포 중엔 스킬 불가
   cancelRecall(c);
   if (c.blink || c.leap || c.alpha || c.rcut) return;
   if (c.chRide) return;                                              // 메피에 탄 동안엔 스킬 불가
+  if (c.key === 'gubo') {
+    if (castGubo(c, key, ang, frac) === false) return;
+    if (hasItem(c, 'grinder') && time >= c.grinderCd) c.grinderReady = true;
+    return;
+  }
+  if (c.key === 'dongbaek') {
+    if (castDongbaek(c, key, ang, frac) === false) return;
+    if (hasItem(c, 'grinder') && time >= c.grinderCd) c.grinderReady = true;
+    return;
+  }
   if (c.key === 'thoma') {
     if (key === 'R' && c.cast) c.cast = null;
     if (castThoma(c, key, ang, frac) === false) return;
@@ -3612,6 +3660,7 @@ function finishCast(c) {
   if (c.key === 'hohenheim') { const cs = c.cast; c.cast = null; finishHoh(c, cs); return; }
   if (c.key === 'guido') { const cs = c.cast; c.cast = null; finishGuido(c, cs); return; }
   if (c.key === 'thoma') { const cs = c.cast; c.cast = null; finishThoma(c, cs); return; }
+  if (c.key === 'gubo') { const cs = c.cast; c.cast = null; finishGubo(c, cs); return; }
   if (c.key === 'yuri') { const cs = c.cast; c.cast = null; finishYuri(c, cs); return; }
   c.cast = null;
   if (key === 'Q') doQ(c, ang);
@@ -5678,7 +5727,7 @@ const KM = {
   R:{cd:[100, 85, 70], range:650, speed:1800, dmg:[100, 160, 220], ap:.5, keep:60},          // 타인의 사슬
 };
 // 복사한 궁극기를 쓰는 동안 그 챔피언의 방식으로 잠시 움직이는 시간 (궁극기마다 다름)
-const MR_BORROW = {thoma:1.4, guido:1.2, marten:1.4, alyssa:1.6, hohenheim:1.2, gregor:10.5, rodion:1.6, yisang:1.6, ishmael:5, ryoshu:9, faust:4.2, donq:3.2, outis:10.5, honglu:6.5, sinclair:4.5, heathcliff:1.2};
+const MR_BORROW = {gubo:1.3, dongbaek:1.4, thoma:1.4, guido:1.2, marten:1.4, alyssa:1.6, hohenheim:1.2, gregor:10.5, rodion:1.6, yisang:1.6, ishmael:5, ryoshu:9, faust:4.2, donq:3.2, outis:10.5, honglu:6.5, sinclair:4.5, heathcliff:1.2};
 function meurShape(c, key) {
   if (key === 'Q') return {len:E(KM.Q.dist) + E(40), wid:E(KM.Q.wid)};
   if (key === 'W') return {circle:E(KM.W.radius)};
@@ -6315,7 +6364,7 @@ const KVG = {
   P:{basic:8, hit:14, decay:7, idle:3, dur:5, dmgUp:.3, cdr:1, overSlow:.3, overDur:2, reveal:.3, revealR:1600, shield:[50, .06], shieldCap:.2, shieldDur:3, gazeShield:.1, gazeHeal:.03},   // 붉은시선 (열기 게이지)
   Q:{cd:[7, 6.5, 6, 5.5], win:1.6, lo:.3, hi:.55, len:290, wid:130, dmg:[34, 56, 78, 100], ad:.6, perf:.5, slamDash:230, slamR:200, slamMul:1.5, speed:1600},   // 글라디우스
   W:{cd:[11, 10, 9, 8], max:1.25, lo:.95, hi:1.15, len:660, wid:[80, 210], dmg:[80, 125, 170, 215], ad:.95, perfMul:2, stun:.6, knock:110, slow:.35},   // 홍련 베기
-  E:{cd:[14, 13, 12, 11], dash:240, speed:1800, parry:.35, heat:30, counter:.6},                                         // 간파
+  E:{cd:[14, 13, 12, 11], dash:240, speed:1800, parry:.35, heat:30, counter:.6, refund:.7},                                         // 간파
   R:{poolRegen:.015, finHeal:.06, brandHeal:.02, cd:[120, 100, 80], radius:520, dur:7, slow:.25, qMul:1.6, slamMul:1.4, wMul:1.4, brandMax:3, brandMul:.35, final:[200, 320, 440], ad:1.1, miss:.12, beat:1.2, win:.24, perfMul:1.5, stun:1, auto:.75, air:.8, gather:.45, markPct:.035},   // 색 — 피의 욕장 → 죽은 혈귀를 위한 장례
 };
 const vgHeatAdd = (c, n) => {
@@ -6487,7 +6536,7 @@ function vgWRelease(c, ang, auto) {
 }
 function vgParry(c, src) {                                                // 간파: 공격을 흘려 내고 반격
   vgPerfShield(c);
-  c.vgParryT = 0; c.cd.E = 0; c.vgPerfNext = true;
+  c.vgParryT = 0; c.cd.E *= 1 - KVG.E.refund; c.vgPerfNext = true;              // 남은 재사용 대기시간 70% 감소
   vgHeatAdd(c, KVG.E.heat);
   fx.push({type:'vgParry', x:c.x, y:c.y, r:c.r, ang:Math.atan2(src.y - c.y, src.x - c.x), t:0, life:.5});
   if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(56), '간파', '#ffffff', true, .8);
@@ -6571,7 +6620,13 @@ function aiVergil(b, p, d, hpP) {
   if (b.vgQ && ready('Q') && time - b.vgQ.t > (b.vgAiQ ??= jit(.12, 1.3))) { b.vgAiQ = null; castSkill(b, 'Q', Math.atan2(p.y - b.y, p.x - b.x), Math.min(1, d / E(KVG.Q.slamDash))); return true; }
   if (ready('Q') && !b.vgQ && d < E(KVG.Q.len)) { castSkill(b, 'Q', Math.atan2(p.y - b.y, p.x - b.x)); return true; }
   if (ready('W') && d < E(KVG.W.len) * .8 && Math.random() < .5) { castSkill(b, 'W', null); return true; }
-  if (ready('E') && Math.random() < .25) { castSkill(b, 'E', Math.atan2(p.y - b.y, p.x - b.x) + jit(-1.2, 1.2), 1); return true; }
+  if (ready('E')) {                                                                   // 간파: 적 챔피언이 나를 치려는 순간을 읽음
+    const threat = enemiesOf(b).find(e => e.alive && isChamp(e) && dist(e, b) < E(e.st.range) + E(220) &&
+      ((e.target === b && e.atkT < .2) || (e.cast && Math.abs(((Math.atan2(b.y - e.y, b.x - e.x) - (e.cast.ang ?? e.face)) + Math.PI * 3) % (Math.PI * 2) - Math.PI) < .6)));
+    const shot = projectiles.some(q => q.tgt === b && q.src && isChamp(q.src) && q.src.team !== b.team && Math.hypot(q.x - b.x, q.y - b.y) < E(220));
+    if ((threat || shot) && Math.random() < .7) { castSkill(b, 'E', Math.atan2(p.y - b.y, p.x - b.x) + jit(-1.2, 1.2), 1); return true; }
+    if (isChamp(p) && hpP < .45 && d > E(260) && d < E(420)) { castSkill(b, 'E', Math.atan2(p.y - b.y, p.x - b.x), 1); return true; }   // 도망가는 적 추격
+  }
   return false;
 }
 
@@ -7964,6 +8019,426 @@ function aiThoma(b, p, d, hpP) {
   return false;
 }
 
+// ═════════════ 동백 · 구인회 · 산초(Spicebush) E.G.O ═════════════
+// 치명타 원딜. 스킬 뒤 평타는 두 발, 치명타마다 마법 피해와 E 쿨 감소, 궁극기는 폭죽 탄환 난사 (치명타 확률만큼 탄 추가)
+const DBC = {coat:'#d6a93e', coatD:'#6a4e1c', petal:'#ffd84a', petalD:'#e0a020', camellia:'#d8323e', spark:'#fff1a8', fan:'#f4e2a0'};
+const KDB = {
+  P:{critDmg:.25, mag:[15, 4], magAd:.1, twin:.5, twinWin:4},                                               // 알싸한 향기
+  Q:{cd:[8, 7.5, 7, 6.5], len:460, arc:.9, dmg:[60, 95, 130, 165], bad:.8, on:[12, 20, 28, 36], onAd:.15},   // 찬란한 봄바람
+  W:{cd:[12, 11, 10, 9], range:720, radius:170, delay:.45, dmg:[70, 110, 150, 190], bad:.6, mark:4, hit:[15, 22, 29, 36], hitAd:.12, ms:.1, msDur:1},   // 만개
+  E:{cd:[10, 9, 8, 7], dist:320, speed:1500, crit:1, critChamp:2},                                          // 허물어지는 꽃처럼
+  R:{cd:[100, 85, 70], n:22, perPct:.22, dur:2.6, range:1050, speed:2600, wid:26, dmg:[22, 34, 46], ad:.22, spread:.06},   // 피어나는 폭죽처럼
+};
+const dbBusy = c => !!c.dbDash;                                                        // 돌진 중: 이동 불가
+function dongbaekShape(c, key) {
+  if (key === 'Q') return {cone:E(KDB.Q.len), arc:KDB.Q.arc};
+  if (key === 'W') return {point:E(KDB.W.range), pr:E(KDB.W.radius)};
+  if (key === 'E') return {len:E(KDB.E.dist), wid:E(50)};
+  if (key === 'R') return c.dbR ? null : {len:E(KDB.R.range), wid:E(KDB.R.wid) * 2};
+  return null;
+}
+const dbFoe = (c, u) => u && u.alive && u.team !== c.team && !u.ward && targetable(u);
+const dbImmobile = u => u.stunT > 0 || u.airT > 0 || u.rootT > time;
+function dbHit(c, u, dmg, opts = {}) { if (isChamp(u)) callForHelp(c, u); damage(c, u, dmg, Object.assign({skill:true, color:DBC.petal}, opts)); }
+function dbEnd(c, ang, d) {
+  let x = c.x + Math.cos(ang) * d, y = c.y + Math.sin(ang) * d;
+  for (let s = 0; s < 12 && walls.some(w => inRect(x, y, w)); s++) { x -= Math.cos(ang) * d / 12; y -= Math.sin(ang) * d / 12; }
+  return {x, y};
+}
+const dbShots = c => KDB.R.n + Math.floor(critChance(c) * 100 * KDB.R.perPct + 1e-6);   // 치명타 확률 1%당 0.22발 (25%당 5.5발, 소수점 버림)
+function castDongbaek(c, key, ang, frac) {
+  const i = rk(c, key);
+  if (c.dbR) {                                                                       // 난사 중: E와 R(멈추기)만
+    if (key === 'R') { dbStopR(c); return true; }
+    if (key !== 'E') return false;
+  }
+  if (dbBusy(c) || c.cast) return false;
+  if (key === 'Q') {                                                                 // 찬란한 봄바람: 부채꼴 노란 동백꽃
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KDB.Q.len));
+    c.cd.Q = c.cdMax.Q = KDB.Q.cd[i] * hasteMul(c); c.face = ang; cancelRecall(c);
+    const dmg = KDB.Q.dmg[i] + KDB.Q.bad * (c.bonusAd || 0), h = KDB.Q.arc / 2;
+    for (const u of [...units]) {
+      if (!dbFoe(c, u) || u.structure) continue;
+      const d = Math.hypot(u.x - c.x, u.y - c.y); if (d > E(KDB.Q.len) + u.r) continue;
+      let da = Math.atan2(u.y - c.y, u.x - c.x) - ang; while (da > Math.PI) da -= Math.PI * 2; while (da < -Math.PI) da += Math.PI * 2;
+      if (Math.abs(da) > h + Math.asin(Math.min(1, u.r / Math.max(d, 1)))) continue;
+      dbHit(c, u, dmg, {big:isChamp(u)});
+    }
+    fx.push({type:'dbPetals', x:c.x, y:c.y, ang, len:E(KDB.Q.len), arc:KDB.Q.arc, t:0, life:.55});
+    dbArmTwin(c); return true;
+  }
+  if (key === 'W') {                                                                 // 만개: 지정 위치 폭발 + 표식
+    let tx, ty;
+    if (ang === null || ang === undefined || frac === null || frac === undefined) {
+      const t = champs().filter(u => dbFoe(c, u) && seenBy(c.team, u) && dist(c, u) <= E(KDB.W.range)).sort((a, b) => dist(c, a) - dist(c, b))[0];
+      if (t) { tx = t.x; ty = t.y; } else { const a = ang ?? c.face; tx = c.x + Math.cos(a) * E(KDB.W.range) * .6; ty = c.y + Math.sin(a) * E(KDB.W.range) * .6; }
+    } else { const d = E(KDB.W.range) * Math.max(.15, frac); tx = c.x + Math.cos(ang) * d; ty = c.y + Math.sin(ang) * d; }
+    c.cd.W = c.cdMax.W = KDB.W.cd[i] * hasteMul(c); c.face = Math.atan2(ty - c.y, tx - c.x); cancelRecall(c);
+    (c.dbW || (c.dbW = [])).push({x:tx, y:ty, t:0, i});
+    dbArmTwin(c); return true;
+  }
+  if (key === 'E') {                                                                 // 허물어지는 꽃처럼: 돌진
+    if (ang === null || ang === undefined) ang = c.face;
+    c.cd.E = c.cdMax.E = KDB.E.cd[i] * hasteMul(c); cancelRecall(c); c.target = c.dbR ? null : c.target;
+    const p = dbEnd(c, ang, E(KDB.E.dist));
+    if (!c.dbR) c.face = ang;
+    c.dbDash = {x0:c.x, y0:c.y, x1:p.x, y1:p.y, t:0, dur:Math.max(.06, Math.hypot(p.x - c.x, p.y - c.y) / E(KDB.E.speed)), trailT:0};
+    if (!c.dbR) dbArmTwin(c); return true;
+  }
+  if (key === 'R') {                                                                 // 피어나는 폭죽처럼: 일직선 난사
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KDB.R.range));
+    c.cd.R = c.cdMax.R = KDB.R.cd[i] * hasteMul(c); cancelRecall(c); c.target = null;
+    const n = dbShots(c);
+    c.dbR = {ang, i, n, left:n, acc:0, gap:KDB.R.dur / n, t:0};
+    c.face = ang;
+    if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(64), `폭죽 ${n}발`, DBC.petal, c === player, .9);
+    return true;
+  }
+  return false;
+}
+function dbStopR(c) { if (c.dbR) { c.dbR = null; dbArmTwin(c); } }
+function dbArmTwin(c) { c.dbTwinT = time + KDB.P.twinWin; }
+function dbTwinShot(c, t, dmg, crit) {                                               // basicAttack(): 스킬 뒤 평타는 두 발 (두 번째는 50%)
+  if (!(c.dbTwinT > time)) return;
+  c.dbTwinT = 0;
+  projectiles.push({x:c.x + Math.cos(c.face - .5) * c.r, y:c.y + Math.sin(c.face - .5) * c.r, tgt:t, src:c, amount:dmg * KDB.P.twin, speed:E(1500) * .92, color:DBC.petal, size:E(6), opts:{basic:true, crit, dbTwin:true}});
+}
+function dbOnHit(c, t, opts) {                                                       // 평타 적중: 치명타 마법 피해 · E 쿨 감소 · 봄바람 · 만개 표식
+  if (!t.alive && !opts.crit) return;
+  if (opts.crit) {
+    if (t.alive) damage(c, t, KDB.P.mag[0] + KDB.P.mag[1] * c.level + KDB.P.magAd * c.ad, {type:'magic', noProc:true, color:DBC.camellia});
+    c.cd.E = Math.max(0, (c.cd.E || 0) - (isChamp(t) ? KDB.E.critChamp : KDB.E.crit));
+    fx.push({type:'dbBloom', x:t.x, y:t.y, r:t.r, t:0, life:.4});
+  }
+  if (!t.alive) return;
+  if (c.rank.Q > 0 && ((c.shield || 0) > 0 || dbImmobile(t))) {
+    const q = rk(c, 'Q'); damage(c, t, KDB.Q.on[q] + KDB.Q.onAd * (c.bonusAd || 0), {type:'magic', noProc:true, color:DBC.petal});
+  }
+  if (t.dbMarkT > time && t.dbMarkBy === c) {
+    damage(c, t, KDB.W.hit[t.dbMarkI || 0] + KDB.W.hitAd * (c.bonusAd || 0), {noProc:true, color:DBC.petalD});
+    c.dbMsT = time + KDB.W.msDur;
+  }
+}
+const dbMs = u => u.key === 'dongbaek' && u.dbMsT > time ? 1 + KDB.W.ms : 1;       // speedMul(): 만개 표식 적중 시 이속
+function dongbaekTick(c, dt) {
+  if (c.dbW && c.dbW.length) {                                                       // 만개: 잠깐 뒤 폭발
+    for (const W of c.dbW) {
+      W.t += dt; if (W.t < KDB.W.delay || W.done) continue; W.done = true;
+      const dmg = KDB.W.dmg[W.i] + KDB.W.bad * (c.bonusAd || 0);
+      for (const u of [...units]) {
+        if (!dbFoe(c, u) || u.structure || Math.hypot(u.x - W.x, u.y - W.y) > E(KDB.W.radius) + u.r) continue;
+        dbHit(c, u, dmg, {big:isChamp(u)});
+        if (u.alive) { u.dbMarkT = time + KDB.W.mark; u.dbMarkBy = c; u.dbMarkI = W.i; }
+      }
+      fx.push({type:'dbBurst', x:W.x, y:W.y, r:E(KDB.W.radius), t:0, life:.6});
+    }
+    c.dbW = c.dbW.filter(W => !W.done);
+  }
+  const D = c.dbDash;
+  if (D) {
+    D.t += dt; c.vx = c.vy = 0;
+    if (!c.alive || c.stunT > 0 || c.airT > 0) c.dbDash = null;
+    else {
+      const k = Math.min(1, D.t / D.dur); c.x = D.x0 + (D.x1 - D.x0) * k; c.y = D.y0 + (D.y1 - D.y0) * k;
+      if ((D.trailT -= dt) <= 0) { D.trailT = .03; fx.push({type:'dbTrail', x:c.x, y:c.y, r:c.r, t:0, life:.35}); }
+      if (k >= 1) c.dbDash = null;
+    }
+  }
+  const R = c.dbR;
+  if (R) {                                                                           // 난사: 정해진 방향으로 폭죽 탄환
+    R.t += dt;
+    if (!c.alive || c.stunT > 0 || c.airT > 0 || c.fearT > time || c.tauntT > time) { dbStopR(c); }
+    else {
+      c.face = R.ang; c.target = null;
+      R.acc += dt;
+      while (R.acc >= R.gap && R.left > 0) {
+        R.acc -= R.gap; R.left--;
+        const a = R.ang + (Math.random() - .5) * KDB.R.spread * 2, side = R.left % 2 ? 1 : -1;
+        (c.dbBul || (c.dbBul = [])).push({x:c.x + Math.cos(R.ang + side * 1.2) * c.r * .5, y:c.y + Math.sin(R.ang + side * 1.2) * c.r * .5, a, d:0, i:R.i, hue:R.left % 3});
+      }
+      if (R.left <= 0) dbStopR(c);
+    }
+  }
+  if (c.dbBul && c.dbBul.length) {                                                   // 탄환 이동: 처음 맞힌 적에게 물리 피해
+    const sp = E(KDB.R.speed) * dt, max = E(KDB.R.range), rad = E(KDB.R.wid) / 2;
+    for (const b of c.dbBul) {
+      if (b.dead) continue;
+      b.x += Math.cos(b.a) * sp; b.y += Math.sin(b.a) * sp; b.d += sp;
+      if (b.d > max || walls.some(w => inRect(b.x, b.y, w))) { b.dead = true; continue; }
+      for (const u of units) {
+        if (!dbFoe(c, u) || Math.hypot(u.x - b.x, u.y - b.y) > rad + u.r) continue;
+        b.dead = true;
+        dbHit(c, u, (KDB.R.dmg[b.i] + KDB.R.ad * c.ad) * (u.structure ? .5 : 1), {noProc:true});
+        fx.push({type:'dbPop', x:b.x, y:b.y, hue:b.hue, t:0, life:.35});
+        if (u.alive || isChamp(u)) { fx.push({type:'dbCamellia', x:u.x, y:u.y, r:u.r, ang:b.a, rot:Math.random() * 6.3, big:isChamp(u), t:0, life:.5}); u.flashT = Math.max(u.flashT || 0, .06); }
+        if (isChamp(u) && (c === player || u === player)) impactFeel(0, 3);
+        break;
+      }
+    }
+    c.dbBul = c.dbBul.filter(b => !b.dead);
+  }
+}
+function dbOnDeath(u) { if (u.key === 'dongbaek') { u.dbR = null; u.dbDash = null; u.dbBul = []; u.dbW = []; u.dbTwinT = 0; } u.dbMarkT = 0; }
+function aiDongbaek(b, p, d, hpP) {
+  if (dbBusy(b)) return true;
+  const ready = k => b.rank[k] > 0 && b.cd[k] <= 0;
+  const hpB = b.hp / b.maxHp, threat = enemiesOf(b).filter(e => e.alive && targetable(e) && dist(e, b) < E(260)).length;
+  if (b.dbR) {                                                                       // 난사 중: 위험하면 E로 빠짐
+    if (ready('E') && threat && hpB < .45) { const e = enemiesOf(b).filter(e => e.alive).sort((x, y) => dist(x, b) - dist(y, b))[0]; castSkill(b, 'E', Math.atan2(b.y - e.y, b.x - e.x) + (Math.random() - .5) * .6); }
+    return true;
+  }
+  if (ready('E') && threat && hpB < .5 && isChamp(p)) { castSkill(b, 'E', Math.atan2(b.y - p.y, b.x - p.x) + (Math.random() - .5) * .8); return true; }   // 붙으면 뒤로
+  if (!isChamp(p)) { if (ready('Q') && d < E(KDB.Q.len) * .8 && minionCount(p.team, b, E(KDB.Q.len)) >= 3) { castSkill(b, 'Q', Math.atan2(p.y - b.y, p.x - b.x)); return true; } return false; }
+  if (ready('R') && d < E(KDB.R.range) * .75 && (hpP < .55 || enemiesOf(b).filter(e => e.alive && dist(e, p) < E(260)).length >= 2) && hpB > .3) { castSkill(b, 'R', aimAt(b, p, .2)); return true; }
+  if (ready('W') && d < E(KDB.W.range) * .95) { const a = aimAt(b, p, .45); castSkill(b, 'W', a, Math.min(1, d / E(KDB.W.range))); return true; }
+  if (ready('Q') && d < E(KDB.Q.len) * .9) { castSkill(b, 'Q', aimAt(b, p, .1)); return true; }
+  return false;
+}
+
+// ═════════════ 구보 · N사 이사 (E.G.O 흉탄) ═════════════
+// 포킹형 원딜. 짧은 Q로 견제하며 [초종] 게이지를 채워 [팬던트]를 모으고, 평타 한 번에 붉은 마법진으로 몰아서 터뜨림
+const GBC = {coat:'#2c2a48', lapel:'#b8283a', red:'#e0303e', glow:'rgba(224,48,62,.55)', gun:'#22222a', brass:'#c8a050'};
+const KGB = {
+  P:{need:100, max:4, gainQ:34, gainQo:8, gainE:20, gainR:100, dmg:[25, 5], bad:.35, delay:.28, spread:150},   // 그대로 꿰어 쏘리라
+  Q:{cd:[5, 4.5, 4, 3.5], wind:.25, len:650, wid:60, dmg:[60, 90, 120, 150], bad:.7, cone:320, arc:.9, splash:.5},   // 총신을 꿰뚫어라
+  W:{cd:[14, 13, 12, 11], range:700, radius:70, arm:.6, life:40, max:3, root:1},                                // 부고를 전하지
+  E:{cd:[12, 11, 10, 9], radius:180, dmg:[60, 90, 120, 150], bad:.5, ms:.3, msDur:1.5, ghost:1},                // 차단
+  R:{cd:[110, 95, 80], range:2200, wind:1, dmg:[250, 375, 500], bad:1.0, miss:[.3, .35, .4], pen:.4, near:1500, mark:5,
+     storm:2, stormCorpse:1.2, tick:.12, cone:650, arc:.75, pct:[.012, .016, .02], stAd:.06, monCap:60},                                    // 흉탄이 저들을 꿰뚫으리라
+};
+const gbBusy = c => false;
+function guboShape(c, key) {
+  if (key === 'Q') return {len:E(KGB.Q.len), wid:E(KGB.Q.wid)};
+  if (key === 'W') return {point:E(KGB.W.range), pr:E(KGB.W.radius)};
+  if (key === 'R') return {point:E(KGB.R.range)};
+  return null;                                                                          // E: 제자리
+}
+const gbFoe = (c, u) => u && u.alive && u.team !== c.team && !u.ward && targetable(u);
+function gbHit(c, u, dmg, opts = {}) { if (isChamp(u)) callForHelp(c, u); damage(c, u, dmg, Object.assign({skill:true, color:GBC.red}, opts)); }
+function gbGain(c, amt) {                                                               // 초종 게이지 → 팬던트
+  if (c.key !== 'gubo') return;
+  c.gbPend = c.gbPend || 0; c.gbGauge = (c.gbGauge || 0) + amt;
+  while (c.gbGauge >= KGB.P.need && c.gbPend < KGB.P.max) { c.gbGauge -= KGB.P.need; c.gbPend++; fx.push({type:'gbPendant', owner:c, t:0, life:.45}); }
+  if (c.gbPend >= KGB.P.max) c.gbGauge = Math.min(c.gbGauge, KGB.P.need);
+}
+function gbAddPendant(c, n = 1) { c.gbPend = Math.min(KGB.P.max, (c.gbPend || 0) + n); fx.push({type:'gbPendant', owner:c, t:0, life:.45}); }
+function gbBasic(c, t) {                                                                // basicAttack(): 팬던트를 모두 써서 마법진 소환
+  const n = c.gbPend || 0; if (!n || !isChamp(t)) return;                              // 챔피언에게만 (미니언 · 몬스터 · 구조물엔 아껴 둠)
+  c.gbPend = 0;
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2, d = E(KGB.P.spread) * (.55 + Math.random() * .45);
+    (c.gbCirc || (c.gbCirc = [])).push({tgt:t, x:t.x + Math.cos(a) * d, y:t.y + Math.sin(a) * d, t:-i * .07, done:false});
+  }
+}
+// ── R 대상: 적 챔피언 · 적 챔피언 시체 · (근처에서 쓰러진) 아군 챔피언 표준점 ──
+function gbMarks(c) { return (c.gbMarks || []).filter(m => time - m.t0 < KGB.R.mark); }
+function gbCands(c) {
+  const out = [], R = E(KGB.R.range);
+  for (const u of champs()) if (gbFoe(c, u) && seenBy(c.team, u) && dist(c, u) <= R) out.push({kind:'champ', u, x:u.x, y:u.y});
+  for (const k of corpses) if (k.champ && k.u && k.u.team !== c.team && !k.u.alive && !k.eaten && time - k.t0 < k.life && Math.hypot(k.x - c.x, k.y - c.y) <= R) out.push({kind:'corpse', k, x:k.x, y:k.y});
+  for (const m of gbMarks(c)) if (Math.hypot(m.x - c.x, m.y - c.y) <= R) out.push({kind:'mark', m, x:m.x, y:m.y});
+  return out;
+}
+function gbRTarget(c, ang, frac) {
+  const cs = gbCands(c); if (!cs.length) return null;
+  if (ang === null || ang === undefined) {
+    const ch = cs.filter(x => x.kind === 'champ').sort((a, b) => a.u.hp / a.u.maxHp - b.u.hp / b.u.maxHp)[0];
+    return ch || cs.sort((a, b) => Math.hypot(a.x - c.x, a.y - c.y) - Math.hypot(b.x - c.x, b.y - c.y))[0];
+  }
+  const d = E(KGB.R.range) * Math.max(.15, frac ?? 1), ax = c.x + Math.cos(ang) * d, ay = c.y + Math.sin(ang) * d;
+  return cs.sort((a, b) => Math.hypot(a.x - ax, a.y - ay) - Math.hypot(b.x - ax, b.y - ay))[0];
+}
+function castGubo(c, key, ang, frac) {
+  const i = rk(c, key);
+  if (c.cast) return false;
+  if (key === 'Q') {                                                                    // 총신을 꿰뚫어라: 잠깐 기를 모은 뒤 발포
+    if (ang === null || ang === undefined) ang = autoAim(c, E(KGB.Q.len));
+    c.cd.Q = c.cdMax.Q = KGB.Q.cd[i] * hasteMul(c); c.face = ang; cancelRecall(c);
+    c.cast = {key:'Q', ang, t:0, dur:KGB.Q.wind, len:E(KGB.Q.len), wid:E(KGB.Q.wid), i};
+    return true;
+  }
+  if (key === 'W') {                                                                    // 부고를 전하지: 붉은 덫
+    let tx, ty;
+    if (ang === null || ang === undefined || frac === null || frac === undefined) {
+      const t = champs().filter(u => gbFoe(c, u) && seenBy(c.team, u) && dist(c, u) <= E(KGB.W.range)).sort((a, b) => dist(c, a) - dist(c, b))[0];
+      if (t) { tx = t.x; ty = t.y; } else { const a = ang ?? c.face; tx = c.x + Math.cos(a) * E(KGB.W.range) * .5; ty = c.y + Math.sin(a) * E(KGB.W.range) * .5; }
+    } else { const d = E(KGB.W.range) * Math.max(.15, frac); tx = c.x + Math.cos(ang) * d; ty = c.y + Math.sin(ang) * d; }
+    if (walls.some(w => inRect(tx, ty, w))) return false;
+    c.cd.W = c.cdMax.W = KGB.W.cd[i] * hasteMul(c); cancelRecall(c);
+    const T = (c.gbTraps || (c.gbTraps = [])).filter(x => time - x.t0 < KGB.W.life);
+    T.push({x:tx, y:ty, t0:time}); while (T.length > KGB.W.max) T.shift();
+    c.gbTraps = T;
+    fx.push({type:'gbTrapSet', x:tx, y:ty, r:E(KGB.W.radius), t:0, life:.5});
+    return true;
+  }
+  if (key === 'E') {                                                                    // 차단: 회전하며 저격총을 휘두름 + 잔상이 투사체를 지움
+    c.cd.E = c.cdMax.E = KGB.E.cd[i] * hasteMul(c); cancelRecall(c);
+    const dmg = KGB.E.dmg[i] + KGB.E.bad * (c.bonusAd || 0); let champHit = false;
+    for (const u of [...units]) {
+      if (!gbFoe(c, u) || u.structure || Math.hypot(u.x - c.x, u.y - c.y) > E(KGB.E.radius) + u.r) continue;
+      gbHit(c, u, dmg, {big:isChamp(u)}); if (isChamp(u)) champHit = true;
+    }
+    if (champHit) gbGain(c, KGB.P.gainE);
+    c.gbMsT = time + KGB.E.msDur;
+    c.gbGhost = {x:c.x, y:c.y, until:time + KGB.E.ghost, face:c.face};
+    fx.push({type:'gbSpin', x:c.x, y:c.y, r:E(KGB.E.radius), t:0, life:.4});
+    return true;
+  }
+  if (key === 'R') {                                                                    // 흉탄: 힘을 모은 뒤 대상(또는 시체)에게 거대한 탄
+    const T = gbRTarget(c, ang, frac);
+    if (!T) { if (c === player) text(c.x, c.y - c.r - E(45), '쏠 대상이 없음', '#aab4c0', false, .8); return false; }
+    c.cd.R = c.cdMax.R = KGB.R.cd[i] * hasteMul(c); cancelRecall(c); c.target = null;
+    c.face = Math.atan2(T.y - c.y, T.x - c.x);
+    c.cast = {key:'R', ang:c.face, t:0, dur:KGB.R.wind, i, gbT:T};
+    if (c === player || onScreen(c)) text(c.x, c.y - c.r - E(64), '흉탄', GBC.red, c === player, .9);
+    return true;
+  }
+  return false;
+}
+function finishGubo(c, cs) {
+  if (cs.key === 'Q') {                                                                 // 발포: 처음 맞힌 대상 → 그 뒤로 부채꼴 산탄
+    const a = cs.ang, i = cs.i, dmg = KGB.Q.dmg[i] + KGB.Q.bad * (c.bonusAd || 0);
+    let first = null, fd = Infinity;
+    for (const u of units) {
+      if (!gbFoe(c, u)) continue;
+      const dx = u.x - c.x, dy = u.y - c.y, along = dx * Math.cos(a) + dy * Math.sin(a), side = Math.abs(-dx * Math.sin(a) + dy * Math.cos(a));
+      if (along < 0 || along > cs.len + u.r || side > cs.wid / 2 + u.r) continue;
+      if (along < fd) { fd = along; first = u; }
+    }
+    const end = first ? {x:first.x, y:first.y} : {x:c.x + Math.cos(a) * cs.len, y:c.y + Math.sin(a) * cs.len};
+    fx.push({type:'gbShot', x:c.x, y:c.y, x2:end.x, y2:end.y, big:false, t:0, life:.25});
+    if (!first) return;
+    gbHit(c, first, dmg, {big:isChamp(first)});
+    gbGain(c, isChamp(first) ? KGB.P.gainQ : KGB.P.gainQo);
+    let more = 0;
+    for (const u of [...units]) {                                                       // 부채꼴로 퍼지는 탄
+      if (u === first || !gbFoe(c, u) || u.structure) continue;
+      const d = Math.hypot(u.x - first.x, u.y - first.y); if (d > E(KGB.Q.cone) + u.r) continue;
+      let da = Math.atan2(u.y - first.y, u.x - first.x) - a; while (da > Math.PI) da -= Math.PI * 2; while (da < -Math.PI) da += Math.PI * 2;
+      if (Math.abs(da) > KGB.Q.arc / 2) continue;
+      gbHit(c, u, dmg * KGB.Q.splash); if (more++ < 3) gbGain(c, isChamp(u) ? KGB.P.gainQ / 2 : KGB.P.gainQo / 2);
+    }
+    fx.push({type:'gbSpray', x:first.x, y:first.y, ang:a, len:E(KGB.Q.cone), arc:KGB.Q.arc, t:0, life:.35});
+    return;
+  }
+  if (cs.key === 'R') {                                                                 // 거대한 흉탄
+    const T = cs.gbT, i = cs.i;
+    let x = T.x, y = T.y, burst = false, corpseShot = T.kind !== 'champ';
+    if (T.kind === 'champ') {
+      const u = T.u;
+      if (u.alive) {
+        x = u.x; y = u.y;
+        const amt = KGB.R.dmg[i] + KGB.R.bad * (c.bonusAd || 0) + (u.maxHp - u.hp) * KGB.R.miss[i];
+        c.gbPen = true; gbHit(c, u, amt, {big:true}); c.gbPen = false; gbGain(c, KGB.P.gainR);
+        if (!u.alive) burst = true;
+      } else burst = true;                                                              // 그새 쓰러졌으면 시체째 터뜨림
+    } else if (T.kind === 'corpse') { T.k.eaten = true; corpses = corpses.filter(k => k !== T.k); burst = true; }
+    else if (T.kind === 'mark') { c.gbMarks = (c.gbMarks || []).filter(m => m !== T.m); burst = true; }
+    fx.push({type:'gbShot', x:c.x, y:c.y, x2:x, y2:y, big:true, t:0, life:.45});
+    if (c === player || onScreen(c)) impactFeel(c === player ? .08 : .03, 12);
+    if (burst) {                                                                        // 대상 뒤로 부채꼴 흉탄 세례
+      const ang = Math.atan2(y - c.y, x - c.x);
+      const ports = [-2, -1, 0, 1, 2].map(k => { const b = ang + k * KGB.R.arc / 4.5; return {x:x + Math.cos(b) * E(46), y:y + Math.sin(b) * E(46), b}; });
+      c.gbStorm = {x, y, ang, t:0, acc:0, i, ports, n:0, dur:corpseShot ? KGB.R.stormCorpse : KGB.R.storm};
+      fx.push({type:'gbBurst', x, y, r:E(120), t:0, life:.5});
+      fx.push({type:'gbNova', x, y, r:E(KGB.R.cone) * .55, t:0, life:.7});
+      if (c === player || dist(c, player) < E(1400)) impactFeel(c === player ? .12 : .05, 16);
+      if (c === player || onScreen(c)) text(x, y - E(60), '흉탄 세례', GBC.red, c === player, 1);
+    }
+  }
+}
+const gbMs = u => u.key === 'gubo' && u.gbMsT > time ? 1 + KGB.E.ms : 1;            // speedMul(): 차단 이속
+function gbEraseProjectiles(c, G) {                                                    // 차단 잔상: 범위에 닿은 적 투사체 삭제
+  const R = E(KGB.E.radius), inR = (x, y) => Math.hypot(x - G.x, y - G.y) <= R, foe = o => o && o.team !== undefined && o.team !== c.team;
+  let n = 0; const keep = (p, o) => { if (foe(o) && inR(p.x, p.y)) { n++; fx.push({type:'gbErase', x:p.x, y:p.y, t:0, life:.3}); return false; } return true; };
+  projectiles = projectiles.filter(p => keep(p, p.src));
+  shots = shots.filter(p => keep(p, p.owner));
+  harpoons = harpoons.filter(p => keep(p, p.owner));
+  fMissiles = fMissiles.filter(p => keep(p, p.owner));
+  mtRoots = mtRoots.filter(p => p.hit || keep(p, p.owner));
+  for (const h of heroes) if (h.dbBul && h.team !== c.team) h.dbBul = h.dbBul.filter(b => keep(b, h));
+  return n;
+}
+function guboTick(c, dt) {
+  if (c.gbCirc && c.gbCirc.length) {                                                    // 마법진: 잠깐 뒤 대상에게 탄을 쏨
+    for (const m of c.gbCirc) {
+      m.t += dt; if (m.done || m.t < KGB.P.delay) continue; m.done = true;
+      const t = m.tgt;
+      if (t && t.alive && !t.hidden) {
+        damage(c, t, KGB.P.dmg[0] + KGB.P.dmg[1] * c.level + KGB.P.bad * (c.bonusAd || 0), {noProc:true, color:GBC.red});
+        fx.push({type:'gbShot', x:m.x, y:m.y, x2:t.x, y2:t.y, big:false, sigil:true, t:0, life:.28}); fx.push({type:'gbErase', x:t.x, y:t.y, t:0, life:.25});
+      }
+    }
+    c.gbCirc = c.gbCirc.filter(m => !m.done || m.t < KGB.P.delay + .35);
+  }
+  if (c.gbTraps && c.gbTraps.length) {                                                  // 붉은 덫: 밟은 적 챔피언 속박 + 팬던트
+    for (const T of c.gbTraps) {
+      if (T.used || time - T.t0 < KGB.W.arm) continue;
+      const u = champs().find(u => gbFoe(c, u) && Math.hypot(u.x - T.x, u.y - T.y) <= E(KGB.W.radius) + u.r * .6);
+      if (!u) continue;
+      T.used = true;
+      u.rootT = Math.max(u.rootT || 0, time + KGB.W.root); u.dash = null; u.spotT = Math.max(u.spotT || 0, time + 2);
+      gbAddPendant(c, 1);
+      fx.push({type:'gbSnap', x:T.x, y:T.y, r:E(KGB.W.radius), t:0, life:.5});
+      if (u === player || c === player || onScreen(u)) text(u.x, u.y - u.r - E(40), '속박', '#8fe08a', false, .8);
+    }
+    c.gbTraps = c.gbTraps.filter(T => !T.used && time - T.t0 < KGB.W.life);
+  }
+  if (c.gbGhost) { if (c.gbGhost.until <= time) c.gbGhost = null; else gbEraseProjectiles(c, c.gbGhost); }
+  const S = c.gbStorm;
+  if (S) {                                                                              // 흉탄 세례: 최대 체력 비례
+    S.t += dt; S.acc += dt;
+    while (S.acc >= KGB.R.tick && S.t <= (S.dur || KGB.R.storm) + .001) {
+      S.acc -= KGB.R.tick;
+      for (const u of units) {
+        if (!gbFoe(c, u) || u.structure) continue;
+        const d = Math.hypot(u.x - S.x, u.y - S.y); if (d > E(KGB.R.cone) + u.r) continue;
+        let da = Math.atan2(u.y - S.y, u.x - S.x) - S.ang; while (da > Math.PI) da -= Math.PI * 2; while (da < -Math.PI) da += Math.PI * 2;
+        if (Math.abs(da) > KGB.R.arc / 2 && d > u.r + E(20)) continue;
+        let amt = u.maxHp * KGB.R.pct[S.i]; if (!isChamp(u)) amt = Math.min(amt, KGB.R.monCap);
+        damage(c, u, amt + KGB.R.stAd * c.ad, {skill:true, noProc:true, color:GBC.red});
+        fx.push({type:'gbSpark', x:u.x + (Math.random() - .5) * u.r, y:u.y + (Math.random() - .5) * u.r, ang:Math.atan2(u.y - S.y, u.x - S.x), t:0, life:.25});
+      }
+      for (let q = 0; q < 2; q++) {                                                   // 포문 마법진에서 탄도 두 줄
+        const P = S.ports[(S.n++) % S.ports.length], b = S.ang + (Math.random() - .5) * KGB.R.arc, L = E(KGB.R.cone) * (.75 + Math.random() * .3);
+        fx.push({type:'gbTracer', x:P.x, y:P.y, x2:S.x + Math.cos(b) * L, y2:S.y + Math.sin(b) * L, t:0, life:.18});
+        fx.push({type:'gbMuzzle', x:P.x, y:P.y, ang:b, t:0, life:.12});
+      }
+    }
+    if (S.t >= (S.dur || KGB.R.storm)) c.gbStorm = null;
+  }
+  if (c.gbMarks) c.gbMarks = c.gbMarks.filter(m => time - m.t0 < KGB.R.mark);
+}
+function gbOnDeath(u) {                                                                 // 구보 근처에서 아군 챔피언이 쓰러지면 저격 표준점
+  if (u.key === 'gubo') { u.gbStorm = null; u.gbCirc = []; u.gbGhost = null; }
+  if (!isChamp(u)) return;
+  for (const g of heroes) {
+    if (g.key !== 'gubo' || !g.alive || g === u || g.team !== u.team || dist(g, u) > E(KGB.R.near)) continue;
+    (g.gbMarks || (g.gbMarks = [])).push({x:u.x, y:u.y, t0:time, key:u.key});
+  }
+}
+function aiGubo(b, p, d, hpP) {
+  const ready = k => b.rank[k] > 0 && b.cd[k] <= 0;
+  const hpB = b.hp / b.maxHp;
+  if (ready('R')) {                                                                     // 흉탄: 처치 각 또는 시체 뒤에 적이 몰려 있을 때
+    for (const T of gbCands(b)) {
+      if (T.kind === 'champ') {
+        const u = T.u; b.gbPen = true; const est = mitigate(u, KGB.R.dmg[b.rank.R - 1] + KGB.R.bad * b.bonusAd + (u.maxHp - u.hp) * KGB.R.miss[b.rank.R - 1], 'phys', b); b.gbPen = false;
+        if (est >= u.hp * .95 && dist(b, u) > E(300)) { castSkill(b, 'R', Math.atan2(u.y - b.y, u.x - b.x), Math.min(1, dist(b, u) / E(KGB.R.range))); return true; }
+      } else {
+        const ang = Math.atan2(T.y - b.y, T.x - b.x);
+        const n = enemiesOf(b).filter(e => { if (!e.alive || !targetable(e)) return false; const dd = Math.hypot(e.x - T.x, e.y - T.y); if (dd > E(KGB.R.cone) * .8) return false; let da = Math.atan2(e.y - T.y, e.x - T.x) - ang; while (da > Math.PI) da -= Math.PI * 2; while (da < -Math.PI) da += Math.PI * 2; return Math.abs(da) < KGB.R.arc / 2; }).length;
+        if (n >= 1) { castSkill(b, 'R', ang, Math.min(1, Math.hypot(T.x - b.x, T.y - b.y) / E(KGB.R.range))); return true; }
+      }
+    }
+  }
+  if (ready('E') && (enemiesOf(b).some(e => e.alive && targetable(e) && dist(e, b) < E(KGB.E.radius) + e.r) || projectiles.some(q => q.tgt === b && q.src && q.src.team !== b.team && Math.hypot(q.x - b.x, q.y - b.y) < E(220)))) { castSkill(b, 'E', null); return true; }
+  if (!isChamp(p)) return false;
+  if (ready('W') && d < E(KGB.W.range) * .9 && !(b.gbTraps || []).some(T => Math.hypot(T.x - p.x, T.y - p.y) < E(150))) { const a = aimAt(b, p, .5); castSkill(b, 'W', a, Math.min(1, d / E(KGB.W.range))); return true; }
+  if (ready('Q') && d < E(KGB.Q.len) * .92) { castSkill(b, 'Q', aimAt(b, p, .25)); return true; }
+  return false;
+}
+
 let hlOrbs = [], hlPetals = [], hlDrops = [];
 const hlRange = (c, base) => E(base) * (c.hlEmp ? 1 + KH.P.rangeUp : 1);
 const hlBaseRange = key => key === 'Q' ? KH.Q.range : key === 'W' ? KH.W.range : KH.R.range;
@@ -8433,6 +8908,8 @@ function champTimers(c, dt) {
   if (c.key === 'marten') martenTick(c, dt);
   if (c.key === 'guido') guidoTick(c, dt);
   if (c.key === 'thoma') thomaTick(c, dt);
+  if (c.key === 'dongbaek') dongbaekTick(c, dt);
+  if (c.key === 'gubo') guboTick(c, dt);
   if (c.cast && c.cast.t >= c.cast.dur) finishCast(c);
   if (c.recalling) {
     if (c.stunT > 0) cancelRecall(c);
@@ -8486,7 +8963,7 @@ function moveChamp(c, dx, dy, dt) {
 function updatePlayer(dt, ix, iy) {
   if (!player.alive) { respawnTick(player, dt); return; }
   champTimers(player, dt);
-  if (player.dash || player.blink || player.leap || player.alpha || player.rcut || player.scR || player.hcR || player.mrDash || player.mrGrab || player.ylDash || player.krDash || player.krR || player.vgDash || player.vgFin || player.chE || player.chQ || player.chRide || player.stasisT > time || player.itDash || hhBusy(player) || alBusy(player) || mtBusy(player) || gdBusy(player) || tmBusy(player)) return;
+  if (player.dash || player.blink || player.leap || player.alpha || player.rcut || player.scR || player.hcR || player.mrDash || player.mrGrab || player.ylDash || player.krDash || player.krR || player.vgDash || player.vgFin || player.chE || player.chQ || player.chRide || player.stasisT > time || player.itDash || hhBusy(player) || alBusy(player) || mtBusy(player) || gdBusy(player) || tmBusy(player) || dbBusy(player)) return;
   if (player.ylRevive) { moveChamp(player, 0, 0, dt); return; }                                            // 돌진 중엔 조작 불가
   if (player.stunT > 0 || player.cast) { moveChamp(player, 0, 0, dt); return; }
   if (tauntedMove(player, dt) || fearMove(player, dt)) return;                               // 도발당함
@@ -8532,10 +9009,12 @@ const AI_BUILD = {
   marten: ['s_shield', 'harvest', 'galaxy', 'fragment', 'star'],
   guido: ['s_shield', 'harvest', 'frost', 'regret', 'star'],
   thoma: ['s_shield', 'harvest', 'regret', 'frost', 'star'],
+  dongbaek: ['s_blade', 'beak', 'justitia', 'pink', 'lament'],
+  gubo: ['s_blade', 'bullet', 'hornet', 'tears', 'scar'],
   yuri: ['s_blade', 'lament', 'pink', 'cobalt', 'justitia'],
   yisang: ['s_ring', 'galaxy', 'fragment', 'dacapo', 'star'],
 };
-const AI_SKILL_ORDER = {thoma:['Q', 'W', 'E'], guido:['Q', 'W', 'E'], marten:['Q', 'E', 'W'], alyssa:['Q', 'W', 'E'], hohenheim:['Q', 'W', 'E'], gregor:['Q', 'W', 'E'], rodion:['Q', 'E', 'W'], yisang:['W', 'Q', 'E'], ishmael:['Q', 'E', 'W'], ryoshu:['Q', 'E', 'W'], faust:['Q', 'E', 'W'], donq:['Q', 'W', 'E'], outis:['Q', 'W', 'E'], honglu:['Q', 'W', 'E'], sinclair:['Q', 'W', 'E'], heathcliff:['Q', 'E', 'W'], meursault:['Q', 'E', 'W'], yuri:['E', 'W', 'Q'], kromer:['Q', 'E', 'W'], vergil:['Q', 'W', 'E'], charon:['Q', 'E', 'W']};
+const AI_SKILL_ORDER = {gubo:['Q', 'E', 'W'], dongbaek:['Q', 'W', 'E'], thoma:['Q', 'W', 'E'], guido:['Q', 'W', 'E'], marten:['Q', 'E', 'W'], alyssa:['Q', 'W', 'E'], hohenheim:['Q', 'W', 'E'], gregor:['Q', 'W', 'E'], rodion:['Q', 'E', 'W'], yisang:['W', 'Q', 'E'], ishmael:['Q', 'E', 'W'], ryoshu:['Q', 'E', 'W'], faust:['Q', 'E', 'W'], donq:['Q', 'W', 'E'], outis:['Q', 'W', 'E'], honglu:['Q', 'W', 'E'], sinclair:['Q', 'W', 'E'], heathcliff:['Q', 'E', 'W'], meursault:['Q', 'E', 'W'], yuri:['E', 'W', 'Q'], kromer:['Q', 'E', 'W'], vergil:['Q', 'W', 'E'], charon:['Q', 'E', 'W']};
 const AI = {react:[.14, .3], dodgeReact:[.1, .2], dodgeChance:.7, engage:600, lastHit:1.15};   // 반응 0.14~0.3초, 스킬 피하기는 보고 0.1~0.2초 뒤 (선딜이 짧으면 못 피함)
 
 // ── 포탑 철거: 맞아 줄 챔피언(탱커)을 앞세워 포탑 어그로를 받게 하고 나머지가 같이 침 ──
@@ -8617,6 +9096,8 @@ function aiCombo(b, p) {
   if (b.key === 'marten') return aiMarten(b, p, d, hpP);
   if (b.key === 'guido') return aiGuido(b, p, d, hpP);
   if (b.key === 'thoma') return aiThoma(b, p, d, hpP);
+  if (b.key === 'dongbaek') return aiDongbaek(b, p, d, hpP);
+  if (b.key === 'gubo') return aiGubo(b, p, d, hpP);
   if (b.key === 'honglu') {                                  // 홍루: 허환경 → 창옥지대 → 옥구슬 포킹
     const lead = (s) => ({x:p.x + (p.vx || 0) * s, y:p.y + (p.vy || 0) * s});
     const aimPt = (key, s) => { const q = lead(s), R = hlRange(b, hlBaseRange(key)); return [Math.atan2(q.y - b.y, q.x - b.x), Math.min(1, Math.hypot(q.x - b.x, q.y - b.y) / R)]; };
@@ -8743,6 +9224,18 @@ function skillEst(a, k, t) {                     // 스킬 한 번의 대략적�
     if (k === 'W') return a.ad * pm * 3 * (1 + KYU.W.as[i]);
     return 0;
   }
+  if (a.key === 'gubo') {
+    if (k === 'Q') return (KGB.Q.dmg[i] + KGB.Q.bad * a.bonusAd) * pm;
+    if (k === 'E') return (KGB.E.dmg[i] + KGB.E.bad * a.bonusAd) * pm;
+    if (k === 'R') return (KGB.R.dmg[i] + KGB.R.bad * a.bonusAd + (t.maxHp - t.hp) * KGB.R.miss[i]) * pm;
+    return 0;
+  }
+  if (a.key === 'dongbaek') {
+    if (k === 'Q') return (KDB.Q.dmg[i] + KDB.Q.bad * a.bonusAd) * pm;
+    if (k === 'W') return (KDB.W.dmg[i] + KDB.W.bad * a.bonusAd + (KDB.W.hit[i] + KDB.W.hitAd * a.bonusAd) * 3) * pm;
+    if (k === 'R') return (KDB.R.dmg[i] + KDB.R.ad * a.ad) * dbShots(a) * .55 * pm;
+    return 0;
+  }
   if (a.key === 'thoma') {
     if (k === 'Q') return (KTM.Q.dmg[i] + KTM.Q.ap * a.ap) * mm + a.ad * pm;
     if (k === 'W') return (KTM.W.dmg[i] + KTM.W.ap * a.ap) * mm;
@@ -8865,7 +9358,7 @@ const killableMinion = (b, u) => u.hp <= b.ad * physMul(u, b) * 1.1 + csExecHp(u
 
 // ═════════════ 3대3 봇전: 팀·역할 ═════════════
 const ROLES = ['top', 'jungle', 'mid', 'bottom'], ROLE_NAME = {top:'탑', jungle:'정글', mid:'미드', bottom:'바텀'};
-const CHAMP_POOL = ['gregor', 'rodion', 'yisang', 'ishmael', 'ryoshu', 'faust', 'donq', 'outis', 'honglu', 'sinclair', 'heathcliff', 'meursault', 'yuri', 'kromer', 'vergil', 'charon', 'hohenheim', 'alyssa', 'marten', 'guido', 'thoma'];
+const CHAMP_POOL = ['gregor', 'rodion', 'yisang', 'ishmael', 'ryoshu', 'faust', 'donq', 'outis', 'honglu', 'sinclair', 'heathcliff', 'meursault', 'yuri', 'kromer', 'vergil', 'charon', 'hohenheim', 'alyssa', 'marten', 'guido', 'thoma', 'dongbaek', 'gubo'];
 const JG_ROUTE = ['blood', 'thieves', 'rats', 'sweep', 'glutton', 'scribe'];            // 첫 정글 순서 (위 버프 → 쥐떼 → 아래 버프 → 청소부)
 const enemiesOf = b => champs().filter(c => c.team !== b.team && (!c.alive || seenBy(b.team, c)));   // 시야에 보이는 적만 (죽은 적은 알 수 있음)
 const UNSEEN = {alive:false, unseen:true, respawnT:99, x:-1e5, y:-1e5, r:0, hp:1, maxHp:1, team:'none', st:{range:0, speed:0}, rank:{}, cd:{}, key:'none', vx:0, vy:0, speed:0};
@@ -8960,6 +9453,8 @@ function threatRange(e) {
   if (e.key === 'rodion') { if (ready('E')) r = Math.max(r, E(KR.E.len) + E(e.st.range)); if (ready('Q')) r = Math.max(r, E(KR.Q.len)); }
   if (e.key === 'yisang') { if (ready('W')) r = Math.max(r, E(KY.W.range) * .8); if (ready('Q')) r = Math.max(r, E(KY.Q.len)); }
   if (e.key === 'ishmael') { if (ready('Q')) r = Math.max(r, E(KI.Q.range)); if (ready('E')) r = Math.max(r, E(KI.E.len)); }
+  if (e.key === 'gubo') { if (ready('Q')) r = Math.max(r, E(KGB.Q.len)); }
+  if (e.key === 'dongbaek') { if (ready('R')) r = Math.max(r, E(KDB.R.range) * .8); if (ready('W')) r = Math.max(r, E(KDB.W.range)); }
   if (e.key === 'thoma') { if (ready('E')) r = Math.max(r, E(KTM.E.len)); }
   if (e.key === 'guido') { if (ready('W')) r = Math.max(r, E(KGD.W.dash + KGD.W.dash2)); if (ready('Q')) r = Math.max(r, E(KGD.Q.len)); }
   if (e.key === 'marten') { if (ready('Q')) r = Math.max(r, E(KMT.Q.len)); if (ready('R')) r = Math.max(r, E(KMT.R.radius)); }
@@ -9197,7 +9692,7 @@ function updateBot(b, dt) {
   if (!b.alive) { respawnTick(b, dt); b.path = null; b.stance = null; b.focus = null; return; }
   champTimers(b, dt);
   aiLearn(b);
-  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin || b.chE || b.chQ || b.chRide || b.stasisT > time || b.itDash || hhBusy(b) || alBusy(b) || mtBusy(b) || gdBusy(b) || tmBusy(b)) return;
+  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin || b.chE || b.chQ || b.chRide || b.stasisT > time || b.itDash || hhBusy(b) || alBusy(b) || mtBusy(b) || gdBusy(b) || tmBusy(b) || dbBusy(b)) return;
   if (chBotBoard(b, dt)) return;                                  // 아군 카론이 버스 시동 중: 타러 감
   if (b.ylRevive) { moveChamp(b, 0, 0, dt); return; }
   if (b.key === 'thoma') aiThomaCC(b);                                                       // 토마: CC 중 전화위복
@@ -9597,7 +10092,7 @@ function update(dt) {
   projectiles = projectiles.filter(p => {
     if (!p.tgt.alive) return false;
     const dx = p.tgt.x - p.x, dy = p.tgt.y - p.y, d = Math.hypot(dx, dy), step = p.speed * dt;
-    if (d <= step + p.tgt.r * 0.5) { damage(p.src, p.tgt, p.amount, p.opts || {basic:isMinion(p.src) || isMonster(p.src)}); return false; }
+    if (d <= step + p.tgt.r * 0.5) { damage(p.src, p.tgt, p.amount, p.opts || {basic:isMinion(p.src) || isMonster(p.src)}); if (p.src && p.src.key === 'dongbaek' && p.opts && p.opts.basic) dbOnHit(p.src, p.tgt, p.opts); return false; }
     p.x += dx / d * step; p.y += dy / d * step; return true;
   });
 
@@ -9648,6 +10143,21 @@ function updateView(dt) {                                               // 카�
       : player.cast && player.cast.key === 'R' ? player.cast.pt : player.scR ? player.scR.pt : null;
     if (pt && player.scR) { camTx = pt.x; camTy = pt.y; wantZoom = .8; }   // 낙하·돌격: 도착 지점을 따라감
     else if (pt) {
+      camTx = (player.x + pt.x) / 2; camTy = (player.y + pt.y) / 2;
+      const fit = Math.min(vw / ((Math.abs(pt.x - player.x) + 460) * baseZoom), vh / ((Math.abs(pt.y - player.y) + 380) * baseZoom));
+      wantZoom = Math.max(.2, Math.min(.75, fit));
+    }
+  }
+  if (player.key === 'gubo' && player.alive) {                 // 구보 궁: 조준 · 힘을 모으는 동안 대상까지 보이도록 시야 이동
+    const aimR = skAim.id !== null && skAim.key === 'R' && skAim.aiming && !player.cast;
+    let pt = null;
+    if (aimR && skAim.id === 'kb') wantZoom = Math.min(wantZoom, .45);                  // PC: 시야만 넓힘 (커서로 조준)
+    else if (aimR) {
+      const ang = Math.atan2(skAim.dy, skAim.dx), frac = Math.min(1, Math.hypot(skAim.dx, skAim.dy) / SK_BTN.maxDrag), T = gbRTarget(player, ang, frac);
+      const d = E(KGB.R.range) * Math.max(.15, frac);
+      pt = T || {x:player.x + Math.cos(ang) * d, y:player.y + Math.sin(ang) * d};
+    } else if (player.cast && player.cast.key === 'R' && player.cast.gbT) { const T = player.cast.gbT; pt = T.kind === 'champ' ? {x:T.u.x, y:T.u.y} : {x:T.x, y:T.y}; }
+    if (pt) {
       camTx = (player.x + pt.x) / 2; camTy = (player.y + pt.y) / 2;
       const fit = Math.min(vw / ((Math.abs(pt.x - player.x) + 460) * baseZoom), vh / ((Math.abs(pt.y - player.y) + 380) * baseZoom));
       wantZoom = Math.max(.2, Math.min(.75, fit));
@@ -10009,7 +10519,7 @@ function drawChamp(g, c) {
     }
     g.restore();
   }
-  const base = c.key === 'thoma' ? TMC.coat : c.key === 'guido' ? GDC.cape : c.key === 'marten' ? MTC.coat : c.key === 'alyssa' ? ALC.coat : c.key === 'hohenheim' ? HHC.coat : c.key === 'gregor' ? (rForm(c) ? '#2e1c0e' : CHITIN) : c.key === 'rodion' ? '#c9a27a' : c.key === 'yisang' ? '#15151a' : c.key === 'ishmael' ? '#e8792b' : c.key === 'ryoshu' ? '#c8232b' : c.key === 'faust' ? '#f4f3f7' : c.key === 'donq' ? '#f2c230' : c.key === 'sinclair' ? '#8b9c15' : c.key === 'heathcliff' ? '#6a3d9a' : c.key === 'meursault' ? '#1d3461' : c.key === 'yuri' ? '#c8405a' : c.key === 'kromer' ? '#ece4d6' : c.key === 'vergil' ? '#2b2c31' : c.key === 'charon' ? '#26393a' : c.key === 'honglu' ? '#3fc7a8' : c.key === 'outis' ? '#1b5a33' : '#7a3438';
+  const base = c.key === 'gubo' ? GBC.coat : c.key === 'dongbaek' ? DBC.coat : c.key === 'thoma' ? TMC.coat : c.key === 'guido' ? GDC.cape : c.key === 'marten' ? MTC.coat : c.key === 'alyssa' ? ALC.coat : c.key === 'hohenheim' ? HHC.coat : c.key === 'gregor' ? (rForm(c) ? '#2e1c0e' : CHITIN) : c.key === 'rodion' ? '#c9a27a' : c.key === 'yisang' ? '#15151a' : c.key === 'ishmael' ? '#e8792b' : c.key === 'ryoshu' ? '#c8232b' : c.key === 'faust' ? '#f4f3f7' : c.key === 'donq' ? '#f2c230' : c.key === 'sinclair' ? '#8b9c15' : c.key === 'heathcliff' ? '#6a3d9a' : c.key === 'meursault' ? '#1d3461' : c.key === 'yuri' ? '#c8405a' : c.key === 'kromer' ? '#ece4d6' : c.key === 'vergil' ? '#2b2c31' : c.key === 'charon' ? '#26393a' : c.key === 'honglu' ? '#3fc7a8' : c.key === 'outis' ? '#1b5a33' : '#7a3438';
   if (c.key === 'alyssa') drawAlyssaBack(g, c);
   if (c.key === 'marten') drawMartenBack(g, c);
   if (c.key === 'guido') drawGuidoBack(g, c);
@@ -10042,6 +10552,8 @@ function drawChamp(g, c) {
   if (c.key === 'marten') drawMartenBody(g, c);
   if (c.key === 'guido') drawGuidoBody(g, c);
   if (c.key === 'thoma') drawThomaBody(g, c);
+  if (c.key === 'dongbaek') drawDongbaekBody(g, c);
+  if (c.key === 'gubo') drawGuboBody(g, c);
   if (c.stasisT > time) drawStasisShell(g, c);
   // 바라보는 방향
   if (!window.__mvpDraw) {
@@ -10069,7 +10581,7 @@ function drawChamp(g, c) {
       drawFaustCast(g, c, k);
     } else if (c.key === 'ryoshu') {   // 아라야시키 베기
       drawKatanaSwing(g, c, k);
-    } else if (c.key === 'honglu' || c.key === 'sinclair' || c.key === 'heathcliff' || c.key === 'meursault' || c.key === 'yuri' || c.key === 'kromer' || c.key === 'vergil' || c.key === 'charon' || c.key === 'hohenheim' || c.key === 'alyssa' || c.key === 'marten' || c.key === 'guido' || c.key === 'thoma') {   // 몸통 그리기에서 처리
+    } else if (c.key === 'honglu' || c.key === 'sinclair' || c.key === 'heathcliff' || c.key === 'meursault' || c.key === 'yuri' || c.key === 'kromer' || c.key === 'vergil' || c.key === 'charon' || c.key === 'hohenheim' || c.key === 'alyssa' || c.key === 'marten' || c.key === 'guido' || c.key === 'thoma' || c.key === 'dongbaek' || c.key === 'gubo') {   // 몸통 그리기에서 처리
     } else if (c.key === 'outis') {    // 사격 반동은 몸통 그리기에서
     } else if (c.key === 'donq') {     // 랜스 찌르기는 몸통 그리기에서
     } else if (c.key === 'ishmael') {  // 검은 메이스 휘두르기 (세 번째 평타는 주황)
@@ -10209,6 +10721,8 @@ function worldCastBar(g, c) {          // 챔피언 발밑 작은 캐스팅바 (
 
 // 챔피언별 범위 색: 그레고르 갈색 · 로쟈 연갈색 · 이상 흑백 · 이스마엘 주황 · 료슈 빨강 (취소 위치는 회색)
 const AIM_COL = {
+  gubo:{line:'rgba(224,48,62,.95)', fill:'rgba(44,42,72,.3)', prog:'rgba(224,48,62,.42)'},
+  dongbaek:{line:'rgba(255,216,74,.95)', fill:'rgba(214,169,62,.22)', prog:'rgba(255,241,168,.42)'},
   thoma:{line:'rgba(232,212,138,.95)', fill:'rgba(138,123,76,.25)', prog:'rgba(200,226,214,.42)'},
   guido:{line:'rgba(216,220,228,.95)', fill:'rgba(143,29,36,.25)', prog:'rgba(200,35,58,.42)'},
   marten:{line:'rgba(255,211,106,.95)', fill:'rgba(79,106,52,.25)', prog:'rgba(143,191,90,.4)'},
@@ -10316,8 +10830,9 @@ function drawSkillAim(g) {
     g.fillStyle = AC.fill; g.beginPath(); g.arc(player.x, player.y, sh.point + player.r, 0, 7); g.fill();
     g.strokeStyle = AC.line; g.lineWidth = E(3); g.stroke();
     const ang = skAim.aiming ? Math.atan2(skAim.dy, skAim.dx) : null, frac = skAim.aiming ? Math.min(1, Math.hypot(skAim.dx, skAim.dy) / SK_BTN.maxDrag) : null;
-    if (ang !== null) { const R = sh.point * Math.max(.15, frac); g.fillStyle = AF.line; g.beginPath(); g.arc(player.x + Math.cos(ang) * R, player.y + Math.sin(ang) * R, E(12), 0, 7); g.fill(); }
-    const tg = player.key === 'meursault' && !player.mrCopy ? mrRTarget(player, ang, frac) : player.key === 'heathcliff' ? hcRTarget(player, ang, frac) : player.key === 'donq' ? donRPick(player, ang, frac) : player.key === 'ryoshu' ? ryoQPick(player, ang, frac) : player.key === 'hohenheim' ? hhETarget(player, ang, frac) : yiWPick(player, ang, frac);
+    if (ang !== null) { const R = sh.point * Math.max(.15, frac); g.fillStyle = AF.line; g.beginPath(); g.arc(player.x + Math.cos(ang) * R, player.y + Math.sin(ang) * R, E(12), 0, 7); g.fill(); if (sh.pr) { g.strokeStyle = AC.line; g.lineWidth = E(3); g.beginPath(); g.arc(player.x + Math.cos(ang) * R, player.y + Math.sin(ang) * R, sh.pr, 0, 7); g.stroke(); } }
+    const gbT = player.key === 'gubo' && skAim.key === 'R' && ang !== null ? gbRTarget(player, ang, frac) : null;
+    const tg = player.key === 'gubo' ? (gbT ? {x:gbT.x, y:gbT.y, r:gbT.kind === 'champ' ? gbT.u.r : E(22)} : null) : player.key === 'dongbaek' ? null : player.key === 'meursault' && !player.mrCopy ? mrRTarget(player, ang, frac) : player.key === 'heathcliff' ? hcRTarget(player, ang, frac) : player.key === 'donq' ? donRPick(player, ang, frac) : player.key === 'ryoshu' ? ryoQPick(player, ang, frac) : player.key === 'hohenheim' ? hhETarget(player, ang, frac) : yiWPick(player, ang, frac);
     if (tg) { g.strokeStyle = tg.shard ? '#ffffff' : '#ffd84d'; g.lineWidth = E(5); g.beginPath(); g.arc(tg.x, tg.y - (tg.shard ? E(10) : 0), tg.r + E(10), 0, 7); g.stroke();
       g.setLineDash([E(12), E(8)]); g.beginPath(); g.moveTo(player.x, player.y); g.lineTo(tg.x, tg.y); g.stroke(); g.setLineDash([]); }
   }
@@ -13129,6 +13644,216 @@ function drawThomaFx(g, f, k) {
     g.globalAlpha = .5 * a; for (const s of [-1, 1]) tmWing(g, f.x, f.y, f.ang + Math.PI + s * .7, f.r * 2, f.r * .35, TMC.wingE); g.globalAlpha = 1;
   }
 }
+// ── 동백 그리기 ──
+function dbFlower(g, x, y, s, col, core) {                                             // 다섯 잎 꽃
+  g.fillStyle = col;
+  for (let i = 0; i < 5; i++) { const a = i * Math.PI * 2 / 5 - Math.PI / 2; g.beginPath(); g.ellipse(x + Math.cos(a) * s * .55, y + Math.sin(a) * s * .55, s * .5, s * .32, a, 0, 7); g.fill(); }
+  g.fillStyle = core || '#fff4c0'; g.beginPath(); g.arc(x, y, s * .25, 0, 7); g.fill();
+}
+function dbFan(g, x, y, a, s, open) {                                                  // 꽃잎 부채
+  g.save(); g.translate(x, y); g.rotate(a);
+  const h = .35 + open * .6;
+  g.fillStyle = DBC.fan; g.strokeStyle = DBC.petalD; g.lineWidth = Math.max(1, s * .06);
+  g.beginPath(); g.moveTo(0, 0); g.arc(0, 0, s, -h, h); g.closePath(); g.fill(); g.stroke();
+  g.strokeStyle = 'rgba(160,110,30,.6)'; for (let k = -2; k <= 2; k++) { const b = k / 2 * h; g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.cos(b) * s, Math.sin(b) * s); g.stroke(); }
+  g.restore();
+}
+function drawDongbaekBody(g, c) {
+  const a = c.face, sw = c.swingT > 0 ? Math.min(1, c.swingT / .18) : 0;
+  const open = c.dbR ? .3 : sw ? 1 - sw * .5 : .25;
+  dbFan(g, c.x + Math.cos(a + .9) * c.r * .7, c.y + Math.sin(a + .9) * c.r * .7, a + (c.dbR ? 0 : .35 - sw * .6), c.r * 1.25, open);
+  if (c.dbTwinT > time) { g.strokeStyle = `rgba(255,216,74,${.55 + .3 * Math.sin(time * 10)})`; g.lineWidth = E(2.5); g.beginPath(); g.arc(c.x, c.y, c.r + E(5), 0, 7); g.stroke(); }   // 다음 평타 두 발
+}
+function drawDongbaekWorld(g) {
+  for (const c of heroes) {
+    if (c.key !== 'dongbaek') continue;
+    const vis = c.team === player.team || seenBy(player.team, c);
+    for (const W of c.dbW || []) {                                                       // 만개 예고
+      const k = Math.min(1, W.t / KDB.W.delay), r = E(KDB.W.radius);
+      g.strokeStyle = 'rgba(255,216,74,.85)'; g.lineWidth = E(2.5); g.beginPath(); g.arc(W.x, W.y, r, 0, 7); g.stroke();
+      g.fillStyle = 'rgba(255,216,74,.22)'; g.beginPath(); g.arc(W.x, W.y, r * k, 0, 7); g.fill();
+    }
+    for (const b of c.dbBul || []) {                                                     // 폭죽 탄환
+      const col = ['#ffd84a', '#ff7a5a', '#fff1a8'][b.hue || 0];
+      g.lineCap = 'round';
+      g.strokeStyle = col.replace(/^#(..)(..)(..)$/, (m, r, gg, bb) => `rgba(${parseInt(r, 16)},${parseInt(gg, 16)},${parseInt(bb, 16)},.35)`); g.lineWidth = E(14);
+      g.beginPath(); g.moveTo(b.x, b.y); g.lineTo(b.x - Math.cos(b.a) * E(46), b.y - Math.sin(b.a) * E(46)); g.stroke();
+      g.strokeStyle = col; g.lineWidth = E(7);
+      g.beginPath(); g.moveTo(b.x, b.y); g.lineTo(b.x - Math.cos(b.a) * E(40), b.y - Math.sin(b.a) * E(40)); g.stroke();
+      g.fillStyle = '#fffbe0'; g.beginPath(); g.arc(b.x, b.y, E(6), 0, 7); g.fill();
+      g.strokeStyle = col; g.lineWidth = E(2); g.beginPath(); g.arc(b.x, b.y, E(8.5), 0, 7); g.stroke();
+    }
+    if (!vis) continue;
+  }
+  for (const u of units) {                                                               // 만개 표식: 머리 위 노란 꽃
+    if (!(u.dbMarkT > time) || !u.alive || (u.team !== player.team && !seenBy(player.team, u))) continue;
+    dbFlower(g, u.x, u.y - u.r - E(isChamp(u) ? 64 : 34), E(7), DBC.petal, DBC.petalD);
+  }
+}
+function drawDongbaekFx(g, f, k) {
+  const a = 1 - k;
+  if (f.type === 'dbPetals') {                                                           // Q: 부채꼴로 흩날리는 노란 동백꽃
+    g.fillStyle = `rgba(255,216,74,${.18 * a})`; g.beginPath(); g.moveTo(f.x, f.y); g.arc(f.x, f.y, f.len * (.3 + .7 * Math.min(1, k * 2.5)), f.ang - f.arc / 2, f.ang + f.arc / 2); g.closePath(); g.fill();
+    g.globalAlpha = a;
+    for (let i = 0; i < 9; i++) { const b = f.ang + (i / 8 - .5) * f.arc, d = f.len * Math.min(1, k * 2.2 + (i % 3) * .08); dbFlower(g, f.x + Math.cos(b) * d, f.y + Math.sin(b) * d, E(8), DBC.petal, DBC.petalD); }
+    g.globalAlpha = 1;
+  } else if (f.type === 'dbBurst') {                                                     // W: 만개 폭발
+    g.strokeStyle = `rgba(255,216,74,${a})`; g.lineWidth = E(6) * a + E(1); g.beginPath(); g.arc(f.x, f.y, f.r * (.4 + k * .7), 0, 7); g.stroke();
+    g.globalAlpha = a; for (let i = 0; i < 7; i++) { const b = i * Math.PI * 2 / 7 + k, d = f.r * (.3 + k * .8); dbFlower(g, f.x + Math.cos(b) * d, f.y + Math.sin(b) * d, E(9) * (1 - k * .4), DBC.petal, DBC.petalD); } g.globalAlpha = 1;
+  } else if (f.type === 'dbBloom') {                                                     // 치명타: 붉은 동백이 피었다 짐
+    g.globalAlpha = a; dbFlower(g, f.x, f.y - f.r * .3 - k * E(14), E(10) * (1 + k * .5), DBC.camellia, '#ffd84a'); g.globalAlpha = 1;
+  } else if (f.type === 'dbTrail') {                                                     // E: 흩어지는 꽃잎 잔상
+    g.globalAlpha = .5 * a; dbFlower(g, f.x, f.y, f.r * .6, DBC.petal, DBC.petalD); g.globalAlpha = 1;
+  } else if (f.type === 'dbCamellia') {                                                  // R 적중: 대상에게서 붉은 동백꽃 문양이 피었다 터짐
+    const s = (f.big ? E(16) : E(11)) * (1 + Math.min(1, k * 3) * .9), cx = f.x, cy = f.y;
+    g.save(); g.translate(cx, cy); g.rotate(f.rot + k * .8); g.globalAlpha = a;
+    g.strokeStyle = `rgba(255,216,74,${a})`; g.lineWidth = E(3) * a + E(.5); g.beginPath(); g.arc(0, 0, s * 1.7, 0, 7); g.stroke();
+    dbFlower(g, 0, 0, s, DBC.camellia, '#ffd84a'); g.restore();
+    g.globalAlpha = a; g.fillStyle = DBC.camellia;
+    for (let i = 0; i < 6; i++) { const b = f.ang + (i - 2.5) * .45, d = f.r * .6 + k * E(46); g.beginPath(); g.ellipse(cx + Math.cos(b) * d, cy + Math.sin(b) * d, E(4.5) * a + E(1), E(2.6) * a + E(.6), b, 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+  } else if (f.type === 'dbPop') {                                                       // R: 폭죽 터짐
+    const col = ['255,216,74', '255,122,90', '255,241,168'][f.hue || 0];
+    g.strokeStyle = `rgba(${col},${a})`; g.lineWidth = E(2);
+    for (let i = 0; i < 8; i++) { const b = i * Math.PI / 4, r0 = E(4) + k * E(10), r1 = E(8) + k * E(22); g.beginPath(); g.moveTo(f.x + Math.cos(b) * r0, f.y + Math.sin(b) * r0); g.lineTo(f.x + Math.cos(b) * r1, f.y + Math.sin(b) * r1); g.stroke(); }
+  }
+}
+// ── 구보 그리기 ──
+function gbRifle(g, x, y, a, L, w, hot) {                                              // 흉탄 장총: 남색 개머리판 · 금장식 · 긴 총신 · 붉은 눈 (쏠 땐 총구에 마법진)
+  g.save(); g.translate(x, y); g.rotate(a);
+  const gold = '#d4a83a', navy = '#1e2a5a', ink = '#0e0e14', s = w;
+  g.lineJoin = 'round'; g.lineWidth = Math.max(1, s * .28); g.strokeStyle = ink;
+  g.fillStyle = navy;                                                                   // 개머리판 (뒤로 갈수록 넓고 아래로 꺾임)
+  g.beginPath(); g.moveTo(-L * .36, -s * .9); g.lineTo(-L * .02, -s * .7); g.lineTo(L * .05, s * .55); g.lineTo(-L * .12, s * .9); g.lineTo(-L * .38, s * 2.1); g.lineTo(-L * .42, s * 1.6); g.closePath(); g.fill(); g.stroke();
+  g.strokeStyle = gold; g.lineWidth = Math.max(1, s * .22);                              // 금 상감
+  g.beginPath(); g.moveTo(-L * .33, -s * .55); g.quadraticCurveTo(-L * .2, s * .1, -L * .05, -s * .35); g.stroke();
+  g.fillStyle = '#2a2a34'; g.strokeStyle = ink; g.lineWidth = Math.max(1, s * .28);       // 기관부
+  g.fillRect(-L * .03, -s * .85, L * .2, s * 1.7); g.strokeRect(-L * .03, -s * .85, L * .2, s * 1.7);
+  g.strokeStyle = gold; g.lineWidth = Math.max(1, s * .25); g.strokeRect(-L * .01, -s * .6, L * .16, s * 1.2);
+  g.beginPath(); g.ellipse(L * .05, s * 1.35, L * .06, s * .55, 0, 0, Math.PI); g.stroke();   // 장전 레버
+  g.fillStyle = hot ? '#ff3a48' : '#b8283a'; g.beginPath(); g.arc(L * .07, 0, s * .45, 0, 7); g.fill();   // 붉은 눈
+  if (hot) { g.fillStyle = 'rgba(255,58,72,.45)'; g.beginPath(); g.arc(L * .07, 0, s * 1.1, 0, 7); g.fill(); }
+  g.fillStyle = ink; g.fillRect(L * .17, -s * .38, L * .86, s * .76);                    // 긴 총신
+  g.fillStyle = '#3a3a48'; g.fillRect(L * .17, -s * .38, L * .86, s * .22);
+  g.fillStyle = gold; for (const p of [.34, .6, .86]) g.fillRect(L * p, -s * .55, s * .7, s * 1.1);   // 금 띠
+  g.fillRect(L * .99, -s * .7, s * .8, s * 1.4);                                          // 총구
+  g.fillRect(L * .93, -s * 1.15, s * .45, s * .55);                                       // 가늠쇠
+  g.restore();
+  if (hot) gbSigil(g, x + Math.cos(a) * L * 1.14, y + Math.sin(a) * L * 1.14, s * 3.4, time * 3, .95, '#e0303e');   // 총구 앞 마법진
+}
+function gbSigil(g, x, y, r, rot, a, col) {                                            // 붉은 마법진 (이중 원 · 육망성 · 룬 눈금 · 안쪽 붉은 빛)
+  if (a <= 0 || r <= 0) return;
+  g.save(); g.translate(x, y); g.globalAlpha = Math.min(1, a);
+  const gr = g.createRadialGradient(0, 0, 0, 0, 0, r * 1.15); gr.addColorStop(0, 'rgba(120,0,16,.55)'); gr.addColorStop(.7, 'rgba(200,20,40,.28)'); gr.addColorStop(1, 'rgba(224,48,62,0)');
+  g.fillStyle = gr; g.beginPath(); g.arc(0, 0, r * 1.15, 0, 7); g.fill();
+  g.rotate(rot); g.strokeStyle = col || GBC.red; g.lineWidth = Math.max(1.5, r * .12);
+  g.beginPath(); g.arc(0, 0, r, 0, 7); g.stroke();
+  g.lineWidth = Math.max(1, r * .07); g.beginPath(); g.arc(0, 0, r * .78, 0, 7); g.stroke();
+  for (let i = 0; i < 12; i++) { const b = i * Math.PI / 6; g.beginPath(); g.moveTo(Math.cos(b) * r * .8, Math.sin(b) * r * .8); g.lineTo(Math.cos(b) * r * .95, Math.sin(b) * r * .95); g.stroke(); }   // 룬 눈금
+  g.lineWidth = Math.max(1, r * .08);
+  for (const off of [0, Math.PI / 3]) { g.beginPath(); for (let i = 0; i <= 3; i++) { const b = off + i * Math.PI * 2 / 3; const px = Math.cos(b) * r * .74, py = Math.sin(b) * r * .74; i ? g.lineTo(px, py) : g.moveTo(px, py); } g.stroke(); }   // 육망성
+  g.fillStyle = '#ffd0d4'; g.beginPath(); g.arc(0, 0, r * .12, 0, 7); g.fill();
+  g.restore();
+}
+function drawGuboBody(g, c) {
+  const a = c.face, cs = c.cast, aim = cs && (cs.key === 'Q' || cs.key === 'R');
+  const sw = c.swingT > 0 ? Math.min(1, c.swingT / .18) : 0;
+  gbRifle(g, c.x + Math.cos(a + .7) * c.r * .45, c.y + Math.sin(a + .7) * c.r * .45, a - (aim ? 0 : .25) - sw * .08, c.r * 2.6, E(4.6), aim);
+  const n = c.gbPend || 0;                                                              // 팬던트: 몸 아래 붉은 마름모
+  for (let i = 0; i < KGB.P.max; i++) {
+    const x = c.x + (i - (KGB.P.max - 1) / 2) * E(11), y = c.y + c.r + E(12), s = E(4);
+    g.fillStyle = i < n ? GBC.red : 'rgba(40,30,40,.55)'; g.strokeStyle = 'rgba(255,220,220,.6)'; g.lineWidth = E(1);
+    g.beginPath(); g.moveTo(x, y - s); g.lineTo(x + s * .7, y); g.lineTo(x, y + s); g.lineTo(x - s * .7, y); g.closePath(); g.fill(); g.stroke();
+  }
+  if (c === player || c.team === player.team) {                                        // 초종 게이지
+    const k = Math.min(1, (c.gbGauge || 0) / KGB.P.need), w = E(44), y = c.y + c.r + E(21);
+    g.fillStyle = 'rgba(0,0,0,.5)'; g.fillRect(c.x - w / 2, y, w, E(3)); g.fillStyle = '#ff8a8a'; g.fillRect(c.x - w / 2, y, w * k, E(3));
+  }
+}
+function drawGuboWorld(g) {
+  for (const c of heroes) {
+    if (c.key !== 'gubo') continue;
+    const mine = c.team === player.team;
+    for (const T of c.gbTraps || []) {                                                  // 붉은 덫 (적에게는 흐릿하게)
+      const armed = time - T.t0 >= KGB.W.arm, r = E(KGB.W.radius);
+      gbSigil(g, T.x, T.y, r, time * .6, mine ? (armed ? .85 : .45) : .22, GBC.red);
+    }
+    for (const m of c.gbCirc || []) {                                                   // 팬던트 마법진
+      if (m.t < 0) continue;
+      const k = Math.min(1, m.t / KGB.P.delay), fade = m.done ? Math.max(0, 1 - (m.t - KGB.P.delay) / .35) : 1;
+      gbSigil(g, m.x, m.y, E(30) * (.35 + .65 * (1 - Math.pow(1 - k, 3))), m.t * 5, fade, GBC.red);
+      if (m.done && fade > 0) { g.strokeStyle = `rgba(255,220,220,${fade})`; g.lineWidth = E(4) * fade; g.beginPath(); g.arc(m.x, m.y, E(30) * (1 + (1 - fade) * .8), 0, 7); g.stroke(); }   // 발사 순간 번쩍
+    }
+    if (mine || seenBy(player.team, c)) for (const m of c.gbMarks || []) {             // 저격 표준점
+      const left = 1 - (time - m.t0) / KGB.R.mark, r = E(22);
+      g.strokeStyle = `rgba(224,48,62,${.5 + .4 * left})`; g.lineWidth = E(2.5);
+      g.beginPath(); g.arc(m.x, m.y, r, 0, 7); g.stroke();
+      g.beginPath(); g.moveTo(m.x - r * 1.5, m.y); g.lineTo(m.x - r * .5, m.y); g.moveTo(m.x + r * .5, m.y); g.lineTo(m.x + r * 1.5, m.y); g.moveTo(m.x, m.y - r * 1.5); g.lineTo(m.x, m.y - r * .5); g.moveTo(m.x, m.y + r * .5); g.lineTo(m.x, m.y + r * 1.5); g.stroke();
+    }
+    const cs = c.cast;
+    if (cs && cs.key === 'R' && cs.gbT && c.alive) {                                     // 흉탄 조준선 (모두에게 보임)
+      const T = cs.gbT, tx = T.kind === 'champ' ? T.u.x : T.x, ty = T.kind === 'champ' ? T.u.y : T.y, k = cs.t / cs.dur;
+      g.strokeStyle = `rgba(224,48,62,${.35 + .5 * k})`; g.lineWidth = E(2 + k * 4); g.setLineDash([E(14), E(8)]);
+      g.beginPath(); g.moveTo(c.x, c.y); g.lineTo(tx, ty); g.stroke(); g.setLineDash([]);
+      g.strokeStyle = GBC.red; g.lineWidth = E(3); g.beginPath(); g.arc(tx, ty, E(28) * (1.6 - k * .6), 0, 7); g.stroke();
+    }
+    if (c.gbGhost) {                                                                     // 차단 잔상
+      const G = c.gbGhost, k = Math.max(0, (G.until - time) / KGB.E.ghost);
+      g.strokeStyle = `rgba(224,48,62,${.55 * k})`; g.lineWidth = E(3); g.setLineDash([E(6), E(6)]);
+      g.beginPath(); g.arc(G.x, G.y, E(KGB.E.radius), 0, 7); g.stroke(); g.setLineDash([]);
+      g.globalAlpha = .35 * k; g.fillStyle = GBC.coat; g.beginPath(); g.arc(G.x, G.y, E(26), 0, 7); g.fill(); gbRifle(g, G.x, G.y, G.face + time * 8, E(55), E(3.4), false); g.globalAlpha = 1;
+    }
+    if (c.gbStorm) {                                                                    // 흉탄 세례
+      const S = c.gbStorm, life = 1 - S.t / (S.dur || KGB.R.storm), pulse = .5 + .5 * Math.sin(time * 18), L = E(KGB.R.cone), h = KGB.R.arc / 2;
+      const gr = g.createRadialGradient(S.x, S.y, E(20), S.x, S.y, L);
+      gr.addColorStop(0, `rgba(255,60,72,${.32 * life})`); gr.addColorStop(.6, `rgba(180,16,36,${(.16 + .08 * pulse) * life})`); gr.addColorStop(1, 'rgba(120,0,20,0)');
+      g.fillStyle = gr; g.beginPath(); g.moveTo(S.x, S.y); g.arc(S.x, S.y, L, S.ang - h, S.ang + h); g.closePath(); g.fill();
+      g.strokeStyle = `rgba(224,48,62,${.7 * life})`; g.lineWidth = E(2.5); g.setLineDash([E(10), E(8)]);
+      g.beginPath(); g.moveTo(S.x, S.y); g.lineTo(S.x + Math.cos(S.ang - h) * L, S.y + Math.sin(S.ang - h) * L); g.moveTo(S.x, S.y); g.lineTo(S.x + Math.cos(S.ang + h) * L, S.y + Math.sin(S.ang + h) * L); g.stroke(); g.setLineDash([]);
+      gbSigil(g, S.x, S.y, E(58), time * 3, .95, GBC.red);
+      gbSigil(g, S.x, S.y, E(34), -time * 5, .9, '#ff7080');
+      for (const P of S.ports || []) gbSigil(g, P.x, P.y, E(17) * (1 + .12 * pulse), time * 7, .95, '#ff3a48');
+    }
+  }
+}
+function drawGuboFx(g, f, k) {
+  const a = 1 - k;
+  if (f.type === 'gbShot') {                                                             // 탄도
+    g.strokeStyle = f.big ? `rgba(224,48,62,${a})` : `rgba(255,140,140,${a})`; g.lineCap = 'round';
+    g.lineWidth = f.big ? E(16) * a + E(2) : f.sigil ? E(7) * a + E(2) : f.thin ? E(2) : E(4) * a + E(1);
+    if (f.sigil) g.strokeStyle = `rgba(224,48,62,${a})`;
+    g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+    if (f.big || f.sigil) { g.strokeStyle = `rgba(255,240,240,${a})`; g.lineWidth = (f.sigil ? E(2.5) : E(4)) * a + E(1); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke(); }
+  } else if (f.type === 'gbSpray') {                                                     // Q 산탄
+    g.fillStyle = `rgba(224,48,62,${.22 * a})`; g.beginPath(); g.moveTo(f.x, f.y); g.arc(f.x, f.y, f.len * (.4 + k * .6), f.ang - f.arc / 2, f.ang + f.arc / 2); g.closePath(); g.fill();
+  } else if (f.type === 'gbSpin') {                                                      // E 회전
+    g.strokeStyle = `rgba(224,48,62,${a})`; g.lineWidth = E(6) * a + E(1);
+    g.beginPath(); g.arc(f.x, f.y, f.r * (.6 + k * .4), k * 9, k * 9 + 4.5); g.stroke();
+  } else if (f.type === 'gbErase') {                                                     // 지워진 투사체
+    g.strokeStyle = `rgba(255,200,200,${a})`; g.lineWidth = E(2); const s = E(6) + k * E(8);
+    g.beginPath(); g.moveTo(f.x - s, f.y - s); g.lineTo(f.x + s, f.y + s); g.moveTo(f.x + s, f.y - s); g.lineTo(f.x - s, f.y + s); g.stroke();
+  } else if (f.type === 'gbTrapSet' || f.type === 'gbSnap') {                            // 덫 설치 · 발동
+    gbSigil(g, f.x, f.y, f.r * (f.type === 'gbSnap' ? 1 + k : 1.6 - k * .6), k * 3, a, f.type === 'gbSnap' ? '#ff5060' : GBC.red);
+  } else if (f.type === 'gbBurst') {                                                     // 시체 · 처치 폭발
+    g.fillStyle = `rgba(224,48,62,${.4 * a})`; g.beginPath(); g.arc(f.x, f.y, f.r * (.4 + k), 0, 7); g.fill();
+  } else if (f.type === 'gbTracer') {                                                   // 세례 탄도: 붉은 빛 + 흰 심지
+    g.lineCap = 'round';
+    g.strokeStyle = `rgba(224,48,62,${.45 * a})`; g.lineWidth = E(10) * a + E(1); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+    g.strokeStyle = `rgba(255,120,130,${a})`; g.lineWidth = E(4) * a + E(1); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+    g.strokeStyle = `rgba(255,245,245,${a})`; g.lineWidth = E(1.5); g.beginPath(); g.moveTo(f.x, f.y); g.lineTo(f.x2, f.y2); g.stroke();
+  } else if (f.type === 'gbMuzzle') {                                                   // 포문 섬광
+    g.fillStyle = `rgba(255,220,200,${a})`; g.beginPath(); g.moveTo(f.x, f.y);
+    for (let i = 0; i < 5; i++) { const b = f.ang + (i - 2) * .35, r = E(i % 2 ? 10 : 20) * (1 + k); g.lineTo(f.x + Math.cos(b) * r, f.y + Math.sin(b) * r); } g.closePath(); g.fill();
+  } else if (f.type === 'gbSpark') {                                                    // 맞은 자리 불꽃
+    g.strokeStyle = `rgba(255,200,180,${a})`; g.lineWidth = E(2);
+    for (let i = 0; i < 4; i++) { const b = f.ang + (i - 1.5) * .6, r0 = E(4) + k * E(6), r1 = E(10) + k * E(16); g.beginPath(); g.moveTo(f.x + Math.cos(b) * r0, f.y + Math.sin(b) * r0); g.lineTo(f.x + Math.cos(b) * r1, f.y + Math.sin(b) * r1); g.stroke(); }
+  } else if (f.type === 'gbNova') {                                                     // 세례 시작 충격파
+    for (let i = 0; i < 3; i++) { const kk = Math.min(1, k * 1.4 + i * .1), aa = 1 - kk; g.strokeStyle = i === 1 ? `rgba(255,240,240,${aa})` : `rgba(224,48,62,${aa})`; g.lineWidth = E(8) * aa + E(1); g.beginPath(); g.arc(f.x, f.y, f.r * (.15 + kk * (1 - i * .18)), 0, 7); g.stroke(); }
+    gbSigil(g, f.x, f.y, f.r * (.3 + k * .7), k * 4, a * .8, '#ff3a48');
+  } else if (f.type === 'gbPendant' && f.owner) {                                        // 팬던트 획득
+    const o = f.owner; g.strokeStyle = `rgba(224,48,62,${a})`; g.lineWidth = E(2.5); g.beginPath(); g.arc(o.x, o.y, o.r * (1.1 + k * .7), 0, 7); g.stroke();
+  }
+}
 function drawCharonFx(g, f, k) {
   const e = 1 - Math.pow(1 - k, 3);
   if (f.type === 'chFake') { drawFakeCharon(g, f, k); return; }
@@ -13244,6 +13969,8 @@ function drawFx(g) {
     else if (/^mt[A-Z]/.test(f.type)) drawMartenFx(g, f, k);
     else if (/^gd[A-Z]/.test(f.type)) drawGuidoFx(g, f, k);
     else if (/^tm[A-Z]/.test(f.type)) drawThomaFx(g, f, k);
+    else if (/^db[A-Z]/.test(f.type)) drawDongbaekFx(g, f, k);
+    else if (/^gb[A-Z]/.test(f.type)) drawGuboFx(g, f, k);
     else if (/^it[A-Z]/.test(f.type)) drawItemFx(g, f, k);
     else if (/^sp[A-Z]/.test(f.type)) drawSpellFx(g, f, k);
     else if (/^hl[A-Z]/.test(f.type)) {}          // 홍루 이펙트는 drawHongluWorld에서 (캐릭터 밑)
@@ -13384,7 +14111,7 @@ function drawMinimap(g) {
   g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 1;
   g.strokeRect((cam.x - hw) * s, (cam.y - hh) * s, hw * 2 * s, hh * 2 * s);
   for (const c of [...heroes.filter(h => h !== player), player]) if (c.alive && !(c.hidden && c.team !== player.team) && seenBy(player.team, c)) {         // 미니맵: 캐릭터 색 + 아군 파랑 / 적 빨강 테두리, 나는 흰 고리 추가
-    const MAPCOL = {thoma:'#8a7b4c', guido:'#8f1d24', marten:'#4f6a34', alyssa:'#e04a24', hohenheim:'#2e55b8', gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', charon:'#26393a'};
+    const MAPCOL = {gubo:'#2c2a48', dongbaek:'#d6a93e', thoma:'#8a7b4c', guido:'#8f1d24', marten:'#4f6a34', alyssa:'#e04a24', hohenheim:'#2e55b8', gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', charon:'#26393a'};
     if (c === player) { g.strokeStyle = '#fff'; g.lineWidth = 1.5; g.beginPath(); g.arc(c.x * s, c.y * s, 7.5, 0, 7); g.stroke(); }
     g.fillStyle = MAPCOL[c.key] || '#777'; g.strokeStyle = sideCol(c); g.lineWidth = 2.2;
     g.beginPath(); g.arc(c.x * s, c.y * s, 5, 0, 7); g.fill(); g.stroke();
@@ -13431,7 +14158,7 @@ function drawButtons(g) {
                  : ish ? (k === 'W' && player.guardT > 0) || (k === 'R' && ishCanExecute(player))
                  : yi ? (k === 'W' && mirrors.some(m => m.owner === player && Math.hypot(m.x - player.x, m.y - player.y) < E(KY.W.range))) || (k === 'R' && player.vampT > 0)
                  : rod ? (k === 'W' && player.pStacks >= KR.W.need) || (k === 'Q' && player.qStack >= KR.Q.need) || (k === 'R' && !!rodTargetR(player)) || (k === 'Q' && rodQMode(player) === 'circle')
-                       : (k === 'W' && !!(player.mtW || player.gdW)) || (k === 'R' && !!player.gdR) || (k === 'R' && rForm(player)) || (k === 'E' && player.eStacks > 0) || (k === 'R' && !!player.snipe);
+                       : (k === 'W' && !!(player.mtW || player.gdW)) || (k === 'R' && !!player.gdR) || (k === 'R' && !!player.dbR) || (k === 'R' && rForm(player)) || (k === 'E' && player.eStacks > 0) || (k === 'R' && !!player.snipe);
     const osn = k === 'R' && player.key === 'outis' && !!player.snipe;     // 오티스 저격 중: R = 발포 버튼
     const learned = player.rank[k] > 0 && !(rod && k === 'R' && !rodTargetR(player) && cd <= 0);
     g.globalAlpha = learned ? 1 : .45;
@@ -13445,7 +14172,7 @@ function drawButtons(g) {
       for (let i = 0; i < KR.Q.need - 1; i++) { g.fillStyle = i < player.qStack ? '#ffcf6b' : 'rgba(255,255,255,.25)'; g.beginPath(); g.arc(p.x - 6 * ui + i * 12 * ui, p.y - r - 5 * ui, 3 * ui, 0, 7); g.fill(); }
     if (player.key === 'marten' && k === 'Q' && player.rank.Q > 0)                   // 마튼: 나무뿌리 충전 수
       for (let i = 0; i < KMT.Q.n; i++) { g.fillStyle = i < (player.mtQn ?? KMT.Q.n) ? '#ffd36a' : 'rgba(255,255,255,.25)'; g.beginPath(); g.arc(p.x - 6 * ui + i * 12 * ui, p.y - r - 5 * ui, 3.2 * ui, 0, 7); g.fill(); }
-    const reuse = (ish && active && cd > 0) || (player.key === 'marten' && k === 'W' && player.mtW) || (player.key === 'guido' && k === 'W' && player.gdW) || osn;
+    const reuse = (ish && active && cd > 0) || (player.key === 'marten' && k === 'W' && player.mtW) || (player.key === 'guido' && k === 'W' && player.gdW) || (player.key === 'dongbaek' && k === 'R' && player.dbR) || osn;
     if (cd > 0 && !reuse) {
       g.fillStyle = 'rgba(0,0,0,.6)'; g.beginPath(); g.moveTo(p.x, p.y);
       g.arc(p.x, p.y, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (cd / player.cdMax[k])); g.closePath(); g.fill();
@@ -13664,6 +14391,8 @@ function render() {
   drawMartenWorld(ctx);
   drawGuidoWorld(ctx);
   drawThomaWorld(ctx);
+  drawDongbaekWorld(ctx);
+  drawGuboWorld(ctx);
   drawSpellMarks(ctx);
   drawProjectiles(ctx);
   drawShots(ctx);
@@ -13803,7 +14532,7 @@ function itemIconCanvas(id) {   // 배경(분류 색) + 그림을 한 번만 그
   return ICON_CACHE[id];
 }
 // ═════════════ 스킬 아이콘 (챔피언별 P/Q/W/E/R, 좌표계 -32..32) ═════════════
-const SKILL_BG = {thoma:['#8a7b4c', '#1c1a0e'], guido:['#8f1d24', '#1e0608'], marten:['#4f6a34', '#121a0c'], alyssa:['#c03a1c', '#2a0806'], hohenheim:['#2e55b8', '#08102a'], gregor:['#5a3f22', '#1c140b'], rodion:['#4a3f55', '#16121a'], yisang:['#3a4a5a', '#0b0b10'], ishmael:['#8a4a1a', '#1e1008'],
+const SKILL_BG = {gubo:['#2c2a48', '#14101e'], dongbaek:['#d6a93e', '#2a1c08'], thoma:['#8a7b4c', '#1c1a0e'], guido:['#8f1d24', '#1e0608'], marten:['#4f6a34', '#121a0c'], alyssa:['#c03a1c', '#2a0806'], hohenheim:['#2e55b8', '#08102a'], gregor:['#5a3f22', '#1c140b'], rodion:['#4a3f55', '#16121a'], yisang:['#3a4a5a', '#0b0b10'], ishmael:['#8a4a1a', '#1e1008'],
   ryoshu:['#7a141c', '#1a0406'], faust:['#6a5a78', '#1e1824'], donq:['#8a6a10', '#1e1804'], outis:['#1f5a34', '#08180e'], honglu:['#1f8f84', '#062422'], sinclair:['#5a6610', '#161a04'], heathcliff:['#4a2a6e', '#140a1e'], meursault:['#2a4a86', '#08101e'], yuri:['#8a2a3e', '#1e080e'], kromer:['#6a5a3a', '#14100c'], vergil:['#5a1a1a', '#0c0c10'], charon:['#3d5c58', '#0c1414']};
 const SKILL_ICON_CACHE = {};
 const sArrow = (g, x1, y1, x2, y2, col, w) => { iconLine(g, x1, y1, x2, y2, col, w); const a = Math.atan2(y2 - y1, x2 - x1), h = w * 2.4; iconPoly(g, [[x2 + Math.cos(a) * h * .6, y2 + Math.sin(a) * h * .6], [x2 + Math.cos(a + 2.4) * h, y2 + Math.sin(a + 2.4) * h], [x2 + Math.cos(a - 2.4) * h, y2 + Math.sin(a - 2.4) * h]], col); };
@@ -13817,6 +14546,20 @@ const sMirror = (g, x, y, s, rot) => { g.save(); g.translate(x, y); g.rotate(rot
 const sFeather = (g, x, y, s, rot, col) => { g.save(); g.translate(x, y); g.rotate(rot); g.fillStyle = col; g.beginPath(); g.ellipse(0, 0, 4 * s, 13 * s, 0, 0, 7); g.fill(); iconLine(g, 0, -12 * s, 0, 16 * s, 'rgba(0,0,0,.5)', 1.2); g.restore(); };
 const sBullet = (g, x, y, col) => { iconRect(g, x - 2.5, y - 4, 5, 10, '#b8862a', 1); g.fillStyle = col || '#e8c060'; g.beginPath(); g.ellipse(x, y - 4, 2.5, 4.5, 0, Math.PI, 0); g.fill(); };
 const SKILL_ICON_DRAW = {
+  gubo: {
+    P: g => { iconGlow(g, 0, 0, 26, 'rgba(224,48,62,.45)'); gbSigil(g, 0, 0, 20, .3, 1, '#e0303e'); for (let i = 0; i < 3; i++) { const x = -10 + i * 10, s = 4.5; g.fillStyle = '#e0303e'; g.beginPath(); g.moveTo(x, 22 - s); g.lineTo(x + s * .7, 22); g.lineTo(x, 22 + s); g.lineTo(x - s * .7, 22); g.closePath(); g.fill(); } },
+    Q: g => { gbRifle(g, -22, 10, -.35, 40, 4, true); g.fillStyle = 'rgba(224,48,62,.35)'; g.beginPath(); g.moveTo(14, -6); g.arc(14, -6, 18, -.9, .1); g.closePath(); g.fill(); },
+    W: g => { gbSigil(g, 0, 6, 18, 0, 1, '#e0303e'); g.strokeStyle = '#ffd0d0'; g.lineWidth = 2.5; for (const s of [-1, 1]) { g.beginPath(); g.moveTo(s * 6, -18); g.lineTo(s * 12, -4); g.stroke(); } },
+    E: g => { g.strokeStyle = '#e0303e'; g.lineWidth = 3.5; g.beginPath(); g.arc(0, 0, 20, .4, 5.4); g.stroke(); gbRifle(g, -14, 0, .2, 30, 3.6, false); g.setLineDash([3, 3]); g.strokeStyle = 'rgba(255,200,200,.7)'; g.beginPath(); g.arc(0, 0, 26, 0, 7); g.stroke(); g.setLineDash([]); },
+    R: g => { iconGlow(g, 6, -4, 28, 'rgba(224,48,62,.55)'); g.strokeStyle = '#e0303e'; g.lineWidth = 7; g.lineCap = 'round'; g.beginPath(); g.moveTo(-24, 18); g.lineTo(8, -6); g.stroke(); g.strokeStyle = '#fff0f0'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(-24, 18); g.lineTo(8, -6); g.stroke(); for (let i = -2; i <= 2; i++) { const b = -.65 + i * .22; g.strokeStyle = 'rgba(224,48,62,.8)'; g.lineWidth = 2; g.beginPath(); g.moveTo(8, -6); g.lineTo(8 + Math.cos(b) * 22, -6 + Math.sin(b) * 22); g.stroke(); } },
+  },
+  dongbaek: {
+    P: g => { iconGlow(g, 0, 0, 26, 'rgba(255,216,74,.45)'); dbFlower(g, -6, 4, 14, '#ffd84a', '#e0a020'); dbFlower(g, 12, -10, 9, '#d8323e', '#ffd84a'); },
+    Q: g => { dbFan(g, -20, 14, -.6, 34, .9); for (const [x, y] of [[14, -14], [20, 2], [6, -22]]) dbFlower(g, x, y, 6, '#ffd84a', '#e0a020'); },
+    W: g => { iconGlow(g, 0, 0, 26, 'rgba(255,216,74,.5)'); g.strokeStyle = '#ffd84a'; g.lineWidth = 3; g.beginPath(); g.arc(0, 0, 20, 0, 7); g.stroke(); dbFlower(g, 0, 0, 12, '#ffd84a', '#e0a020'); },
+    E: g => { for (let i = 0; i < 3; i++) { g.globalAlpha = .35 + i * .3; dbFlower(g, -18 + i * 12, 6 - i * 4, 7, '#ffd84a', '#e0a020'); } g.globalAlpha = 1; g.strokeStyle = '#fff1a8'; g.lineWidth = 3; g.beginPath(); g.moveTo(8, -6); g.lineTo(26, -14); g.moveTo(18, -16); g.lineTo(26, -14); g.lineTo(22, -6); g.stroke(); },
+    R: g => { iconGlow(g, 6, -6, 28, 'rgba(255,200,80,.5)'); for (let i = 0; i < 5; i++) { const y = -16 + i * 8; g.strokeStyle = ['#ffd84a', '#ff7a5a', '#fff1a8'][i % 3]; g.lineWidth = 3; g.beginPath(); g.moveTo(-22, y + 6); g.lineTo(10, y); g.stroke(); } for (let i = 0; i < 8; i++) { const b = i * Math.PI / 4; g.strokeStyle = '#ffd84a'; g.lineWidth = 2; g.beginPath(); g.moveTo(18 + Math.cos(b) * 4, -10 + Math.sin(b) * 4); g.lineTo(18 + Math.cos(b) * 11, -10 + Math.sin(b) * 11); g.stroke(); } },
+  },
   thoma: {
     P: g => { iconGlow(g, 0, 4, 28, 'rgba(127,240,160,.4)'); g.fillStyle = '#8a3a3e'; g.beginPath(); g.ellipse(4, 12, 18, 8, 0, 0, 7); g.fill(); tmClaw(g, -24, -14, .6, 30, .8); },
     Q: g => { iconGlow(g, 0, 0, 26, 'rgba(232,212,138,.45)'); tmClaw(g, -22, 16, -.7, 40, .95); g.strokeStyle = '#7ff0a0'; g.lineWidth = 3; g.beginPath(); g.moveTo(18, -20); g.lineTo(18, -6); g.moveTo(11, -13); g.lineTo(25, -13); g.stroke(); },
@@ -14204,6 +14947,8 @@ const MVP_LOOK = {   // 코트 · 바지 · 머리 · 피부 · 눈 · 무기
   yuri:      {coat:'#c8405a', pants:'#3a1420', hair:'#4a2a2a', skin:'#f6e0d6', eye:'#ffd0d8', fx:'apple', line:'...죽고 싶지 않아요. 그 누구도, 죽고 싶어하는 사람은 없었어요.'},
   kromer:    {coat:'#ece4d6', pants:'#6a5a3a', hair:'#f0d870', skin:'#f6e4d4', eye:'#ffe7a3', fx:'nail', line:'못과 망치를 들고, 세상을 정화하기 위하여...!'},
   vergil:    {coat:'#2b2c31', pants:'#141418', hair:'#1a1a1e', skin:'#e2d0c4', eye:'#ff2a2a', fx:'eye', line:'이딴 버러지들의 싸움터에 날 불렀던 건가. ...닥치도록.'},
+  gubo:      {coat:'#2c2a48', pants:'#5a5a64', hair:'#16161c', skin:'#ecdcd0', eye:'#e0303e', fx:'tracer', line:'...놀랍군. 섣불리 말해선 안 되겠어.'},
+  dongbaek:  {coat:'#d6a93e', pants:'#4a3a2a', hair:'#d8d8d4', skin:'#f0dcd0', eye:'#ffb84a', fx:'spark', line:'아니, 내 마음은 그 어느 때보다 활짝 피어나고 있는걸.'},
   thoma:     {coat:'#8a7b4c', pants:'#3a3524', hair:'#e8cf7a', skin:'#f0dcc6', eye:'#9fd4ff', fx:'roach', line:'문제없습니다! 그레고르 과장님이 함께 계시니까요!'},
   guido:     {coat:'#8f1d24', pants:'#3a2a2e', hair:'#5a5e66', skin:'#d8dce4', eye:'#c8233a', fx:'nail', line:'나는 망치일 뿐. 쥐는 자를 위한 도구.'},
   marten:    {coat:'#4f6a34', pants:'#1a2412', hair:'#24304e', skin:'#ecdccc', eye:'#ffc35a', fx:'flame', line:'요정이 길을 밝혀 줄 거예요. 뿌리가 놓아주지 않을 테니까요.'},
@@ -14304,6 +15049,25 @@ function mWing(g, x, y, s, dir, open) {                                         
     g.save(); g.translate(x, y); g.rotate(a); g.fillStyle = i % 2 ? '#f2f2f6' : '#1a1a20'; g.beginPath(); g.ellipse(L * .5, 0, L * .55, s * .13, 0, 0, 7); g.fill(); g.restore(); }
 }
 const MVP_ACT = {
+  gubo: A => {                                                                              // 붉은 마법진이 줄지어 열리고, 거대한 흉탄 궤적이 화면을 가름
+    const a = A.a, k = mE(mClamp(a / .6, 0, 1));
+    return {back: g => {
+      for (let i = 0; i < 4; i++) { const kk = mClamp((a - i * .12) / .5, 0, 1); if (kk <= 0) continue; gbSigil(g, A.x + (i - 1.5) * A.Rb * 1.3, A.floor - A.Rb * (2.6 + (i % 2) * .5), A.Rb * .5 * kk, a * 2 + i, kk, '#e0303e'); }
+      g.save(); g.globalAlpha = k * .8; g.strokeStyle = '#e0303e'; g.lineWidth = A.Rb * .18; g.beginPath(); g.moveTo(A.x - A.Rb * 6, A.floor - A.Rb * 3.6); g.lineTo(A.x - A.Rb * 6 + A.Rb * 12 * k, A.floor - A.Rb * 3.6 + A.Rb * 1.2 * k); g.stroke(); g.restore();
+    }, front: g => { gbRifle(g, A.x + A.Rb * .5, A.floor - A.Rb * 1.3, -.35, A.Rb * 2.4, A.Rb * .14, k > .5); }};
+  },
+  dongbaek: A => {                                                                          // 하늘로 쏘아 올린 동백 폭죽이 연달아 터짐
+    const a = A.a;
+    return {back: g => {
+      for (let i = 0; i < 5; i++) {
+        const t0 = i * .22, k = mClamp((a - t0) / .7, 0, 1); if (k <= 0) continue;
+        const x = A.x + (i - 2) * A.Rb * 1.1, y = A.floor - A.Rb * (3.2 + (i % 2) * .8), r = A.Rb * (.3 + k * 1.1);
+        g.save(); g.globalAlpha = 1 - k * .7; g.strokeStyle = ['#ffd84a', '#ff7a5a', '#fff1a8'][i % 3]; g.lineWidth = A.Rb * .06;
+        for (let j = 0; j < 10; j++) { const b = j * Math.PI / 5; g.beginPath(); g.moveTo(x + Math.cos(b) * r * .3, y + Math.sin(b) * r * .3); g.lineTo(x + Math.cos(b) * r, y + Math.sin(b) * r); g.stroke(); }
+        dbFlower(g, x, y, A.Rb * .22 * (1 + k), i % 2 ? '#d8323e' : '#ffd84a', '#fff1a8'); g.restore();
+      }
+    }, front: g => { dbFan(g, A.x + A.Rb * .8, A.floor - A.Rb * 1.4, -1.1, A.Rb * 1.2, .9); }};
+  },
   thoma: A => {                                                                             // 두 쌍의 날개가 펼쳐지고 집게 팔을 치켜듦
     const a = A.a, k = mE(mClamp(a / .6, 0, 1)), beat = Math.sin(a * 22) * .08 * k;
     return {back: g => {
@@ -14809,7 +15573,7 @@ $('shopBtn').addEventListener('click', () => openShop(!shopOpen));
 addEventListener('keydown', e => { if (spectating || /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return; if (e.key.toLowerCase() === 'p') openShop(!shopOpen); if (e.key === 'Escape' && shopOpen) openShop(false); });
 
 // ═════════════ 점수판 (탭) ═════════════
-const CHAMP_COL = {thoma:'#8a7b4c', guido:'#8f1d24', marten:'#4f6a34', alyssa:'#e04a24', hohenheim:'#2e55b8', gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', charon:'#26393a', bot:'#7a3438'};
+const CHAMP_COL = {gubo:'#2c2a48', dongbaek:'#d6a93e', thoma:'#8a7b4c', guido:'#8f1d24', marten:'#4f6a34', alyssa:'#e04a24', hohenheim:'#2e55b8', gregor:'#5a3a20', rodion:'#c9a27a', yisang:'#15151a', ishmael:'#e8792b', ryoshu:'#c8232b', faust:'#f4f3f7', donq:'#f2c230', outis:'#2a7a47', honglu:'#3fc7a8', sinclair:'#8b9c15', heathcliff:'#6a3d9a', meursault:'#1d3461', yuri:'#c8405a', kromer:'#ece4d6', vergil:'#2b2c31', charon:'#26393a', bot:'#7a3438'};
 const TEAM_SIZE = 4;
 let boardOpen = false, boardT = 0;
 function openBoard(on) {
@@ -15634,7 +16398,7 @@ async function duelSolo() {
 function duelBot(b, dt) {                                                         // 결투장 AI: 상대만 보고 싸움 (라인 · 귀환 없음)
   if (!b.alive) return;
   champTimers(b, dt);
-  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin || b.chE || b.chQ || b.chRide || b.stasisT > time || b.itDash || hhBusy(b) || alBusy(b) || mtBusy(b) || gdBusy(b) || tmBusy(b)) return;
+  if (b.dash || b.blink || b.leap || b.alpha || b.rcut || b.scR || b.hcR || b.mrDash || b.mrGrab || b.ylDash || b.krDash || b.krR || b.vgDash || b.vgFin || b.chE || b.chQ || b.chRide || b.stasisT > time || b.itDash || hhBusy(b) || alBusy(b) || mtBusy(b) || gdBusy(b) || tmBusy(b) || dbBusy(b)) return;
   if (b.ylRevive || b.stunT > 0 || b.cast) { moveChamp(b, 0, 0, dt); return; }
   if (tauntedMove(b, dt) || fearMove(b, dt)) return;
   if (b.snipe) { aiSnipe(b); moveChamp(b, 0, 0, dt); return; }
@@ -16269,7 +17033,7 @@ CODEX_SK.vergil = {
   P: {name:'붉은시선', text: H => `${H.b('난이도: 극악 ★★★★★')}<br>베르길리우스의 모든 스킬에는 '박자'가 있습니다. 정해진 순간에 정확히 이어 쓰면 훨씬 강해지고, 박자를 놓치면 평범한 위력에 그칩니다. 박자는 베르길리우스 주위의 고리와 막대로 화면에 표시됩니다.<br><br>베르길리우스는 싸우는 동안 글라디우스에 ${H.b('열기')}를 쌓습니다. 기본 공격을 할 때마다 열기가 ${KVG.P.basic} 오르고, 스킬이 적 챔피언에게 적중할 때마다 ${KVG.P.hit} 오릅니다. ${KVG.P.idle}초 동안 싸우지 않으면 열기는 천천히 식습니다.<br><br>열기가 100에 도달하면 눈이 붉게 빛나며 ${H.s(KVG.P.dur)} 동안 ${H.b('붉은시선')} 상태가 됩니다. 이 동안 베르길리우스가 주는 모든 피해가 ${H.p(KVG.P.dmgUp)} 증가하고, 스킬이 적 챔피언에게 적중할 때마다 나머지 스킬들의 재사용 대기시간이 ${KVG.P.cdr}초씩 줄어듭니다.<br>붉은시선이 끝나면 열기가 0으로 돌아가고, 몸이 ${H.b('과열')}되어 ${H.s(KVG.P.overDur)} 동안 이동 속도가 ${H.p(KVG.P.overSlow)} 느려집니다. 단, 궁극기를 쓰고 있는 동안에는 과열되지 않습니다.<br><br>${H.b('붉은 보호막')}: 박자를 맞춰 '완벽' 판정을 받거나 (Q · W · 장례), 간파에 성공할 때마다 ${H.b(KVG.P.shield[0] + ' + <span class="cx-hp">최대 체력의 ' + Math.round(KVG.P.shield[1] * 100) + '%</span>')}만큼의 붉은 보호막을 얻습니다. 붉은시선이 열릴 때는 <span class="cx-hp">최대 체력의 ${H.p(KVG.P.gazeShield)}</span>만큼 얻습니다. 보호막은 겹쳐 쌓이며 (최대 체력의 ${H.p(KVG.P.shieldCap)}까지) ${H.s(KVG.P.shieldDur)} 동안 유지되고, 새로 얻을 때마다 시간이 다시 채워집니다.<br>또한 붉은시선 상태에서는 스킬이 적 챔피언에게 적중할 때마다 <span class="cx-hp">최대 체력의 ${H.p(KVG.P.gazeHeal)}</span>만큼 체력을 회복합니다.<br><br>또한 베르길리우스는 주변 ${KVG.P.revealR} 거리 안에 있는, 체력이 ${H.p(KVG.P.reveal)} 이하로 떨어진 적 챔피언을 안개 속에서도 볼 수 있습니다.<br><br>베르길리우스는 쓰러질 때 피를 흘리지 않습니다. 대신 뒷걸음질치며 전장에서 물러나 사라집니다.`},
   Q: {name:'글라디우스', cd: KVG.Q.cd, range: KVG.Q.len, text: H => `베르길리우스가 달궈진 글라디우스로 최대 세 번까지 이어서 벱니다.<br>첫 번째와 두 번째 베기는 전방 ${KVG.Q.len} 거리를 베어 맞은 모든 적에게 ${H.phys(H.r(KVG.Q.dmg) + ' ' + H.ad(KVG.Q.ad))}를 입힙니다. 세 번째 베기에서는 지정한 방향으로 최대 ${KVG.Q.slamDash}만큼 뛰어올라 내려찍어, 반경 ${KVG.Q.slamR} 안의 모든 적에게 ${KVG.Q.slamMul}배의 피해를 입힙니다.<br>이전 베기 후 ${H.s(KVG.Q.win)} 안에 다음 베기를 쓰지 않으면 연속 베기가 끝나고 재사용 대기시간이 돌기 시작합니다.<br><br>${H.b('박자')}: 이전 베기 후 ${KVG.Q.lo}~${KVG.Q.hi}초 사이, 베르길리우스 주위의 고리가 ${H.b('하얗게 빛날 때')} 다음 베기를 쓰면 '완벽' 판정이 됩니다. 완벽한 베기는 피해가 ${H.p(KVG.Q.perf)} 증가하며, 세 번째 내려찍기라면 맞은 적 챔피언을 0.4초 동안 기절시킵니다.`},
   W: {name:'홍련 베기', cd: KVG.W.cd, range: KVG.W.len, text: H => `베르길리우스가 글라디우스를 뒤로 젖히고 힘을 모읍니다. 힘을 모으는 동안에는 이동 속도가 ${H.p(KVG.W.slow)} 느려지며 기본 공격을 할 수 없습니다.<br>스킬을 한 번 더 사용하면 지정한 방향으로 거대한 붉은 초승달 파동(길이 ${KVG.W.len})을 날려, 경로 위의 모든 적에게 ${H.phys(H.r(KVG.W.dmg) + ' ' + H.ad(KVG.W.ad))}를 입힙니다. 힘을 오래 모을수록 파동이 넓어지고 피해도 커집니다.<br>${KVG.W.max + .2}초가 지나도록 놓지 않으면 파동이 저절로 나가며, 이때는 피해가 크게 줄어듭니다.<br><br>${H.b('박자')}: 힘을 모은 지 ${KVG.W.lo}~${KVG.W.hi}초 사이, 베르길리우스 아래 막대가 ${H.b('금색 구간')}에 있을 때 놓으면 '완벽한 베기'가 됩니다. 완벽한 베기는 피해가 ${KVG.W.perfMul}배가 되고, 맞은 적을 ${H.s(KVG.W.stun)} 동안 기절시키며 뒤로 밀쳐냅니다.`},
-  E: {name:'간파', cd: KVG.E.cd, range: KVG.E.dash, text: H => `베르길리우스가 지정한 방향으로 짧게 ${KVG.E.dash}만큼 몸을 옮깁니다.<br>스킬을 사용한 뒤 ${H.s(KVG.E.parry)} 안에 적의 공격을 받으면 그 공격을 ${H.b('간파')}합니다. 간파한 공격의 피해는 받지 않으며, 공격한 적에게 즉시 반격해 Q 피해의 ${H.p(KVG.E.counter)}만큼 피해를 입힙니다.<br>간파에 성공하면 열기가 ${KVG.E.heat} 오르고, 간파의 재사용 대기시간이 바로 초기화되며, 다음에 쓰는 글라디우스(Q)는 박자와 상관없이 무조건 완벽 판정이 됩니다.<br><br>${H.b('박자')}: 적의 스킬이나 공격이 닿기 직전에 사용해야 간파할 수 있습니다.`},
+  E: {name:'간파', cd: KVG.E.cd, range: KVG.E.dash, text: H => `베르길리우스가 지정한 방향으로 짧게 ${KVG.E.dash}만큼 몸을 옮깁니다.<br>스킬을 사용한 뒤 ${H.s(KVG.E.parry)} 안에 ${H.b('적 챔피언')}의 공격을 받으면 그 공격을 ${H.b('간파')}합니다. (지속 피해 · 미니언 · 포탑 · 몬스터의 공격은 간파하지 못합니다) 간파한 공격의 피해는 받지 않으며, 공격한 적에게 즉시 반격해 Q 피해의 ${H.p(KVG.E.counter)}만큼 피해를 입힙니다.<br>간파에 성공하면 열기가 ${KVG.E.heat} 오르고, 간파의 남은 재사용 대기시간이 ${H.p(KVG.E.refund)} 줄어들며, 다음에 쓰는 글라디우스(Q)는 박자와 상관없이 무조건 완벽 판정이 됩니다.<br><br>${H.b('박자')}: 적의 스킬이나 공격이 닿기 직전에 사용해야 간파할 수 있습니다.`},
   R: {name:'개화 E.G.O :: 라바크롬 상귀니스', cd: KVG.R.cd, range: KVG.R.radius, text: H => `베르길리우스가 E.G.O를 개화해 피의 망토와 붉은 가시 월계관을 쓴 모습이 되고, 손에 든 글라디우스는 ${H.b('피를 머금은 창')}으로 바뀝니다. 동시에 발밑으로 반경 ${KVG.R.radius}의 ${H.b('피의 욕장')}이 번져 ${H.s(KVG.R.dur)} 동안 남습니다. 사용하는 즉시 열기가 100이 되어 붉은시선 상태가 되며, 욕장이 남아 있는 동안 이동 속도가 12% 증가하고 과열되지 않습니다.<br><br>피의 욕장 안에 있는 적은 이동 속도가 ${H.p(KVG.R.slow)} 느려지고, 적 챔피언에게는 붉은 시선 표식이 새겨져 베르길리우스의 기본 공격이 <span class="cx-hp">최대 체력의 ${H.p(KVG.R.markPct)}</span>만큼 추가 피해를 입힙니다.<br>욕장이 남아 있는 동안 베르길리우스의 기본 스킬도 함께 강해집니다. 글라디우스(Q)의 베기는 창 찌르기로 바뀌어 ${KVG.R.qMul}배 길게 뻗고 내려찍기 범위는 ${KVG.R.slamMul}배 넓어지며, 홍련 베기(W)의 파동은 ${KVG.R.wMul}배 멀리 나아갑니다. 간파(E)에 성공하면 피 속을 건너 공격한 적 바로 앞으로 이동해 반격합니다.<br>욕장 안의 적 챔피언에게 스킬을 맞힐 때마다 ${H.b('핏빛 낙인')}이 하나씩 새겨집니다 (최대 ${KVG.R.brandMax}개). 베르길리우스가 자신의 욕장 안에 서 있으면 매초 <span class="cx-hp">최대 체력의 ${H.p(KVG.R.poolRegen)}</span>만큼 체력을 회복합니다.<br><br>스킬을 다시 사용하면 ${H.b('죽은 혈귀를 위한 장례')}를 거행합니다. 베르길리우스가 ${KVG.R.air}초 동안 하늘로 뛰어올라 (이 동안 대상으로 지정되지 않음) 욕장 안의 적들을 가운데로 끌어당긴 뒤, 거대한 피의 창을 내리꽂으며 욕장 전체를 십자로 가릅니다. 욕장 안의 모든 적은 ${H.phys(H.r(KVG.R.final) + ' ' + H.ad(KVG.R.ad) + ' + <span class="cx-hp">잃은 체력의 ' + H.p(KVG.R.miss) + '</span>')}를 받고, 핏빛 낙인 하나마다 피해가 ${H.p(KVG.R.brandMul)} 증가합니다.<br>장례에 맞은 적 챔피언 하나마다 베르길리우스는 <span class="cx-hp">최대 체력의 ${H.p(KVG.R.finHeal)}</span>만큼 체력을 회복하며, 그 적에게 새겨진 낙인 하나마다 ${H.p(KVG.R.brandHeal)}씩 더 회복합니다.<br>장례를 거행하지 않고 지속 시간이 끝나면 저절로 거행되지만, 이때는 피해가 ${H.p(KVG.R.auto)}로 줄어듭니다.<br><br>${H.b('박자')}: 피의 욕장은 ${KVG.R.beat}초마다 고동칩니다. 욕장의 테두리가 ${H.b('하얗게 빛나는 순간')}에 장례를 거행하면, 피해가 ${KVG.R.perfMul}배가 되고 맞은 적을 모두 ${H.s(KVG.R.stun)} 동안 기절시킵니다.`},
 };
 CODEX_SK.charon = {
@@ -16313,6 +17077,20 @@ CODEX_SK.thoma = {
   W: {name:'선봉대의 의지', cd: KTM.W.cd, range: KTM.W.radius, text: H => `토마가 제자리에서 울부짖어, 바로 곁(반경 ${KTM.W.radius})의 적에게 ${H.mag(H.r(KTM.W.dmg) + ' ' + H.ap(KTM.W.ap))}를 주고 적 챔피언을 ${H.s(KTM.W.fear)} 동안 ${H.b('공포')}에 빠뜨립니다. 공포에 걸린 적은 토마에게서 멀어지는 쪽으로 도망치며 아무 행동도 하지 못합니다.<br><br>울음소리는 훨씬 넓게(반경 ${KTM.W.healR}) 퍼져, 범위 안의 토마와 모든 아군 챔피언이 ${H.r(KTM.W.heal)} + ${H.hp('토마 최대 체력의 ' + H.p(KTM.W.healHp))}만큼 회복합니다.`},
   E: {name:'도약하겠습니다!', cd: KTM.E.cd, range: KTM.E.len, text: H => `토마가 제자리에 멈춰 서서 ${H.s(KTM.E.wind)} 동안 기운을 모읍니다. 이때 앞쪽으로 직사각형 범위(길이 ${KTM.E.len})가 그려져, 적도 어디로 뛰어들지 볼 수 있습니다.<br><br>기운을 다 모으면 벌레 날개를 펼치고 그 범위 끝까지 도약해 달려듭니다. 돌진하는 동안은 ${H.b('유체화')} 상태라 적과 아군 유닛을 그대로 통과합니다.<br><br>지나가며 부딪힌 적에게는 ${H.mag(H.r(KTM.E.dmg) + ' ' + H.ap(KTM.E.ap))}를 주고 ${H.s(KTM.E.slowDur)} 동안 ${H.p(KTM.E.slow)} ${H.b('둔화')}시킵니다. 부딪힌 아군 챔피언은 ${H.r(KTM.E.heal)} + ${H.hp('토마 최대 체력의 ' + H.p(KTM.E.healHp))}만큼 회복합니다.`},
   R: {name:'전화위복', cd: KTM.R.cd, range: KTM.R.radius, text: H => `토마가 제자리에서 포효해 주변(반경 ${KTM.R.radius})의 모든 적에게 ${H.mag(H.r(KTM.R.dmg) + ' ' + H.ap(KTM.R.ap))}를 줍니다.<br><br>동시에 맵 위의 ${H.b('모든 아군 챔피언')}에게서 해로운 효과를 즉시 제거합니다. 제거하는 효과는 기절 · 공중에 뜸 · 속박 · 도발 · 공포 · 실명 · 둔화 · 끌려감, 그리고 출혈 · 못 · 방어력 감소 · 불태우는 낙인입니다.<br><br>그중 토마 주변(반경 ${KTM.R.healR})에 있던 아군은 ${H.b('제거한 효과 1개당')} ${H.r(KTM.R.per)} + ${H.hp('토마 최대 체력의 ' + H.p(KTM.R.perHp))}만큼 즉시 회복합니다.<br><br>이 스킬은 토마가 ${H.b('군중 제어기에 걸려 있을 때도')} 쓸 수 있습니다. 토마 자신에게 걸린 효과도 함께 풀립니다.`},
+};
+CODEX_SK.dongbaek = {
+  P: {name:'알싸한 향기', text: H => `동백의 ${H.b('치명타 피해')}가 ${H.p(KDB.P.critDmg)} 증가합니다.<br>기본 공격이 치명타로 터지면 ${H.mag(KDB.P.mag[0] + ' + ' + KDB.P.mag[1] + ' × 레벨 ' + H.ad(KDB.P.magAd))}를 추가로 줍니다.<br><br>또한 동백이 스킬을 쓰고 나면 ${H.s(KDB.P.twinWin)} 안에 하는 ${H.b('다음 기본 공격')}이 ${H.b('투사체 두 개')}를 날립니다. 두 번째 투사체는 ${H.p(KDB.P.twin)}의 피해를 주며, 치명타 여부는 첫 번째와 같습니다. 이때 동백 주위에 노란 고리가 빛납니다.`},
+  Q: {name:'찬란한 봄바람', cd: KDB.Q.cd, range: KDB.Q.len, text: H => `${H.b('기본 지속 효과')}: 동백이 ${H.b('보호막')}을 받고 있거나, 대상이 ${H.b('이동 불가')} 상태(기절 · 공중에 뜸 · 속박)일 때 기본 공격하면 ${H.mag(H.r(KDB.Q.on) + ' ' + H.bad(KDB.Q.onAd))}를 추가로 줍니다.<br><br>${H.b('사용 시')}: 동백이 지정한 방향으로 부채꼴(길이 ${KDB.Q.len}) 모양으로 노란 동백꽃을 흩뿌려, 맞은 모든 적에게 ${H.phys(H.r(KDB.Q.dmg) + ' ' + H.bad(KDB.Q.bad))}를 줍니다.`},
+  W: {name:'만개', cd: KDB.W.cd, range: KDB.W.range, text: H => `동백이 지정한 위치(사거리 ${KDB.W.range})에 꽃망울을 던집니다. ${H.s(KDB.W.delay)} 뒤 원형 범위(반경 ${KDB.W.radius})에서 꽃이 터지며 맞은 모든 적에게 ${H.phys(H.r(KDB.W.dmg) + ' ' + H.bad(KDB.W.bad))}를 주고 ${H.s(KDB.W.mark)} 동안 ${H.b('만개 표식')}을 새깁니다. 표식이 새겨진 적은 머리 위에 노란 꽃이 핍니다.<br><br>표식이 있는 적을 동백이 기본 공격할 때마다 ${H.phys(H.r(KDB.W.hit) + ' ' + H.bad(KDB.W.hitAd))}를 추가로 주고, 동백의 이동 속도가 ${H.s(KDB.W.msDur)} 동안 ${H.p(KDB.W.ms)} 증가합니다.`},
+  E: {name:'허물어지는 꽃처럼', cd: KDB.E.cd, range: KDB.E.dist, text: H => `동백이 지정한 방향으로 ${KDB.E.dist}만큼 빠르게 돌진합니다.<br><br>[알싸한 향기]의 치명타가 터질 때마다 이 스킬의 재사용 대기시간이 ${H.s(KDB.E.crit)} 줄어듭니다. 치명타가 ${H.b('챔피언')}에게 터지면 ${H.s(KDB.E.critChamp)} 줄어듭니다.<br><br>[피어나는 폭죽처럼]으로 난사하는 도중에도 쓸 수 있으며, 이때는 쏘던 방향을 그대로 유지한 채 움직입니다.`},
+  R: {name:'피어나는 폭죽처럼', cd: KDB.R.cd, range: KDB.R.range, text: H => `동백이 힘을 집중해 ${H.s(KDB.R.dur)} 동안 지정한 방향 일직선으로 ${H.b(KDB.R.n + '발')}의 동백 폭죽 탄환을 난사합니다(사거리 ${KDB.R.range}). 탄환은 처음 맞힌 적에게 ${H.phys(H.r(KDB.R.dmg) + ' ' + H.ad(KDB.R.ad))}를 줍니다. (구조물에는 절반)<br><br>동백의 ${H.b('치명타 확률 25%당 ' + (KDB.R.perPct * 25) + '발')}씩 탄환이 늘어납니다. (1%당 ${KDB.R.perPct}발, 소수점은 버림 · 치명타 확률 100%면 ${KDB.R.n + Math.floor(100 * KDB.R.perPct)}발)<br><br>난사하는 동안 움직일 수 있지만, ${H.b('[허물어지는 꽃처럼]을 제외한')} 스킬과 기본 공격은 쓸 수 없습니다. 스킬을 다시 쓰면 난사를 멈춥니다. 기절 · 공중에 뜸 · 공포 · 도발에 걸리면 난사가 끊깁니다.`},
+};
+CODEX_SK.gubo = {
+  P: {name:'그대로 꿰어 쏘리라', text: H => `구보가 스킬을 적중시킬 때마다 ${H.b('초종')} 게이지가 찹니다. (총신을 꿰뚫어라: 챔피언 ${KGB.P.gainQ} · 그 외 ${KGB.P.gainQo}, 퍼진 탄은 절반 · 차단: 챔피언 적중 시 ${KGB.P.gainE} · 흉탄: ${KGB.P.gainR}) 게이지가 ${KGB.P.need}이 되면 ${H.b('팬던트')} 하나로 바뀝니다. (최대 ${KGB.P.max}개, 구보 아래 붉은 마름모로 표시)<br><br>팬던트가 있을 때 ${H.b('적 챔피언')}을 기본 공격하면 ${H.b('모든 팬던트를 소모')}해, (미니언 · 몬스터를 칠 때는 소모하지 않고 아껴 둡니다) 대상 근처 무작위 위치에 팬던트 하나당 붉은 마법진 하나가 나타납니다. 마법진은 ${H.s(KGB.P.delay)} 뒤 대상에게 탄환을 쏘아 각각 ${H.phys(KGB.P.dmg[0] + ' + ' + KGB.P.dmg[1] + ' × 레벨 ' + H.bad(KGB.P.bad))}를 줍니다.`},
+  Q: {name:'총신을 꿰뚫어라', cd: KGB.Q.cd, range: KGB.Q.len, text: H => `구보가 ${H.s(KGB.Q.wind)} 동안 기를 모은 뒤 지정한 방향으로 흉탄을 발포합니다(사거리 ${KGB.Q.len}).<br><br>처음 맞힌 대상에게 ${H.phys(H.r(KGB.Q.dmg) + ' ' + H.bad(KGB.Q.bad))}를 주고, 그 대상 뒤로 탄이 부채꼴(길이 ${KGB.Q.cone})로 퍼져 다른 적들에게 ${H.p(KGB.Q.splash)}의 물리 피해를 줍니다.`},
+  W: {name:'부고를 전하지', cd: KGB.W.cd, range: KGB.W.range, text: H => `구보가 지정한 위치(사거리 ${KGB.W.range})에 붉은 덫을 설치합니다. 덫은 ${H.s(KGB.W.arm)} 뒤 작동하며 ${H.s(KGB.W.life)} 동안 남습니다. (최대 ${KGB.W.max}개, 더 깔면 가장 오래된 덫이 사라짐)<br><br>적 챔피언이 덫을 밟으면 ${H.s(KGB.W.root)} 동안 ${H.b('속박')}되고 잠시 모습이 드러나며, 구보는 ${H.b('팬던트')} 1개를 바로 얻습니다. 적에게는 덫이 흐릿하게만 보입니다.`},
+  E: {name:'차단', cd: KGB.E.cd, range: KGB.E.radius, text: H => `구보가 제자리에서 원형으로 회전하며 저격총을 휘둘러, 주변(반경 ${KGB.E.radius})의 적에게 ${H.phys(H.r(KGB.E.dmg) + ' ' + H.bad(KGB.E.bad))}를 주고 ${H.s(KGB.E.msDur)} 동안 이동 속도가 ${H.p(KGB.E.ms)} 증가합니다.<br><br>회전한 자리에는 ${H.s(KGB.E.ghost)} 동안 잔상이 남아, 그 범위에 닿는 ${H.b('적의 투사체를 모두 지웁니다')}. (원거리 기본 공격 · 던지는 스킬 · 작살 · 미사일 · 나무뿌리 · 폭죽 탄환 등)`},
+  R: {name:'흉탄이 저들을 꿰뚫으리라', cd: KGB.R.cd, range: KGB.R.range, text: H => `${H.b('기본 지속 효과')}: 구보 근처(${KGB.R.near})에서 아군 챔피언이 쓰러지면 ${H.s(KGB.R.mark)} 동안 그 자리에 ${H.b('저격 표준점')}(붉은 조준 표시)이 남습니다.<br><br>${H.b('사용 시')}: 구보가 ${H.s(KGB.R.wind)} 동안 힘을 모은 뒤, 적 챔피언 · 적 챔피언의 시체 · 저격 표준점 중 하나를 향해 거대한 흉탄을 발사합니다(사거리 ${KGB.R.range}). 조준선은 적에게도 보입니다.<br>적 챔피언에게는 ${H.phys(H.r(KGB.R.dmg) + ' ' + H.bad(KGB.R.bad) + ' + 대상이 잃은 체력의 ' + H.rp(KGB.R.miss))}를 주며, 이 탄은 대상 ${H.arm('방어력')}의 ${H.p(KGB.R.pen)}를 무시합니다.<br><br>이 탄으로 적을 처치하거나 시체 · 표준점을 터뜨리면, 그 자리 뒤쪽 부채꼴(길이 ${KGB.R.cone})로 ${H.s(KGB.R.storm)} 동안 흉탄이 빠르게 쏟아져(시체 · 표준점을 쐈을 때는 ${H.s(KGB.R.stormCorpse)}), 안에 있는 적에게 ${H.s(KGB.R.tick)}마다 <span class="cx-hp">대상 최대 체력의 ${H.rp(KGB.R.pct)}</span> ${H.ad(KGB.R.stAd)}의 물리 피해를 줍니다. (몬스터 · 미니언은 한 번에 최대 ${KGB.R.monCap})`},
 };
 CODEX_SK.sinclair = {
   P: {name:'어느 표지', text: H => `스킬을 사용하거나 기본 공격을 할 때마다 ${H.b('표지')}를 1개 얻습니다 (최대 ${KS.P.max}개).<br>표지가 ${KS.P.max}개일 때 쓰는 다음 Q·W·E는 ${H.b('강화')}되며 표지를 모두 소모합니다 (강화 스킬은 표지를 얻지 않음).<br>R은 표지를 소모하지 않고, 끝나면 표지를 ${KS.P.max}개 얻습니다.<br>적 챔피언 처치에 관여(처치·도움)하면 표지가 즉시 ${KS.P.max}개로 차고, ${H.s(KS.P.snowDur)} 동안 이동 속도가 ${H.p(KS.P.snowMs)} 증가합니다.`},
@@ -16531,6 +17309,8 @@ function demoReset() {
   hhFields = []; hhRings = []; P.hhE = null; P.hhDash = null; P.hhZ = null; P.hhN = 0;
   mtRoots = []; P.mtW = false; P.mtDash = null; P.mtR = null; P.mtQn = KMT.Q.n; P.mtQr = 0;
   P.gdDash = null; P.gdR = null; P.gdW = null; P.tmDash = null; P.tmEat = null; P.tmQ = null; P.tmPcd = 0; P.tmDrT = 0; corpses = [];
+  P.dbR = null; P.dbDash = null; P.dbBul = []; P.dbW = []; P.dbTwinT = 0; for (const u of [d1, d2]) u.dbMarkT = 0;
+  P.gbPend = 0; P.gbGauge = 0; P.gbCirc = []; P.gbTraps = []; P.gbGhost = null; P.gbStorm = null; P.gbMarks = [];
   alPatches = []; alBooms = []; mtRoots = []; P.alQ = null; P.alR = null; P.alFlyT = 0; P.alW = 0; P.alWT = 0; P.alSelf = false; if (!P.alive && P.key === 'alyssa') { P.alive = true; P.hp = P.maxHp; }
   chBuses = []; for (const c of [P, d1, d2, demo.ally]) { c.chRide = null; c.chE = null; c.chW = null; c.chQ = null; c.chMark = null; c.chShred = null; }
   projectiles = []; fx = fx.filter(f => f.type === 'text' && f.t < f.life * .5);
@@ -16574,6 +17354,16 @@ function demoScript(champ, key) {
           Q:{len:3.2, acts:[[.3, c('Q')], [.9, A.atk(true)]]}, W:{len:4, acts:[[.3, c('W')], [.4, A.atk(true)]]},
           E:{len:3.5, acts:[[.3, A.fn(() => charonEStart(player))], [1.4, A.castAt('E', 1, 0, .55)]]},
           R:{len:6.5, acts:[[.3, A.fn(() => { player.x -= 260; })], [.35, A.castAt('R', 1, 0, 1)], [1, A.fn(() => { const a = demo.ally; a.x = player.x - 60; a.y = player.y - 40; chTryBoard(a); })]]}},
+    gubo:{P:{len:4.5, acts:[[.2, A.fn(() => { player.gbPend = 3; })], [.4, A.atk(true)], [2.4, A.atk(false)]]},
+          Q:{len:3.2, acts:[[.3, c('Q')]]},
+          W:{len:4.2, acts:[[.2, A.fn(() => { const d = demo.dum[0]; d.x = player.x + 220; })], [.3, A.fn(() => castSkill(player, 'W', 0, 140 / E(KGB.W.range)))], [1.2, A.fn(() => { const d = demo.dum[0]; d.x = player.x + 140; d.y = player.y; })]]},
+          E:{len:3.5, acts:[[.2, A.fn(() => { const d = demo.dum[0]; d.atkT = 0; })], [.4, c('E')], [.5, A.hitMe], [.7, A.hitMe]]},
+          R:{len:5.5, acts:[[.2, A.fn(() => { const d = demo.dum[0], d2 = demo.dum[1]; player.x -= 60; d.x = player.x + 150; d.y = player.y; d.hp = d.maxHp * .12; d2.x = d.x + 100; d2.y = d.y + 14; })], [.4, c('R')], [1.3, A.fn(() => { const d = demo.dum[0]; if (d.alive) d.hp = 1; })]]}},
+    dongbaek:{P:{len:4.5, acts:[[.3, c('Q')], [.5, A.atk(true)], [2.6, A.atk(false)]]},
+          Q:{len:3.2, acts:[[.3, c('Q')]]},
+          W:{len:4, acts:[[.3, c('W')], [1.0, A.atk(true)], [3.2, A.atk(false)]]},
+          E:{len:3.2, acts:[[.3, A.castAt('E', -1, 0, 1)], [.8, A.atk(true)], [2.4, A.atk(false)]]},
+          R:{len:4.5, acts:[[.25, A.fn(() => { const [d1, d2] = demo.dum, a = demo.ally; d1.x = player.x + 210; d1.y = player.y - 14; d2.x = player.x + 290; d2.y = player.y + 22; if (a) { a.x = player.x - 90; a.y = player.y - 90; } })], [.4, A.castAt('R', 1, 0, 1)]]}},
     thoma:{P:{len:4.5, acts:[[.2, A.fn(() => { player.hp = player.maxHp * .45; demo.ally.hp = demo.ally.maxHp * .4; deathFx({x:player.x + 150, y:player.y + 50, r:E(16), team:'red', kind:'melee'}, player); })], [.9, A.fn(() => castSkill(player, 'G', null))]]},
           Q:{len:3.6, acts:[[.2, A.fn(() => { demo.ally.hp = demo.ally.maxHp * .4; })], [.3, c('Q')], [.4, A.atk(true)], [1.4, A.atk(false)]]},
           W:{len:3.5, acts:[[.2, A.fn(() => { demo.ally.hp = demo.ally.maxHp * .5; player.x = demo.dum[0].x - 120; })], [.4, c('W')]]},
