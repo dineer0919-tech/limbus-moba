@@ -2,9 +2,11 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0d1512">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
 <title>3v3 Rift Prototype</title>
 <style>
   :root{
@@ -224,7 +226,13 @@
   .sp .sp-gold{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums}
   .sp .sp-where{color:var(--sp-dim);font-size:11px}
   .sp .sp-where.ok{color:#8fd0a0}
-  .sp #shopClose{margin-left:auto;background:#3a2716;color:var(--sp-ink);border:1px solid var(--sp-line);border-radius:7px;padding:5px 12px;font:700 12px system-ui,sans-serif}
+  .sp .sp-auto{margin-left:auto;background:#1d2a1a;color:#bfe8b0;border:1px solid #4f7a3a;border-radius:7px;padding:5px 10px;font:700 11.5px system-ui,sans-serif}
+  .sp .sp-auto[aria-pressed="false"]{background:#2a1d12;color:#a89378;border-color:var(--sp-line)}
+  .sp .card .tg{font-size:9px;font-weight:800;color:#0b1a08;background:#9fe07a;border-radius:4px;padding:0 4px}
+  .sp .card.tgt{border-color:#9fe07a}
+  .sp .tgtb{background:#1d2a1a!important;color:#bfe8b0!important;border:1px solid #4f7a3a!important}
+  #shopBtn .tgt{font-weight:600;color:#bfe8b0;font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sp #shopClose{margin-left:6px;background:#3a2716;color:var(--sp-ink);border:1px solid var(--sp-line);border-radius:7px;padding:5px 12px;font:700 12px system-ui,sans-serif}
   .sp nav{grid-area:tabs;display:flex;flex-direction:column;gap:2px;padding:8px 6px;border-right:1px solid var(--sp-line);overflow-y:auto}
   .sp nav button{background:none;border:0;color:var(--sp-dim);text-align:left;padding:7px 8px;border-radius:6px;font:600 12px system-ui,sans-serif}
   .sp nav button[aria-pressed="true"]{background:#3a2716;color:var(--sp-ink)}
@@ -420,6 +428,38 @@
   .mp-sp .rn-ic{width:20px;height:20px;margin-left:2px} .mp-spell .rn-ic{width:30px;height:30px}
   .rn-desc{display:flex;gap:9px;align-items:flex-start;padding:8px 10px;border-radius:10px;background:#1a120b;border:1px solid #5a4220}
   .rn-desc b{color:#ffe29a;font-size:13px}.rn-desc small{display:block;color:#a89378;font-size:10.5px}.rn-desc p{margin:4px 0 0;font-size:11.5px;line-height:1.55;color:#e6d6bc}
+  .rp-sum{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:10px;background:#1a120b;border:1px solid #5a4220;flex-wrap:wrap}
+  .rp-sumt{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}.rp-sumt b{color:#ffe29a;font-size:13px}.rp-sumt small{font-size:11px;color:#d8c8ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rp-sumt small span{font-weight:800;margin-right:4px}
+  .rp-edit{padding:7px 12px;border-radius:8px;border:0;background:#e6c35c;color:#1a1405;font:800 12px system-ui,sans-serif;cursor:pointer}.rp-edit:disabled{opacity:.5}
+  .mp-rp .rp-sum{flex:1;padding:4px 8px}.mp-rp .rn-ic.lg{width:32px;height:32px}
+  #rpm{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(4,3,2,.7);padding:8px;touch-action:pan-y}
+  #rpm[hidden]{display:none}
+  .rp{width:min(980px,100%);max-height:100%;overflow:auto;background:#17110c;border:1px solid #4a3120;border-radius:12px;color:#f0e1c9;font:12px/1.45 "Noto Sans KR",system-ui,sans-serif;padding:0 0 10px}
+  .rp header{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:10px;padding:8px 12px;background:#1c130c;border-bottom:1px solid #4a3120}
+  .rp header h3{margin:0;font-size:15px;color:#e6c35c}.rp header small{color:#a89378;flex:1}
+  .rp header button{padding:6px 16px;border-radius:8px;border:0;background:#e6c35c;color:#1a1405;font:800 13px system-ui,sans-serif;cursor:pointer}
+  .rp-cols{display:grid;grid-template-columns:1.15fr 1fr;gap:12px;padding:8px 12px}
+  .rp h4{margin:2px 0 6px;font-size:13px}
+  .rp-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:4px;margin-bottom:6px}
+  .rp-tab{display:flex;flex-direction:column;align-items:center;padding:5px 2px;border-radius:8px;border:1.5px solid #3a2818;background:#140e09;color:#cdb898;cursor:pointer}
+  .rp-tab b{font-size:12.5px;color:var(--pc)}.rp-tab small{font-size:9px;color:#8f7c64;text-align:center;line-height:1.2}
+  .rp-tab.on{border-color:var(--pc);background:color-mix(in srgb, var(--pc) 16%, #140e09)}
+  .rp-ks{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+  .rp-k{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;border:1.5px solid #3a2818;background:#140e09;color:#f0e1c9;text-align:left;cursor:pointer}
+  .rp-k b{display:block;font-size:13px;color:#ffe29a}.rp-k small{color:#a89378;font-size:10.5px}
+  .rp-k.on{border-color:#ffd66b;background:#2a1d0c;box-shadow:0 0 10px rgba(255,214,107,.3)}
+  .rp-row{display:grid;grid-template-columns:44px repeat(3,minmax(0,1fr));gap:5px;align-items:center;margin-bottom:5px}
+  .rp-row > span{font-size:10px;color:#8f7c64}
+  .rp-chip{display:flex;align-items:center;gap:5px;padding:7px 6px;border-radius:8px;border:1.5px solid #3a2818;background:#140e09;color:#d8c8ac;font:700 11.5px system-ui,sans-serif;cursor:pointer;text-align:left;min-width:0}
+  .rp-chip i{width:8px;height:8px;border-radius:50%;background:var(--pc);flex:none;opacity:.45}
+  .rp-chip.on{border-color:var(--pc);color:#fff;background:color-mix(in srgb, var(--pc) 20%, #140e09)}.rp-chip.on i{opacity:1;box-shadow:0 0 6px var(--pc)}
+  .rp-tip{margin:0 12px;padding:8px 10px;border-radius:10px;background:#1a120b;border:1px solid #5a4220;min-height:40px}
+  .rp-tip b{color:#ffe29a;font-size:13px}.rp-tip p{margin:3px 0 0;font-size:12px;line-height:1.55;color:#e6d6bc}
+  @media (max-width:720px){ .rp-cols{grid-template-columns:1fr} .rp header small{display:none} }
+  .cx-paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+  .cx-path{padding:10px;border-radius:10px;background:#1d140d;border:1px solid #4a3120;border-top:3px solid var(--pc)}
+  .cx-path > b{font-size:15px;color:var(--pc)}.cx-path > small{display:block;color:#a89378;font-size:11px;margin-bottom:4px}
+  .cx-prow{margin-top:6px}.cx-prow > span{font-size:10px;color:#8f7c64}.cx-prow p{margin:2px 0;font-size:11.5px;line-height:1.5}.cx-prow p b{color:#ffe29a}
   .sp-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
   .sp-chip{position:relative;display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:10px;background:#140e09;border:1.5px solid #3a2818;color:#f0e1c9;font:600 11px system-ui,sans-serif;text-align:left;cursor:pointer}
   .sp-chip img{width:30px;height:30px;border-radius:50%;flex:none}
@@ -466,8 +506,6 @@
   .pc-keys b{color:#f0d9a8}
   @media (hover:hover) and (pointer:fine){ .pc-keys{display:block} }
 </style>
-</head>
-<body>
 
 <canvas id="c"></canvas>
 <div id="stats">
@@ -489,7 +527,7 @@
 <div id="shop" hidden>
   <div class="sp" role="dialog" aria-label="상점">
     <header><h3>상점</h3><span class="sp-gold" id="shopGold">500 G</span><span class="sp-where" id="shopWhere"></span>
-      <button id="shopClose" type="button">닫기</button></header>
+      <button id="shopAuto" type="button" class="sp-auto"></button><button id="shopClose" type="button">닫기</button></header>
     <nav id="shopTabs"></nav>
     <div class="sp-grid" id="shopGrid"></div>
     <aside id="shopDetail"></aside>
@@ -501,11 +539,11 @@
 <button id="snd" class="topbtn" type="button" aria-pressed="true">소리 켬</button>
 <div id="menu">
   <div class="mn">
-    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v210 · 지속 피해 합산 표시 수정</p></div>
+    <div class="mn-title"><small>LIMBUS COMPANY · FAN MOBA</small><h1>림버스 MOBA</h1><p>5대5 · 모바일 가로 화면 / PC</p><p class="mn-ver">버전 v212 · 룬 페이지 (메인 · 보조 경로)</p></div>
     <div class="mn-btns">
       <button type="button" id="mVsAi" class="mn-btn main"><b>VS AI</b><span>5대5 봇전 · 라인과 챔피언을 골라 시작</span></button>
       <button type="button" id="mSpec" class="mn-btn"><b>관전 모드</b><span>AI 10명만으로 진행 · 버튼으로 시점 전환 · 그 챔피언의 시야로 관전</span></button>
-      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v210</em></button>
+      <button type="button" id="mMulti" class="mn-btn"><b>멀티플레이</b><span>사람 5명 vs AI 5명 · 방 코드 / 빠른 매칭</span><em>v212</em></button>
       <button type="button" id="mDuel" class="mn-btn"><b>쏠전 · 1대1</b><span>매칭 · 랜덤 5장 공개 → 라운드마다 벤 · 픽 · 먼저 2승</span><em>NEW</em></button>
       <button type="button" id="mVicDev" class="mn-btn"><b>승리 연출 보기</b><span>개발용 · 챔피언별 MVP 승리 연출 미리보기</span></button>
       <button type="button" id="mCodex" class="mn-btn"><b>도감</b><span>챔피언 기초 스탯 · 스킬 계수 · 시연 영상</span></button>
@@ -1600,6 +1638,7 @@ function recalcStats(c) {
   const b = {};                                      // 아이템 스탯 합계
   { const its = c.items || []; for (let ii = 0; ii < its.length; ii++) { const id = its[ii], mul = rnItemMul(c, id, ii); for (const [k, v] of Object.entries(ITEMS[id].stats)) b[k] = (b[k] || 0) + v * mul; } }   // 란: 개조 아이템
   if (isXc(c)) xcItemW(c, b);                                     // 가시춘 & 웨이: 아이템 가중치
+  perkStats(c, b);                                                 // 룬 페이지: 능력치
   const bv = k => b[k] || 0;
   const elix = c.elixT > time;                                     // 힘의 영약
   c.bonusHp = rnBonusHp(c) + bv('hp') + (rI >= 0 ? K.R.hp[rI] : 0) + (elix ? 200 : 0);
@@ -1627,6 +1666,7 @@ function recalcStats(c) {
 function gainXp(c, amount) {
   if (!c || c.level >= MAX_LEVEL) return;
   if (c.rune === 'hod') amount *= 1 + RUNES.hod.xp;                   // 호드: 교육의 성과
+  amount *= perkXp(c);
   c.xp += amount;
   while (c.level < MAX_LEVEL && c.xp >= xpToNext(c.level)) {
     c.xp -= xpToNext(c.level); c.level++; c.points++;
@@ -1687,10 +1727,10 @@ function resetGame() {
   if (ML) {                                                            // 멀티: 픽창에서 정한 구성 그대로
     ML.fresh = false;
     const mine = ML.blue.find(b => b.role === ML.me) || ML.blue[0];
-    player = spawn('blue', mine.key, mine.role); if (mine.name) player.name = mine.name; player.mpSpells = mine.spells; player.mpRune = mine.rune || defaultRune(mine.role, mine.key);
+    player = spawn('blue', mine.key, mine.role); if (mine.name) player.name = mine.name; player.mpSpells = mine.spells; player.mpRune = mine.rune || defaultRune(mine.role, mine.key); player.mpPerks = mine.perks;
     heroes = [player];
-    for (const b of ML.blue) if (b !== mine) { const c = spawn('blue', b.key, b.role); if (b.name) c.name = b.name; c.mpSpells = b.spells; c.mpRune = b.rune || defaultRune(b.role, b.key); heroes.push(c); }
-    for (const r of ML.red) { const c = spawn('red', r.key, r.role); c.name += ' (적)'; c.mpSpells = r.spells; c.mpRune = r.rune || defaultRune(r.role, r.key); heroes.push(c); }
+    for (const b of ML.blue) if (b !== mine) { const c = spawn('blue', b.key, b.role); if (b.name) c.name = b.name; c.mpSpells = b.spells; c.mpRune = b.rune || defaultRune(b.role, b.key); c.mpPerks = b.perks; heroes.push(c); }
+    for (const r of ML.red) { const c = spawn('red', r.key, r.role); c.name += ' (적)'; c.mpSpells = r.spells; c.mpRune = r.rune || defaultRune(r.role, r.key); c.mpPerks = r.perks; heroes.push(c); }
   } else {
   player = spawn('blue', chosenChamp, chosenRole);
   heroes = [player];
@@ -1704,7 +1744,7 @@ function resetGame() {
   units.push(...heroes);
   initCamps(); banner = null; killFeed = [];
   corpses = [];
-  wards = []; for (const c of heroes) { c.wards = 1; giveSpells(c, c === player && !spectating ? chosenSpells : c.mpSpells || defaultSpells(c.role, c.key)); c.rune = c === player && !spectating && !c.mpRune ? chosenRune : c.mpRune || defaultRune(c.role, c.key); recalcStats(c); }
+  wards = []; for (const c of heroes) { c.wards = 1; giveSpells(c, c === player && !spectating ? chosenSpells : c.mpSpells || defaultSpells(c.role, c.key)); { const me = c === player && !spectating && !c.mpRune; applyPage(c, me ? chosenPage.ks : c.mpRune || defaultRune(c.role, c.key), me ? pagePerks(chosenPage) : c.mpPerks); } recalcStats(c); }
   yuriAssignWork(heroes); krBolts = []; krEggInit(); hhFields = []; hhRings = []; alPatches = []; alBooms = []; mtRoots = [];                                             // 유리: 취약·저항 속성 배정               // 시작할 때 와드 1개
   visT = 0; visionUpdate(); fogA.fill(1);
   $('over').hidden = true;
@@ -1735,7 +1775,7 @@ function EV(c) {
   return {cd:K.E.cd[i], hits:K.E.hits, window:K.E.window, as:K.E.as[i], pct:K.E.pct[i] + (R ? R.pctAdd : 0),
           slow:R ? R.slow : K.E.slow, slowDur:K.E.slowDur};
 }
-const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * (u.scSnowT > time ? 1 + KS.P.snowMs : 1) * (u.alFlyT > time ? 1 + KAL.E.ms[u.alFlyI || 0] : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * dbMs(u) * gbMs(u) * riMs(u) * xcMs(u) * sdMs(u) * efGuardMs(u) * rnMs(u) * vgMs(u) * chMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
+const speedMul = u => (u.stunT > 0 || u.rootT > time ? 0 : 1) * (u.scSnowT > time ? 1 + KS.P.snowMs : 1) * (u.alFlyT > time ? 1 + KAL.E.ms[u.alFlyI || 0] : 1) * spellMs(u) * yuMarkMs(u) * krMs(u) * dbMs(u) * gbMs(u) * riMs(u) * xcMs(u) * sdMs(u) * efGuardMs(u) * rnMs(u) * perkMs(u) * vgMs(u) * chMs(u) * (u.krEggBuff && u.key === 'sinclair' ? 1 + KKR.egg.ms : 1) * (u.fMsT > time ? 1 + KF.W.ms : 1) * (u.outisMsT > time ? 1 + KO.P.ms * (u.outisMsT - time) / KO.P.msDur : 1) * (u.scMsT > time ? 1.6 : 1) * (u.scGuard ? .5 : 1) * (u.hlMsT > time ? 1 + KH.E.ms * Math.min(1, (u.hlMsT - time) / KH.E.fade) : 1) * (u.slowT > 0 && !(u.key === 'ryoshu' && u.ryoRT > time) ? 1 - u.slowAmt * (u.key === 'ishmael' && u.iStackT > time ? 1 - u.iStacks * KI.P.slowRes : 1) : 1) *
   (u.hasteT > 0 ? 1 + K.P.haste * (u.hasteT / K.P.hasteDur) : 1) * (u.wT > 0 ? 1 + KR.W.ms : 1) * (u.key === 'ryoshu' && u.ryoRT > time ? 1 + KRY.R.ms[rk(u, 'R')] : 1) *
   (u.homingT > time ? 1.4 : 1) * (u.pinkT > time ? 1.25 : 1) * stemSlow(u) * itemMs(u);
 const stemSlow = u => isChamp(u) && heroes.some(c => c.alive && c.team !== u.team && hasItem(c, 'stem') && dist(c, u) < E(300)) ? .9 : 1;   // 녹색줄기
@@ -2164,7 +2204,7 @@ function renderSpellPick() {
   const icon = id => { try { return spellIconCanvas(id).toDataURL(); } catch { return ''; } };
   $('selSpells').innerHTML = `<b>소환사 주문</b><small>2개 선택 (D · F)</small><div class="sp-chips">${SPELL_ORDER.map(id => {
     const s = SPELLS[id], on = chosenSpells.indexOf(id);
-    return `<button type="button" class="sp-chip" data-spell="${id}" aria-pressed="${on >= 0}" title="${esc(s.desc)}"><img src="${icon(id)}" alt=""><span>${esc(s.name)}<small>${s.lol} · ${s.cd}초</small></span>${on >= 0 ? `<em>${on ? 'F' : 'D'}</em>` : ''}</button>`; }).join('')}</div>` + runePickHtml(chosenRune);
+    return `<button type="button" class="sp-chip" data-spell="${id}" aria-pressed="${on >= 0}" title="${esc(s.desc)}"><img src="${icon(id)}" alt=""><span>${esc(s.name)}<small>${s.lol} · ${s.cd}초</small></span>${on >= 0 ? `<em>${on ? 'F' : 'D'}</em>` : ''}</button>`; }).join('')}</div>` + rpSummaryHtml(chosenPage);
 }
 function selRecommend(role) {                                          // 챔피언 선택: 고른 라인을 선호하는 챔피언을 앞으로 · 추천 표시
   const box = $('selCards'), cards = [...box.querySelectorAll('.sel-card')];
@@ -2179,6 +2219,7 @@ function selStep(step) {
 $('again').addEventListener('click', () => { specEnd(); if (mpLineup && mpLineup.duel) duelCleanup(); if (mpLineup) { mpLineup = null; mpEndSync(); if (MP.code) mpLeave(''); $('mp').hidden = true; } $('over').hidden = true; started = false; $('select').hidden = true; $('menu').hidden = false; selStep('role'); });
 $('select').addEventListener('click', e => {
   if (e.target.closest('#selBack')) { selStep('role'); return; }
+  if (e.target.closest('[data-rpedit]')) { rpOpen(); return; }
   const rn = e.target.closest('[data-rune]');
   if (rn) { chosenRune = rn.dataset.rune; try { localStorage.setItem('rune', chosenRune); } catch {} renderSpellPick(); return; }
   const sp = e.target.closest('[data-spell]');
@@ -3222,7 +3263,7 @@ function damage(src, tgt, amount, opts = {}) {
       if (!full0 && ishGrudgeFull(tgt)) { fx.push({type:'pop', x:tgt.x, y:tgt.y, r:tgt.r * 1.8, color:'#ffd27a', t:0, life:.4}); if (tgt === player) text(tgt.x, tgt.y - tgt.r - E(60), '원한 가득', '#ffb070', true, .9); }
       fx.push({type:'pop', x:tgt.x + Math.cos(a) * tgt.r * 1.2, y:tgt.y + Math.sin(a) * tgt.r * 1.2, r:E(8), color:'#ff8a2a', t:0, life:.2}); }
   }
-  if (isChamp(src) && isChamp(tgt) && src.team !== tgt.team) amount *= runeDmgMul(src, tgt);   // 황금가지 공명
+  if (isChamp(src) && isChamp(tgt) && src.team !== tgt.team) amount *= runeDmgMul(src, tgt) * perkDmgMul(src, tgt, opts) * perkTakenMul(tgt);   // 황금가지 공명 · 룬 페이지
   if (isChamp(tgt) && !opts.noStack) ishOnHit(tgt);                                            // 생존자의 집념
   if (isChamp(src)) src.lastCombatT = time;
   if (isChamp(tgt)) tgt.lastCombatT = time;
@@ -3273,7 +3314,7 @@ function damage(src, tgt, amount, opts = {}) {
   if (opts.basic && isChamp(tgt) && hasItem(tgt, 'frost') && src && src.alive && !src.structure) src.frostT = time + 2;   // 서리조각
   if (tgt.recalling) cancelRecall(tgt);             // 맞으면 귀환 끊김
   if (isChamp(src) && (opts.skill || opts.basic) && !opts.noProc) hitFeedback(src, tgt, opts);
-  if (isChamp(src) && isChamp(tgt) && src.team !== tgt.team && !opts.noProc && !opts.rune && (opts.skill || opts.basic)) runeOnHit(src, tgt, opts);
+  if (isChamp(src) && isChamp(tgt) && src.team !== tgt.team && !opts.noProc && !opts.rune && (opts.skill || opts.basic)) { runeOnHit(src, tgt, opts); perkOnHit(src, tgt, opts); }
   if (isChamp(tgt)) tgt.lastDmgT = 0;
   {
     const ours = src && src.team === player.team && (isChamp(src) || src === player), tx = tgt.x + (Math.random() - .5) * E(30);
@@ -3472,7 +3513,7 @@ function kill(u, src) {
       if (c === player) text(u.x, u.y - u.r - E(30), '+' + g + ' 도움', '#e6c35c', true, 1.2);
     }
     hhEggKill(killer, helpers, u);                                   // 이스터에그: 호엔하임 + 파우스트 합동 연구
-    for (const c of [killer, ...helpers]) if (c) runeTakedown(c);   // 케테르: 빛의 씨앗
+    for (const c of [killer, ...helpers]) if (c) { runeTakedown(c); perkTakedown(c); }   // 케테르: 빛의 씨앗 · 룬 페이지
     for (const c of [killer, ...helpers]) if (c && c.key === 'sinclair' && c.alive) { scGain(c, KS.P.max); c.scSnowT = time + KS.P.snowDur; fx.push({type:'scMarkUse', owner:c, t:0, life:.5}); if (c === player) text(c.x, c.y - c.r - E(60), '표지 충전 · 질주', '#d8e8a0', true, .9); }   // 싱클레어: 처치 관여로 굴러감
     for (const c of [killer, ...helpers]) if (c) {                // 웃음·은하수 중첩, 눈물로 벼려낸 검
       const n = c === killer ? 4 : 2;
@@ -5748,8 +5789,215 @@ function runePickHtml(cur, attr = 'data-rune', dis = false) {     // 고르는 �
     ${R ? `<div class="rn-desc">${runeImg(cur, 'lg')}<div><b>${esc(R.name)} · ${esc(R.title)}</b><small>${esc(R.sub)}</small><p>${R.desc(R)}</p></div></div>` : ''}</div>`;
 }
 function cxRunesHtml() {
-  return `<h3 class="cx-sh">황금가지 공명 <small>게임 시작 전에 하나를 골라 들고 갑니다</small></h3><div class="cx-spells">${RUNE_ORDER.map(id => { const R = RUNES[id];
+  return `<h3 class="cx-sh">룬 페이지 <small>메인 경로에서 핵심 공명 1개 + 하위 3개, 보조 경로에서 하위 3개</small></h3><div class="cx-paths">${RUNE_PATHS.map(P => `<div class="cx-path" style="--pc:${P.col}"><b>${P.name}</b><small>${P.sub} · 핵심 공명: ${P.ks.map(k => RUNES[k].name).join(' · ')}</small>${P.rows.map((row, i) => `<div class="cx-prow"><span>${RP_ROW[i]}</span>${row.map(id => `<p><b>${esc(PERKS[id].name)}</b> ${esc(PERKS[id].desc)}</p>`).join('')}</div>`).join('')}</div>`).join('')}</div>` + `<h3 class="cx-sh">황금가지 공명 (핵심 공명) <small>메인 경로에서 하나를 골라 들고 갑니다</small></h3><div class="cx-spells">${RUNE_ORDER.map(id => { const R = RUNES[id];
     return `<div class="cx-spell">${runeImg(id, 'lg')}<div><b>${esc(R.name)} · ${esc(R.title)}</b><small>${esc(R.sub)}</small><p>${R.desc(R)}</p></div></div>`; }).join('')}</div>`;
+}
+
+// ═════════════ 룬 페이지: 메인 경로(핵심 공명 + 하위 3) · 보조 경로(하위 3) ═════════════
+const RUNE_PATHS = [
+  {id:'red', name:'파괴', sub:'처치 · 폭발 피해', col:'#e0473f', ks:['gebura', 'yesod'], rows:[['rd_low', 'rd_first', 'rd_taste'], ['rd_hunt', 'rd_chase', 'rd_feast'], ['rd_force', 'rd_pierce', 'rd_frenzy']]},
+  {id:'insight', name:'통찰', sub:'꾸준한 피해 · 약점 공략', col:'#d8b45a', ks:['binah', 'malkuth'], rows:[['in_focus', 'in_range', 'in_cc'], ['in_crit', 'in_ls', 'in_rhythm'], ['in_giant', 'in_last', 'in_third']]},
+  {id:'time', name:'시간', sub:'스킬 · 재사용 대기시간', col:'#c9a27a', ks:['hokma', 'keter'], rows:[['tm_haste', 'tm_ult', 'tm_spell'], ['tm_guard', 'tm_flow', 'tm_burst'], ['tm_ap', 'tm_amp', 'tm_reset']]},
+  {id:'guard', name:'수호', sub:'버티기 · 보호', col:'#6ec4e8', ks:['chesed', 'netzach'], rows:[['gd_arm', 'gd_mr', 'gd_hp'], ['gd_regen', 'gd_bone', 'gd_stand'], ['gd_grow', 'gd_thorn', 'gd_cc']]},
+  {id:'growth', name:'성장', sub:'성장 · 이동 · 함께 싸우기', col:'#7fcf7a', ks:['hod', 'tiphereth'], rows:[['gr_xp', 'gr_bounty', 'gr_gold'], ['gr_ms', 'gr_flee', 'gr_ally'], ['gr_bond', 'gr_assist', 'gr_cheer']]},
+];
+const RP_ROW = ['첫째 줄', '둘째 줄', '셋째 줄'];
+// tag: 봇이 고를 때 참고 (ad 공격력형 · ap 주문력형 · tank 탱커 · any 아무나)
+const PERKS = {
+  rd_low:{name:'급소', tag:'any', desc:'체력이 40% 미만인 적 챔피언에게 주는 피해가 7% 늘어납니다.'},
+  rd_first:{name:'첫 수', tag:'any', desc:'5초 동안 적 챔피언과 싸우지 않다가 처음 맞히면 20 + 레벨당 6의 추가 피해를 줍니다. (공격력과 주문력 중 높은 쪽 피해)'},
+  rd_taste:{name:'피의 맛', tag:'any', desc:'적 챔피언에게 피해를 주면 체력을 8 + 레벨당 2 회복합니다. (6초에 한 번)'},
+  rd_hunt:{name:'사냥 기록', tag:'any', desc:'적 챔피언 처치에 관여할 때마다 공격력 +2 · 주문력 +3을 영구히 얻습니다. (최대 8번)'},
+  rd_chase:{name:'추격', tag:'any', desc:'적 챔피언 처치에 관여하면 3초 동안 이동 속도가 25% 빨라집니다.'},
+  rd_feast:{name:'포식', tag:'any', desc:'적 챔피언 처치에 관여하면 최대 체력의 8%를 회복합니다.'},
+  rd_force:{name:'힘', tag:'any', desc:'공격력 +7 · 주문력 +12', stat:() => ({ad:7, ap:12})},
+  rd_pierce:{name:'관통', tag:'any', desc:'물리 관통 +6 · 마법 관통 +5%', stat:() => ({leth:6, mpen:.05})},
+  rd_frenzy:{name:'광기', tag:'ad', desc:'공격 속도 +10%', stat:() => ({as:.1})},
+  in_focus:{name:'집중 공격', tag:'ad', desc:'같은 적 챔피언을 맞힐 때마다 그 대상에게 주는 피해가 2% 늘어납니다. (최대 5번 · 4초 유지)'},
+  in_range:{name:'거리 유지', tag:'ranged', desc:'450 이상 떨어진 적 챔피언에게 주는 피해가 6% 늘어납니다.'},
+  in_cc:{name:'약점 노출', tag:'any', desc:'둔화 · 기절 · 속박 · 공중에 뜬 적 챔피언에게 주는 피해가 8% 늘어납니다.'},
+  in_crit:{name:'치명 연마', tag:'ad', desc:'치명타 확률 +6%', stat:() => ({crit:.06})},
+  in_ls:{name:'흡수', tag:'any', desc:'모든 피해 흡혈 +4%', stat:() => ({omni:.04})},
+  in_rhythm:{name:'전투 리듬', tag:'ad', desc:'기본 공격으로 적 챔피언을 맞히면 1.5초 동안 이동 속도가 8% 빨라집니다.'},
+  in_giant:{name:'거인 사냥', tag:'any', desc:'대상의 최대 체력이 나보다 높으면, 그 차이 100마다 주는 피해가 1% 늘어납니다. (최대 10%)'},
+  in_last:{name:'최후의 저항', tag:'any', desc:'내 체력이 60% 아래로 내려가면 주는 피해가 점점 늘어나, 30% 이하에서는 9% 늘어납니다.'},
+  in_third:{name:'세 번째 타격', tag:'ad', desc:'적 챔피언에게 기본 공격을 3번 맞힐 때마다 10 + 레벨당 4 + 공격력의 10%만큼 물리 피해를 더 줍니다.'},
+  tm_haste:{name:'스킬 가속', tag:'any', desc:'스킬 가속 +8', stat:() => ({haste:8})},
+  tm_ult:{name:'궁극기 가속', tag:'any', desc:'궁극기 가속 +12', stat:() => ({uhaste:12})},
+  tm_spell:{name:'주문 숙련', tag:'any', desc:'소환사 주문(D · F)의 재사용 대기시간이 12% 더 빨리 돌아옵니다.'},
+  tm_guard:{name:'주문 방벽', tag:'any', desc:'스킬로 적 챔피언을 맞히면 2초 동안 30 + 레벨당 9의 보호막을 얻습니다. (12초에 한 번)'},
+  tm_flow:{name:'흐름', tag:'any', desc:'스킬로 적 챔피언을 맞히면 2초 동안 이동 속도가 15% 빨라집니다. (6초에 한 번)'},
+  tm_burst:{name:'폭발 주문', tag:'ap', desc:'스킬로 적 챔피언을 맞히면 15 + 레벨당 5 + 주문력의 15%만큼 마법 피해를 더 줍니다. (5초에 한 번)'},
+  tm_ap:{name:'주문력', tag:'ap', desc:'주문력 +18', stat:() => ({ap:18})},
+  tm_amp:{name:'스킬 증폭', tag:'any', desc:'스킬로 적 챔피언에게 주는 피해가 5% 늘어납니다.'},
+  tm_reset:{name:'재정비', tag:'any', desc:'적 챔피언 처치에 관여하면 Q · W · E의 남은 재사용 대기시간이 2초 줄어듭니다.'},
+  gd_arm:{name:'단단함', tag:'tank', desc:'방어력 +9', stat:() => ({armor:9})},
+  gd_mr:{name:'마법 방호', tag:'tank', desc:'마법 저항력 +9', stat:() => ({mr:9})},
+  gd_hp:{name:'체력 단련', tag:'tank', desc:'체력 +60 + 레벨당 12', stat:c => ({hp:60 + 12 * c.level})},
+  gd_regen:{name:'재생', tag:'tank', desc:'초당 체력 재생 +1 + 레벨당 0.1', stat:c => ({regen:1 + .1 * c.level})},
+  gd_bone:{name:'뼈 갑옷', tag:'tank', desc:'적 챔피언에게 맞으면 2초 동안 받는 피해가 12% 줄어듭니다. (10초에 한 번)'},
+  gd_stand:{name:'불굴', tag:'tank', desc:'체력이 35% 아래일 때 받는 피해가 10% 줄어듭니다.'},
+  gd_grow:{name:'과잉 성장', tag:'tank', desc:'미니언을 처치할 때마다 최대 체력이 1.5 늘어납니다. (최대 +180)', stat:c => ({hp:Math.min(180, (c.cs || 0) * 1.5)})},
+  gd_thorn:{name:'반격', tag:'tank', desc:'적 챔피언의 기본 공격에 맞으면 5 + 방어력 · 마법 저항력 합의 6%만큼 마법 피해를 돌려줍니다.'},
+  gd_cc:{name:'견딤', tag:'tank', desc:'기절 · 공중에 뜸 · 속박 · 공포 · 도발에 걸려 있는 동안 받는 피해가 15% 줄어듭니다.'},
+  gr_xp:{name:'배움', tag:'any', desc:'얻는 경험치가 6% 늘어납니다.'},
+  gr_bounty:{name:'현상금 사냥', tag:'any', desc:'적 챔피언 처치에 관여할 때마다 골드를 40 더 얻습니다.'},
+  gr_gold:{name:'근면', tag:'any', desc:'초당 골드를 0.6 더 얻습니다.'},
+  gr_ms:{name:'신속', tag:'any', desc:'이동 속도 +3%', stat:() => ({ms:.03})},
+  gr_flee:{name:'탈출', tag:'any', desc:'체력이 30% 아래로 떨어지면 2초 동안 이동 속도가 35% 빨라집니다. (20초에 한 번)'},
+  gr_ally:{name:'동행', tag:'any', desc:'근처(600)에 아군 챔피언이 있으면 이동 속도가 6% 빨라집니다.'},
+  gr_bond:{name:'연대', tag:'any', desc:'근처(600)에 아군 챔피언이 있으면 받는 피해가 5% 줄어듭니다.'},
+  gr_assist:{name:'지원 사격', tag:'any', desc:'2초 안에 아군이 맞힌 적 챔피언에게 주는 피해가 5% 늘어납니다.'},
+  gr_cheer:{name:'응원', tag:'any', desc:'적 챔피언 처치에 관여하면 근처(700) 아군 챔피언 모두 최대 체력의 6%를 회복합니다.'},
+};
+const rpPath = id => RUNE_PATHS.find(p => p.id === id);
+const rpPathOfKs = ks => RUNE_PATHS.find(p => p.ks.includes(ks)) || RUNE_PATHS[0];
+function rpNormalize(p) {                                            // 잘못된 칸은 기본값으로 채움
+  p = Object.assign({}, p || {});
+  let M = rpPath(p.main) || rpPathOfKs(p.ks || 'gebura');
+  p.main = M.id; if (!M.ks.includes(p.ks)) p.ks = M.ks[0];
+  p.mains = M.rows.map((row, i) => row.includes((p.mains || [])[i]) ? p.mains[i] : row[0]);
+  let S = rpPath(p.sub); if (!S || S.id === M.id) S = RUNE_PATHS.find(q => q.id !== M.id);
+  p.sub = S.id; p.subs = S.rows.map((row, i) => row.includes((p.subs || [])[i]) ? p.subs[i] : row[0]);
+  return p;
+}
+let chosenPage = rpNormalize((() => { try { return JSON.parse(localStorage.getItem('runePage') || 'null') || {ks:localStorage.getItem('rune') || 'gebura'}; } catch { return {ks:'gebura'}; } })());
+chosenRune = chosenPage.ks;
+const pagePerks = p => [...p.mains, ...p.subs];
+function rpSave() { chosenPage = rpNormalize(chosenPage); chosenRune = chosenPage.ks; try { localStorage.setItem('runePage', JSON.stringify(chosenPage)); localStorage.setItem('rune', chosenRune); } catch {} }
+function defaultPerks(role, key, ks) {                              // 봇: 라인 · 챔피언에 맞춰 고름
+  const st = STATS[key] || {}, ap = !!(st.ap && st.ap[0] > 0), ranged = !!st.ranged;
+  const tank = ['top', 'support'].includes(role) && !ranged && !ap && Math.random() < .5;
+  const M = rpPathOfKs(ks), subPref = {top:['guard', 'red'], jungle:['red', 'growth'], mid:['time', 'insight'], bottom:['insight', 'red'], support:['guard', 'growth', 'time']}[role] || ['red'];
+  const sid = subPref.filter(x => x !== M.id)[Math.floor(Math.random() * subPref.filter(x => x !== M.id).length)] || RUNE_PATHS.find(q => q.id !== M.id).id;
+  const ok = id => { const t = PERKS[id].tag; return t === 'any' || (t === 'ap' && ap) || (t === 'ad' && !ap) || (t === 'tank' && (tank || role === 'support' || role === 'top')) || (t === 'ranged' && ranged); };
+  const pick = row => { const c = row.filter(ok); return (c.length ? c : row)[Math.floor(Math.random() * (c.length || row.length))]; };
+  return [...M.rows.map(pick), ...rpPath(sid).rows.map(pick)];
+}
+function applyPage(c, ks, perks) {                                  // 챔피언에게 룬 장착
+  c.rune = RUNES[ks] ? ks : 'gebura';
+  c.perks = Array.isArray(perks) && perks.every(id => PERKS[id]) ? perks.slice(0, 6) : defaultPerks(c.role, c.key, c.rune);
+  c.perkSet = new Set(c.perks); c.pkHunt = 0;
+}
+const hasPerk = (c, id) => !!(c && c.perkSet && c.perkSet.has(id));
+function perkStats(c, b) {                                          // recalcStats(): 룬 능력치
+  if (!c.perkSet) return;
+  for (const id of c.perkSet) { const P = PERKS[id]; if (P && P.stat) for (const [k, v] of Object.entries(P.stat(c))) b[k] = (b[k] || 0) + v; }
+  if (c.pkHunt) { b.ad = (b.ad || 0) + 2 * c.pkHunt; b.ap = (b.ap || 0) + 3 * c.pkHunt; }
+}
+const perkCC = u => u.stunT > 0 || u.airT > 0 || u.rootT > time || u.fearT > time || u.tauntT > time;
+function perkDmgMul(src, tgt, opts) {                               // damage(): 챔피언 → 챔피언 피해 배율
+  if (!src.perkSet) return 1;
+  let m = 1;
+  if (hasPerk(src, 'rd_low') && tgt.hp < tgt.maxHp * .4) m *= 1.07;
+  if (hasPerk(src, 'in_focus') && src.pkFocus && src.pkFocus.t === tgt && time < src.pkFocus.until) m *= 1 + .02 * src.pkFocus.n;
+  if (hasPerk(src, 'in_range') && dist(src, tgt) >= E(450)) m *= 1.06;
+  if (hasPerk(src, 'in_cc') && (perkCC(tgt) || tgt.slowT > 0)) m *= 1.08;
+  if (hasPerk(src, 'in_giant') && tgt.maxHp > src.maxHp) m *= 1 + Math.min(.1, (tgt.maxHp - src.maxHp) / 100 * .01);
+  if (hasPerk(src, 'in_last')) { const h = src.hp / src.maxHp; if (h < .6) m *= 1 + .09 * Math.min(1, (.6 - h) / .3); }
+  if (hasPerk(src, 'tm_amp') && opts.skill) m *= 1.05;
+  if (hasPerk(src, 'gr_assist') && tgt.hitBy) for (const [a, t] of tgt.hitBy) if (a !== src && a.team === src.team && isChamp(a) && time - t < 2) { m *= 1.05; break; }
+  return m;
+}
+function perkTakenMul(tgt) {                                        // damage(): 챔피언에게서 받는 피해 배율
+  if (!tgt.perkSet) return 1;
+  let m = 1;
+  if (hasPerk(tgt, 'gd_bone')) { if (tgt.pkBoneT > time) m *= .88; else if (time >= (tgt.pkBoneCd || 0)) { tgt.pkBoneCd = time + 10; tgt.pkBoneT = time + 2; m *= .88; fx.push({type:'pop', x:tgt.x, y:tgt.y, r:tgt.r * 1.5, color:'#e8e4d8', t:0, life:.35}); } }
+  if (hasPerk(tgt, 'gd_stand') && tgt.hp < tgt.maxHp * .35) m *= .9;
+  if (hasPerk(tgt, 'gd_cc') && perkCC(tgt)) m *= .85;
+  if (hasPerk(tgt, 'gr_bond') && tgt.pkAllyN) m *= .95;
+  return m;
+}
+function perkOnHit(src, tgt, opts) {                                // damage(): 적 챔피언을 맞힌 뒤
+  if (src.perkSet) {
+    const adapt = (src.ap || 0) > (src.bonusAd || 0) * 1.2 ? 'magic' : 'physical';
+    if (hasPerk(src, 'rd_first') && time - (src.pkFight ?? -99) > 5 && tgt.alive) damage(src, tgt, 20 + 6 * src.level, {type:adapt, noProc:true, rune:1, color:'#ff8a6a'});
+    src.pkFight = time;
+    if (hasPerk(src, 'rd_taste') && time >= (src.pkTaste || 0)) { src.pkTaste = time + 6; src.hp = Math.min(src.maxHp, src.hp + 8 + 2 * src.level); }
+    if (hasPerk(src, 'in_focus')) { const F = src.pkFocus; src.pkFocus = F && F.t === tgt && time < F.until ? {t:tgt, n:Math.min(5, F.n + 1), until:time + 4} : {t:tgt, n:1, until:time + 4}; }
+    if (opts.basic && hasPerk(src, 'in_rhythm')) src.pkRhyT = time + 1.5;
+    if (opts.basic && hasPerk(src, 'in_third') && (src.pkThird = (src.pkThird || 0) + 1) % 3 === 0 && tgt.alive) damage(src, tgt, 10 + 4 * src.level + .1 * src.ad, {noProc:true, rune:1, color:'#ffd27a'});
+    if (opts.skill) {
+      if (hasPerk(src, 'tm_guard') && time >= (src.pkGuard || 0)) { src.pkGuard = time + 12; src.shield = Math.max(src.shield || 0, 30 + 9 * src.level); src.shieldT = Math.max(src.shieldT || 0, 2); }
+      if (hasPerk(src, 'tm_flow') && time >= (src.pkFlowCd || 0)) { src.pkFlowCd = time + 6; src.pkFlowT = time + 2; }
+      if (hasPerk(src, 'tm_burst') && time >= (src.pkBurst || 0) && tgt.alive) { src.pkBurst = time + 5; damage(src, tgt, 15 + 5 * src.level + .15 * (src.ap || 0), {type:'magic', noProc:true, rune:1, color:'#c7a2ff'}); }
+    }
+  }
+  if (tgt.perkSet) {
+    if (opts.basic && hasPerk(tgt, 'gd_thorn') && time >= (tgt.pkThorn || 0) && src.alive) { tgt.pkThorn = time + .5; damage(tgt, src, 5 + .06 * ((tgt.armor || 0) + (tgt.mr || 0)), {type:'magic', noProc:true, rune:1, color:'#9fd8ff'}); }
+    if (hasPerk(tgt, 'gr_flee') && tgt.alive && tgt.hp < tgt.maxHp * .3 && time >= (tgt.pkFleeCd || 0)) { tgt.pkFleeCd = time + 20; tgt.pkFleeT = time + 2; if (tgt === player) text(tgt.x, tgt.y - tgt.r - E(50), '탈출', '#7fcf7a', true, .8); }
+  }
+}
+function perkTakedown(c) {                                          // kill(): 처치 관여
+  if (!c.perkSet || !c.alive) return;
+  if (hasPerk(c, 'rd_hunt') && (c.pkHunt || 0) < 8) { c.pkHunt = (c.pkHunt || 0) + 1; recalcStats(c); }
+  if (hasPerk(c, 'rd_chase')) c.pkChaseT = time + 3;
+  if (hasPerk(c, 'rd_feast')) c.hp = Math.min(c.maxHp, c.hp + c.maxHp * .08);
+  if (hasPerk(c, 'tm_reset')) for (const k of ['Q', 'W', 'E']) c.cd[k] = Math.max(0, c.cd[k] - 2);
+  if (hasPerk(c, 'gr_bounty')) { c.gold += 40; if (c === player) text(c.x, c.y - c.r - E(70), '+40 현상금 사냥', '#e6c35c', false, 1); }
+  if (hasPerk(c, 'gr_cheer')) for (const a of champs()) if (a.alive && a.team === c.team && dist(a, c) < E(700)) a.hp = Math.min(a.maxHp, a.hp + a.maxHp * .06);
+}
+const perkMs = u => !u.perkSet ? 1 : (u.pkChaseT > time ? 1.25 : 1) * (u.pkRhyT > time ? 1.08 : 1) * (u.pkFlowT > time ? 1.15 : 1) * (u.pkFleeT > time ? 1.35 : 1) * (hasPerk(u, 'gr_ally') && u.pkAllyN ? 1.06 : 1);
+const perkXp = c => hasPerk(c, 'gr_xp') ? 1.06 : 1;
+const perkSpell = c => hasPerk(c, 'tm_spell') ? 1.12 : 1;
+function perkTick(c, dt) {                                          // runeTick(): 매 프레임
+  if (!c.perkSet || !c.alive) return;
+  if ((c.pkThink = (c.pkThink || 0) - dt) <= 0) {
+    c.pkThink = .4;
+    if (hasPerk(c, 'gr_ally') || hasPerk(c, 'gr_bond')) c.pkAllyN = champs().some(a => a !== c && a.alive && a.team === c.team && dist(a, c) < E(600)) ? 1 : 0;
+    if (hasPerk(c, 'gd_grow') && c.pkCs !== Math.min(120, c.cs || 0)) { c.pkCs = Math.min(120, c.cs || 0); recalcStats(c); }
+  }
+  if (hasPerk(c, 'gr_gold')) c.gold += .6 * dt;
+}
+// ── 룬 페이지 편집 창 ──
+let rpTip = null;
+function rpPerkChip(id, on, attr) {
+  const P = PERKS[id], path = RUNE_PATHS.find(p => p.rows.some(r => r.includes(id)));
+  return `<button type="button" class="rp-chip${on ? ' on' : ''}" style="--pc:${path.col}" ${attr}><i></i>${esc(P.name)}</button>`;
+}
+function rpSummaryHtml(p, dis = false) {                            // 고른 페이지 요약 (싱글 · 멀티 공용)
+  p = rpNormalize(p); const M = rpPath(p.main), S = rpPath(p.sub), R = RUNES[p.ks];
+  return `<div class="rp-sum">${runeImg(p.ks, 'lg')}<div class="rp-sumt"><b>${esc(R.name)} · ${esc(R.title)}</b>
+    <small><span style="color:${M.col}">${M.name}</span> ${p.mains.map(id => esc(PERKS[id].name)).join(' · ')}</small>
+    <small><span style="color:${S.col}">${S.name}</span> ${p.subs.map(id => esc(PERKS[id].name)).join(' · ')}</small></div>
+    <button type="button" class="rp-edit" data-rpedit="1" ${dis ? 'disabled' : ''}>룬 페이지 편집</button></div>`;
+}
+function rpOpen() {
+  let el = $('rpm');
+  if (!el) { el = document.createElement('div'); el.id = 'rpm'; document.body.appendChild(el); el.addEventListener('click', rpClick); }
+  el.hidden = false; rpRender();
+}
+function rpRender() {
+  const p = chosenPage = rpNormalize(chosenPage), M = rpPath(p.main), S = rpPath(p.sub);
+  const tabs = (cur, attr, skip) => RUNE_PATHS.filter(q => q.id !== skip).map(q => `<button type="button" class="rp-tab${q.id === cur ? ' on' : ''}" style="--pc:${q.col}" ${attr}="${q.id}"><b>${q.name}</b><small>${q.sub}</small></button>`).join('');
+  const rows = (P, sel, attr) => P.rows.map((row, i) => `<div class="rp-row"><span>${RP_ROW[i]}</span>${row.map(id => rpPerkChip(id, sel[i] === id, `${attr}="${i}:${id}"`)).join('')}</div>`).join('');
+  const tip = rpTip && (PERKS[rpTip] || RUNES[rpTip]);
+  $('rpm').innerHTML = `<div class="rp" role="dialog" aria-label="룬 페이지">
+    <header><h3>룬 페이지</h3><small>메인 경로에서 핵심 공명 1개와 하위 3개, 보조 경로에서 하위 3개를 고릅니다</small><button type="button" data-rpclose="1">완료</button></header>
+    <div class="rp-cols">
+      <section><h4>메인 · <span style="color:${M.col}">${M.name}</span></h4><div class="rp-tabs">${tabs(p.main, 'data-rpmain', null)}</div>
+        <div class="rp-ks">${M.ks.map(id => `<button type="button" class="rp-k${p.ks === id ? ' on' : ''}" data-rpks="${id}">${runeImg(id, 'lg')}<span><b>${esc(RUNES[id].name)}</b><small>${esc(RUNES[id].title)}</small></span></button>`).join('')}</div>
+        ${rows(M, p.mains, 'data-rpm1')}</section>
+      <section><h4>보조 · <span style="color:${S.col}">${S.name}</span></h4><div class="rp-tabs">${tabs(p.sub, 'data-rpsub', p.main)}</div>${rows(S, p.subs, 'data-rpm2')}</section>
+    </div>
+    <div class="rp-tip">${tip ? (RUNES[rpTip] ? `<b>${esc(tip.name)} · ${esc(tip.title)}</b><p>${tip.desc(tip)}</p>` : `<b>${esc(tip.name)}</b><p>${esc(tip.desc)}</p>`) : '<p>칸을 누르면 고르면서 설명이 여기에 보입니다.</p>'}</div>
+  </div>`;
+}
+function rpClick(e) {
+  const b = e.target.closest('button'); if (!b) { if (e.target.id === 'rpm') rpClose(); return; }
+  const p = chosenPage;
+  if (b.dataset.rpclose) { rpClose(); return; }
+  if (b.dataset.rpmain) { if (p.main !== b.dataset.rpmain) { const old = p.main; p.main = b.dataset.rpmain; p.ks = rpPath(p.main).ks[0]; p.mains = []; if (p.sub === p.main) { p.sub = old; p.subs = []; } } rpTip = p.ks; }
+  if (b.dataset.rpsub) { if (p.sub !== b.dataset.rpsub) { p.sub = b.dataset.rpsub; p.subs = []; } }
+  if (b.dataset.rpks) { p.ks = b.dataset.rpks; rpTip = p.ks; }
+  if (b.dataset.rpm1) { const [i, id] = b.dataset.rpm1.split(':'); (p.mains = p.mains || [])[+i] = id; rpTip = id; }
+  if (b.dataset.rpm2) { const [i, id] = b.dataset.rpm2.split(':'); (p.subs = p.subs || [])[+i] = id; rpTip = id; }
+  rpSave(); rpRender();
+}
+function rpClose() {
+  rpSave(); $('rpm').hidden = true;
+  if (!$('select').hidden && typeof renderSpellPick === 'function') renderSpellPick();
+  if (typeof MP !== 'undefined' && MP.me && !$('mp').hidden && !MP.me.locked) mpPick({rune:chosenPage.ks, perks:pagePerks(chosenPage)}).catch(() => {});
 }
 
 const spellOf = (c, k) => c.spells ? SPELLS[c.spells[k === 'D' ? 0 : 1]] : null;
@@ -5819,7 +6067,7 @@ function castSpell(c, k, ang, frac) {
   return true;
 }
 function updateSpells(dt) {
-  for (const c of heroes) if (c.spCd) { const sd = dt * (c.rune === 'hokma' ? 1 + RUNES.hokma.spell : 1); c.spCd.D = Math.max(0, c.spCd.D - sd); c.spCd.F = Math.max(0, c.spCd.F - sd); }
+  for (const c of heroes) if (c.spCd) { const sd = dt * (c.rune === 'hokma' ? 1 + RUNES.hokma.spell : 1) * perkSpell(c); c.spCd.D = Math.max(0, c.spCd.D - sd); c.spCd.F = Math.max(0, c.spCd.F - sd); }
   for (const u of units) {
     const b = u.spBrand; if (!b) continue;
     if (!u.alive || time >= b.until) { u.spBrand = null; continue; }
@@ -10767,7 +11015,7 @@ function gwApply(u, amt) {
 }
 function champTimers(c, dt) {
   itemTick(c, dt);
-  runeTick(c, dt);                                                     // 황금가지 공명                                                     // 물약 · 사용 아이템 · 신발
+  runeTick(c, dt); perkTick(c, dt);                                                     // 황금가지 공명                                                     // 물약 · 사용 아이템 · 신발
   if (c.spCalmT > time) { c.stunT = Math.max(0, c.stunT - dt * 1.86 * (c.airT > 0 ? 0 : 1)); c.slowT -= dt * 1.86; }   // 안정제: CC 시간 65% 감소
   if (c.target && c.target.team !== c.team && !seenBy(c.team, c.target)) c.target = null;   // 안개 속으로 사라지면 대상 해제
   c.atkT -= dt; c.swingT -= dt; c.lastDmgT += dt;
@@ -12103,6 +12351,7 @@ function update(dt) {
   if (mag < 0.15) ix = iy = 0;
 
   for (const c of champs()) c.gold += PASSIVE_GOLD * dt;       // 기본 골드 수입
+  if (!MP_SRV) playerAutoBuy(dt);                                   // 내 챔피언: 자동 구매 (목표 아이템 · 추천 빌드)
   for (const b of spectating ? heroes : bots) if (canShop(b) && (b.shopT = (b.shopT || 0) - dt) <= 0) {   // AI 자동 구매 (정글러는 사냥꾼의 칼부터)
     b.shopT = 1;
     for (let i = b.items.length - 1; i >= 0; i--) if (b.items[i] === 'badge') sellBadge(b, i);   // 뱃지는 바로 판매
@@ -18496,6 +18745,37 @@ function iconHtml(id, size = '') {
   return `<span class="ic ${size} ${it.ego ? 'ego' : ''} ${it.active ? 'act' : ''}" style="background:#111 url(${itemIconCanvas(id).url}) center/cover"></span>`;
 }
 function fmtStat(k, v) { return PCT_STATS.has(k) ? `+${Math.round(v * 100)}%` : `+${v}`; }
+// ── 자동 구매: 우물에 있거나 죽어 있으면 목표 아이템(없으면 추천 빌드)을 재료부터 알아서 삼 ──
+let autoBuy = (() => { try { return localStorage.getItem('autoBuy') !== '0'; } catch { return true; } })();
+const AUTO_STOP = ['이미 가지고 있음', '신발은 하나만', '시작 아이템은 하나만', '사용 아이템은 하나만', '판매 전용'];
+function updateShopBtn() {
+  const c = player, id = c && c.autoTarget;
+  const html = `<span class="dot"></span>상점${id ? `<span class="tgt">· ${esc(ITEMS[id].name)} ${buyPlan(c, id).cost}G</span>` : ''}`;
+  if ($('shopBtn').innerHTML !== html) $('shopBtn').innerHTML = html;
+}
+function playerAutoBuy(dt) {
+  const c = player;
+  if (!c || spectating || DUEL.on) return;
+  if ((c.autoT = (c.autoT || 0) - dt) > 0) return;
+  c.autoT = .5;
+  if (c.autoTarget && AUTO_STOP.includes(buyBlock(c, c.autoTarget))) c.autoTarget = null;
+  updateShopBtn();
+  if (!canShop(c)) return;
+  let bought = false;
+  for (let n = 0; n < (mpRole === 'guest' ? 1 : 8); n++) {
+    let id = c.autoTarget;
+    if (!id && autoBuy) id = aiNextItem(c);
+    if (!id) break;
+    const before = c.items.filter(x => x === id).length;
+    if (!buyTowards(c, id)) break;
+    bought = true;
+    if (id === c.autoTarget && c.items.filter(x => x === id).length > before) {
+      c.autoTarget = null; text(c.x, c.y - c.r - E(50), ITEMS[id].name + ' 완성!', '#bfe8b0', true, 1);
+    }
+    if (mpRole === 'guest') break;
+  }
+  if (bought) { updateShopBtn(); if (shopOpen) renderShop(); }
+}
 function openShop(on) {
   shopOpen = on; $('shop').hidden = !on;
   if (on && boardOpen) openBoard(false);
@@ -18507,6 +18787,7 @@ function renderShop() {
   const ok = canShop(c);
   $('shopWhere').textContent = ok ? '구매 가능' : '우물(또는 죽은 상태)에서만 살 수 있습니다';
   $('shopWhere').className = 'sp-where' + (ok ? ' ok' : '');
+  $('shopAuto').textContent = autoBuy ? '추천 빌드 자동 구매 켬' : '추천 빌드 자동 구매 끔'; $('shopAuto').setAttribute('aria-pressed', autoBuy);
   $('shopTabs').innerHTML = SHOP_TABS.map(([k, n]) => `<button type="button" data-tab="${k}" aria-pressed="${shopTab === k}">${n}</button>`).join('');
   const sections = [];
   const want = cat => shopTab === 'all' || shopTab === cat || (shopTab === 'parts' && (cat === 'basic' || cat === 'mid'));
@@ -18516,8 +18797,9 @@ function renderShop() {
     sections.push(`<div class="sp-sec"><h4>${ITEM_CATS[cat].name}${LEGEND_CATS.includes(cat) ? ' · E.G.O' : ''}</h4><div class="sp-row">` +
       ids.map(id => {
         const plan = buyPlan(c, id), afford = c.gold >= plan.cost, own = LEGEND_CATS.includes(cat) && hasItem(c, id);
-        return `<button type="button" class="card ${afford ? '' : 'no'} ${own ? 'own' : ''} ${ITEMS[id].active ? 'act' : ''}" data-item="${id}" aria-selected="${shopSel === id}">
-          ${iconHtml(id)}<span class="nm">${esc(ITEMS[id].name)}</span><span class="pr">${plan.cost}</span></button>`;
+        const tg = c.autoTarget === id;
+        return `<button type="button" class="card ${afford ? '' : 'no'} ${own ? 'own' : ''} ${ITEMS[id].active ? 'act' : ''} ${tg ? 'tgt' : ''}" data-item="${id}" aria-selected="${shopSel === id}">
+          ${iconHtml(id)}<span class="nm">${esc(ITEMS[id].name)}</span><span class="pr">${plan.cost}</span>${tg ? '<span class="tg">목표</span>' : ''}</button>`;
       }).join('') + `</div></div>`);
   }
   const wn = c.wards || 0, wOk = c.gold >= WARD.cost && wn < WARD.carry;
@@ -18558,13 +18840,13 @@ function renderShop() {
     if (!root && !covered) { const i = owned.indexOf(id); if (i >= 0) { owned.splice(i, 1); have = true; } }
     const kids = ITEMS[id].from || [];
     return `<div class="tn"><button type="button" class="node ${have ? 'have' : ''} ${covered ? 'covered' : ''} ${root ? 'cur' : ''}" data-item="${id}" title="${esc(ITEMS[id].name)}">` +
-      `${iconHtml(id, 'sm')}<small>${ITEMS[id].total}</small></button>` +
+      `${iconHtml(id, 'sm')}<small>${have ? '보유' : covered ? ITEMS[id].total : buyPlan(c, id).cost}</small></button>` +
       (kids.length ? `<div class="kids">${kids.map(k => tn(k, false, covered || have)).join('')}</div>` : '') + `</div>`;
   };
   const tree = `<div class="tree">${tn(shopSel, true, false)}</div>`;
   const into = Object.keys(ITEMS).filter(id => (ITEMS[id].from || []).includes(shopSel));
   const intoHtml = into.length ? `<div class="into"><span>상위 아이템</span>${into.map(id =>
-    `<button type="button" class="node" data-item="${id}" style="background:none;border:0;padding:0" title="${esc(ITEMS[id].name)}">${iconHtml(id, 'sm')}</button>`).join('')}</div>` : '';
+    `<button type="button" class="node" data-item="${id}" style="background:none;border:0;padding:0" title="${esc(ITEMS[id].name)}">${iconHtml(id, 'sm')}<small>${buyPlan(c, id).cost}</small></button>`).join('')}</div>` : '';
   const stats = Object.entries(it.stats).map(([k, v]) => `<li><span>${STAT_NAMES[k]}</span><span>${fmtStat(k, v)}</span></li>`).join('');
   const sellIdx = shopSlot >= 0 && c.items[shopSlot] === shopSel ? shopSlot : c.items.indexOf(shopSel);
   $('shopDetail').innerHTML = `
@@ -18574,10 +18856,11 @@ function renderShop() {
     <ul class="stats">${stats}</ul>
     ${it.passive || it.desc ? `<div class="pas">${it.passive ? `<b>${esc(it.passive)}</b><br>` : ''}${esc(it.desc || '')}</div>` : ''}
     <div class="buybox">
-      <div class="price"><span>총 가격 ${it.total}${it.from ? ` · 조합 ${combineCost(shopSel)}` : ''}</span><b>${plan.cost} G</b></div>
+      <div class="price"><span>총 가격 ${it.total}${it.from ? ` · 조합 ${combineCost(shopSel)}` : ''}${plan.cost < it.total ? ` · 보유 재료 -${it.total - plan.cost}` : ''}</span><b>${plan.cost} G</b></div>
       <div class="why" id="shopWhy">${block || ''}</div>
       <div class="acts">
         <button type="button" class="buy" id="shopBuy" data-act="buy" ${block ? 'disabled' : ''}>구매</button>
+        ${it.cat !== 'special' && !AUTO_STOP.includes(block) ? `<button type="button" class="sell tgtb" data-act="target">${c.autoTarget === shopSel ? '목표 해제' : '목표로 자동 구매'}</button>` : ''}
         ${sellIdx >= 0 ? `<button type="button" class="sell" data-act="sell" data-idx="${sellIdx}" ${ok ? '' : 'disabled'}>판매 ${it.cat === 'special' ? badgeGold(c) + 'G + 경험치 ' + badgeXp(c) : Math.floor(it.total * SELL_RATE)}</button>` : ''}
       </div>
     </div>`;
@@ -18597,7 +18880,7 @@ function refreshShopLight() {
   $('shopGold').textContent = Math.floor(c.gold) + ' G';
   $('shopWhere').textContent = ok ? '구매 가능' : '우물(또는 죽은 상태)에서만 살 수 있습니다';
   $('shopWhere').className = 'sp-where' + (ok ? ' ok' : '');
-  for (const el of $('shopGrid').querySelectorAll('.card[data-item]')) el.classList.toggle('no', c.gold < buyPlan(c, el.dataset.item).cost);
+  for (const el of $('shopGrid').querySelectorAll('.card[data-item]')) { const cost = buyPlan(c, el.dataset.item).cost, pr = el.querySelector('.pr'); el.classList.toggle('no', c.gold < cost); if (pr && pr.textContent !== String(cost)) pr.textContent = cost; }
   const block = typeof shopSel === 'string' && shopSel.startsWith('pot:') ? potBlock(c, shopSel.slice(4)) : buyBlock(c, shopSel);
   if ($('shopBuy')) { $('shopBuy').disabled = !!block; $('shopWhy').textContent = block || ''; }
 }
@@ -18605,6 +18888,8 @@ $('shop').addEventListener('click', e => {
   if (e.target === $('shop')) { openShop(false); return; }
   const b = e.target.closest('button'); if (!b) return;
   if (b.id === 'shopClose') { openShop(false); return; }
+  if (b.id === 'shopAuto') { autoBuy = !autoBuy; try { localStorage.setItem('autoBuy', autoBuy ? '1' : '0'); } catch {} player.autoT = 0; }
+  if (b.dataset.act === 'target') { player.autoTarget = player.autoTarget === shopSel ? null : shopSel; player.autoT = 0; updateShopBtn(); }
   if (b.dataset.tab) shopTab = b.dataset.tab;
   if (b.dataset.item) { shopSel = b.dataset.item; shopSlot = -1; }
   if (b.dataset.slot) { const i = +b.dataset.slot; if (player.items[i]) { shopSel = player.items[i]; shopSlot = i; } }
@@ -18613,6 +18898,7 @@ $('shop').addEventListener('click', e => {
   if (b.dataset.act === 'buypot') { const id = shopSel.slice(4), blk = potBlock(player, id); if (blk) text(player.x, player.y - player.r - E(45), blk, '#aab4c0', false, .9); else buyPot(player, id); }
   if (b.dataset.mephi) { if (!chBuyUp(player, b.dataset.mephi)) text(player.x, player.y - player.r - E(45), chUp(player, b.dataset.mephi) ? '이미 개조했어요' : '엔케팔린이 부족해요', '#aab4c0', false, .9); }
   if (b.dataset.act === 'buy') buyItem(player, shopSel);
+  updateShopBtn();
   if (b.dataset.act === 'sell') { sellItem(player, +b.dataset.idx); shopSlot = -1; }
   renderShop();
 });
@@ -18847,7 +19133,7 @@ function mpView(v) { MP.view = v; mpRender(); }
 function mpSetErr(t) { MP.err = t; mpRender(); }
 
 // ── 방 만들기 / 들어가기 / 빠른 매칭 ──
-function mpNewPlayer(slot, name) { return {name, slot, role:ROLES[slot] || 'mid', champ:'', spells:null, rune:chosenRune, locked:false, loaded:0, joined:MP.net.now()}; }
+function mpNewPlayer(slot, name) { return {name, slot, role:ROLES[slot] || 'mid', champ:'', spells:null, rune:chosenRune, perks:pagePerks(chosenPage), locked:false, loaded:0, joined:MP.net.now()}; }
 async function mpCreate(pub) {
   const N = await mpEnsureNet(), name = mpName();
   const code = await N.create({state:'lobby', pub:!!pub, openPub:!!pub, players:{[N.uid]:mpNewPlayer(0, name)}});
@@ -19046,7 +19332,7 @@ async function mpHostToLoading() {
   empty.forEach((r, i) => { fill[r] = fillKeys[i]; });
   const blue = ROLES.map(role => {
     const p = ps.find(q => q.role === role);
-    if (p) return {role, key:p.champ, spells:p.spells || defaultSpells(role, p.champ), rune:RUNES[p.rune] ? p.rune : defaultRune(role, p.champ), name:p.name, uid:p.uid};
+    if (p) return {role, key:p.champ, spells:p.spells || defaultSpells(role, p.champ), rune:RUNES[p.rune] ? p.rune : defaultRune(role, p.champ), perks:Array.isArray(p.perks) ? p.perks : null, name:p.name, uid:p.uid};
     const key = fill[role]; return {role, key, spells:defaultSpells(role, key), rune:defaultRune(role, key), name:'', uid:''};
   });
   const redKeys = pickForRoles(ROLES, []), red = ROLES.map((role, i) => ({role, key:redKeys[i], spells:defaultSpells(role, redKeys[i]), rune:defaultRune(role, redKeys[i])}));
@@ -19099,7 +19385,7 @@ document.addEventListener('click', e => {                                       
   e.stopImmediatePropagation(); e.preventDefault();
   fadeSwap(() => { b.__fadePass = true; try { b.click(); } finally { b.__fadePass = false; } }, 240, 420);
 }, true);
-function duelPlayerRec(slot) { return {name:mpName(), slot, spells:chosenSpells.slice(), rune:chosenRune, joined:MP.net.now()}; }
+function duelPlayerRec(slot) { return {name:mpName(), slot, spells:chosenSpells.slice(), rune:chosenRune, perks:pagePerks(chosenPage), joined:MP.net.now()}; }
 async function duelCreate(pub) {
   const N = await mpEnsureNet();
   const code = await N.create({mode:'duel', state:'lobby', pub:!!pub, openDuel:!!pub, players:{[N.uid]:duelPlayerRec(0)}});
@@ -19216,12 +19502,12 @@ function duelBeginRound(room) {
 }
 function duelStartRound(room) {
   const d = room.d, [H, G] = dHG(room), meBlue = MP_SRV || H === MP.net.uid;
-  const mk = u => { const p = room.players[u] || {}, k = d.pick[u]; return {role:'mid', key:k, spells:Array.isArray(p.spells) && p.spells.length === 2 ? p.spells : defaultSpells('mid', k), rune:RUNES[p.rune] ? p.rune : defaultRune('mid', k), name:p.name || '상대', uid:u}; };
+  const mk = u => { const p = room.players[u] || {}, k = d.pick[u]; return {role:'mid', key:k, spells:Array.isArray(p.spells) && p.spells.length === 2 ? p.spells : defaultSpells('mid', k), rune:RUNES[p.rune] ? p.rune : defaultRune('mid', k), perks:Array.isArray(p.perks) ? p.perks : null, name:p.name || '상대', uid:u}; };
   const blue = [mk(H)], red = [mk(G)];
   mpLineup = {blue, red, me:'mid', fresh:true, duel:true};
   chosenChamp = (meBlue ? blue : red)[0].key; chosenRole = 'mid';
   resetGame(); started = true;
-  for (const c of heroes) { const L = c.team === 'blue' ? blue[0] : red[0]; c.name = L.name; c.mpUid = room.solo && L.uid === 'ai' ? null : L.uid; giveSpells(c, L.spells); c.rune = L.rune; }
+  for (const c of heroes) { const L = c.team === 'blue' ? blue[0] : red[0]; c.name = L.name; c.mpUid = room.solo && L.uid === 'ai' ? null : L.uid; giveSpells(c, L.spells); applyPage(c, L.rune, L.perks); recalcStats(c); }
   DUEL.solo = !!room.solo;
   if (!meBlue) { const me = heroes.find(h => h.team === 'red'); if (me) player = me; }
   duelSetup();
@@ -19540,8 +19826,7 @@ function mpRender() {
         <div class="mp-row"><b>라인</b>${roles}</div>
         <div class="mp-grid">${grid}</div>
         <div class="mp-row"><b>주문</b>${spells}</div>
-        <div class="mp-row"><b>공명</b>${(() => { const cur = RUNES[me.rune] ? me.rune : chosenRune, R = RUNES[cur];
-          return RUNE_ORDER.map(id => `<button type="button" class="mp-spell${id === cur ? ' on' : ''}" data-rn2="${id}" title="${esc(RUNES[id].name + ' · ' + RUNES[id].title + ' — ' + RUNES[id].sub)}" aria-label="${esc(RUNES[id].name)}" ${me.locked ? 'disabled' : ''}>${runeImg(id)}</button>`).join('') + `<small class="mp-spn">${esc(R.name)} · ${esc(R.title)} — ${esc(R.sub)}</small>`; })()}</div>
+        <div class="mp-row mp-rp"><b>룬</b>${rpSummaryHtml(chosenPage, me.locked)}</div>
         <button type="button" class="mp-lock" data-mp="lock" ${me.locked || !me.champ ? 'disabled' : ''}>${me.locked ? '확정됨 ✓' : '확정'}</button>
       </section>
       <aside class="mp-team red"><h3>상대 · AI</h3><ul>${ROLES.map(role => `<li class="ai"><span class="mp-role">${ROLE_NAME[role]}</span>${mpTok('', 'unk')}<div><b>?</b><small>AI</small></div></li>`).join('')}</ul></aside>
@@ -19576,6 +19861,7 @@ document.addEventListener('click', e => {
   if (act === 'lock') return run(mpLock);
   const ch = e.target.closest('[data-ch]'); if (ch) return run(() => mpPick({champ:ch.dataset.ch}));
   const ro = e.target.closest('[data-role2]'); if (ro) return run(() => mpPick({role:ro.dataset.role2}));
+  if (e.target.closest('[data-rpedit]')) { rpOpen(); return; }
   const rn2 = e.target.closest('[data-rn2]'); if (rn2) { chosenRune = rn2.dataset.rn2; try { localStorage.setItem('rune', chosenRune); } catch {} return run(() => mpPick({rune:chosenRune})); }
   const sp = e.target.closest('[data-sp]');
   if (sp && MP.me) { const id = sp.dataset.sp, cur = (MP.me.spells || (MP.me.champ ? defaultSpells(MP.me.role, MP.me.champ) : ['warp', 'brand'])).slice(), i = cur.indexOf(id);
@@ -20927,5 +21213,6 @@ if (window.DEMO) demoInit();
 requestAnimationFrame(loop);
 })();
 </script>
+
 </body>
 </html>
